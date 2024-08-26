@@ -1,0 +1,24 @@
+
+
+# Lo primero es hacer esto 
+git init
+git pull origin main
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/No-Country-simulation/c20-12-m-python-react.git
+git push -u origin main
+
+
+
+# les salta un error y hacen esto:
+git pull origin main
+git add .
+git commit -m "Algun commit"
+git push -u origin main
+
+
+# Les salta otro error
+git pull origin main --allow-unrelated-histories
+git push -u origin main
+
+
