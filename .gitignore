@@ -1,0 +1,17 @@
+
+
+# Ignorar el entorno virtual
+venv/
+
+# Archivos de caché de Python
+__pycache__/
+*.pyc
+
+# Migraciones
+*/migrations/
+
+# Ignorar mi carpeta de steps
+z_steps/
+
+
+
