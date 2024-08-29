@@ -1,0 +1,215 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    {% load static %}
+
+    <!-- Preconnect and Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Fonts - Para mostrar algunos iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Bootstrap 5.3.3 -->
+    <link href="{% static 'ecommerce/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Styles propios de cada template -->
+    <link href="{% static 'ecommerce/css/home.css' %}" rel="stylesheet">
+
+    <!-- For More CSS Modules -->
+    {% block extra_head %}
+        <!-- Cargar CSS o meta tags específicos de la página aquí -->
+    {% endblock %}
+
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid p-0 my-container-header">
+
+            <!-- Primera fila -->
+            <div class="row">
+                <aside class="col-lg-1 p-0"></aside>
+
+                <!-- Logo -->
+                <aside class="col-lg-2 p-0" style="z-index: 10;">
+                    <a href="{% url 'Home' %}">
+                        <img src="" alt="Logo" class="my-logo">
+                    </a>
+                </aside>
+
+                <!-- Top Search bar -->
+                <aside class="col-lg-7 my-container-center p-0">
+                    <form class="my-container-center my-search-top-bar" action="{% url 'Home' %}" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Vamo a juga!" name="top_q">
+                            <div class="input-group-append">
+                                <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </aside>
+
+                <!-- Icon Container -->
+                <aside class="col-lg-1 my-container-center p-0">
+                    <button class="btn my-btn-header-icon" 
+                    onclick="window.location.href='{% url 'Producto' %}';">
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+
+                    <button class="btn my-btn-header-icon" onclick="window.location.href='#';">
+                        <i class="fab fa-facebook"></i>
+                    </button>
+
+                    <button class="btn my-btn-header-icon" onclick="window.location.href='#';">
+                        <i class="fab fa-instagram"></i>
+                    </button>
+
+                    <button class="btn my-btn-header-icon" onclick="window.location.href='#';">
+                        <i class="fab fa-google"></i>
+                    </button>
+                </aside>
+
+                <aside class="col-lg-1 p-0"></aside>
+            </div>
+
+            <!-- Tercera fila * -->
+            <div class="row">
+                <!-- Only Carousel home -->
+                <aside class="col-lg-12 p-0">
+                    <!-- Tercera fila 
+                     * Solo existe si agregamos algo en este block content -->
+
+                    {% block header_content %}
+                        <!-- Contenido específico de la página -->
+                    {% endblock %}
+                </aside>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- =================================================================
+                                Contenido Cambianteee 
+    ================================================================= -->
+    {% block content %}
+        <!-- Contenido específico de la página -->
+    {% endblock %}
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Primera columna: Logo + Texto de la compañía -->
+            <div class="footer-column">
+                <a href="{% url 'Home' %}">
+                    <img src="" alt="Company Logo" class="footer-logo">
+                </a>
+                <p>
+                    ¡Tu cueva Gamer en Córdoba! 🎮
+                </p>
+                <p>
+                    Somos la tienda de computación y videojuegos que hacía falta en Córdoba.
+                    Nacida con el propósito de satisfacer a todo jugador PC Gamer, Playstation, Nintendo y Xbox
+                </p>
+                <p>
+                    Grandes marcas nos acompañan como Asus, Corsair, Hyperx, Gigabyte, Logitech,
+                    Samsung o Redragon entre otras.
+                </p>
+            </div>
+
+            <!-- Segunda columna: Texto extra de información -->
+            <div class="footer-column">
+
+                <h3><strong>Additional Information! </strong></h3>
+
+                <button class="btn-footer">
+                    <i class="fa fa-map-marker-alt"></i>
+                    <span>Sarmiento 1138, Córdoba, Argentina.</span>
+                </button>
+
+                <button class="btn-footer">
+                    <i class="fab fa-whatsapp icon"></i>
+                    <span>+54 9 351 543-7688</span>
+                </button>
+
+                <button class="btn-footer">
+                    <i class="fa fa-clock"></i>
+                    <span>Lunes a Viernes de 10hs a 14hs y de 15hs a 18:50hs.
+                        Sábado mediodía y el domingo dormimos todo el día.</span>
+                </button>
+
+                <button class="btn-footer">
+                    <i class="fa fa-envelope"></i>
+                    <span>ventas@dragonesgames.com</span>
+                </button>
+
+            </div>
+
+            <!-- Tercera columna: Vacía para personalización futura -->
+            <div class="footer-column">
+
+                <h3><strong>&nbsp;&nbsp;Seguinos! </strong></h3>
+
+                <!-- Icon Container -->
+                <div class="icon-container-footer">
+                    <button class="btn">
+                        <i class="fab fa-whatsapp icon"></i>
+                    </button>
+                    <button class="btn">
+
+                        <i class="fab fa-facebook icon"></i>
+                    </button>
+                    <button class="btn">
+                        <i class="fab fa-instagram icon"></i>
+                    </button>
+                    <button class="btn">
+                        <i class="fab fa-google icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <p class="footer-text-final">
+            © 2024 Dragon Games Cba. All rights reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- JQuery dependencies 
+    <script src="{% static 'ecommerce/vendor/jquery/jquery-3.7.1.min.js' %}"></script> -->
+
+    <!-- Bootstrap Scripts -->
+    <script src="{% static 'ecommerce/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    -->
+
+
+    <!-- ==================================================================
+     #                  Mis Scripts personalizados
+     ===================================================================== -->
+
+    {% block extra_scripts %}
+    <!-- Cargas archivos .js propios de cada template/vista
+    - Por ahora solo se usa en producto_base.html
+
+    -->
+    {% endblock %}
+
+</body>
+</html>
+
+
