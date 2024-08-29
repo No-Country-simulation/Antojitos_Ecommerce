@@ -12,7 +12,7 @@ import uuid
 # Create your models here.
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='producto/categoria/')
+    image = models.ImageField(upload_to='producto/categoria/', null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

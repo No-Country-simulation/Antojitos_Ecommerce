@@ -1,0 +1,340 @@
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; /* Usa Montserrat como fuente principal */
+    font-weight: 700; /* Peso normal para Montserrat */
+}
+
+p   {
+    line-height: 1.75;
+    font-family: 'Montserrat', sans-serif; /* Usa Montserrat como fuente principal */
+    font-weight: 700; /* Peso normal para Montserrat */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Usa Montserrat como fuente principal */
+    font-weight: 700; /* Peso normal para Montserrat */
+    background-color: #F6F6F6;  /* Color de fondo sólido */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+a  {
+    color: black !important;
+    text-decoration: none !important;
+    font-family: 'Montserrat', sans-serif; /* Usa Montserrat como fuente principal */
+    font-weight: 500; /* Peso normal para Montserrat */
+}
+
+.btn {
+    outline: none !important; /* Elimina el contorno con !important #780178; */
+    box-shadow: none !important; /* Elimina cualquier sombra */
+    border: none !important; /* Asegura que no haya borde con !important */
+    font-family: 'Montserrat', sans-serif; /* Usa Montserrat como fuente principal */
+    font-weight: 500; /* Peso normal para Montserrat */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+    outline: none !important; /* Elimina el contorno con !important */
+    border: none !important; /* Asegura que no haya borde con !important */
+    box-shadow: none !important; /* Elimina cualquier sombra */
+}
+
+.form-control:focus {
+    outline: none; /* Elimina el contorno predeterminado del navegador */
+    border: none;
+}
+
+.my-container-center {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    justify-content: center; /* Alinea horizontalmente */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+}
+
+
+
+
+/* ============================================================================
+                         LOGO PAGE - HEAD - BASE.html todo
+============================================================================ */
+/* Tamaño base para pantallas grandes */
+.my-container-header {
+    background-color: #780178; /* Violeta claro */
+    align-items: center; /* Alinea verticalmente los elementos */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+
+}
+
+.my-container-header::before,
+.my-container-header::after {
+    /*
+    This pseudo-element is used to visually extend the background color of the
+    .my-container-header beyond its content area, simulating the effect of a bottom margin
+    while maintaining the same background color. This helps to visually separate
+    the header from the content below without breaking the background.
+    */
+    content: '';
+    display: block;
+    height: 10px; /* Tamaño del margen */
+    background-color: #780178; /* Mismo color de fondo */
+}
+
+/*  LOGO STUFF */
+.my-logo {
+    width: 120%; /* Ajusta el ancho según tus necesidades */
+    height: auto; /* Mantiene la proporción de la imagen */
+    max-height: 110px; /* Fija la altura máxima */
+    z-index: 10; /* Necesario cuando utilizamos un width o height superior al 100% ,
+    tambien su contenedor debe tenerlo */
+}
+
+/*  SEARCH BAR STUFF */
+.my-search-top-bar {
+    width: 80%; /* Ajusta el ancho según tus necesidades */
+    height: 60px;
+}
+
+.my-search-top-bar .form-control {
+    padding-left: 4%; /* esto es para el placeholder se vea mejor */
+    border-radius: 20px;    /* Esto es para bodear ambos con un contorno circular*/
+}
+
+.my-search-top-bar .btn {
+    background-color: #5878FF;
+    border-radius: 20px;    /* Esto es para bodear ambos con un contorno circular*/
+}
+
+/* ICON HEAD CONTAINER STUFF */
+.my-btn-header-icon {
+    background-color: transparent;
+    border-radius: 50%; /* Hacer los botones circulares */
+    height: 60px; /* Ajusta la altura del botón */
+    width: 60px;  /* Ajusta el ancho del botón para mantener la forma circular */
+
+    display: flex;  /* esto es para que los iconos de adentro esten centrados */
+    justify-content: flex-end;
+    align-items: center;
+
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.my-btn-header-icon i {
+    font-size: 24px; /* Tamaño de los íconos */
+    color: white; /* Color del ícono */
+    transition: color 0.3s;
+    transition:all 0.3s linear;
+}
+
+.my-btn-header-icon:hover {
+    background-color: rgba(1, 1, 255, 0.3);  /* Color de fondo al pasar el ratón */
+}
+
+.my-btn-header-icon:hover i {
+    color: #5878FF; /* Color del ícono al pasar el ratón */
+    color:#fff;
+    font-size:40px;
+}
+
+/*
+                CAROUSEL STUFFF     min-height: 350px; todo
+*/
+/* Establece que el contenedor padre ocupe el 100% de la altura disponible */
+
+.carousel-inner {
+    height: calc(100vh - 170px); /* Resta la altura de otros elementos del header */
+    width: 100%;
+}
+
+/* Cada item del carrusel ocupa el 100% de la altura del contenedor padre  height: 70vh; */
+.carousel-item {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.slide-one {
+    background-image: url('https://i.pinimg.com/564x/b8/25/6b/b8256bd1133bc96290f4b279629c5710.jpg');
+}
+
+.slide-two {
+    background-image: url('https://i.pinimg.com/564x/45/05/64/45056449fe18e2a42b653e628e56be47.jpg');
+}
+
+.slide-three {
+    background-image: url('https://redragon.es/content/uploads/2021/10/HEROS-S129W-BA.jpg');
+}
+
+.carousel-caption {
+    bottom: 5%; /* Mantiene el ajuste de la posición vertical */
+    left: 10%; /* Ajusta la distancia desde el lado derecho */
+    right: auto; /* Asegura que la posición izquierda no interfiera */
+    transform: none; /* Elimina cualquier transformación previa */
+    text-align: center; /* Opcional: Alinea el texto hacia la derecha */
+
+}
+
+.carousel-caption h3 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center; /* Opcional: Alinea el texto hacia la derecha */
+}
+
+.carousel-caption p {
+    font-size: 1.5rem;
+    text-align: center; /* Opcional: Alinea el texto hacia la derecha */
+}
+/*
+        FOOTER STUFF
+*/
+.icon-container-footer .btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%; /* Hacer los botones circulares */
+    height: 60px; /* Ajusta la altura del botón */
+    width: 60px;  /* Ajusta el ancho del botón para mantener la forma circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.icon-container-footer .btn .icon {
+    font-size: 24px; /* Tamaño de los íconos */
+    color: white; /* Color del ícono */
+    transition: color 0.3s;
+
+    transition:all 0.3s linear;
+}
+
+.icon-container-footer .btn:hover .icon {
+    color: #5878FF; /* Color del ícono al pasar el ratón */
+    color:#fff;
+    font-size:40px;
+}
+
+.icon-container-footer .btn:hover {
+    background-color: rgba(1, 1, 255, 0.2);  /* Color de fondo al pasar el ratón */
+}
+
+
+.icon-container-footer .btn:hover::after {
+    opacity:1;
+    transform:scale(0.8);
+
+}
+
+
+.icon-container-footer .btn::after {
+    content:"";
+    position:absolute;
+    height:inherit;
+    width:inherit;
+    border-radius:50%;
+    opacity:0;
+    z-index:-1;
+    transition:all 0.3s linear;
+}
+
+.icon-container-footer {
+    display: flex; /* Activar Flexbox */
+    justify-content: flex-start; /* Alinea los íconos al principio del contenedor */
+
+}
+
+/* ================================================================================
+    PIE DE PAGINAAAAAAAAAAAAAAAAAAAAAAAAAAAAA todo
+/* ================================================================================ */
+/* Estilos básicos del footer */
+.footer {
+    background-color: #780178; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    padding: 20px 50px; /* Espaciado arriba y abajo */
+
+    width: 100%; /* Ancho máximo del contenedor */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total del enlace */
+}
+
+.footer-container {
+    width: 100%; /* Ancho máximo del contenedor */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total del enlace */
+
+    display: flex; /* Flexbox para alineación en fila */
+    justify-content: space-between; /* Espacio entre las columnas */
+}
+
+.footer-column {
+    flex: 1; /* Cada columna ocupa un tercio del espacio disponible */
+    padding: 20px;
+}
+
+/* Estilos para el logo */
+.footer-logo {
+    max-width: 250px; /* Tamaño máximo del logo */
+    margin-bottom: 10px;
+}
+
+/* Estilos para el texto */
+.footer-text {
+    font-size: 14px; /* Tamaño de fuente */
+    line-height: 1.5; /* Espaciado entre líneas */
+    margin: 0; /* Sin margen */
+}
+
+
+.footer-text-final {
+    text-align: center;
+    padding: 10px 10px;
+}
+
+.btn-footer {
+    font-size: 1.1em; /* Ajusta el tamaño del ícono y el texto */
+    background-color: #780178; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+
+    border: none; /* Quita el borde del botón */
+    padding: 10px; /* Espaciado interno del botón */
+    display: flex; /* Alinea el contenido del botón horizontalmente */
+    align-items: center; /* Centra verticalmente el contenido dentro del botón */
+    margin: 0; /* Elimina el margen predeterminado */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves para el hover */
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.btn-footer i {
+    font-size: 1.8em; /* Tamaño del ícono dentro del botón */
+    margin-right: 10px; /* Espacio entre el ícono y el texto */
+}
+
+.btn-footer:hover {
+    background-color: #6c004a; /* Color de fondo más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Leve zoom al pasar el mouse */
+}
+
+.btn-footer:focus {
+    outline: none; /* Quita el borde de enfoque */
+    box-shadow: none; /* Quita la sombra alrededor del botón */
+}
+
+.btn-footer:active {
+    background-color: #5a003e; /* Color de fondo más oscuro al hacer clic */
+    transform: scale(0.95); /* Efecto de presionar el botón */
+}

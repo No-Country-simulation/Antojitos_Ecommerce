@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # MY_APPS
+    'ecommerce',    # Ecommerce APP
     'productos',    # Productos APP
 ]
 

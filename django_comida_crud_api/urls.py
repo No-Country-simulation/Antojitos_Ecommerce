@@ -22,7 +22,11 @@ from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     
+    # Esto es de productos
+    path('', include("ecommerce.urls")),
     
-    # Esto es de producto
+    # Esto es de productos
     path('', include("productos.urls")),
+    
+    
 ]

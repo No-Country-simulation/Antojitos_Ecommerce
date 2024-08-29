@@ -1,0 +1,205 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>restaurante menú</title>
+    <link rel="stylesheet" href="style-menu.css">
+
+    
+</head>
+<body>
+    <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+    
+    header.header {
+        background-color: #d32f2f;
+        color: white;
+        text-align: center;
+        padding: 1.5rem 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .menu-categorias {
+        background-color: #ffffff;
+        padding: 1rem 0;
+        border-bottom: 1px solid #e0e0e0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .menu-categorias ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .menu-categorias a {
+        text-decoration: none;
+        color: #d32f2f;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: color 0.3s;
+    }
+    
+    .menu-categorias a:hover {
+        color: #b71c1c;
+    }
+    
+    .menu {
+        padding: 2rem;
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .menu-categoria {
+        margin-bottom: 2.5rem;
+    }
+    
+    .menu-categoria h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #eeeeee;
+        color: #d32f2f;
+    }
+    
+    .menu-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid #eeeeee;
+        transition: background-color 0.3s;
+    }
+    
+    .menu-item:hover {
+        background-color: #f5f5f5;
+    }
+    
+    .item-info {
+        max-width: 70%;
+    }
+    
+    .item-info h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        color: #333;
+    }
+    
+    .item-info p {
+        margin: 0.5rem 0 0;
+        color: #666;
+        font-size: 0.9rem;
+    }
+    
+    .item-precio {
+        font-weight: bold;
+        color: #333;
+        font-size: 1.1rem;
+    }
+    
+    @media (max-width: 768px) {
+        .menu-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    
+        .item-info {
+            max-width: 100%;
+            margin-bottom: 1rem;
+        }
+    
+        .item-precio {
+            font-size: 1rem;
+        }
+    }
+    </style>
+    
+    <header class="header"> <!--se puede añadir una imagen aqui para el encabezado-->
+        <h1>el mac</h1> <!--nombre del restaurante-->
+        <p>Dirrección</p>
+    </header>
+    
+    <!-- esto podria ayudarnos con las listas de categorias:
+     <nav class="menu-categorias">
+        <ul>
+            <li><a href="#hamburguesas">Hamburguesas</a></li>
+            <li><a href="#bebidas">Bebidas</a></li>
+            <li><a href="#postres">Postres</a></li>
+        </ul>
+    </nav>
+-->
+    <main class="menu">
+        <section id="hamburguesas" class="menu-categoria">
+            <h2>Hamburguesas</h2>
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Big Mac</h3>
+                    <p>Una hamburguesa icónica con dos carnes, lechuga, queso, pepinillos, cebolla y salsa especial.</p>
+                </div>
+                <div class="item-precio">$800</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Cuarto de Libra</h3>
+                    <p>Carne de res a la parrilla con queso derretido, cebolla, pepinillos y kétchup.</p>
+                </div>
+                <div class="item-precio">$750</div>
+            </div>
+        </section>
+
+        <section id="bebidas" class="menu-categoria">
+            <h2>Bebidas</h2>
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Coca-Cola</h3>
+                    <p>Refresco clásico de 500 ml.</p>
+                </div>
+                <div class="item-precio">$200</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Sprite</h3>
+                    <p>Refresco de lima-limón de 500 ml.</p>
+                </div>
+                <div class="item-precio">$200</div>
+            </div>
+        </section>
+
+        <section id="postres" class="menu-categoria">
+            <h2>Postres</h2>
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Sundae de Chocolate</h3>
+                    <p>Helado de vainilla con salsa de chocolate.</p>
+                </div>
+                <div class="item-precio">$300</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>McFlurry Oreo</h3>
+                    <p>Helado de vainilla con galletas Oreo trituradas.</p>
+                </div>
+                <div class="item-precio">$350</div>
+            </div>
+        </section>
+</body>
+</html>
