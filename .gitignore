@@ -3,7 +3,7 @@
 # Ignorar el entorno virtual
 venv/
 
-# Archivos de caché de Python
+# Archivos de caché de Pythonn.
 __pycache__/
 *.pyc
 
