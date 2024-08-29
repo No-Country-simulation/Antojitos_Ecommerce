@@ -64,7 +64,7 @@ class Producto(models.Model):
     
     def __str__(self):
         # Esto se visualiza en el panel de admin
-        return self.nombre
+        return self.name
 
 
     class Meta:
