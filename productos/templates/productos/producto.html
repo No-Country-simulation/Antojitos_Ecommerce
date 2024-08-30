@@ -1,28 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
-    {% load static %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+{% extends "ecommerce/base.html" %}
 
-    <!-- Bootstrap 5.3.3 -->
-    <link href="{% static 'ecommerce/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-    <!-- Bootstrap 5.3.0 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
-    rel="stylesheet"> -->
+{% block extra_head %}
+<!-- Cargar CSS o meta tags específicos de la página aquí -->
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 20px;
-        }
-
+        
         .container-product-card {
             display: flex;
             flex-direction: row;
@@ -105,41 +90,50 @@
             word-wrap: break-word; /* Permite que el texto se ajuste en una línea nueva si es necesario */
         }
     </style>
-</head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <!-- Tarjetas -->
-                {% for producto in productos %}
-                    <div class="col-md-4">
-                        <figure class="container-product-card">
-                            <img src="{{ producto.image.url }}" alt="">
-                            <figcaption>
-                                <header>
-                                    <h3>Hamburguesa Gourmet con ingredientes frescos y deliciosos</h3> <!-- Título largo para demostrar el ajuste -->
-                                </header>
-                                <div>
-                                    <div class="price">
-                                        <span id="preciotachado">$5000</span>
-                                        <span class="precio-general">$4399</span>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                                        <p style="margin: 0;"><strong>Retirar en local</strong></p>
-                                        <div class="rating">
-                                            <span>4.2</span>
-                                            <span class="stars">★</span>
-                                        </div>
-                                    </div>
-                                    <p style="margin: 0;">No Country 14576</p>
-                                </div>
-                                <button class="boton" onclick="window.location.href='#';">AGREGAR AL CARRITO</button>
-                            </figcaption>
-                        </figure>
-                    </div>
-                {% endfor %}
-                
-            </div>
-        </div>
-    </body>
+{% endblock %}
 
-</html>
+{% block content %}
+        
+    <div class="container">
+        <div class="row">
+            <!-- Tarjetas -->
+            {% for producto in productos %}
+                <div class="col-md-4">
+                    <figure class="container-product-card">
+                        <img src="{{ producto.image.url }}" alt="">
+                        <figcaption>
+                            <header>
+                                <h3>{{ producto.name }}</h3> <!-- Título largo para demostrar el ajuste -->
+                            </header>
+                            <div>
+                                <div class="price">
+                                    <span id="preciotachado">$5000</span>
+                                    <span class="precio-general">$4399</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <p style="margin: 0;"><strong>Retirar en local</strong></p>
+                                    <div class="rating">
+                                        <span>4.2</span>
+                                        <span class="stars">★</span>
+                                    </div>
+                                </div>
+                                <p style="margin: 0;">No Country 14576</p>
+                            </div>
+                            <button class="boton" onclick="window.location.href='#';">AGREGAR AL CARRITO</button>
+                        </figcaption>
+                    </figure>
+                </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+
+<!-- Contenido específico de la página -->
+{% endblock %}
+
+
+{% block extra_scripts %}
+<!-- 
+    Cargas archivos .js propios de cada template/vista
+-->
+{% endblock %}
