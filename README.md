@@ -42,7 +42,7 @@ Desarrollamos una plataforma **ecommerce** para venta y compra de productos de a
 
 ### 👉🏻 Herramientas 🛠️
 
-![Bootstrap](https://img.shields.io/badge/Bootstrap-000000?style=for-the-badge&logo=bootstrap)![JavaScript](https://img.shields.io/badge/JavaScript-%23323330.svg?style=for-the-badge&logo=Javascript&logoColor=%23F7DF1E)![HTML](https://img.shields.io/badge/HTML-5A5A5A?style=for-the-badge&logo=HTML5&logoColor=E34F26)![CSS](https://img.shields.io/badge/CSS-FFF?style=for-the-badge&logo=CSS3&logoColor=1572B6)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-000000?style=for-the-badge&logo=bootstrap)![JavaScript](https://img.shields.io/badge/JavaScript-%23323330.svg?style=for-the-badge&logo=Javascript&logoColor=%23F7DF1E)![HTML](https://img.shields.io/badge/HTML-5A5A5A?style=for-the-badge&logo=HTML5&logoColor=E34F26)![CSS](https://img.shields.io/badge/CSS-000?style=for-the-badge&logo=css3&logoColor=E34F26)
 
 
 ### 👉🏻 Developers
