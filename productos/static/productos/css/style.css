@@ -1,0 +1,81 @@
+.container-product-card {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+    max-height: 300px;
+    width: auto; /* Permite que la tarjeta se ajuste al contenido */
+    max-width: 100%; /* Asegura que la tarjeta no se desborde fuera de la vista */
+}
+
+.container-product-card img {
+    width: 40%;
+    height: 100%; /* Asegura que la imagen ocupe toda la altura disponible */
+    object-fit: cover; 
+}
+
+.container-product-card figcaption {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.boton {
+    padding: 10px 18px;
+    font-size: 15px;
+    color: white;
+    background-color: #333;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    user-select: none;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+.boton:hover {
+    background-color: #555;
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.price #preciotachado {
+    font-size: 16px;
+    text-decoration: line-through;
+    color: #da1313;
+}
+
+.price .precio-general {
+    font-size: 18px;
+    color: black;
+}
+
+.rating {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+}
+
+.rating span {
+    color: #ffcc00;
+    margin-left: 5px;
+}
+
+h3 {
+    font-size: 18px; /* Ajusta el tamaño del título según sea necesario */
+    margin: 0; /* Elimina el margen para una alineación más compacta */
+    word-wrap: break-word; /* Permite que el texto se ajuste en una línea nueva si es necesario */
+}
