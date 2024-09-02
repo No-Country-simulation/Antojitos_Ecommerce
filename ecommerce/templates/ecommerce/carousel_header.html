@@ -1,37 +1,61 @@
 
-
+{% load static %}
 
 <!-- Otros elementos del header -->
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
     <ol class="carousel-indicators">
         <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
         <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
         <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
     </ol>
+
+    <!-- Contenedor del carousel -->
     <div class="carousel-inner">
-        <div class="carousel-item active slide-one">
+
+        <!-- Active implica que es el por defecto -->
+        <div class="carousel-item active">
+            <!-- Contenedor Imagen -->
+            <img src="{% static 'ecommerce/img/b2.png' %}" alt="Background Image" 
+            class="d-block w-50 float-end">
+
+            <!-- Breve Descripcion -->
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="display-4">Headset</h3>
-                <p class="lead">Redragon Icon H520</p>
+                <h3 class="display-4">
+                    Frutas y Verduras con el mejor precio
+                </h3>
+                <p class="lead">
+                    en oferta y con descuentos, próxima a vencer
+                    Hasta 40% más barato
+                </p>
             </div>
         </div>
-        <div class="carousel-item slide-two">
+
+
+        <div class="carousel-item"
+        style="background-image: url('{% static 'ecommerce/img/panaderia.png' %}');">
             <div class="carousel-caption d-none d-md-block">
                 <h3 class="display-4">Water Cooler</h3>
                 <p class="lead">Redragon Effect X RGB CCW-3000</p>
             </div>
         </div>
-        <div class="carousel-item slide-three">
+
+        <div class="carousel-item"
+        style="background-image: url('{% static 'ecommerce/img/buffet.jpg' %}');">
+
             <div class="carousel-caption d-none d-md-block">
                 <h3 class="display-4">Kit Redragon</h3>
                 <p class="lead">Keyboard, Mouse and Headset</p>
             </div>
+
         </div>
     </div>
+
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
+
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>

@@ -1,59 +1,6 @@
 
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif; /* Usa Montserrat como fuente principal */
-    font-weight: 700; /* Peso normal para Montserrat */
-}
-
-p   {
-    line-height: 1.75;
-    font-family: 'Montserrat', sans-serif; /* Usa Montserrat como fuente principal */
-    font-weight: 700; /* Peso normal para Montserrat */
-}
-
-body {
-    font-family: 'Montserrat', sans-serif; /* Usa Montserrat como fuente principal */
-    font-weight: 700; /* Peso normal para Montserrat */
-    background-color: #F6F6F6;  /* Color de fondo sólido */
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-}
-
-a  {
-    color: black !important;
-    text-decoration: none !important;
-    font-family: 'Montserrat', sans-serif; /* Usa Montserrat como fuente principal */
-    font-weight: 500; /* Peso normal para Montserrat */
-}
-
-.btn {
-    outline: none !important; /* Elimina el contorno con !important #780178; */
-    box-shadow: none !important; /* Elimina cualquier sombra */
-    border: none !important; /* Asegura que no haya borde con !important */
-    font-family: 'Montserrat', sans-serif; /* Usa Montserrat como fuente principal */
-    font-weight: 500; /* Peso normal para Montserrat */
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.btn:hover,
-.btn:focus,
-.btn:active {
-    outline: none !important; /* Elimina el contorno con !important */
-    border: none !important; /* Asegura que no haya borde con !important */
-    box-shadow: none !important; /* Elimina cualquier sombra */
-}
-
-.form-control:focus {
-    outline: none; /* Elimina el contorno predeterminado del navegador */
-    border: none;
-}
-
+/* Tamaño base para pantallas grandes */
 .my-container-center {
     display: flex;
     align-items: center; /* Alinea verticalmente */
@@ -61,99 +8,20 @@ a  {
     box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
 
-
-
-
-/* ============================================================================
-                         LOGO PAGE - HEAD - BASE.html todo
-============================================================================ */
-/* Tamaño base para pantallas grandes */
 .my-container-header {
-    background-color: #780178; /* Violeta claro */
+    background-color: #a9a9a926; /* Violeta claro */
     align-items: center; /* Alinea verticalmente los elementos */
     box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
-
-}
-
-.my-container-header::before,
-.my-container-header::after {
-    /*
-    This pseudo-element is used to visually extend the background color of the
-    .my-container-header beyond its content area, simulating the effect of a bottom margin
-    while maintaining the same background color. This helps to visually separate
-    the header from the content below without breaking the background.
-    */
-    content: '';
-    display: block;
-    height: 10px; /* Tamaño del margen */
-    background-color: #780178; /* Mismo color de fondo */
-}
-
-/*  LOGO STUFF */
-.my-logo {
-    width: 120%; /* Ajusta el ancho según tus necesidades */
-    height: auto; /* Mantiene la proporción de la imagen */
-    max-height: 110px; /* Fija la altura máxima */
-    z-index: 10; /* Necesario cuando utilizamos un width o height superior al 100% ,
-    tambien su contenedor debe tenerlo */
-}
-
-/*  SEARCH BAR STUFF */
-.my-search-top-bar {
-    width: 80%; /* Ajusta el ancho según tus necesidades */
-    height: 60px;
-}
-
-.my-search-top-bar .form-control {
-    padding-left: 4%; /* esto es para el placeholder se vea mejor */
-    border-radius: 20px;    /* Esto es para bodear ambos con un contorno circular*/
-}
-
-.my-search-top-bar .btn {
-    background-color: #5878FF;
-    border-radius: 20px;    /* Esto es para bodear ambos con un contorno circular*/
-}
-
-/* ICON HEAD CONTAINER STUFF */
-.my-btn-header-icon {
-    background-color: transparent;
-    border-radius: 50%; /* Hacer los botones circulares */
-    height: 60px; /* Ajusta la altura del botón */
-    width: 60px;  /* Ajusta el ancho del botón para mantener la forma circular */
-
-    display: flex;  /* esto es para que los iconos de adentro esten centrados */
-    justify-content: flex-end;
-    align-items: center;
-
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.my-btn-header-icon i {
-    font-size: 24px; /* Tamaño de los íconos */
-    color: white; /* Color del ícono */
-    transition: color 0.3s;
-    transition:all 0.3s linear;
-}
-
-.my-btn-header-icon:hover {
-    background-color: rgba(1, 1, 255, 0.3);  /* Color de fondo al pasar el ratón */
-}
-
-.my-btn-header-icon:hover i {
-    color: #5878FF; /* Color del ícono al pasar el ratón */
-    color:#fff;
-    font-size:40px;
 }
 
 /*
                 CAROUSEL STUFFF     min-height: 350px; todo
 */
 /* Establece que el contenedor padre ocupe el 100% de la altura disponible */
-
 .carousel-inner {
     height: calc(100vh - 170px); /* Resta la altura de otros elementos del header */
     width: 100%;
+    background-color: #a9a9a926;
 }
 
 /* Cada item del carrusel ocupa el 100% de la altura del contenedor padre  height: 70vh; */
@@ -161,180 +29,602 @@ a  {
     height: 100%;
     width: 100%;
     background-size: cover;
-    background-position: center;
-    background: no-repeat center center scroll;
+    background-position: left center !important; /* Asegura que esté alineado a la derecha */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
 }
 
-.slide-one {
-    background-image: url('https://i.pinimg.com/564x/b8/25/6b/b8256bd1133bc96290f4b279629c5710.jpg');
-}
-
-.slide-two {
-    background-image: url('https://i.pinimg.com/564x/45/05/64/45056449fe18e2a42b653e628e56be47.jpg');
-}
-
-.slide-three {
-    background-image: url('https://redragon.es/content/uploads/2021/10/HEROS-S129W-BA.jpg');
+.carousel-item img {
+    margin-right: 4%;
 }
 
 .carousel-caption {
-    bottom: 5%; /* Mantiene el ajuste de la posición vertical */
-    left: 10%; /* Ajusta la distancia desde el lado derecho */
-    right: auto; /* Asegura que la posición izquierda no interfiera */
-    transform: none; /* Elimina cualquier transformación previa */
-    text-align: center; /* Opcional: Alinea el texto hacia la derecha */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el texto verticalmente */
+    align-items: flex-start; /* Alinea el texto a la izquierda */
+    width: 20%; /* Ocupa el 50% del ancho del contenedor */
+    padding: 0; /* Agrega un poco de relleno para separación */
 
+    top: 10%; /* Mantiene el ajuste de la posición vertical */
+    left: 10%; /* Ajusta la distancia desde el lado derecho */
+    /* right: auto; /* Asegura que la posición izquierda no interfiera */
+    /* transform: none; /* Elimina cualquier transformación previa */
+    /* text-align: left; /* Opcional: Alinea el texto hacia la derecha */
+    
+   /* width: 50%; /* Ocupa el 50% del ancho del contenedor */
 }
 
+   
+
+
 .carousel-caption h3 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: bold;
     text-align: center; /* Opcional: Alinea el texto hacia la derecha */
+    color: black;
+    white-space: normal; /* Permite que el texto se envuelva en líneas múltiples */
 }
 
 .carousel-caption p {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: center; /* Opcional: Alinea el texto hacia la derecha */
+    color: black;
+    white-space: normal; /* Permite que el texto se envuelva en líneas múltiples */
 }
-/*
-        FOOTER STUFF
-*/
-.icon-container-footer .btn {
-    background-color: transparent;
+
+/* ================== */
+
+.top-navbar{
+    width: 100%;
+    height: 7vh;
+    background-color: #a9a9a926;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+.top-icons{
+    margin-left: 45px;
+}
+.top-icons i{
+    font-size: 20px;
+    color: #1c1c50;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.other-links{
+    margin-right: 33px;
+}
+.other-links i{
+    color: #1c1c50;
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+#btn-login{
+    width: 100px;
+    border: 2px solid #1c1c50;
+    color: #1c1c50;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 5vh;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+#btn-login a{
+    text-decoration: none;
+    color: #1c1c50;
+    transition: 0.5s ease;
+}
+#btn-login a:hover{
+    background-color: #1c1c50;
+    color: white;
+}
+#btn-login:hover{
+    background-color: #1c1c50;
+    color: white;
+}
+#btn-signup{
+    width: 100px;
+    border: 2px solid #1c1c50;
+    color: #1c1c50;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 5vh;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+#btn-signup a{
+    text-decoration: none;
+    color: #1c1c50;
+    transition: 0.5s ease;
+}
+#btn-signup a:hover{
+    background-color: #1c1c50;
+    color: white;
+}
+#btn-signup:hover{
+    background-color: #1c1c50;
+    color: white;
+}
+@media screen and (max-width:500px){
+    .top-icons{
+        margin-left: 30px;
+    }
+    .top-icons i{
+        font-size: 15px;
+    }
+    .other-links i{
+        font-size: 15px;
+    }
+    #btn-login{
+        width: 60px;
+        height: 5vh;
+    }
+    #btn-signup{
+        width: 70px;
+        height: 5vh;
+    }
+}
+@media screen and (max-width:350px){
+    .top-icons{
+        margin-left: 10px;
+    }
+    .top-icons i{
+        font-size: 10px;
+    }
+    .other-links{
+        margin-right: 10px;
+    }
+    .other-links i{
+        font-size: 10px;
+    }
+    #btn-login{
+        width: 50px;
+        height: 5vh;
+        font-size: 13px;
+    }
+    #btn-signup{
+        width: 60px;
+        height: 5vh;
+        font-size: 13px;
+    }
+}
+@media screen and (max-width:350px){
+    .top-icons{
+        margin-left: 5px;
+    }
+    .top-icons i{
+        font-size: 12px;
+    }
+    .other-links{
+        margin-right: 10px;
+    }
+    .other-links i{
+        font-size: 12px;
+    }
+    #btn-login{
+        width: 40px;
+        height: 5vh;
+        font-size: 10px;
+    }
+    #btn-signup{
+        width: 50px;
+        height: 5vh;
+        font-size: 10px;
+    }
+}
+
+/* navbar */
+#navbar{
+    background-color: #db3b3b;
+    font-size: 16px;
+    font-family: "Poppins", system-ui;
+}
+#navbar .nav-link{
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+    transition: 0.5s ease;
+}
+#navbar .nav-link:hover{
+    color: white;
+    border-radius: 5px;
+}
+.dropdown li a{
+    color: white;
+}
+#search-btn{
+    color: white;
+    border:  1px solid white;
+}
+#search-btn:hover{
+    background-color: #1c1c50;
+}
+/* navbar */
+/* home content */
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 0;
+    font-family: "Poppins", system-ui;
+}
+.home .img{
+    flex: 1 1 400px;
+}
+.home .img img{
+    width: 100%;
+}
+.home .content{
+    flex: 1 1 400px;
+    margin-top: 30px;
+}
+.content h3{
+    margin-left: 70px;
+    font-size: 50px;
+    text-shadow: 1px 1px 1px black;
+    color: #1c1c50;
+    font-weight: bold;
+}
+.content h3 span{
+    font-size: 40px;
+}
+.content p{
+    margin-left: 70px;
+    color: #1c1c50;
+}
+.content #shopnow{
+    margin-left: 70px;
+    width: 200px;
+    height: 38px;
+    border: 2px solid #1c1c50;
+    font-weight: bold;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+.content #shopnow:hover{
+    background-color: #1c1c50;
+    color: white;
+}
+@media screen and (max-width:800px){
+    .content h3{
+        margin-left: 50px;
+        font-size: 40px;
+    }
+    .content p{
+        margin-left: 50px;
+    }
+    .content #shopnow{
+        margin-left: 50px;
+    }
+}
+@media screen and (max-width:570px){
+    .content h3{
+        margin-left: 20px;
+    }
+    .content p{
+        margin-left: 20px;
+    }
+    .content #shopnow{
+        margin-left: 20px;
+    }
+}
+
+
+/* home content */
+/* home section */
+
+/* top cards */
+#top-cards{
+    margin-top: 30px;
+    font-family: "Poppins", system-ui;
+}
+#top-cards .card img{
+    height: 30vh;
+    width: 40vh;
+}
+#top-cards h5{
+    color: #1c1c50;
+    font-weight: bold;
+}
+#top-cards button{
+    width: 150px;
+    height: 33px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    background: transparent;
+    color: #1c1c50;
+    border: 2px solid #1c1c50;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+#top-cards button:hover{
+    background-color: #1c1c50;
+    color: white;
+}
+/* top cards */
+
+/* banner */
+.banner{
+    width: 100%;
+    height: 50vh;
+    margin-top: 50px;
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(./image/banner.jpg);
+}
+.banner .content{
+    text-align: center;
+    padding-top: 100px;
+}
+.banner .content h1{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    letter-spacing: 3px;
+}
+.banner .content p{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    letter-spacing: 3px;
+}
+#bannerbtn button{
+    width: 150px;
+    height: 38px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+#bannerbtn button:hover{
+    background-color: #1c1c50;
     border: none;
-    border-radius: 50%; /* Hacer los botones circulares */
-    height: 60px; /* Ajusta la altura del botón */
-    width: 60px;  /* Ajusta el ancho del botón para mantener la forma circular */
+}
+/* banner */
+/* banner2 */
+.banner2{
+    width: 100%;
+    height: 50vh;
+    margin-top: 50px;
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3));
+}
+.banner2 .content2{
+    text-align: center;
+    padding-top: 100px;
+}
+.banner2 .content2 h1{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    letter-spacing: 3px;
+}
+.banner2 .content2 p{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    letter-spacing: 3px;
+}
+#bannerbtn2 button{
+    width: 150px;
+    height: 38px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+#bannerbtn2 button:hover{
+    background-color: #1c1c50;
+    border: none;
+}
+/* banner2 */
+
+/* product cards */
+#product-cards{
+    font-family: "Poppins", system-ui;
+    margin-top: 100px;
+}
+#product-cards .card{
+    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
+    height: 28rem;
+}
+#product-cards h1{
+    margin-top: 30px;
+    color: #1c1c50;
+    text-shadow: 1px 1px 1px black;
+}
+#product-cards h3{
+    letter-spacing: 3px;
+    color: #1c1c50;
+    text-shadow: 0px 1px 1px black;
+    font-weight: bold;
+}
+#product-cards h5 span{
+    float: right;
+    color: #1c1c50;
+    cursor: pointer;
+}
+.checked{
+    color: rgb(255, 187, 0);
+}
+#viewmorebtn{
     display: flex;
     justify-content: center;
+    margin: auto;
+    text-decoration: none;
+    margin-top: 30px;
+    width: 200px;
+    height: 32px;
+    color: #1c1c50;
+    letter-spacing: 5px;
+    font-weight: bold;
+    background: transparent;
+    border: 2px solid #1c1c50;
+    transition: 0.5s ease;
+}
+#viewmorebtn:hover{
+    background-color: #1c1c50;
+    color: white;
+}
+/* product cards */
+
+
+html{
+    scroll-behavior: smooth;
+}
+.arrow{
+    position: fixed;
+    background-color: transparent;
+    border-radius: 50px;
+    height: 50px;
+    bottom: 40px;
+    right: 50px;
+    text-decoration: none;
     align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    line-height: 50px;
 }
 
-
-.icon-container-footer .btn .icon {
-    font-size: 24px; /* Tamaño de los íconos */
-    color: white; /* Color del ícono */
-    transition: color 0.3s;
-
-    transition:all 0.3s linear;
+/* login */
+.login{
+    width: 50%;
+    margin: 20px;
+    font-family: "Poppins", system-ui;
 }
-
-.icon-container-footer .btn:hover .icon {
-    color: #5878FF; /* Color del ícono al pasar el ratón */
-    color:#fff;
-    font-size:40px;
+#side1{
+    background-color: #b9b9b9;
+    height: 76vh;
+    border-radius: 5px;
+    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
 }
-
-.icon-container-footer .btn:hover {
-    background-color: rgba(1, 1, 255, 0.2);  /* Color de fondo al pasar el ratón */
-}
-
-
-.icon-container-footer .btn:hover::after {
-    opacity:1;
-    transform:scale(0.8);
-
-}
-
-
-.icon-container-footer .btn::after {
-    content:"";
-    position:absolute;
-    height:inherit;
-    width:inherit;
-    border-radius:50%;
-    opacity:0;
-    z-index:-1;
-    transition:all 0.3s linear;
-}
-
-.icon-container-footer {
-    display: flex; /* Activar Flexbox */
-    justify-content: flex-start; /* Alinea los íconos al principio del contenedor */
-
-}
-
-/* ================================================================================
-    PIE DE PAGINAAAAAAAAAAAAAAAAAAAAAAAAAAAAA todo
-/* ================================================================================ */
-/* Estilos básicos del footer */
-.footer {
-    background-color: #780178; /* Fondo oscuro */
-    color: #fff; /* Texto blanco */
-    padding: 20px 50px; /* Espaciado arriba y abajo */
-
-    width: 100%; /* Ancho máximo del contenedor */
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total del enlace */
-}
-
-.footer-container {
-    width: 100%; /* Ancho máximo del contenedor */
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total del enlace */
-
-    display: flex; /* Flexbox para alineación en fila */
-    justify-content: space-between; /* Espacio entre las columnas */
-}
-
-.footer-column {
-    flex: 1; /* Cada columna ocupa un tercio del espacio disponible */
-    padding: 20px;
-}
-
-/* Estilos para el logo */
-.footer-logo {
-    max-width: 250px; /* Tamaño máximo del logo */
-    margin-bottom: 10px;
-}
-
-/* Estilos para el texto */
-.footer-text {
-    font-size: 14px; /* Tamaño de fuente */
-    line-height: 1.5; /* Espaciado entre líneas */
-    margin: 0; /* Sin margen */
-}
-
-
-.footer-text-final {
+#side1 h3{
+    color: #1c1c50;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #1c1c50c5;
+    margin-top: 200px;
+    align-items: center;
     text-align: center;
-    padding: 10px 10px;
 }
-
-.btn-footer {
-    font-size: 1.1em; /* Ajusta el tamaño del ícono y el texto */
-    background-color: #780178; /* Fondo oscuro */
-    color: #fff; /* Texto blanco */
-
-    border: none; /* Quita el borde del botón */
-    padding: 10px; /* Espaciado interno del botón */
-    display: flex; /* Alinea el contenido del botón horizontalmente */
-    align-items: center; /* Centra verticalmente el contenido dentro del botón */
-    margin: 0; /* Elimina el margen predeterminado */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves para el hover */
-    text-align: left; /* Alinea el texto a la izquierda */
+#side1 p{
+    color: #1c1c50;    
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
 }
-
-.btn-footer i {
-    font-size: 1.8em; /* Tamaño del ícono dentro del botón */
-    margin-right: 10px; /* Espacio entre el ícono y el texto */
+#btn{
+    align-items: center;
+    text-align: center;
+    border: 2px solid #1c1c50;
+    border-radius: 10px;
 }
-
-.btn-footer:hover {
-    background-color: #6c004a; /* Color de fondo más oscuro al pasar el mouse */
-    transform: scale(1.05); /* Leve zoom al pasar el mouse */
+#btn a{
+    text-decoration: none;
+    color: #1c1c50;
 }
-
-.btn-footer:focus {
-    outline: none; /* Quita el borde de enfoque */
-    box-shadow: none; /* Quita la sombra alrededor del botón */
+#side2{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
+    align-items: center;
+    text-align: center;
 }
-
-.btn-footer:active {
-    background-color: #5a003e; /* Color de fondo más oscuro al hacer clic */
-    transform: scale(0.95); /* Efecto de presionar el botón */
+#side2 h3{
+    margin-top: 50px;
+    color: #1c1c50;
+    font-weight: bold;
 }
+#side2 .inp{
+    margin-top: 32px;
+}
+#side2 input{
+    width: 500px;
+    margin-top: 20px;
+    height: 36px;
+    align-items: center;
+}
+#side2 p{
+    margin-top: 20px;
+    cursor: pointer;
+}
+#side2 .icons i{
+    margin-left: 10px;
+    cursor: pointer;
+}
+#login{
+    margin-top: 10px;
+}
+#login button{
+    width: 200px;
+    height: 32px;
+    color: white;
+    background-color: #1c1c50;
+    border: none;
+    font-weight: bold;
+}
+@media screen and (max-width:992px){
+    #side2 input{
+        width: 300px;
+    }
+}
+@media screen and (max-width:330x){
+    #side2 input{
+        width: 200px;
+    }
+}
+/* login */
+
+/* about */
+#about{
+    margin-top: 50px;
+}
+#about h1{
+    text-align: center;    
+    font-weight: bold;
+    color: #1c1c50;
+}
+/* about */
+
+/* contact */
+#contact{
+    margin-top: 50px;
+}
+#contact h1{
+    color: #1c1c50;
+    text-shadow: 0px 0px 1px black;
+}
+#contact .card{
+    height: 80px;
+    margin-top: 20px;
+    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
+}
+#contact .card i{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 15px;
+    color: #1c1c50;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+#contact .card h6{
+    margin-left: 10px;
+    margin-top: 10px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: #1c1c50;
+}#messagebtn button{
+    margin-top: 30px;
+    width: 200px;
+    height: 33px;
+    background: transparent;
+    border: 2px solid #1c1c50;
+    color: #1c1c50;
+    font-weight: bold;
+    letter-spacing: 3px;
+    transition: 0.5s ease;
+}
+#messagebtn button:hover{
+    background-color: #1c1c50;
+    color: white;
+}
+/* contact */

@@ -15,6 +15,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
 
+    <!-- fonts links -->
+ 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- fonts links -->
+
+
     <!-- Fonts - Para mostrar algunos iconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
@@ -28,7 +35,6 @@
     <!-- Cargar CSS o meta tags específicos de la página aquí -->
     {% endblock %}
    
-
 </head>
 
 <body>
@@ -36,62 +42,118 @@
         <div class="container-fluid p-0 my-container-header">
 
             <!-- Primera fila -->
-            <div class="row">
+            <div class="row" style="background-color: white;">
                 <aside class="col-lg-1 p-0"></aside>
 
                 <!-- Logo -->
-                <aside class="col-lg-2 p-0" style="z-index: 10;">
-                    <a href="{% url 'Home' %}">
-                        <img src="" alt="Logo" class="my-logo">
-                    </a>
-                </aside>
-
-                <!-- Top Search bar -->
-                <aside class="col-lg-7 my-container-center p-0">
-                    <form class="my-container-center my-search-top-bar" action="{% url 'Home' %}" method="GET">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Vamo a juga!" name="top_q">
-                            <div class="input-group-append">
-                                <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-                            </div>
+                <aside class="col-lg-10 p-0" style="z-index: 10;">
+                    
+                    <!-- top navbar -->
+                    <div class="top-navbar">
+                        <div class="top-icons">
+                            <i class="fa-brands fa-twitter"></i>
+                            <i class="fa-brands fa-facebook-f"></i>
+                            <i class="fa-brands fa-instagram"></i>
                         </div>
-                    </form>
-                </aside>
+                        <div class="other-links">
+                            <button id="btn-login"><a href="login.html">Ingresar</a></button>
+                            <button id="btn-signup"><a href="signup.html">Registrarse</a></button>
 
-                <!-- Icon Container -->
-                <aside class="col-lg-1 my-container-center p-0">
-                    <button class="btn my-btn-header-icon" 
-                    onclick="window.location.href='{% url 'Producto' %}';">
-                        <i class="fab fa-whatsapp"></i>
-                    </button>
-
-                    <button class="btn my-btn-header-icon" onclick="window.location.href='#';">
-                        <i class="fab fa-facebook"></i>
-                    </button>
-
-                    <button class="btn my-btn-header-icon" onclick="window.location.href='#';">
-                        <i class="fab fa-instagram"></i>
-                    </button>
-
-                    <button class="btn my-btn-header-icon" onclick="window.location.href='#';">
-                        <i class="fab fa-google"></i>
-                    </button>
+                            <i class="fa-solid fa-user"></i>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                    </div>
+                    <!-- top navbar -->
                 </aside>
 
                 <aside class="col-lg-1 p-0"></aside>
             </div>
 
+            <!-- Segunda fila * -->
+            <div class="row" style="background-color: #a9a9a926;;">
+
+                <!-- Only Carousel home -->
+                <div class="col-lg-12 p-2">
+                    
+                    <!-- navbar -->
+                    <nav class="navbar navbar-expand-lg" id="navbar">
+                        <div class="container-fluid">
+                            
+                            <!-- LOGO EMPRESA -->
+                            <a class="navbar-brand" href="{% url 'Home' %}">
+                                <img src="{% static 'ecommerce/img/logo.png' %}" 
+                                alt="LOGO" width="180px">
+                            </a>
+                            
+                            
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span><i class="fa-solid fa-bars" style="color: white;"></i></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'Producto' %}">Productos</a>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Categorías
+                                        </a>
+                                        
+                                        <!-- DROP MENU CATEGORIAS -->
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                                            style="background-color: #db3b3bc4;">
+
+                                            {% for category in categories_all %}
+
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        {{ category }} 
+                                                    </a>
+                                                </li>
+
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="about.html">Sobre nosotros</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="contact.html">Trabaja con nosotros</a>
+                                    </li>
+                                </ul>
+            
+                                <form class="d-flex">
+                                    <input class="form-control me-2" type="search" placeholder="buscar" aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit" id="search-btn">Buscar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- navbar -->
+
+                </div>
+            </div>
+
             <!-- Tercera fila * -->
             <div class="row">
                 <!-- Only Carousel home -->
-                <aside class="col-lg-12 p-0">
+                <div class="col-lg-12 p-0">
                     <!-- Tercera fila 
                      * Solo existe si agregamos algo en este block content -->
 
                     {% block header_content %}
-                        <!-- Contenido específico de la página -->
+                        <!-- Contenido específico de la página HOME -->
                     {% endblock %}
-                </aside>
+                </div>
             </div>
         </div>
     </header>
@@ -105,84 +167,125 @@
     {% endblock %}
 
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <!-- Primera columna: Logo + Texto de la compañía -->
-            <div class="footer-column">
-                <a href="{% url 'Home' %}">
-                    <img src="" alt="Company Logo" class="footer-logo">
-                </a>
-                <p>
-                    ¡Tu cueva Gamer en Córdoba! 🎮
-                </p>
-                <p>
-                    Somos la tienda de computación y videojuegos que hacía falta en Córdoba.
-                    Nacida con el propósito de satisfacer a todo jugador PC Gamer, Playstation, Nintendo y Xbox
-                </p>
-                <p>
-                    Grandes marcas nos acompañan como Asus, Corsair, Hyperx, Gigabyte, Logitech,
-                    Samsung o Redragon entre otras.
-                </p>
-            </div>
-
-            <!-- Segunda columna: Texto extra de información -->
-            <div class="footer-column">
-
-                <h3><strong>Additional Information! </strong></h3>
-
-                <button class="btn-footer">
-                    <i class="fa fa-map-marker-alt"></i>
-                    <span>Sarmiento 1138, Córdoba, Argentina.</span>
-                </button>
-
-                <button class="btn-footer">
-                    <i class="fab fa-whatsapp icon"></i>
-                    <span>+54 9 351 543-7688</span>
-                </button>
-
-                <button class="btn-footer">
-                    <i class="fa fa-clock"></i>
-                    <span>Lunes a Viernes de 10hs a 14hs y de 15hs a 18:50hs.
-                        Sábado mediodía y el domingo dormimos todo el día.</span>
-                </button>
-
-                <button class="btn-footer">
-                    <i class="fa fa-envelope"></i>
-                    <span>ventas@dragonesgames.com</span>
-                </button>
-
-            </div>
-
-            <!-- Tercera columna: Vacía para personalización futura -->
-            <div class="footer-column">
-
-                <h3><strong>&nbsp;&nbsp;Seguinos! </strong></h3>
-
-                <!-- Icon Container -->
-                <div class="icon-container-footer">
-                    <button class="btn">
-                        <i class="fab fa-whatsapp icon"></i>
-                    </button>
-                    <button class="btn">
-
-                        <i class="fab fa-facebook icon"></i>
-                    </button>
-                    <button class="btn">
-                        <i class="fab fa-instagram icon"></i>
-                    </button>
-                    <button class="btn">
-                        <i class="fab fa-google icon"></i>
-                    </button>
+    <!-- footer -->
+    <footer id="footer">
+        <div class="container-fluid"> 
+            
+            <div class="row">
+                <hr>
+                <!-- Servicios ? -->
+                <div class="col-lg-4 col-md-4 col-sm-6 p-4">
+                    <svg version="1.1" width="100px" id="_x32_" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"
+                        fill="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <style type="text/css">
+                                .st0 {
+                                    fill: #fd3a3a;
+                                }
+                            </style>
+                            <g>
+                                <path class="st0"
+                                    d="M510.304,239.426c0,0-15.641,30.016-44.969,27.875c-29.359-2.141-60.641-70.766-119.344-92.219 c-58.688-21.453-90,12.859-90,12.859s-31.297-34.313-89.969-12.859c-58.688,21.453-89.984,90.078-119.328,92.219 s-45-27.875-45-27.875s-9.781,25.734,17.625,62.188c27.375,36.453,103.656,51.781,152.578,36.453 c54.75-17.156,84.094-60.031,84.094-60.031s27.391,45.031,84.125,60.031c49.453,13.094,125.219,0,152.594-36.453 S510.304,239.426,510.304,239.426z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                    <h5>Rappi Pro</h5>
+                    <p>Envíos GRATIS</p>
                 </div>
+
+                <!-- Servicios ? -->
+                <div class="col-lg-4 col-md-4 col-sm-6 p-4">
+                    <svg fill="#000000" viewBox="0 -18.83 122.88 122.88" version="1.1" width="100px" id="Layer_1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        style="enable-background:new 0 0 122.88 85.22" xml:space="preserve">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <style type="text/css">
+                                .st0 {
+                                    fill-rule: evenodd;
+                                    clip-rule: evenodd;
+                                }
+                            </style>
+                            <g>
+                                <path class="st0"
+                                    d="M82.08,7.33h35.4c1.35,0,2.46,1.11,2.46,2.46V30.4h0.24c1.49,0,2.7,1.22,2.7,2.7v3.01 c0,1.51-1.24,2.74-2.74,2.74h-19c14.12,1.26,22.19,14.39,21.31,31.46h-12.56c-0.01,8.23-6.69,14.89-14.92,14.89 c-8.23,0-14.91-6.67-14.92-14.89H41.68c-0.01-0.27-0.02-0.53-0.03-0.8c0.03,1.81-0.08,3.73-0.34,5.78L7.87,59.54L0,55.82 c6.32-7.19,13.94-10.21,23.16-8.13c1.42,0.36,2.76,0.78,4.03,1.26c-1.3-0.5-2.67-0.92-4.11-1.28l10.52-34.65l-4.75-0.09l0,0 c-0.98-0.02-2.04,0.25-2.71-0.23c-1.16-0.03-2.17-0.73-2.87-1.83c-0.63-0.98-1.01-2.32-1.01-3.78c0-1.46,0.39-2.8,1.01-3.78 c0.52-0.81,1.2-1.4,1.98-1.67c0.01-0.16,0.02-0.27,0.04-0.3c1.12-1.79,3.3-1.25,5.24-1.25l1.89,0.12c1.37,0.17,2.71,0.62,4,1.36 l2.16,1.21h1.75l5.88,1.14c1.92,0.37,2.2,0.21,1.75,2.58c-0.06,0.3-0.13,0.6-0.23,0.89c-0.58,1.73-1.04,1.09-2.83,0.72l-5.51-1.14 c0.21,2.22-0.49,4.94-1.48,8.12c3.17,2.68,4.59,6.5,2.43,11.53l-5.26,16.21C43.9,49.08,49.2,54.74,49.5,64.03h11.67 c7.19-5.45,6-15.15-1.89-21.35v-3.82h0v-5.84c0.01-1.85,1-2.68,2.84-2.63h17.5V9.79C79.62,8.44,80.73,7.33,82.08,7.33L82.08,7.33z M90.68,26.67h18.21c0.14,0,0.26,0.12,0.26,0.26v0.52c0,0.14-0.12,0.26-0.26,0.26H90.68c-0.14,0-0.26-0.12-0.26-0.26v-0.52 C90.42,26.79,90.53,26.67,90.68,26.67L90.68,26.67z M100.54,15.35c5.33,0.43,9.19,4.44,8.52,9.72H90.5 c-0.65-5.31,3.22-9.33,8.59-9.72v-1.49h-1.48c-0.15,0-0.27-0.12-0.27-0.27v-0.97c0-0.15,0.12-0.27,0.27-0.27h4.37 c0.15,0,0.27,0.12,0.27,0.27v0.97c0,0.15-0.12,0.27-0.27,0.27h-1.45V15.35L100.54,15.35L100.54,15.35z M7.91,59.56l13.3,6.3 l-4.32-1.98c-2.97,0.63-5.19,3.27-5.19,6.42c0,3.63,2.94,6.57,6.57,6.57c3.63,0,6.57-2.94,6.57-6.57c0-1.12-0.28-2.17-0.77-3.1 l9.08,4.3c-0.61,7.68-7.04,13.72-14.87,13.72c-8.24,0-14.92-6.68-14.92-14.92C3.34,66.08,5.09,62.27,7.91,59.56L7.91,59.56 L7.91,59.56z M25.27,4.2c0.06,1.92,0.19,4.39,0.28,6.05c-0.16-0.14-0.32-0.32-0.46-0.55c-0.42-0.65-0.67-1.58-0.67-2.62 s0.26-1.97,0.67-2.62C25.15,4.37,25.21,4.28,25.27,4.2L25.27,4.2z M88.4,70.32h13.14c-0.01,3.62-2.95,6.54-6.57,6.54 C91.35,76.87,88.41,73.94,88.4,70.32L88.4,70.32L88.4,70.32z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                    <h5>Envio rápido</h5>
+                    <p>A cualquier parte</p>
+                </div>
+
+                <!-- Servicios ? -->
+                <div class="col-lg-4 col-md-4 col-sm-6 p-4">
+                    <svg width="100px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"
+                        fill="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <style type="text/css">
+                                .st0 {
+                                    fill: #000000;
+                                }
+                            </style>
+                            <g>
+                                <path class="st0"
+                                    d="M483.157,164.432H350.464l-60.034,58.983c-8.131,7.986-18.893,12.385-30.292,12.385 c-11.69,0-22.64-4.594-30.836-12.935c-15.835-16.132-16.414-41.598-1.942-58.432H28.843C12.914,164.432,0,177.346,0,193.282v9.617 c0,15.697,12.552,28.451,28.176,28.806l31.097,190.436c3.761,23.06,23.697,39.996,47.062,39.996h299.279 c23.372,0,43.294-16.936,47.062-39.996l31.104-190.436c15.632-0.333,28.22-13.088,28.22-28.806v-9.617 C512,177.346,499.086,164.432,483.157,164.432z M153.571,410.141c-2.558,2.833-6.203,4.457-10.015,4.457h-7.529 c-6.718,0-12.407-4.942-13.35-11.588l-16.559-117.083c-0.544-3.87,0.608-7.783,3.166-10.733c2.559-2.942,6.277-4.638,10.182-4.638 h11.828c6.906,0,12.689,5.211,13.407,12.074l12.262,117.09C157.354,403.517,156.122,407.3,153.571,410.141z M230.737,410.532 c-2.53,2.595-6.008,4.066-9.639,4.066h-7.71c-7.132,0-13.03-5.558-13.45-12.675l-6.957-117.09 c-0.218-3.704,1.101-7.342,3.645-10.038c2.55-2.703,6.095-4.24,9.812-4.24h12.016c7.326,0,13.306,5.856,13.472,13.168l2.652,117.09 C234.658,404.438,233.274,407.945,230.737,410.532z M312.02,401.923c-0.428,7.117-6.327,12.675-13.458,12.675h-7.711 c-3.63,0-7.102-1.471-9.631-4.066c-2.544-2.587-3.928-6.094-3.848-9.718l2.66-117.09c0.16-7.312,6.146-13.168,13.473-13.168h12.015 c3.703,0,7.261,1.537,9.805,4.24c2.544,2.696,3.862,6.334,3.645,10.038L312.02,401.923z M405.832,285.927l-16.56,117.083 c-0.934,6.645-6.631,11.588-13.341,11.588h-7.53c-3.819,0-7.464-1.624-10.016-4.457c-2.558-2.841-3.79-6.624-3.391-10.421 l12.255-117.09c0.717-6.863,6.508-12.074,13.407-12.074h11.828c3.906,0,7.616,1.696,10.175,4.638 C405.223,278.144,406.382,282.057,405.832,285.927z">
+                                </path>
+                                <path class="st0"
+                                    d="M277.618,210.363l119.88-117.756c9.828-9.661,9.965-25.452,0.312-35.279 c-9.653-9.827-25.452-9.972-35.278-0.318L242.658,174.78c-9.827,9.653-9.965,25.444-0.319,35.271 C252,219.878,267.783,220.023,277.618,210.363z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                    <h5>Amplio catálogo</h5>
+                    <p>de productos</p>
+                </div>
+            </div> <!-- Final primera row -->
+            
+            
+            <!-- offer - segunda fila -->
+            <div class="row">
+                <!-- Margen de 1 -->
+                <div class="col-lg-1 col-md-1 col-sm-1 p-0"></div>
+                
+                <!-- -->
+                <div class="col-lg-10 col-md-10 col-sm-1 p-0">
+                    <h1>ESPACIO PARA EL FOOTER</h1>
+                </div>
+
+                <!-- Margen de 1 -->
+                <div class="col-lg-1 col-md-1 col-sm-1 p-0"></div>
             </div>
+
+            <hr>
+
+            <!-- offer - segunda fila -->
+            <div class="row mb-2">
+                <!-- Margen de 1 -->
+                <div class="col-lg-1 col-md-1 col-sm-1 p-0"></div>
+                
+                <!-- -->
+                <div class="col-lg-10 col-md-10 col-sm-10 p-0">
+                    &copy; Copyright <strong>Antojitos</strong>.All Rights Reserved
+                </div>
+
+                <!-- Margen de 1 -->
+                <div class="col-lg-1 col-md-1 col-sm-1 p-0"></div>
+            </div>
+            
         </div>
-
-        <p class="footer-text-final">
-            © 2024 Dragon Games Cba. All rights reserved.
-        </p>
-
     </footer>
+    <!-- footer -->
+
+    <a href="#" class="arrow"><i><img src="./image/up-arrow.png" alt="" width="50px"></i></a>
 
 
 
