@@ -9,6 +9,8 @@ import os
 import uuid
 
 
+
+
 # Create your models here.
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100)

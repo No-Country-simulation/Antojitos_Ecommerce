@@ -1,3 +1,9 @@
+.producto-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en la siguiente fila si no hay suficiente espacio */
+    gap: 1rem; /* Espacio entre las tarjetas */
+}
+
 .container-product-card {
     display: flex;
     flex-direction: row;
@@ -5,15 +11,14 @@
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    margin-bottom: 20px;
-    max-height: 300px;
-    width: auto; /* Permite que la tarjeta se ajuste al contenido */
-    max-width: 100%; /* Asegura que la tarjeta no se desborde fuera de la vista */
+    width: 100%; /* Ajusta el ancho al contenedor */
+    max-width: 300px; /* Ajusta el tamaño máximo para que las cartas no sean demasiado grandes */
+    margin-bottom: 20px; /* Espacio entre las tarjetas */
 }
 
 .container-product-card img {
     width: 40%;
-    height: 100%; /* Asegura que la imagen ocupe toda la altura disponible */
+    height: auto; /* Ajusta la altura automáticamente según el contenido */
     object-fit: cover; 
 }
 
@@ -23,9 +28,10 @@
     flex-direction: column;
     justify-content: space-between;
     width: 60%;
+    align-items: stretch; /* Asegura que todo el contenido ocupe la altura disponible */
 }
 
-.boton {
+.openboton {
     padding: 10px 18px;
     font-size: 15px;
     color: white;
@@ -75,7 +81,216 @@
 }
 
 h3 {
-    font-size: 18px; /* Ajusta el tamaño del título según sea necesario */
-    margin: 0; /* Elimina el margen para una alineación más compacta */
-    word-wrap: break-word; /* Permite que el texto se ajuste en una línea nueva si es necesario */
+    font-size: 18px;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    .producto-container {
+        flex-direction: column; /* Cambia a columna en pantallas más pequeñas */
+    }
+
+    .container-product-card {
+        max-width: 100%; /* Asegura que las cartas ocupen todo el ancho disponible */
+    }
+}
+header{
+    background-image: url(banner.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    text-align: center;
+    padding: 4rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+    
+#main-header {
+	background: white;
+	color: black;
+	height: 50px;
+    width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
+	left: 0; /* Posicionamos la cabecera al lado izquierdo */
+	top: 0; /* Posicionamos la cabecera pegada arriba */
+	position: fixed;
+} /* Cabecera donde aparece el inicio, el carrito y la cesta de compra*/
+#logo-header {
+	float: left;
+	padding: 0 0 0 20px;
+	text-decoration: none;
+    height: 100%; /* Asegura que el logo use el 100% de la altura del contenedor padre */
+    display: flex; /* Utiliza Flexbox para alinear verticalmente */
+    align-items: center;
+} /*Logo para poner lo en la izquierda*/
+    
+#main-header nav {
+	float: right;
+    height: 100%; /* Asegura que el logo use el 100% de la altura del contenedor padre */
+    display: flex; /* Utiliza Flexbox para alinear verticalmente */
+    align-items: center;
+}
+	#main-header nav ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		padding-right: 20px;
+	}
+	
+		#main-header nav ul li {
+			display: inline-block;
+			line-height: 50px;
+		}
+			
+			#main-header nav ul li a {
+				display: block;
+				padding: 0 10px;
+				text-decoration: none;
+			}
+			
+				#main-header nav ul li a:hover {
+					background: #c94545;
+				}
+/*estilos barra de búsqueda*/
+.search-container {
+    display: flex; /* Utiliza Flexbox para alinear el input y el botón */
+    justify-content: center; /* Centra horizontalmente el contenedor */
+    margin-top: 50px; /* Espacio superior para separar del borde de la página */
+}
+
+.search-input {
+    width: 300px; /* Ancho del campo de entrada */
+    padding: 10px; /* Relleno interior para hacer el campo más alto */
+    border: 2px solid #d32f2f; /* Borde de color rojo oscuro */
+    border-radius: 4px 0 0 4px; /* Bordes redondeados en la izquierda */
+    font-size: 16px; /* Tamaño de fuente del texto */
+}
+
+.search-button {
+    padding: 10px 20px; /* Relleno interior para el botón */
+    background-color: #d32f2f; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: 2px solid #d32f2f; /* Borde del mismo color que el fondo */
+    border-radius: 0 4px 4px 0; /* Bordes redondeados en la derecha */
+    font-size: 16px; /* Tamaño de fuente del texto */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición suave al pasar el ratón sobre el botón */
+}
+
+.search-button:hover {
+    background-color: #b71c1c; /* Cambia el color de fondo al pasar el ratón */
+}
+
+.menu-categorias {
+    background-color: #ffffff;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.menu-categorias ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-categorias a {
+    text-decoration: none;
+    color: #d32f2f;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.menu-categorias a:hover {
+    color: #b71c1c;
+}
+
+.menu {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-categoria {
+    margin-bottom: 2.5rem;
+}
+
+.menu-categoria h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eeeeee;
+    color: #d32f2f;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eeeeee;
+    transition: background-color 0.3s;
+}
+img-container {
+    width: 50px; /* O cualquier ancho que prefieras */
+    overflow: hidden; /* Para asegurar que nada se salga del contenedor */
+    position: relative; /* Necesario para que el contenedor sirva como referencia para la imagen */
+}
+.producto-img {
+    width: 50px; /* Ajusta el tamaño de la imagen según sea necesario */
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+    object-fit: cover; /* Asegura que la imagen mantenga su relación de aspecto */
+}
+.menu-item:hover {
+    background-color: #f5f5f5;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 70%;
+}
+
+.item-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.item-info p {
+    margin: 0.5rem 0 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.item-precio {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+    margin-left:auto;
+}
+
+@media (max-width: 768px) {
+    .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .item-info {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .item-precio {
+        font-size: 1rem;
+    }
 }

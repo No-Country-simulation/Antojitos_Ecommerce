@@ -7,43 +7,112 @@
 {% block extra_head %}
     <!-- Cargar CSS o meta tags específicos de la página aquí -->
     <link href="{% static 'productos/css/producto.css' %}" rel="stylesheet">
+    
+    
 {% endblock %}
 
 {% block content %}
-        
-    <div class="container">
-        <div class="row">
-            <!-- Tarjetas -->
-            {% for producto in productos %}
-                <div class="col-md-4">
-                    <figure class="container-product-card">
-                        <img src="{{ producto.image.url }}" alt="">
-                        <figcaption>
-                            <header>
-                                <h3>{{ producto.name }}</h3> <!-- Título largo para demostrar el ajuste -->
-                            </header>
-                            <div>
-                                <div class="price">
-                                    <span id="preciotachado">${{producto.price}}</span>
-                                    <span class="precio-general">$4399</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                                    <p style="margin: 0;"><strong>Retirar en local</strong></p>
-                                    <div class="rating">
-                                        <span>4.2</span>
-                                        <span class="stars">★</span>
-                                    </div>
-                                </div>
-                                <p style="margin: 0;">No Country 14576</p>
-                            </div>
-                            <button class="boton" onclick="window.location.href='#';">AGREGAR AL CARRITO</button>
-                        </figcaption>
-                    </figure>
-                </div>
-            {% endfor %}
-            
-        </div>
+
+<header class="header">
+    <div id="main-header">
+        <a id="logo-header" href="#">
+            <img src="LOGO.png" alt="Inicio">
+        </a> <!-- logo-header -->
+        <nav></nav>
+        <nav>
+            <ul>
+                <li><a href="#">Mi perfil</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Carrito</a></li>
+            </ul>
+        </nav><!--  nav -->
     </div>
+    <h1>Restaurante Comida Cruda</h1> <!--nombre del restaurante-->
+    <p>Dirección</p>
+    <div class="search-container">
+        <input type="text" placeholder="Buscar..." class="search-input">
+        <button class="search-button">Buscar</button>
+    </div>
+</header>
+
+<nav class="menu-categorias"> <!-- Categorias de alimentos -->
+    <ul>
+        {% for categoria in categorias %}
+        <li><a href="#{{categoria.nombre|slugify}}">{{categoria.nombre}}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
+    
+
+<main class="row">
+    {% for producto in productos %}
+    <div class="col-md-4">
+        <figure class="container-product-card">
+            <img src="{{ producto.image.url }}" alt="">
+            <figcaption>
+                <h3>{{ producto.name }}</h3> <!-- Título largo para demostrar el ajuste -->
+                <div>
+                    <div class="price">
+                        <span id="preciotachado">${{producto.price}}</span>
+                        <span class="precio-general">{{producto.price}}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <p style="margin: 0;"><strong>Retirar en local</strong></p>
+                        <div class="rating">
+                            <span>4.2</span>
+                            <span class="stars">★</span>
+                        </div>
+                    </div>
+                    <p style="margin: 0;">No Country 14576</p>
+                </div>
+                <button class="boton" onclick="window.location.href='#';">AGREGAR AL CARRITO</button>
+            </figcaption>
+        </figure>
+    </div>
+    {% endfor %}
+    
+
+    <main class="row">
+        {% for categoria, productos in productos_por_categoria.items %}
+            {% if categoria %} 
+            <section id="{{ categoria|slugify }}" class="menu-categoria">
+                <h2>{{ categoria }}</h2>
+                <div class="producto-container">
+                    {% for producto in productos %}
+                    <div class="col-md-4">
+                        <figure class="container-product-card">
+                            <img src="{{ producto.image.url }}" alt="">
+                            <figcaption>
+                                <h3>{{ producto.name }}</h3>
+                                    <div class="price">
+                                        <span id="preciotachado">${{ producto.price }}</span>
+                                        <span class="precio-general">{{ producto.price }}</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                        <p style="margin: 0;"><strong>Retirar en local</strong></p>
+                                        <div class="rating">
+                                            <span>4.2</span>
+                                            <span class="stars">★</span>
+                                        </div>
+                                    </div>
+                                    <p style="margin: 0;">No Country 14576</p>
+                                    <button class="openboton" >AGREGAR AL CARRITO</button>
+                                    <!-- Contenido de la Modal -->
+                                
+                                
+
+                            </figcaption>
+
+                        </figure>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+        {% endfor %}
+    </main>
+    
+    
 
 <!-- Contenido específico de la página -->
 {% endblock %}
@@ -52,5 +121,5 @@
 {% block extra_scripts %}
 <!-- 
     Cargas archivos .js propios de cada template/vista
--->
+--><script>"{% static 'productos/ventanaEmergente.js'}"</script>
 {% endblock %}
