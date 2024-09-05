@@ -3,7 +3,7 @@
 
 {% extends "ecommerce/base.html" %}
 
-
+{% load static %}
 
 <!-- For More CSS Modules -->
 {% block extra_head %}
@@ -74,14 +74,17 @@
 
 
     <!-- banner -->
-    <div class="banner">
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), 
+    url({% static 'ecommerce/img/banner.jpg' %});">
         <div class="content">
             <h1>Hasta un 50% de descuento</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>texto de ejemplo texto de ejemplo.</p>
             <div id="bannerbtn"><button>¡COMPRA YA!</button></div>
         </div>
     </div>
     <!-- banner -->
+
+    <div class="mt-2 mb-2"></div>
 
 {% endblock %}
 

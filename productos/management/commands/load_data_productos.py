@@ -38,6 +38,10 @@ class Command(BaseCommand):
                 producto_existente.stock = row['stock'] if pd.notna(row['stock']
                                                                     ) else producto_existente.stock
 
+                # Actualizar el image si hiciera falta
+                producto_existente.image = row['image'] if pd.notna(row['image']
+                                                                    ) else producto_existente.image
+
                 # Guardar los cambios en la base de datos
                 producto_existente.save()
 

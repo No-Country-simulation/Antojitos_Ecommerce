@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # MY_APPS
     'ecommerce',    # Ecommerce APP
     'productos',    # Productos APP
+    'registros',  # Proveedores APP
 ]
 
 MIDDLEWARE = [
@@ -93,6 +94,16 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
+
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 4,  # Longitud mínima de cuatro caracteres
+        }
+    },
+]
+""" 
+Esto estaba antes en AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
@@ -105,7 +116,10 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
-]
+"""
+
+# para el registro especificos de usuarios
+AUTH_USER_MODEL = 'registros.CustomUser'
 
 
 # Internationalization
@@ -133,6 +147,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+
 
 
 

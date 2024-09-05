@@ -12,8 +12,8 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     width: 100%; /* Ajusta el ancho al contenedor */
-    max-width: 300px; /* Ajusta el tamaño máximo para que las cartas no sean demasiado grandes */
-    margin-bottom: 20px; /* Espacio entre las tarjetas */
+    /* max-width: 300px;  Ajusta el tamaño máximo para que las cartas no sean demasiado grandes */
+    /* margin-bottom: 20px;  Espacio entre las tarjetas */
 }
 
 .container-product-card img {
@@ -95,7 +95,11 @@ h3 {
         max-width: 100%; /* Asegura que las cartas ocupen todo el ancho disponible */
     }
 }
-header{
+
+/* ============================================================================
+                    CSS DE BANNER PRODUCTO
+============================================================================ */
+.container-banner-producto {
     background-image: url(banner.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -105,51 +109,6 @@ header{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
     
-#main-header {
-	background: white;
-	color: black;
-	height: 50px;
-    width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
-	left: 0; /* Posicionamos la cabecera al lado izquierdo */
-	top: 0; /* Posicionamos la cabecera pegada arriba */
-	position: fixed;
-} /* Cabecera donde aparece el inicio, el carrito y la cesta de compra*/
-#logo-header {
-	float: left;
-	padding: 0 0 0 20px;
-	text-decoration: none;
-    height: 100%; /* Asegura que el logo use el 100% de la altura del contenedor padre */
-    display: flex; /* Utiliza Flexbox para alinear verticalmente */
-    align-items: center;
-} /*Logo para poner lo en la izquierda*/
-    
-#main-header nav {
-	float: right;
-    height: 100%; /* Asegura que el logo use el 100% de la altura del contenedor padre */
-    display: flex; /* Utiliza Flexbox para alinear verticalmente */
-    align-items: center;
-}
-	#main-header nav ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		padding-right: 20px;
-	}
-	
-		#main-header nav ul li {
-			display: inline-block;
-			line-height: 50px;
-		}
-			
-			#main-header nav ul li a {
-				display: block;
-				padding: 0 10px;
-				text-decoration: none;
-			}
-			
-				#main-header nav ul li a:hover {
-					background: #c94545;
-				}
 /*estilos barra de búsqueda*/
 .search-container {
     display: flex; /* Utiliza Flexbox para alinear el input y el botón */
@@ -180,6 +139,7 @@ header{
     background-color: #b71c1c; /* Cambia el color de fondo al pasar el ratón */
 }
 
+/* Lista item menu */ 
 .menu-categorias {
     background-color: #ffffff;
     padding: 1rem 0;
@@ -229,68 +189,4 @@ header{
     padding-bottom: 0.5rem;
     border-bottom: 2px solid #eeeeee;
     color: #d32f2f;
-}
-
-.menu-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 1rem 0;
-    border-bottom: 1px solid #eeeeee;
-    transition: background-color 0.3s;
-}
-img-container {
-    width: 50px; /* O cualquier ancho que prefieras */
-    overflow: hidden; /* Para asegurar que nada se salga del contenedor */
-    position: relative; /* Necesario para que el contenedor sirva como referencia para la imagen */
-}
-.producto-img {
-    width: 50px; /* Ajusta el tamaño de la imagen según sea necesario */
-    margin-right: 20px; /* Espacio entre la imagen y el texto */
-    object-fit: cover; /* Asegura que la imagen mantenga su relación de aspecto */
-}
-.menu-item:hover {
-    background-color: #f5f5f5;
-}
-
-.item-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 70%;
-}
-
-.item-info h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #333;
-}
-
-.item-info p {
-    margin: 0.5rem 0 0;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.item-precio {
-    font-weight: bold;
-    color: #333;
-    font-size: 1.1rem;
-    margin-left:auto;
-}
-
-@media (max-width: 768px) {
-    .menu-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .item-info {
-        max-width: 100%;
-        margin-bottom: 1rem;
-    }
-
-    .item-precio {
-        font-size: 1rem;
-    }
 }

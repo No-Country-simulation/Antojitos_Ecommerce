@@ -1,0 +1,65 @@
+
+
+{% extends "ecommerce/base.html" %}
+
+
+{% block content %}
+
+    <div class="form-container2 my-5">
+        <form method="POST" action="{% url 'Register' %}">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="email">&nbsp;E-mail</label>
+                {{ form.email }}
+            </div>
+
+            <!-- Fila para Password -->
+            <div class="form-group">
+                <label for="password1">&nbsp;Password</label>
+                {{ form.password1 }}
+            </div>
+
+            <!-- Fila para Password 2-->
+            <div class="form-group">
+                <label for="password2">&nbsp;Password 2</label>
+                {{ form.password2 }}
+            </div>
+
+            <!-- Fila para Nombre y Apellido -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="first_name">&nbsp;Nombre</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="last_name">&nbsp;Apellido</label>
+                    {{ form.last_name }}
+                </div>
+            </div>
+
+            <!-- Fila para Teléfono y Provincia -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="cellphone">&nbsp;Celular</label>
+                    {{ form.cellphone }}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="province">&nbsp;Provincia</label>
+                    {{ form.province }}
+                </div>
+            </div>
+
+            <!-- Fila para Dirección -->
+            <div class="form-group">
+                <label for="address">&nbsp;Dirección</label>
+                {{ form.address }}
+            </div>
+
+            <input type="submit" value="Registrarse" class="btn btn-secondary">
+
+
+        </form>
+    </div>
+
+{% endblock %}

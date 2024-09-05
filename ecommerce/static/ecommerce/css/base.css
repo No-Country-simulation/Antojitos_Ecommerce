@@ -1,0 +1,226 @@
+
+
+
+/* ==================================================================================
+                Estilo del WIDGET_REGISTRO de usuario todo
+/* ================================================================================== */
+/* Estilo del botón de usuario */
+.nav-move-left {
+    /* esto se pone para mover el icono por ahora fue la mejor forma que encontre */
+    margin-left: 180px;
+}
+
+.btn-header {
+    position: relative; /* Añade posicionamiento relativo al contenedor */
+    background-color: transparent; /* Fondo transparente por defecto */
+    height: 35px; /* Ajusta la altura del botón */
+    width: 60px;  /* Ajusta el ancho del botón para mantener la forma circular */
+
+    border: none; /* Elimina cualquier borde que pueda crear relieve */
+    outline: none; /* Elimina el contorno al hacer clic */
+}
+
+.btn-header i {
+    font-size: 24px; /* Tamaño de los íconos */
+    color: white; /* Color del ícono */
+    pointer-events: none; /* Asegura que el icono no bloquee los clics */
+    transition: color 0.3s ease; /* Añade una transición suave para el cambio de color */
+    border: none; /* Elimina cualquier borde que pueda crear relieve */
+    outline: none; /* Elimina el contorno al hacer clic */
+}
+
+.badge {
+    position: absolute; /* Posicionamiento absoluto para el badge */
+    top: -10px; /* Ajusta el valor según sea necesario */
+    right: -6px; /* Ajusta el valor según sea necesario */
+    background-color: #780178; /* Color de fondo del badge */
+    color: white; /* Color del texto del badge */
+    border-radius: 50%; /* Hace que el badge sea circular */
+    padding: 5px 10px; /* Ajusta el padding según sea necesario */
+    font-size: 15px; /* Tamaño de la fuente del badge */
+}
+
+.btn-header:hover {
+    background-color: #fff; /* Fondo transparente al pasar el ratón */
+}
+
+.btn-header:hover i {
+    color: black; /* Cambia el color del ícono a blanco al pasar el ratón */
+}
+
+.btn-header:focus {
+    outline: none; /* Elimina el contorno predeterminado */
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco semitransparente cuando está enfocado */
+}
+
+.btn-header:focus i {
+    color: white; /* Mantiene el ícono en blanco cuando está enfocado */
+}
+
+/* Estilo del contenedor del usuario */
+.user-container {
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+#user-dropdown {
+    right: 0; /* Alinea el dropdown a la derecha del botón */
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5); /* Efecto de sombra */
+}
+
+/* Estilo de los inputs y el botón dentro del dropdown */
+#user-dropdown input[type="email"],
+#user-dropdown input[type="password"],
+#user-dropdown button {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#user-dropdown button {
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#user-dropdown button:hover {
+    background-color: #444;
+}
+
+/* Clase para el contenedor de los botones cuando la sesión está iniciada */
+#user-dropdown-auth {
+    right: 0;
+    width: 300px;
+    padding: 15px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5); /* Efecto de sombra */
+}
+
+/* Estilos para los botones */
+#user-dropdown-auth .register-auth-btn {
+    background-color: #fff;
+    color: black;
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 16px; /* Ajusta el tamaño de la fuente */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center; /* Alinea verticalmente íconos y texto */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
+}
+
+/* Ajustar tamaño del ícono dentro del botón */
+#user-dropdown-auth .register-auth-btn i {
+    font-size: 1.5em; /* Ajusta el tamaño del ícono */
+    margin-right: 8px; /* Espacio entre ícono y texto */
+}
+
+/* Efecto al pasar el mouse */
+#user-dropdown-auth .register-auth-btn:hover {
+    background-color: #8200F5;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hover */
+}
+
+/* Efecto de enfoque */
+#user-dropdown-auth .register-auth-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto al hacer clic */
+#user-dropdown-auth .register-auth-btn:active {
+    background-color: #3e8e41;
+    transform: scale(0.95);
+}
+
+.toast-container {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 16px;
+    z-index: 1000;
+    width: 25%
+}
+
+.toast {
+    display: none;
+    color: white;
+    border: none;
+    padding: 3px 3px;
+    border-radius: 0.375rem; /* Bootstrap rounded-pill */
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+    margin-bottom: 8px; /* Space between toasts */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toast .toast-icon {
+    width: 32px; /* Tamaño del icono */
+    height: 32px;
+    background-color: rgba(255, 1, 1, 0.3); /* Fondo semi-transparente para advertencia */
+    border-radius: 50%; /* Hacer el fondo circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; /* Tamaño del icono */
+    color: #fff; /* Color del icono de advertencia */
+    margin-right: 1rem; /* Espaciado a la derecha del icono */
+    margin-left: 1rem; /* Espaciado a la derecha del icono */
+    border: 1px solid #000; /* Borde negro con grosor de 2px */
+}
+
+.toast.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.hide {
+    opacity: 0;
+    transform: translateY(-20px); /* Moves the toast up as it hides */
+}
+
+.toast-success {
+    background-color: #28a745; /* Bootstrap success color */
+}
+
+.toast-error {
+    background-color: #FC2424; /* Bootstrap danger color */
+}
+
+
+
+
+/* Estilo para el contenido del dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    opacity: 0;
+    transform: translateY(0px);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+/* Mostrar el cuadro con una transición suave */
+.dropdown-content.show {
+    display: block;
+    opacity: 1;
+    border-left: 2px solid #780178; /* Borde izquierdo */
+    border-right: 2px solid #780178; /* Borde derecho */
+    border-top: 2px solid #780178; /* Borde Superior */
+    border-bottom: 2px solid #780178; /* Borde inferior */
+}

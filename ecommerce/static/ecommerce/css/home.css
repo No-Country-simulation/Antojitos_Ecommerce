@@ -325,6 +325,42 @@ footer {
     color: white;
 }
 
+/* banner */
+.banner{
+    width: 100%;
+    height: 50vh;
+    margin-top: 50px;
+    
+}
+.banner .content{
+    text-align: center;
+    padding-top: 100px;
+}
+.banner .content h1{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    letter-spacing: 3px;
+}
+.banner .content p{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    letter-spacing: 3px;
+}
+#bannerbtn button{
+    width: 150px;
+    height: 38px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+#bannerbtn button:hover{
+    background-color: #1c1c50;
+    border: none;
+}
+/* banner */
+
 /* navbar */
 /* home content *
 .home{

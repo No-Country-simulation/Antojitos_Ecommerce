@@ -16,25 +16,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
 
     <!-- fonts links -->
- 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <!-- fonts links -->
 
-
     <!-- Fonts - Para mostrar algunos iconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-      <!-- Bootstrap 5.3.3 -->
+    <!-- Bootstrap 5.3.3 -->
     <link href="{% static 'ecommerce/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Styles propios de cada template -->
     <link href="{% static 'ecommerce/css/home.css' %}" rel="stylesheet">
+    <link href="{% static 'ecommerce/css/base.css' %}" rel="stylesheet">
+    
     <!-- For More CSS Modules -->
     {% block extra_head %}
     <!-- Cargar CSS o meta tags específicos de la página aquí -->
     {% endblock %}
-   
+    
 </head>
 
 <body>
@@ -92,11 +92,16 @@
                                         <button class="search-btn" type="submit" id="search-btn"><i class="fa fa-search"></i></button>
                                     </form>
                                 </li>
-                                <!-- ICONOS -->
+                                <!-- ICONOS USER CART -->
                                 <li class="nav-item">
-                                    <button class="nav-link btn">
+                                    <!-- Widget desplegable para el inicio de sesión -->
+                                    {% include "registros/widget_registro.html" %}
+                                </li>
+
+                                <li class="nav-item">
+                                    <!-- <button class="nav-link btn">
                                         <i class="fa-solid fa-user"></i>
-                                   </button>
+                                   </button> -->
 
                                    <button class="nav-link btn">
                                         <i class="fa-solid fa-cart-shopping"></i>
@@ -223,6 +228,10 @@
      #                  Mis Scripts personalizados
      ===================================================================== -->
 
+     <!-- JavaScript for Widget de registro button -->
+    <script src="{% static 'registros/js/widget_registro.js' %}"></script>
+
+    
     {% block extra_scripts %}
     <!-- Cargas archivos .js propios de cada template/vista
     - Por ahora solo se usa en producto_base.html

@@ -28,5 +28,7 @@ urlpatterns = [
     # Esto es de productos
     path('', include("productos.urls")),
     
+    # Esto es de registros
+    path('', include("registros.urls")),
     
 ]

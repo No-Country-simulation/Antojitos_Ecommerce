@@ -1,0 +1,147 @@
+
+
+<!-- Cuadro desplegable para el inicio de sesión -->
+<div class="user-container">
+    <button class="btn-header" id="user-button" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-user"></i>
+    </button>
+
+    <!-- 
+        Cuando el usuario ya esta LOGEADO visualiza esto 
+    -->
+    {% if user.is_authenticated %}
+
+        <!-- Acciones del widget Registro -->
+        <div id="user-dropdown-auth" class="dropdown-content" aria-labelledby="user-button">
+
+            <button class="register-auth-btn"
+            onclick="window.location.href='{% url 'Profile_Page' %}';">
+                <i class="fas fa-user-circle"></i>
+                <span class="px-lg-4" id="user-email"></span>
+            </button>
+
+            <form method="POST" action="{% url 'Close_Session' %}">
+                {% csrf_token %}
+                <button type="submit" class="register-auth-btn">
+                    <i class="fas fa-door-open"></i>
+                    <span class="px-lg-3">Cerrar Sesión</span>
+                </button>
+            </form>
+
+        </div>
+
+        <!-- Este script es para obtener el user email -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var email = "{{ user.email }}";
+                var username = email.split('@')[0]; // Obtener la parte antes del '@'
+                document.getElementById('user-email').textContent = username + ' @';
+            });
+        </script>
+
+    <!-- Cuando el usuario NO ESTA logeado visualiza esto -->
+    {% else %}
+        <div id="user-dropdown" class="dropdown-content" aria-labelledby="user-button">
+            <!-- action="{ % url 'Registro_widget' % }" -->
+            <form id="login-form" method="POST">
+                {% csrf_token %}
+
+                <!-- Peticion E-mail -->
+                <label for="email">Email</label>
+
+                <input type="email" id="email" name="email" required aria-required="true"
+                       placeholder="Correo electrónico">
+
+                <!-- Peticion Password -->
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password"
+                       required aria-required="true" placeholder="Contraseña">
+
+                <button type="submit"> Ingresar </button>
+
+                <!--  -->
+                <a href="#">Olvidé mi contraseña</a>
+
+                <!-- Boton de Registrarse -->
+                <a href="{% url 'Register' %}">Registrarme</a>
+            </form>
+
+        </div>
+
+
+        <div id="toast-container" class="toast-container">
+        <!-- <div id="toast-container" class="toast-container"></div>
+
+        <div id="snackbar-container" class="snackbar-container"></div>
+         <div id="snackbar" class="snackbar"></div> -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var form = document.getElementById('login-form');
+                    var toastContainer = document.getElementById('toast-container');
+
+                    form.addEventListener('submit', function(event) {
+                        event.preventDefault(); // Prevent the default form submission
+
+                        var formData = new FormData(form);
+
+                        fetch("{% url 'Widget_Register' %}", {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest' // Indicate this is an AJAX request
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            var toast = document.createElement('div');
+                            toast.className = 'toast'; // Base class for the toast.
+
+                            // Add success or error class based on the result
+                            if (data.success) {
+                                toast.classList.add('toast-success');
+                                toast.innerHTML = `
+                                    <div class="d-flex align-items-center">
+                                        <div class="toast-body">
+                                            Login successful!
+                                        </div>
+                                    </div>
+                                `;
+                            } else {
+                                toast.classList.add('toast-error');
+                                toast.innerHTML = `
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-times toast-icon"></i>
+                                        <div class="toast-body">
+                                            ${data.error}
+                                        </div>
+                                    </div>
+                                `;
+                            }
+
+                            toastContainer.appendChild(toast);
+                            toast.classList.add('show');
+
+                            setTimeout(function() {
+                                toast.classList.remove('show');
+                                toast.classList.add('hide');
+                                setTimeout(function() {
+                                    toastContainer.removeChild(toast);
+                                }, 500); // Delay to match the transition time
+                            }, data.success ? 500 : 3000); // Show for 1 second for success, 3 seconds for error
+
+                            if (data.success) {
+                                setTimeout(function() {
+                                    window.location.href = "{% url 'Home' %}";
+                                }, 1000); // Redirect after toast hides
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                    });
+                });
+            </script>
+
+        </div>
+    {% endif %}
+</div>

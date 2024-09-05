@@ -8,86 +8,103 @@
     <!-- Cargar CSS o meta tags específicos de la página aquí -->
     <link href="{% static 'productos/css/producto.css' %}" rel="stylesheet">
     
-    
 {% endblock %}
+
 
 {% block content %}
 
-<header class="header">
-    <div id="main-header">
-        <a id="logo-header" href="#">
-            <img src="LOGO.png" alt="Inicio">
-        </a> <!-- logo-header -->
-        <nav></nav>
-        <nav>
-            <ul>
-                <li><a href="#">Mi perfil</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="#">Carrito</a></li>
-            </ul>
-        </nav><!--  nav -->
+    <div class="container-banner-producto">
+        
+        <h1>Restaurante Comida Cruda</h1> <!--nombre del restaurante-->
+        <p>Dirección</p>
+        <div class="search-container">
+            <input type="text" placeholder="Buscar..." class="search-input">
+            <button class="search-button">Buscar</button>
+        </div>
     </div>
-    <h1>Restaurante Comida Cruda</h1> <!--nombre del restaurante-->
-    <p>Dirección</p>
-    <div class="search-container">
-        <input type="text" placeholder="Buscar..." class="search-input">
-        <button class="search-button">Buscar</button>
-    </div>
-</header>
 
-<nav class="menu-categorias"> <!-- Categorias de alimentos -->
-    <ul>
-        {% for categoria in categorias %}
-        <li><a href="#{{categoria.nombre|slugify}}">{{categoria.nombre}}</a></li>
-        {% endfor %}
-    </ul>
-</nav>
+
+    <!-- Categorias de alimentos -->
+    <nav class="menu-categorias"> 
+        <ul>
+            {% for categoria in categorias %}
+                <li>
+                    <a href="#{{categoria.nombre|slugify}}">
+                        {{categoria.nombre}}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
     
+    <!-- Todas las tarjetas productos -->
+    <div class="row">
+        
 
-<main class="row">
-    {% for producto in productos %}
-    <div class="col-md-4">
-        <figure class="container-product-card">
-            <img src="{{ producto.image.url }}" alt="">
-            <figcaption>
-                <h3>{{ producto.name }}</h3> <!-- Título largo para demostrar el ajuste -->
-                <div>
-                    <div class="price">
-                        <span id="preciotachado">${{producto.price}}</span>
-                        <span class="precio-general">{{producto.price}}</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <p style="margin: 0;"><strong>Retirar en local</strong></p>
-                        <div class="rating">
-                            <span>4.2</span>
-                            <span class="stars">★</span>
+        {% for producto in productos %}
+            <div class="col-md-4">
+                <figure class="container-product-card">
+
+                    <img src="{{ producto.image.url }}" alt="">
+
+                    <figcaption>
+                        <h3> {{ producto.name }} </h3> <!-- Título largo para demostrar el ajuste -->
+                        
+                        <div class="price">
+                            <span id="preciotachado">${{producto.price}}</span>
+                            <span class="precio-general">{{producto.price}}</span>
                         </div>
-                    </div>
-                    <p style="margin: 0;">No Country 14576</p>
-                </div>
-                <button class="boton" onclick="window.location.href='#';">AGREGAR AL CARRITO</button>
-            </figcaption>
-        </figure>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            
+                            <p style="margin: 0;"><strong>Retirar en local</strong></p>
+                            
+                            <div class="rating">
+                                <span>4.2</span>
+                                <span class="stars">★</span>
+                            </div>
+                        </div>
+                        <p style="margin: 0;">No Country 14576</p>
+                        
+                        <button class="boton" onclick="window.location.href='#';">AGREGAR AL CARRITO</button>
+                    </figcaption>
+                </figure>
+            </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-    
 
+    <!-- Secciones -->
     <main class="row">
+
+        <!-- Recorremos por cada Categoria: "Bebida", "Panificados" etc -->
         {% for categoria, productos in productos_por_categoria.items %}
-            {% if categoria %} 
-            <section id="{{ categoria|slugify }}" class="menu-categoria">
-                <h2>{{ categoria }}</h2>
-                <div class="producto-container">
+
+            <!-- Separador interno -->
+            <div class="col-1"></div>
+
+            <!-- Si existe esa Categoria creamos la section -->
+            <div class="col-10">
+                {% if categoria %} 
+                <section id="{{ categoria|slugify }}" class="menu-categoria">
+                    
+                    <!-- Titulo Categoria -->
+                    <h2>{{ categoria }}</h2> 
+
+                    <!-- Tarjetas de la categoria -->
+                    
+                    <div class="producto-container">
+
                     {% for producto in productos %}
-                    <div class="col-md-4">
-                        <figure class="container-product-card">
-                            <img src="{{ producto.image.url }}" alt="">
-                            <figcaption>
-                                <h3>{{ producto.name }}</h3>
+                        <div class="col-md-4">
+                            <figure class="container-product-card">
+                                <img src="{{ producto.image.url }}" alt="">
+                                <!-- Contenido de la Modal -->
+                                <figcaption>
+                                    <h3>{{ producto.name }}</h3>
                                     <div class="price">
                                         <span id="preciotachado">${{ producto.price }}</span>
                                         <span class="precio-general">{{ producto.price }}</span>
                                     </div>
+
                                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                                         <p style="margin: 0;"><strong>Retirar en local</strong></p>
                                         <div class="rating">
@@ -96,19 +113,22 @@
                                         </div>
                                     </div>
                                     <p style="margin: 0;">No Country 14576</p>
-                                    <button class="openboton" >AGREGAR AL CARRITO</button>
-                                    <!-- Contenido de la Modal -->
-                                
-                                
 
-                            </figcaption>
+                                    <button class="openboton" onclick="window.location.href='#';">
+                                        AGREGAR AL CARRITO
+                                    </button>
 
-                        </figure>
-                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
                     {% endfor %}
-                </div>
-            </section>
-            {% endif %}
+                    </div>
+                </section>
+                {% endif %}
+            </div>
+            
+            <!-- Separador interno -->
+            <div class="col-1"></div>
         {% endfor %}
     </main>
     
