@@ -23,7 +23,6 @@
         </div>
     </div>
 
-
     <!-- Categorias de alimentos -->
     <nav class="menu-categorias"> 
         <ul>
@@ -39,8 +38,6 @@
     
     <!-- Todas las tarjetas productos -->
     <div class="row">
-        
-
         {% for producto in productos %}
             <div class="col-md-4">
                 <figure class="container-product-card">
@@ -72,6 +69,7 @@
         {% endfor %}
     </div>
 
+
     <!-- Secciones -->
     <main class="row">
 
@@ -90,39 +88,67 @@
                     <h2>{{ categoria }}</h2> 
 
                     <!-- Tarjetas de la categoria -->
-                    
                     <div class="producto-container">
-                        <!---->
-                    {% for producto in productos %}
-                        <div class="col-md-4">
-                            <figure class="container-product-card">
-                                <img src="{{ producto.image.url }}" alt="">
-                                <!-- Contenido de la Modal -->
-                                <figcaption>
-                                    <h3>{{ producto.name }}</h3>
-                                    <div class="price">
-                                        <span id="preciotachado">${{ producto.price }}</span>
-                                        <span class="precio-general">{{ producto.price }}</span>
-                                    </div>
+                    <!---->
+                        {% for producto in productos %}       
+                            <div class="col-md-4">
 
-                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                                        <p style="margin: 0;"><strong>Retirar en local</strong></p>
-                                        <div class="rating">
-                                            <span>4.2</span>
-                                            <span class="stars">★</span>
+                                <figure class="container-product-card"
+                                onclick="openModal({{ producto.id }})">
+
+                                    <!-- Botón para abrir la ventana modal -->
+                                    <img src="{{ producto.image.url }}" alt="">
+                                    
+
+                                    <!-- Contenido de la Modal -->
+                                    <figcaption>
+                                        <h3>{{ producto.name }}</h3>
+                                        <div class="price">
+                                            <span id="preciotachado">${{ producto.price }}</span>
+                                            <span class="precio-general">{{ producto.price }}</span>
                                         </div>
+
+                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                            <p style="margin: 0;"><strong>Retirar en local</strong></p>
+                                            <div class="rating">
+                                                <span>4.2</span>
+                                                <span class="stars">★</span>
+                                            </div>
+                                        </div>
+                                        <p style="margin: 0;">No Country 14576</p>
+
+                                        <button class="openboton" onclick="window.location.href='#';">
+                                            AGREGAR AL CARRITO
+                                        </button>
+
+                                    </figcaption>
+                                </figure>
+
+                                <!-- Modal asociado a cada producto -->
+                                <div id="modal-{{ producto.id }}" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close-btn">&times;</span>
+                                        <img src="{{ producto.image.url }}" alt="{{ producto.name }}" class="modal-image">
+                                        <h2>{{ producto.name }}</h2>
+                                        <p>{{ producto.description }}</p>
+                                        <p><strong>{{ producto.price }} $</strong><span class="precio-real">{{ producto.price }} $</span></p>
+                                        <hr>
+                                        <div class="modal-footer">
+                                            <button class="quantity-btn" id="decreaseBtn-{{ producto.id }}">-</button>
+                                            <span id="quantityDisplay-{{ producto.id }}">1</span>
+                                            <button class="quantity-btn" id="increaseBtn-{{ producto.id }}">+</button>
+                                            <button class="add-to-cart-btn"> 
+                                                <img src="carrito.png" alt=""> 
+                                                <span id="priceDisplay-{{ producto.id }}">{{ producto.price }} $</span>
+                                            </button>
+                                        </div>            
                                     </div>
-                                    <p style="margin: 0;">No Country 14576</p>
-
-                                    <button class="openboton" onclick="window.location.href='#';">
-                                        AGREGAR AL CARRITO
-                                    </button>
-
-                                </figcaption>
-                            </figure>
-                        </div>
-                    {% endfor %}
+                                </div>
+                                
+                            </div>
+                        {% endfor %}
                     </div>
+
                 </section>
                 {% endif %}
             </div>
@@ -141,5 +167,9 @@
 {% block extra_scripts %}
 <!-- 
     Cargas archivos .js propios de cada template/vista
---><script>"{% static 'productos/ventanaEmergente.js'}"</script>
+-->
+    <script src="{% static 'productos/ventanaEmergente.js' %}"></script>
+    
+
+
 {% endblock %}

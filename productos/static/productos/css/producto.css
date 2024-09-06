@@ -22,6 +22,12 @@
     object-fit: cover; 
 }
 
+.product-img-section {
+    width: 40%;
+    height: auto; /* Ajusta la altura automáticamente según el contenido */
+    object-fit: cover; 
+}
+
 .container-product-card figcaption {
     padding: 10px;
     display: flex;
@@ -189,4 +195,86 @@ h3 {
     padding-bottom: 0.5rem;
     border-bottom: 2px solid #eeeeee;
     color: #d32f2f;
+}
+
+/* ============================================================================
+                    CSS DE LA MODAL O POP UPS
+============================================================================ */
+
+/* Estilos para la ventana modal */
+.modal {
+    display: none; /* Ocultar la modal por defecto */
+    position: fixed; /* Mantener en posición fija */
+    z-index: 1000; /* Colocar sobre otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenido de la ventana modal */
+.modal-content {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    width: 300px;
+    height: 100%; /* Alto completo */
+    text-align: center;
+    position: relative;
+}
+
+/* Botón de cerrar */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Estilos de la imagen en la modal */
+.modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Estilos para el pie de la modal */
+.modal-footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilos para los botones de cantidad */
+.quantity-btn, .add-to-cart-btn {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Estilos para el botón de añadir al carrito */
+.add-to-cart-btn {
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+.add-to-cart-btn img {
+    width: 25px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+.precio-real {
+    text-decoration:line-through;
+    margin-left: 5px;
+    font-size: 15px;
 }

@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # PAra desplegar en produccion
+    'whitenoise.runserver_nostatic',  
+    
     # MY_APPS
     'ecommerce',    # Ecommerce APP
     'productos',    # Productos APP
@@ -47,6 +50,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # PAra desplegar en produccion 
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -138,6 +143,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Necesarios para poder utilizar en produccion con white noise
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Esto es para las imagenes crear url automatico
 MEDIA_URL = 'media/'

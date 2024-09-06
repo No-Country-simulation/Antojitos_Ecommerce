@@ -1,49 +1,82 @@
-const boton = document.getElementById('boton');
-const openboton = document.getElementById('openboton');
-const closeboton = document.querySelector('.closeboton');
 
-const decreaseBtn = document.getElementById('decreaseBtn');
-const increaseBtn = document.getElementById('increaseBtn');
-const quantityDisplay = document.getElementById('quantityDisplay');
-const priceDisplay = document.getElementById('priceDisplay');
 
-let quantity = 1; // Cantidad inicial de productos
-const pricePerItem = 10; // Precio de cada producto
+/* 
+document.addEventListener('DOMContentLoaded', function() {
+    // Función para abrir modal
+    function openModal(productId) {
+        const modal = document.getElementById(`modal-${productId}`);
+        modal.style.display = 'flex';
+    }
 
-// Abrir la ventana modal
-openboton.onclick = function() {
-    boton.style.display = 'flex'; // Mostrar la modal
+    // Funciones para manejar la cantidad
+    document.querySelectorAll('.quantity-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.id.split('-')[1]; // Extraer el ID del producto
+            const quantityDisplay = document.getElementById(`quantityDisplay-${productId}`);
+            let currentQuantity = parseInt(quantityDisplay.textContent);
+            
+            if (this.id.startsWith('decreaseBtn') && currentQuantity > 1) {
+                currentQuantity--;
+            } else if (this.id.startsWith('increaseBtn')) {
+                currentQuantity++;
+            }
+
+            quantityDisplay.textContent = currentQuantity;
+            const priceElement = document.getElementById(`priceDisplay-${productId}`);
+            priceElement.textContent = (currentQuantity * parseFloat(priceElement.dataset.price)).toFixed(2) + ' $';
+        });
+    });
+
+    // Cerrar la modal cuando se hace clic en el botón de cerrar
+    document.querySelectorAll('.close-btn').forEach(function(closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            const modal = closeBtn.closest('.modal');
+            modal.style.display = 'none'; // Ocultar la modal
+        });
+    });
+
+    // Cerrar la modal cuando se hace clic fuera del contenido de la modal
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none'; // Ocultar la modal
+        }
+    };
+
+    // Lógica de agregar al carrito
+    document.querySelectorAll('.openboton').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.stopPropagation(); // Evitar que el clic en el botón propague al figure
+            // Lógica de agregar al carrito
+        });
+    });
+});
+*/
+
+
+function openModal(productId) {
+    const modal = document.getElementById(`modal-${productId}`);
+    modal.style.display = 'flex'; // Mostrar la modal específica
 }
 
-// Cerrar la ventana modal cuando se hace clic en el botón de cerrar
-closeboton.onclick = function() {
-    boton.style.display = 'none'; // Ocultar la modal
-}
+// Cerrar la modal cuando se hace clic en el botón de cerrar
+document.querySelectorAll('.close-btn').forEach(function(closeBtn) {
+    closeBtn.addEventListener('click', function() {
+        const modal = closeBtn.closest('.modal');
+        modal.style.display = 'none'; // Ocultar la modal
+    });
+});
 
-// Cerrar la ventana modal cuando se hace clic fuera del contenido de la modal
+// Cerrar la modal cuando se hace clic fuera del contenido de la modal
 window.onclick = function(event) {
-    if (event.target == boton) {
-        boton.style.display = 'none'; // Ocultar la modal
+    if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none'; // Ocultar la modal
     }
-}
+};
 
-// Aumentar la cantidad
-increaseBtn.onclick = function() {
-    quantity++;
-    updateDisplay();
-}
-
-// Disminuir la cantidad
-decreaseBtn.onclick = function() {
-    if (quantity > 1) { // No permitir que la cantidad sea menor que 1
-        quantity--;
-        updateDisplay();
-    }
-}
-
-// Actualizar la cantidad mostrada y el precio total
-function updateDisplay() {
-    quantityDisplay.textContent = quantity;
-    const totalPrice = (quantity * pricePerItem).toFixed(2);
-    priceDisplay.textContent = `${totalPrice} $`;
-}
+// Lógica de agregar al carrito
+document.querySelectorAll('.openboton').forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.stopPropagation(); // Evitar que el clic en el botón propague al figure
+        // Lógica de agregar al carrito
+    });
+}); 
