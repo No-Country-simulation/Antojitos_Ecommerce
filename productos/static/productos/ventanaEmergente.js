@@ -1,7 +1,7 @@
 
 // Función para abrir la modal usando Bootstrap 5
 function openModal(productId) {
-    const modal = new bootstrap.Modal(document.getElementById(modal-${productId}));
+    const modal = new bootstrap.Modal(document.getElementById(`modal-${productId}`));
     modal.show(); // Mostrar la modal con Bootstrap 5
 }
 
@@ -13,4 +13,4 @@ document.querySelectorAll('.openboton').forEach(button => {
         event.stopPropagation(); // Evitar que el clic en el botón propague al figure
         // Lógica de agregar al carrito
     });
-});
+}); 
