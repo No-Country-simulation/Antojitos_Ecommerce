@@ -7,6 +7,9 @@
 {% block extra_head %}
     <!-- Cargar CSS o meta tags específicos de la página aquí -->
     <link href="{% static 'productos/css/producto.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
     
 {% endblock %}
 
@@ -35,41 +38,289 @@
             {% endfor %}
         </ul>
     </nav>
+<style>
+       
+        *:focus {
+            outline: none;
+        }
+        .contenedor{
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            position: relative;
+        }
+        .titulo{
+            border-bottom: 3px solid #9751ff;
+        }
+        .titulo .shape{
+            background: #9751ff;
+            padding: 10px 20px;
+            max-width: 200px;
+            position: relative;
+        }
+        .right-skew:before {
+          z-index: -1;
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: -20px;
+          display: block;
+          width: 50px;
+          background: #9751ff;
+        /* change background color to same as box   */
+          -webkit-transform: skew(-10deg);
+          -ms-transform: skew(-10deg);
+          transform: skew(20deg);
+        }
+        
+        .titulo .shape h2, .titulo .shape i{
+            display: inline-block;
+            margin: 0;
+            color: #fff;
+        }
+        .titulo .shape i{
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .txt-titulo{
+            position: absolute;
+            right: 110px;
+            top: 15px;
+            font-size: 13px;
+            color: #605f5f;
+            font-weight: 600;
+        }
+        .producto {
+                max-width: 240px; /* Ajusta este valor según sea necesario para reducir el ancho de la tarjeta */
+                margin-right: 15px; /* Reduce el margen entre las tarjetas si es necesario */
+        }
+        .producto .contenedor-imagen{
+            min-height: 220px;
+            position: relative;
+        }
+        .producto .contenedor-imagen img {
+                width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+                max-height: 180px; /* Limita la altura máxima para evitar que la imagen sea demasiado grande */
+                object-fit: cover; /* Ajusta la imagen para que cubra el área de manera uniforme */
+        }
+        .producto .contenedor-imagen .link{
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 9;
+            width: 100%;
+            height: 100%;
+        }
+        .producto .contenedor-imagen .img-hover{
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all ease-in-out 0.2s;
+        }
+        .producto:hover .img-hover{
+            opacity: 1;
+        }
+        .producto .datos{
+            border-top: 2px solid #e2e2e2;
+            border-bottom: 2px solid #e2e2e2;
+            padding: 20px;
+        }
+        .producto .datos h3{
+            margin: 10px 0;
+        }
+        .producto .datos h3 a{
+            text-decoration: none;
+            color: #2b2b2b;
+            font-size: 14px;
+            display: block;
+            text-transform: uppercase;
+        }
+        .producto .datos h3 a:hover{
+            text-decoration: underline;
+        }
+        .producto .datos small a{
+            text-transform: uppercase;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+            color: #5a5a5a;
+            font-size: 11px;
+        }
+        .producto .datos small{
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #5a5a5a;
+        }
+        .producto .precios{
+            padding: 20px;
+            display: flex
+        }
+        .producto .precios div{
+          flex-grow: 1;
+        }
+        .producto .precios div small{
+            display: block;
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: #828282;
+            font-weight: 600;
+        }
+        .producto .precios div.internet span{
+            font-weight: bold;
+            font-size: 23px;
+            color: #ff0808;
+        }
+        .producto .precios div span{
+            font-size: 17px;
+            font-weight: 600;
+        }
+        .producto .btn-carrito{
+            display: block;
+            text-align: center;
+            padding: 15px;
+            background: #9751ff;
+            width: 80%;
+            margin: 0 auto;
+            border-radius: 100px;
+            color: #fff;
+            text-decoration: none;
+            display: none;
+            transition: all ease-in-out 0.3s;
+        }
+        .producto .btn-carrito:hover{
+            transform: scale(1.05);
+        }
+        .producto:hover .btn-carrito{
+            display: block;
+        }
+        .starrr {
+             display: block; 
+        }
+        .starrr a {
+            font-size: 16px;
+            padding: 0 1px;
+            cursor: pointer;
+            color: #FFD119;
+            text-decoration: none; 
+        }
+        .slider {
+            margin-top: 20px;
+            overflow: hidden;
+            }
+
+        .slick-prev{
+            font-size: 0;
+            position: absolute;
+            right: 55px;
+            top: -64px;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #e2e2e2;
+            border-radius: 6px;
+            background-image: url(https://dummyimage.com/20x20/ffffff/474747&text=%3C);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .slick-next{
+            font-size: 0;
+            position: absolute;
+            right: 18px;
+            top: -64px;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #e2e2e2;
+            border-radius: 6px;
+            background: url(https://dummyimage.com/20x20/ffffff/474747&text=%3E);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .slick-next:hover, .slick-prev:hover{
+            opacity: 0.8;
+        }
+        
+        @media screen and (max-width: 650px){
+            .txt-titulo{
+                display: none;
+            }
+            .titulo .shape h2{
+                font-size: 20px;
+            }
+        }
+        @media screen and (max-width: 600px){
+            .slick-next, .slick-prev{
+                display: none !important;
+            }
+            }
+            .titulo .shape{
+                padding: 10px 10px;
+                max-width: 160px;
+            }
+            .producto {
+                max-width: 280px; /* Puedes ajustar este valor si los productos parecen muy grandes */
+                margin-right: 20px;
+                background: #fff;
+            }
+        
+</style>
     
     <!-- Todas las tarjetas productos -->
-    <div class="row">
-        {% for producto in productos %}
-            <div class="col-md-4">
-                <figure class="container-product-card">
-
-                    <img src="{{ producto.image.url }}" alt="">
-
-                    <figcaption>
-                        <h3> {{ producto.name }} </h3> <!-- Título largo para demostrar el ajuste -->
-                        
-                        <div class="price">
-                            <span id="preciotachado">${{producto.price}}</span>
-                            <span class="precio-general">{{producto.price}}</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            
-                            <p style="margin: 0;"><strong>Retirar en local</strong></p>
-                            
-                            <div class="rating">
-                                <span>4.2</span>
-                                <span class="stars">★</span>
-                            </div>
-                        </div>
-                        <p style="margin: 0;">No Country 14576</p>
-                        
-                        <button class="boton" onclick="window.location.href='#';">AGREGAR AL CARRITO</button>
-                    </figcaption>
-                </figure>
+    <div class="contenedor">
+        <div class="titulo">
+            <div class="shape right-skew">
+                <i class="fas fa-laptop"></i>
+                <h2>Tecnología</h2>
             </div>
+            <span class="txt-titulo">Mostrando productos</span>
+        </div>
+
+
+        <div class="slider carousel">
+        {% for categoria, productos in productos_por_categoria.items %}
+            {% for producto in productos %}
+            <div class="producto item">
+                <div class="contenedor-imagen">
+                    <a href="#" class="link">
+                        <img src="{{ producto.image.url }}" alt="{{ producto.name }}">
+                        <img src="{{ producto.image.url }}" class="img-hover">
+                    </a>
+                </div>
+    
+                <div class="datos">
+                    <div class="starrr">
+                        <span>{{ producto.calificacion }}</span>
+                        <span class="stars">★</span>
+                    </div>
+                    <small><a href="#">{{ producto.marca }}</a></small>
+                    <h3><a href="#">{{ producto.name }}</a></h3>
+                    <small>SKU: {{ productos }}</small>
+                </div>
+    
+                <div class="precios">
+                    <div class="internet">
+                        <small>Internet</small>
+                        <span>${{ producto.precio_internet }}</span>
+                    </div>
+                    <div>
+                        <small>Precio Normal</small>
+                        <span id="preciotachado">${{ producto.precio_normal }}</span>
+                        <span class="precio-general">${{ producto.price }}</span>
+                    </div>
+                </div>
+    
+                <a href="#" class="btn-carrito"><i class="fas fa-shopping-basket"></i> Agregar al carrito</a>
+            </div>
+            {% endfor %}
+        
         {% endfor %}
+        </div>
     </div>
-
-
     <!-- Secciones -->
     <main class="row">
 
@@ -169,7 +420,46 @@
     Cargas archivos .js propios de cada template/vista
 -->
     <script src="{% static 'productos/ventanaEmergente.js' %}"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="https://rawcdn.githack.com/UnTipografico/Carrusel-eCommerse/3b4b54cdfd58b5c6bfa29a4239e584a268e5403b/js/starrr.js"></script>   
+    <script>//Starrr
+		$('.starrr').starrr({
+		})
 
-
+		$(document).ready(function(){
+    $('.carousel').slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        draggable: true,
+        slidesToShow: 4,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+});
+</script>
 {% endblock %}

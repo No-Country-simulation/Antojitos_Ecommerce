@@ -16,77 +16,90 @@
       /* ========================================================================
         * PROFILE
         * ======================================================================== */
-      .profile-cover {
-        width: 100%;
-      }
+.profile-cover {
+    width: 100%;
+}
 
-      .cover {
-        position: relative;
-        border: 10px solid #FFF;
-      }
+.cover {
+    position: relative;
+    border: 10px solid #FFF;
+    padding-bottom: 60px; /* Asegura espacio para el menú en la parte inferior */
+}
 
-      .inner-cover {
-        overflow: hidden;
-        height: auto;
-      }
+.inner-cover {
+    overflow: hidden;
+    height: auto;
+}
 
-      .inner-cover img {
-        text-align: center;
-        width: 100%;
-      }
+.inner-cover img {
+    text-align: center;
+    width: 100%;
+}
 
-      .cover-menu {
-        padding-left: 150px;
-        position: absolute;
-        left: 1px;
-        bottom: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.24);
-      }
+.cover-menu {
+    position: relative; /* Cambiado a relative para situarlo en el flujo del documento */
+    width: 100%;
+    background: rgba(0, 0, 0, 0.24);
+    display: flex; /* Flexbox para alinear horizontalmente */
+    box-sizing: border-box;
+    z-index: 1; /* Asegura que el menú esté encima del contenido de texto */
+    margin-bottom: 20px; /* Espacio entre el menú y el contenido de texto */
+}
 
-      .cover-menu li {
-        display: block;
-        float: left;
-        padding: 0px 10px;
-        line-height: 40px;
-        transition: all 0.3s;
-      }
+.cover-menu li {
+    flex: 1; /* Asegura que los elementos del menú se distribuyan uniformemente */
+    text-align: center; /* Centra el contenido del menú */
+    line-height: 40px;
+    transition: all 0.3s;
+}
 
-      .cover-menu li:hover {
-        background-color: rgba(0, 0, 0, 0.44);
-      }
+.cover-menu li:hover {
+    background-color: rgba(0, 0, 0, 0.44);
+}
 
-      .cover-menu li.active {
-        background-color: rgba(0, 0, 0, 0.64);
-      }
+.cover-menu li.active {
+    background-color: rgba(0, 0, 0, 0.64);
+}
 
-      .cover-menu li a {
-        color: #FFF;
-        font-weight: bold;
-        text-decoration: none;
-      }
+.cover-menu li a {
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex; /* Alinea el icono y el texto */
+    align-items: center; /* Centra verticalmente el contenido del enlace */
+    justify-content: center; /* Centra horizontalmente el contenido del enlace */
+}
 
-      .cover-menu li a i {
-        font-size: 18px;
-      }
+.cover-menu li a i {
+    font-size: 18px;
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+}
 
-      .img-profile {
-        width: 70%;
-        border-radius: 50%; 
-        margin-top: 1%;
-      }
+.img-profile {
+    width: 70%;
+    border-radius: 50%; 
+    margin-top: 1%;
+}
 
-      .profile-panel {
-        margin-top: 0px;
-      }
+.profile-panel {
+    margin-top: 0px;
+}
 
-      .card {
-        padding: 0px;
-        background-color: #fff;
-        border-radius: 10px;
-      }
+.card {
+    padding: 0px;
+    background-color: #fff;
+    border-radius: 10px;
+}
 
-    </style>
+.content-text {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+</style>
 {% endblock %}
 
 {% block content %}
@@ -144,22 +157,26 @@
 
       <!-- contenido del perfil -->
       <div class="col-lg-9 col-md-8 col-sm-12">
-          <div class="profile-cover">
-              <div class="cover rounded shadow">
-                  <!-- BANNER -->
-                  <div class="inner-cover">
-                      <img src="http://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg" 
-                      class="img-fluid" alt="cover" style="max-height:200px;">
-                  </div>
-                  <ul class="list-unstyled cover-menu">
-                      <li class="active"><a href="#"><i class="fas fa-clock"></i> Timeline</a></li>
-                      <li><a href="#"><i class="fas fa-user"></i> About</a></li>
-                      <li><a href="#"><i class="fas fa-camera"></i> Photos (98)</a></li>
-                      <li><a href="#"><i class="fas fa-users"></i> Friends (23)</a></li>
-                  </ul>
+        <div class="profile-cover">
+            <div class="cover rounded shadow">
+                <!-- BANNER -->
+                <div class="inner-cover">
+                    <img src="http://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg" 
+                         class="img-fluid" alt="cover" style="max-height:200px;">
+                </div>
+                <ul class="list-unstyled cover-menu">
+                    <li class="active"><a href="#" data-content="Aquí están tus favoritos."><i class="fas fa-clock"></i>Mis Compras</a></li>
+                    <li><a href="#" data-content="Aquí se muestran tus compras."><i class="fas fa-user"></i> Favoritos</a></li>
+                    <li><a href="#" data-content="Contenido extra aquí."><i class="fas fa-camera"></i> Extra</a></li>
+                </ul>
+                 <!-- Texto que cambia -->
+              <div id="content-text" class="content-text">
+                Aquí está el texto inicial.
               </div>
-          </div>
-      </div>
+                
+            </div>
+        </div>
+    </div>
   </div>
 </div>
 
@@ -174,5 +191,26 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 
 -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    // Selecciona todos los enlaces dentro de .cover-menu
+    const menuItems = document.querySelectorAll('.cover-menu li a');
+    // Selecciona el div donde se mostrará el texto
+    const contentText = document.getElementById('content-text');
+
+    // Añade un listener de evento a cada enlace
+    menuItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault(); // Evita que el enlace realice su acción predeterminada
+            // Quita la clase 'active' de todos los elementos de lista
+            menuItems.forEach(i => i.parentElement.classList.remove('active'));
+            // Añade la clase 'active' al elemento clicado
+            this.parentElement.classList.add('active');
+            // Cambia el texto del contenido
+            contentText.textContent = this.getAttribute('data-content');
+        });
+    });
+});
+    </script>
 
 {% endblock %}
