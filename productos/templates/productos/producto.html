@@ -50,10 +50,10 @@
             position: relative;
         }
         .titulo{
-            border-bottom: 3px solid #9751ff;
+            border-bottom: 3px solid #f50a0a;
         }
         .titulo .shape{
-            background: #9751ff;
+            background: #f50a0a;
             padding: 10px 20px;
             max-width: 200px;
             position: relative;
@@ -67,7 +67,7 @@
           right: -20px;
           display: block;
           width: 50px;
-          background: #9751ff;
+          background: #f50a0a;
         /* change background color to same as box   */
           -webkit-transform: skew(-10deg);
           -ms-transform: skew(-10deg);
@@ -181,7 +181,7 @@
             display: block;
             text-align: center;
             padding: 15px;
-            background: #9751ff;
+            background: #f50a0a;
             width: 80%;
             margin: 0 auto;
             border-radius: 100px;
@@ -321,93 +321,110 @@
         {% endfor %}
         </div>
     </div>
-    <!-- Secciones -->
-    <main class="row">
+   <!-- Secciones -->
+   <main class="row">
 
-        <!-- Recorremos por cada Categoria: "Bebida", "Panificados" etc -->
-        {% for categoria, productos in productos_por_categoria.items %}
+    <!-- Recorremos por cada Categoria: "Bebida", "Panificados" etc -->
+    {% for categoria, productos in productos_por_categoria.items %}
 
-            <!-- Separador interno -->
-            <div class="col-1"></div>
+        <!-- Separador interno -->
+        <div class="col-1"></div>
 
-            <!-- Si existe esa Categoria creamos la section -->
-            <div class="col-10">
-                {% if categoria %} 
-                <section id="{{ categoria|slugify }}" class="menu-categoria">
-                    
-                    <!-- Titulo Categoria -->
-                    <h2>{{ categoria }}</h2> 
+        <!-- Si existe esa Categoria creamos la section -->
+        <div class="col-10">
+            {% if categoria %} 
+            <section id="{{ categoria|slugify }}" class="menu-categoria">
+                
+                <!-- Titulo Categoria -->
+                <h2>{{ categoria }}</h2> 
 
-                    <!-- Tarjetas de la categoria -->
-                    <div class="producto-container">
-                    <!---->
-                        {% for producto in productos %}       
-                            <div class="col-md-4">
-
-                                <figure class="container-product-card"
-                                onclick="openModal({{ producto.id }})">
-
-                                    <!-- Botón para abrir la ventana modal -->
-                                    <img src="{{ producto.image.url }}" alt="">
-                                    
-
-                                    <!-- Contenido de la Modal -->
-                                    <figcaption>
-                                        <h3>{{ producto.name }}</h3>
-                                        <div class="price">
-                                            <span id="preciotachado">${{ producto.price }}</span>
-                                            <span class="precio-general">{{ producto.price }}</span>
-                                        </div>
-
-                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                                            <p style="margin: 0;"><strong>Retirar en local</strong></p>
-                                            <div class="rating">
-                                                <span>4.2</span>
-                                                <span class="stars">★</span>
-                                            </div>
-                                        </div>
-                                        <p style="margin: 0;">No Country 14576</p>
-
-                                        <button class="openboton" onclick="window.location.href='#';">
-                                            AGREGAR AL CARRITO
-                                        </button>
-
-                                    </figcaption>
-                                </figure>
-
-                                <!-- Modal asociado a cada producto -->
-                                <div id="modal-{{ producto.id }}" class="modal">
-                                    <div class="modal-content">
-                                        <span class="close-btn">&times;</span>
-                                        <img src="{{ producto.image.url }}" alt="{{ producto.name }}" class="modal-image">
-                                        <h2>{{ producto.name }}</h2>
-                                        <p>{{ producto.description }}</p>
-                                        <p><strong>{{ producto.price }} $</strong><span class="precio-real">{{ producto.price }} $</span></p>
-                                        <hr>
-                                        <div class="modal-footer">
-                                            <button class="quantity-btn" id="decreaseBtn-{{ producto.id }}">-</button>
-                                            <span id="quantityDisplay-{{ producto.id }}">1</span>
-                                            <button class="quantity-btn" id="increaseBtn-{{ producto.id }}">+</button>
-                                            <button class="add-to-cart-btn"> 
-                                                <img src="carrito.png" alt=""> 
-                                                <span id="priceDisplay-{{ producto.id }}">{{ producto.price }} $</span>
-                                            </button>
-                                        </div>            
+                <!-- Tarjetas de la categoria -->
+                <div class="producto-container">
+                <!---->
+                    {% for producto in productos %}       
+                        <div class="col-md-4">
+                            
+                            <!-- Botón para abrir la ventana modal -->
+                            <figure class="container-product-card"
+                            onclick="openModal({{ producto.id }})">
+                                <!-- Imagen del producto -->
+                                <img src="{{ producto.image.url }}" alt="">
+                                <!-- Contenido de la tarjeta -->
+                                <figcaption>
+                                    <h3>{{ producto.name }}</h3>
+                                    <div class="price">
+                                        <span id="preciotachado">${{ producto.price }}</span>
+                                        <span class="precio-general">{{ producto.price }}</span>
                                     </div>
-                                </div>
-                                
-                            </div>
-                        {% endfor %}
-                    </div>
 
-                </section>
-                {% endif %}
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                        <p style="margin: 0;"><strong>Retirar en local</strong></p>
+                                        <div class="rating">
+                                            <span>4.2</span>
+                                            <span class="stars">★</span>
+                                        </div>
+                                    </div>
+                                    <p style="margin: 0;">No Country 14576</p>
+
+                                    <button class="openboton" onclick="window.location.href='#';">
+                                        AGREGAR AL CARRITO
+                                    </button>
+
+                                </figcaption>
+                            </figure>
+
+                            <!-- Modal asociado a cada producto -->
+<div class="modal fade" id="modal-{{ producto.id }}" 
+tabindex="-1" aria-labelledby="modalLabel-{{ producto.id }}" 
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+        <!-- Botón para cerrar el modal -->
+        <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel-{{ producto.id }}">{{ producto.name }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!-- Contenido del modal -->
+        <div class="modal-body">
+            <img src="{{ producto.image.url }}" alt="{{ producto.name }}" class="img-fluid mb-3">
+            <p>{{ producto.description }}</p>
+            <p><strong>{{ producto.price }} $</strong> <span class="precio-real">{{ producto.price }} $</span></p>
+        </div>
+
+        <!-- Footer del modal -->
+        <div class="modal-footer">
+            <div class="d-flex align-items-center">
+                <!-- Botones de cantidad -->
+                <button class="btn btn-outline-secondary quantity-btn" id="decreaseBtn-{{ producto.id }}">-</button>
+                <span class="mx-2" id="quantityDisplay-{{ producto.id }}">1</span>
+                <button class="btn btn-outline-secondary quantity-btn" id="increaseBtn-{{ producto.id }}">+</button>
+
+                <!-- Botón para añadir al carrito -->
+                <button class="btn btn-primary ms-3 add-to-cart-btn">
+                    <img src="carrito.png" alt="" class="me-2"> 
+                    <span id="priceDisplay-{{ producto.id }}">{{ producto.price }} $</span>
+                </button>
             </div>
-            
-            <!-- Separador interno -->
-            <div class="col-1"></div>
-        {% endfor %}
-    </main>
+        </div>
+    </div>
+</div>
+</div>
+
+                            
+                            
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </section>
+            {% endif %}
+        </div>
+        
+        <!-- Separador interno -->
+        <div class="col-1"></div>
+    {% endfor %}
+</main>
     
     
 
