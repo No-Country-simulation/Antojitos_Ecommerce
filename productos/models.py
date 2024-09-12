@@ -52,6 +52,10 @@ class Producto(models.Model):
     # imagen = models.ImageField(upload_to='productos/', blank=True, null=True)
     image = models.ImageField(upload_to=custom_upload_to_producto, null=True, blank=True)
     
+    # Por ahora solucion viable carga por pinterest
+    image_url = models.TextField(null=True, blank=True, 
+                                 default="https://i.pinimg.com/736x/32/fd/c3/32fdc305ad5fc48a75e527d0040e51d0.jpg")
+    
     price = models.FloatField()
     discount = models.IntegerField(null=True, blank=True)
     # Eventualmente se calculara y mostrara para cada producto

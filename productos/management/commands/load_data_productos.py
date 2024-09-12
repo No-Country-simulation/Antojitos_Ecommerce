@@ -24,6 +24,10 @@ class Command(BaseCommand):
 
         # itera por las filas a razon de una linea por vuelta de ciclo
         for index, row in df.iterrows():
+            
+            print(f"Valor de image_url en el Excel: {row['image_url']}")
+
+            
             # Obtener o crear la categoría
             categoria, _ = Categoria.objects.get_or_create(nombre=row['category'])
 
@@ -41,6 +45,10 @@ class Command(BaseCommand):
                 # Actualizar el image si hiciera falta
                 producto_existente.image = row['image'] if pd.notna(row['image']
                                                                     ) else producto_existente.image
+                
+                # Actualizar el image si hiciera falta
+                producto_existente.image_url = row['image_url'] if pd.notna(row['image_url']
+                                                                    ) else producto_existente.image_url
 
                 # Guardar los cambios en la base de datos
                 producto_existente.save()
@@ -55,7 +63,10 @@ class Command(BaseCommand):
                     price=row['price'] if pd.notna(row['price']) else None,
                     discount=row['discount'] if pd.notna(row['discount']) else 0,
                     stock=row['stock'] if pd.notna(row['stock']) else 1,
-                )
+                    
+                    # con None usa el valor por defecto
+                    image_url=row['image_url'] if pd.notna(row['image_url']) else None,
+                ) 
 
                 # mensaje para saber si se creo por consola
                 self.stdout.write(self.style.SUCCESS(f'Producto "{producto.name}" creado.'))

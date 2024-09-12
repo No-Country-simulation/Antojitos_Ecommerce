@@ -108,6 +108,7 @@
   <div class="row">
       <!-- tarjeta del usuario -->
       <div class="col-lg-3 col-md-4 col-sm-12">
+
           <!-- Columna perfil + botones edit y logout -->
           <div class="card shadow profile-panel">
             <div class="card-body">
@@ -119,17 +120,34 @@
                     </li>
                     <!-- nombre de usuario -->
                     <li>
-                        <h4>{{ user.email }}</h4>
-                        <p class="text-muted">{{ user.first_name }} {{user.last_name}} </p>
+                        <h4 class="mt-2">
+                            {{ user.first_name }} {{user.last_name}}
+                        </h4>
+                        <p class="text-muted">
+                            {{ user.email }}
+                        </p>
                     </li>
                     <li>
-                        <a href="#" class="btn btn-success w-100">PRO Account</a>
+                        <a href="#" class="btn btn-success w-100">
+                            Premium Account
+                        </a>
                     </li>
                     <li><br></li>
+
                     <li>
+                        <!-- BOTONES EDITAR Y LOGEARSE -->
                         <div class="btn-group-vertical w-100">
-                            <a href="#" class="btn btn-outline-secondary"><i class="fas fa-cog float-end"></i>Edit Account</a>
-                            <a href="#" class="btn btn-outline-secondary"><i class="fas fa-sign-out-alt float-end"></i>Logout</a>
+                            <button class="btn btn-outline-secondary d-flex justify-content-between align-items-center"
+                                    onclick="window.location.href='Home'">
+                                <span>Edit Account</span>
+                                <i class="fas fa-cog"></i>
+                            </button>
+                        
+                            <button class="btn btn-outline-secondary d-flex justify-content-between align-items-center"
+                                    onclick="window.location.href='{% url 'Home' %}'">
+                                <span>Logout</span>
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
                         </div>
                     </li>
                 </ul>
