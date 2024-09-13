@@ -7,261 +7,244 @@
 {% block extra_head %}
     <!-- Cargar CSS o meta tags específicos de la página aquí -->
     <link href="{% static 'productos/css/producto.css' %}" rel="stylesheet">
-
-    <link rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
     
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+    <link  rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+	
 
     <style>
-
-
-.carousel-product-contenedor {
-    max-width: 1200px;
-    width: 90%;
-    margin: 0 auto;
-    position: relative;
-}
-
-.carousel-product-titulo {
-    border-bottom: 3px solid #f50a0a;
-}
-
-.carousel-product-titulo .carousel-product-shape {
-    background: #f50a0a;
-    padding: 10px 20px;
-    max-width: 200px;
-    position: relative;
-}
-
-.right-skew:before {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: -20px;
-    display: block;
-    width: 50px;
-    background: #f50a0a;
-    transform: skew(20deg);
-}
-
-.carousel-product-titulo .carousel-product-shape h2,
-.carousel-product-titulo .carousel-product-shape i {
-    display: inline-block;
-    margin: 0;
-    color: #fff;
-}
-
-.carousel-product-titulo .carousel-product-shape i {
-    margin-right: 10px;
-    font-size: 20px;
-}
-
-.carousel-product-txt-titulo {
-    position: absolute;
-    right: 110px;
-    top: 15px;
-    font-size: 13px;
-    color: #605f5f;
-    font-weight: 600;
-}
-
-.carousel-product-producto {
-    max-width: 240px;
-    margin-right: 15px;
-}
-
-.carousel-product-producto .carousel-product-contenedor-imagen {
-    min-height: 220px;
-    position: relative;
-}
-
-.carousel-product-producto .carousel-product-contenedor-imagen img {
-    width: 100%;
-    max-height: 180px;
-    object-fit: cover;
-}
-
-.carousel-product-producto .carousel-product-contenedor-imagen .carousel-product-link {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 9;
-    width: 100%;
-    height: 100%;
-}
-
-.carousel-product-producto .carousel-product-contenedor-imagen .carousel-product-img-hover {
-    opacity: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transition: all ease-in-out 0.2s;
-}
-
-.carousel-product-producto:hover .carousel-product-img-hover {
-    opacity: 1;
-}
-
-.carousel-product-producto .carousel-product-datos {
-    border-top: 2px solid #e2e2e2;
-    border-bottom: 2px solid #e2e2e2;
-    padding: 20px;
-}
-
-.carousel-product-producto .carousel-product-datos h3 {
-    margin: 10px 0;
-}
-
-.carousel-product-producto .carousel-product-datos h3 a {
-    text-decoration: none;
-    color: #2b2b2b;
-    font-size: 14px;
-    display: block;
-    text-transform: uppercase;
-}
-
-.carousel-product-producto .carousel-product-datos h3 a:hover {
-    text-decoration: underline;
-}
-
-.carousel-product-producto .carousel-product-datos small a {
-    text-transform: uppercase;
-    font-weight: 600;
-    text-decoration: none;
-    display: block;
-    margin-top: 10px;
-    color: #5a5a5a;
-    font-size: 11px;
-}
-
-.carousel-product-producto .carousel-product-datos small {
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #5a5a5a;
-}
-
-.carousel-product-producto .carousel-product-precios {
-    padding: 20px;
-    display: flex;
-}
-
-.carousel-product-producto .carousel-product-precios div {
-    flex-grow: 1;
-}
-
-.carousel-product-producto .carousel-product-precios div small {
-    display: block;
-    font-size: 15px;
-    margin-bottom: 5px;
-    color: #828282;
-    font-weight: 600;
-}
-
-.carousel-product-producto .carousel-product-precios div.internet span {
-    font-weight: bold;
-    font-size: 23px;
-    color: #ff0808;
-}
-
-.carousel-product-producto .carousel-product-precios div span {
-    font-size: 17px;
-    font-weight: 600;
-}
-
-.carousel-product-producto .carousel-product-btn-carrito {
-    display: block;
-    text-align: center;
-    padding: 15px;
-    background: #f50a0a;
-    width: 80%;
-    margin: 0 auto;
-    border-radius: 100px;
-    color: #fff;
-    text-decoration: none;
-    display: none;
-    transition: all ease-in-out 0.3s;
-}
-
-.carousel-product-producto .carousel-product-btn-carrito:hover {
-    transform: scale(1.05);
-}
-
-.carousel-product-producto:hover .carousel-product-btn-carrito {
-    display: block;
-}
-
-.carousel-product-starrr {
-    display: block;
-}
-
-.carousel-product-starrr a {
-    font-size: 16px;
-    padding: 0 1px;
-    cursor: pointer;
-    color: #FFD119;
-    text-decoration: none;
-}
-
-.carousel-product-slider {
-    margin-top: 20px;
-    overflow: hidden;
-}
+        *:focus {
+            outline: none;
+        }
+        .carousel-producto-contenedor {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            position: relative;
+        }
+        .carousel-producto-titulo {
+            border-bottom: 3px solid #9751ff;
+        }
+        .carousel-producto-titulo .carousel-producto-shape {
+            background: #9751ff;
+            padding: 10px 20px;
+            /* max-width: 400px; */
+            max-width: 300px;
+            position: relative;
+        }
+        .carousel-producto-shape.right-skew:before {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: -20px;
+            display: block;
+            width: 50px;
+            background: #9751ff;
+            /* change background color to same as box */
+            -webkit-transform: skew(-10deg);
+            -ms-transform: skew(-10deg);
+            transform: skew(20deg);
+        }
         
-.slick-prev,
-.slick-next {
-    font-size: 0;
-    position: absolute; /* Cambiar a fixed para que no se muevan respecto al carrusel */
+        .carousel-producto-titulo .carousel-producto-shape h2, .carousel-producto-titulo .carousel-producto-shape i {
+            display: inline-block;
+            margin: 0;
+            color: #fff;
+        }
+        .carousel-producto-titulo .carousel-producto-shape i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .carousel-producto-txt-titulo {
+            position: absolute;
+            right: 110px;
+            top: 15px;
+            font-size: 13px;
+            color: #605f5f;
+            font-weight: 600;
+        }
+        .carousel-producto-item {
+            max-width: 280px;
+            vertical-align: top;
+            background: #fff;
+            padding: 10px 0 20px 0;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+        .carousel-producto-item .carousel-producto-contenedor-imagen {
+            min-height: 220px;
+            position: relative;
+        }
+        .carousel-producto-item .carousel-producto-contenedor-imagen img {
+            width: 100%;
+        }
+        .carousel-producto-item .carousel-producto-contenedor-imagen .carousel-producto-link {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 9;
+            width: 100%;
+            height: 100%;
+        }
+        .carousel-producto-item .carousel-producto-contenedor-imagen .carousel-producto-img-hover {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all ease-in-out 0.2s;
+        }
+        .carousel-producto-item:hover .carousel-producto-img-hover {
+            opacity: 1;
+        }
+        .carousel-producto-item .carousel-producto-datos {
+            border-top: 2px solid #e2e2e2;
+            border-bottom: 2px solid #e2e2e2;
+            padding: 20px;
+        }
+        .carousel-producto-item .carousel-producto-datos h3 {
+            margin: 10px 0;
+        }
+        .carousel-producto-item .carousel-producto-datos h3 a {
+            text-decoration: none;
+            color: #2b2b2b;
+            font-size: 14px;
+            display: block;
+            text-transform: uppercase;
+        }
+        .carousel-producto-item .carousel-producto-datos h3 a:hover {
+            text-decoration: underline;
+        }
+        .carousel-producto-item .carousel-producto-datos small a {
+            text-transform: uppercase;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+            color: #5a5a5a;
+            font-size: 11px;
+        }
+        .carousel-producto-item .carousel-producto-datos small {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #5a5a5a;
+        }
+        .carousel-producto-item .carousel-producto-precios {
+            padding: 20px;
+            display: flex;
+        }
+        .carousel-producto-item .carousel-producto-precios div {
+            flex-grow: 1;
+        }
+        .carousel-producto-item .carousel-producto-precios div small {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: #828282;
+            font-weight: 600;
+        }
+        .carousel-producto-item .carousel-producto-precios div.carousel-producto-internet span {
+            font-weight: bold;
+            font-size: 23px;
+            color: #ff0808;
+        }
+        .carousel-producto-item .carousel-producto-precios div span {
+            font-size: 17px;
+            font-weight: 600;
+        }
+        .carousel-producto-item .carousel-producto-btn-carrito {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            background: #9751ff;
+            width: 80%;
+            margin: 0 auto;
+            border-radius: 100px;
+            color: #fff;
+            text-decoration: none;
+            display: none;
+            transition: all ease-in-out 0.3s;
+        }
+        .carousel-producto-item .carousel-producto-btn-carrito:hover {
+            transform: scale(1.05);
+        }
+        .carousel-producto-item:hover .carousel-producto-btn-carrito {
+            display: block;
+        }
+        .carousel-producto-starrr {
+            display: block;
+        }
+        .carousel-producto-starrr a {
+            font-size: 16px;
+            padding: 0 1px;
+            cursor: pointer;
+            color: #FFD119;
+            text-decoration: none;
+        }
+        .carousel-producto-slider {
+            margin-top: 20px;
+        }
 
-
-    top: 60%; /* Centrar las flechas verticalmente */
-    width: 40px;
-    height: 40px;
-    background-color: #fff; /* Fondo blanco */
-    border: 1px solid black;
-    border-radius: 50%;
-    z-index: 10;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.slick-prev {
-    left: 10px;
-    background-image: url('https://dummyimage.com/20x20/ffffff/474747&text=%3C');
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.slick-next {
-    right: 10px;
-    background-image: url('https://dummyimage.com/20x20/ffffff/474747&text=%3E');
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.slick-prev:hover,
-.slick-next:hover {
-    opacity: 0.8;
-}
+        .slick-prev {
+            font-size: 0;
+            position: absolute;
+            right: 55px;
+            top: -64px;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #e2e2e2;
+            border-radius: 6px;
+            background-image: url(https://dummyimage.com/20x20/ffffff/474747&text=%3C);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .slick-next {
+            font-size: 0;
+            position: absolute;
+            right: 18px;
+            top: -64px;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #e2e2e2;
+            border-radius: 6px;
+            background: url(https://dummyimage.com/20x20/ffffff/474747&text=%3E);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .slick-next:hover, .slick-prev:hover{
+            opacity: 0.8;
+        }
         
-@media screen and (max-width: 600px) {
+        @media screen and (max-width: 650px){
+            .txt-titulo{
+                display: none;
+            }
+            .titulo .shape h2{
+                font-size: 20px;
+            }
+        }
+        @media screen and (max-width: 600px){
+            .slick-next, .slick-prev{
+                display: none !important;
+            }
+            .titulo .shape{
+                padding: 10px 10px;
+                max-width: 160px;
+            }
+            .producto{
+            max-width: 100%;
+            }
+        }
 
-    .carousel-product-titulo .carousel-product-shape {
-        padding: 10px 10px;
-        max-width: 160px;
-    }
-
-    .carousel-product-producto {
-        max-width: 280px;
-        margin-right: 20px;
-        background: #fff;
-    }
-}
         
-</style>
+    </style>
     
 
 {% endblock %}
@@ -415,33 +398,33 @@ aria-hidden="true">
     <script src="{% static 'productos/ventanaEmergente.js' %}"></script>
 
     <!-- Include slick-carousel JS library -->
+    <!-- Include slick-carousel JS library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
+	<!-- Bootstrap JS 
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+	-->
+    
+    
     <script>
         $(document).ready(function(){
             $('.carousel').slick({
-                slidesToShow: 4,
+                infinite: true,
+                slidesToShow: 4,  // Show 3 products at once
                 slidesToScroll: 1,
-                prevArrow: $('.slick-prev'),
-                nextArrow: $('.slick-next'),
+                arrows: true,  // Show next/prev buttons
+                autoplay: true,  // Auto-slide
+                autoplaySpeed: 3000,  // Slide every 3 seconds
                 responsive: [
                     {
-                        breakpoint: 800,
+                        breakpoint: 768,  // For mobile devices
                         settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
+                            slidesToShow: 1  // Show 1 product at once on smaller screens
                         }
                     }
                 ]
             });
-        });   
-    </script>
+        });
+        </script>   
 {% endblock %}
