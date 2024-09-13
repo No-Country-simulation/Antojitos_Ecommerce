@@ -15,8 +15,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-    <!-- fonts links -->
-
     <!-- Fonts - Para mostrar algunos iconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
@@ -28,47 +26,57 @@
     
     <!-- For More CSS Modules -->
     {% block extra_head %}
-    <!-- Cargar CSS o meta tags específicos de la página aquí -->
+        <!-- Cargar CSS o meta tags específicos de la página aquí -->
     {% endblock %}
     
 </head>
 
 <body>
+    <!-- Header -->
     <header>
+
         <div class="container-fluid p-0 my-container-header">
-        <!-- Header -->
+        
             <div class="row mx-0" style="background-color:#DB3B3B;">
-                <!-- Only Carousel home -->
+                <!-- navbar -->
                 <div class="col-12">
-                    <!-- navbar -->
-                    <nav class="navbar navbar-expand-lg w-100" id="navbar">
+                    
+                    <nav class="navbar navbar-expand-lg w-100 fixed-top">
+
+                        <!-- BUTTON EN MODEL RESPONSIVE -->
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                             <span><i class="fa-solid fa-bars" style="color: white;"></i></span>
                         </button>
+
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav my-container-center">
                                 <!-- LOGO EMPRESA -->
-                                <li class="nav-item col-lg-2">
+                                <li class="nav-item col-2">
                                     <a class="navbar-brand" href="{% url 'Home' %}">
                                         <img src="{% static 'ecommerce/img/logo.png' %}" alt="LOGO" width="100%">
                                     </a>
                                 </li>
+
                                 <!-- UBICACION -->
                                 <li class="nav-item ">
                                     <button class="nav-link btn container-ubicacion" type=""> <p>Tu ubicacion</p> <br> <p>Direccion 1234</p></button>
                                 </li>
+                                
                                 <!-- PRODUCTOS -->
                                 <li class="nav-item ">
                                     <a class="nav-link" href="{% url 'Producto' %}">Productos</a>
                                 </li>
+
                                 <!-- CATEGORIAS-->
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                    role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         Categorías
                                     </a>
+
                                     <!-- DROP MENU CATEGORIAS -->
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
                                         style="background-color: #db3b3bc4;">
@@ -136,67 +144,68 @@
 
     <!-- footer -->
     <footer id="footer">
-        <div class="container-fluid"> 
-            <br>
-            <!-- offer - segunda fila -->
+        <div class="container">
             <div class="row">
-                <div class="col-1"></div>
-                <div class="col-10 container-footer">
-                  <div class="flex-container">
-                    <div class="section section-footer">
-                      <h2>Servicio al cliente</h2>
-                      <ul>
-                        <li><a href="">Ayuda</a></li>
-                        <li><a href="">Iniciar sesión</a></li>
-                        <li><a href="">Regístrate</a></li>
-                        <li><a href="">Descuentos y promociones</a></li>
-                      </ul>
+                <div class="col-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="footer-section">
+                            <h2>Servicio al cliente</h2>
+                            <ul>
+                                <li><a href="#">Ayuda</a></li>
+                                <li><a href="#">Iniciar sesión</a></li>
+                                <li><a href="#">Regístrate</a></li>
+                                <li><a href="#">Descuentos y promociones</a></li>
+                            </ul>
+                        </div>
+        
+                        <div class="footer-section">
+                            <h2>Categorías</h2>
+                            <ul>
+                                {% for category in categories_all %}
+                                    <li>
+                                        <a href="#">
+                                            {{ category }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+        
+                        <div class="footer-section">
+                            <h2>Más buscados</h2>
+                            <ul>
+                                <li><a href="#">Categoría 1</a></li>
+                                <li><a href="#">Categoría 2</a></li>
+                                <li><a href="#">Categoría 3</a></li>
+                            </ul>
+                        </div>
+        
+                        <div class="footer-section">
+                            <h2>Sobre nosotros</h2>
+                            <ul>
+                                <li><a href="#">Quiénes somos</a></li>
+                                <li><a href="#">Registra tu restaurante</a></li>
+                                <li><a href="#">Gestiona tu restaurante</a></li>
+                                <li><a href="#">Política de privacidad</a></li>
+                                <li><a href="#">Términos y condiciones</a></li>
+                            </ul>
+                        </div>
                     </div>
-              
-                    <div class="section section-footer">
-                      <h2>Categorías</h2>
-                      <ul>
-                        <li><a href="">Categoría 1</a></li>
-                        <li><a href="">Categoría 2</a></li>
-                        <li><a href="">Categoría 3</a></li>
-                      </ul>
-                    </div>
-              
-                    <div class="section section-footer">
-                      <h2>Más buscados</h2>
-                      <ul>
-                        <li><a href="">Categoría 1</a></li>
-                        <li><a href="">Categoría 2</a></li>
-                        <li><a href="">Categoría 3</a></li>
-                      </ul>
-                    </div>
-              
-                    <div class="section section-footer">
-                      <h2>Sobre nosotros</h2>
-                      <ul>
-                        <li><a href="">Quiénes somos</a></li>
-                        <li><a href="">Registra tu restaurante</a></li>
-                        <li><a href="">Gestiona tu restaurante</a></li>
-                        <li><a href="">Política de privacidad</a></li>
-                        <li><a href="">Términos y condiciones</a></li>
-                      </ul>
-                    </div>
-                  </div>
                 </div>
             </div>
-
-           
         </div>
+
          <!-- FOOTER REDES SOCIALES-->
         <div class="row footer-redes">
             <div class="col-lg-3 col-md-3 col-sm-3 p-0">
                 <h2>Seguinos en redes</h2>
-                <a href=""><i class="fa-brands fa-twitter"></i></a>
-                <a href=""><i class="fa-brands fa-facebook-f"></i></a>
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
             </div>
-            <div class="col-1"></div>
+            <div class="col-1 p-0"></div>
        </div>
+
        <!-- FOOTER DERECHOS DE AUTOR-->
        <div class="author">
             <p>&copy; Copyright <strong>Antojitos</strong>. All Rights Reserved</p>
@@ -212,11 +221,11 @@
     <script src="{% static 'ecommerce/vendor/jquery/jquery-3.7.1.min.js' %}"></script> -->
 
     <!-- Bootstrap Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="{% static 'ecommerce/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
     <!--
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     -->
 
 
@@ -226,8 +235,9 @@
 
      <!-- JavaScript for Widget de registro button -->
     <script src="{% static 'registros/js/widget_registro.js' %}"></script>
-
     
+    
+
     {% block extra_scripts %}
     <!-- Cargas archivos .js propios de cada template/vista
     - Por ahora solo se usa en producto_base.html

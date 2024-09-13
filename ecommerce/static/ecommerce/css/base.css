@@ -1,20 +1,43 @@
 
+body {
+    padding-top: 4%; /* Ajusta este valor según la altura de tu navbar */
+}
 
 
+.my-container-center {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+}
+
+/* navbar */
+
+/* Ajusta el contenido para que no se oculte detrás de la barra fija */
+.content-with-navbar {
+    padding-top: 56px; /* Ajusta según la altura de tu navbar (56px es común para una navbar de Bootstrap) */
+}
+
+/* Asegura que la barra de navegación esté fija en la parte superior */
 .navbar {
     padding: 0;
     margin: 0;
-    position: relative;
+    position: fixed; /* Cambia a 'fixed' para que esté realmente fija */
+    top: 0; /* Asegura que esté en la parte superior de la pantalla */
+    left: 0;
+    right: 0;
+    z-index: 1030; /* Asegura que esté por encima de otros elementos */
+    
     width: 100%; /* Asegura que la barra ocupe todo el ancho */
     font-size: 16px;
-    font-family: "Poppins", system-ui;
+    font-family: "Montserrat", system-ui;
+    background-color: #DB3B3B; /* Asegura el color de fondo */
 }
 
 .navbar-nav {
     padding-left: 0;
     margin: 0; /* Elimina margen negativo */
     width: 100%; /* Asegura que la lista ocupe todo el ancho del contenedor */
-}   
+}
 
 .navbar-nav .nav-item {
     display: flex;
@@ -23,10 +46,19 @@
     margin: 0px;
 }
 
-.my-container-center {
-    display: flex;
-    align-items: center; /* Alinea verticalmente */
-    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+/* Estilos para los botones */
+.navbar .nav-link {
+    color: white;
+    height: 100%;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 10px; /* Bordes de los botones de header */
+    transition: all .5s ease-in-out;
+}
+
+.navbar .nav-link:hover {
+    background: white;
+    color: #fa4d3a;
 }
 
 
@@ -300,27 +332,15 @@
 /* FOOTER */
 footer {
     background-color: #DB3B3B;
-    padding-bottom:2px;
+    padding-bottom:2%;
+    padding-top: 2%;
 }
-/* LISTAS FOOTER*/
-.flex-container {
-    display: flex;          /* Utiliza flexbox para alinear los títulos y listas en fila */
-    gap: 8%;              /* Espacio entre cada sección */
-    flex-wrap: wrap;        /* Permite que las secciones se muevan a la siguiente línea si el espacio es insuficiente */
-  }
-.section-footer{
-    display: flex;
-    flex-direction: column; /* Apila los elementos (h2 y ul) verticalmente */
-    align-items: flex-start; /* Alinea los elementos al inicio horizontalmente */
-  }
-    .section-footer ul li a {
-        color:black;
-        text-decoration: none; /* Elimina el subrayado de los enlaces */
-        cursor: pointer;
-    }
-    .section-footer ul li a:hover {
-        color:#FFFFFF;
-    }
+
+a {
+    color: inherit; /* Esto hace que el color del enlace herede el color del texto del elemento contenedor */
+    text-decoration: none; /* Elimina el subrayado */
+}
+
 /* FOOOTER: ICONOS DE REDES SOCIALES*/
 .footer-redes{
     background-color: #fa4d3a;

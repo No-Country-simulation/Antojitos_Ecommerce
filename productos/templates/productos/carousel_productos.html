@@ -1,0 +1,67 @@
+
+
+
+<!-- CAROUSEL -->
+<div class="carousel-product-contenedor">
+
+    <div class="carousel-product-titulo">
+        <div class="carousel-product-shape right-skew">
+            <i class="fas fa-laptop"></i>
+            <h2> Productos </h2>
+        </div>
+        <span class="carousel-product-txt-titulo">Mostrando productos</span>
+    </div>
+
+    <!-- Agregar flechas de navegación aquí -->
+    <div class="slick-prev"></div>
+    <div class="slick-next"></div>
+
+
+    <div class="carousel-product-slider carousel">
+        {% for producto in productos %}
+            <div class="carousel-product-producto item">
+
+                <!-- IMAGEN DEL PRODUCTO -->
+                <div class="carousel-product-contenedor-imagen">
+                    <a href="#" class="carousel-product-link">
+                        <img src="{{ producto.image_url }}" alt="{{ producto.name }}">
+                        <img src="{{ producto.image_url }}" class="carousel-product-img-hover">
+                    </a>
+                </div>
+                
+                <!-- CUERPO TEXTO CAROUSEL -->
+                <div class="carousel-product-datos">
+                    <div class="carousel-product-starrr">
+                        <span>4</span>
+                        <span class="carousel-product-stars">★</span>
+                    </div>
+                    <small><a href="#">{{ producto.marca }}</a></small>
+                    <h3><a href="#">{{ producto.name }}</a></h3>
+                    <small>SKU: {{ producto.description }}</small>
+                </div>
+                
+                <!-- PRECIOS CAROUSEL -->
+                <div class="carousel-product-precios">
+                    <div class="carousel-product-internet">
+                        <small> Oferta  </small>
+                        <span>$
+                            {{ producto.price }}
+                        </span>
+                    </div>
+
+                    <div>
+                        <small>Precio Normal</small>
+                        <span class="carousel-product-precio-general">
+                            ${{ producto.price }}
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Agregar Carrito -->
+                <a href="#" class="carousel-product-btn-carrito">
+                    <i class="fas fa-shopping-basket"></i> Agregar al carrito
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -86,11 +86,7 @@
     margin-left: 5px;
 }
 
-h3 {
-    font-size: 18px;
-    margin: 0;
-    word-wrap: break-word;
-}
+
 
 @media (max-width: 768px) {
     .producto-container {
@@ -116,13 +112,13 @@ h3 {
 }
     
 /*estilos barra de búsqueda*/
-.search-container {
+.product-search-container {
     display: flex; /* Utiliza Flexbox para alinear el input y el botón */
     justify-content: center; /* Centra horizontalmente el contenedor */
     margin-top: 50px; /* Espacio superior para separar del borde de la página */
 }
 
-.search-input {
+.product-search-input {
     width: 300px; /* Ancho del campo de entrada */
     padding: 10px; /* Relleno interior para hacer el campo más alto */
     border: 2px solid #d32f2f; /* Borde de color rojo oscuro */
@@ -130,7 +126,7 @@ h3 {
     font-size: 16px; /* Tamaño de fuente del texto */
 }
 
-.search-button {
+.product-search-button {
     padding: 10px 20px; /* Relleno interior para el botón */
     background-color: #d32f2f; /* Color de fondo del botón */
     color: white; /* Color del texto del botón */
@@ -141,7 +137,7 @@ h3 {
     transition: background-color 0.3s; /* Transición suave al pasar el ratón sobre el botón */
 }
 
-.search-button:hover {
+.product-search-button:hover {
     background-color: #b71c1c; /* Cambia el color de fondo al pasar el ratón */
 }
 
