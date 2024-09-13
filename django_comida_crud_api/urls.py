@@ -31,4 +31,6 @@ urlpatterns = [
     # Esto es de registros
     path('', include("registros.urls")),
     
+    # Esto es de registros
+    path('', include("carrito.urls")),
 ]

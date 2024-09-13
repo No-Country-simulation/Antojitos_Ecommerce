@@ -1,0 +1,169 @@
+
+
+/* ======================================================================================
+            Ver carrito stuff  todo
+====================================================================================== */
+.card-cart-view {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 5px;
+}
+
+.border-bottom {
+    border-bottom: 100px solid #ddd; /* Ajusta el grosor y color según tu diseño */
+}
+
+/* Image Styles */
+.img-sm {
+    width: 110px;
+    height: 110px;
+}
+
+.img-sm:hover {
+    transform: scale(1.2);
+}
+
+.text-right {
+    display: flex;
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+    gap: 4px; /* Espacio opcional entre los botones */
+}
+
+.btn-cart-view {
+    color: #ffffff;
+    background-color: #C4C4C4;
+    border: none; /* Elimina el borde */
+    border-radius: 50%; /* Hace que el botón sea circular */
+    font-size: 15px;
+    width: 25px; /* Ajusta el tamaño del botón */
+    height: 25px; /* Ajusta el tamaño del botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease; /* Transición suave para el efecto de aumento */
+}
+
+.btn-cart-view:hover {
+    color: #ffffff;
+    background-color: #DC0000;
+    transform: scale(1.2); /* Aumenta el tamaño del botón en un 10% al pasar el mouse por encima */
+}
+
+.container-coupon {
+    width: 70%; /* Ancho del contenedor del formulario */
+    display: flex;
+    align-items: center;
+}
+
+.btn-coupon-apply {
+    color: #ffffff;
+    background-color: #780178;
+    border: none; /* Elimina el borde */
+    border-radius: 5px; /* Bordes redondeados */
+    width: 25%;
+    font-size: 14px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-coupon-apply:hover {
+    background-color: green; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+}
+
+.quantity-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    width: fit-content;
+    background-color: transparent;
+}
+
+.btn-quantity {
+    background-color: transparent;
+    color: gray;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px; /* Tamaño de fuente */
+}
+
+.btn-quantity:hover {
+    color: black;
+}
+
+.quantity-input {
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    width: 50px;
+    height: 30px;
+    margin: 0 5px;
+    background-color: transparent;
+}
+
+.card-total-cart-view {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 15px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-divider {
+    border: none;
+    height: 2px;
+    background-color: #ddd;
+    margin: 5px 0; /* Espacio alrededor de la línea */
+}
+
+.btn-main {
+    border-radius: 2px;
+    text-transform: capitalize;
+    font-size: 15px;
+    padding: 10px 19px;
+    cursor: pointer;
+    color: #fff;
+    width: 100%;
+    background-color: #780178;
+    border: none;
+}
+
+.btn-main:hover {
+    background-color: green;
+}
+
+.product-title-cart {
+    color: black; /* Establece el color inicial como negro */
+    transition: color 0.3s ease; /* Añade una transición suave para el cambio de color */
+}
+
+.product-title-cart:hover {
+    color: #780178; /* Cambia el color a violeta al pasar el mouse */
+    text-decoration: none; /* Quita el subrayado */
+}

@@ -1,0 +1,189 @@
+
+
+{% extends "ecommerce/base.html" %}
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- For More CSS Modules -->
+{% block extra_head %}
+    <!-- Cargar CSS o meta tags específicos de la página aquí -->
+    <link href="{% static 'carrito/css/ver_carrito.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block content %}
+
+    <div class="container-fluid p-0 mb-5">
+
+        <div class="row">
+
+            <div class="col-lg-1"></div>
+
+            <div class="col-lg-10">
+                
+
+                <div class="row mb-2">
+                    <h1 class="text-muted">Mi Carrito</h1>
+                </div>
+            </div>
+
+            <div class="col-lg-1"></div>
+        </div>
+
+        <!-- VISTAS CARRITO ITEMSS -->
+        <div class="row">
+            <div class="col-lg-1"></div>
+
+            <div class="col-lg-7">
+
+                <div class="row">
+                    <div class="card-cart-view">
+                        <table class="table table-borderless table-shopping-cart">
+                            <thead class="text-muted">
+                                <tr class="small text-uppercase">
+                                    <th scope="col" width="15%" class="border-bottom"></th>
+                                    <th scope="col" class="border-bottom">Product</th>
+                                    <th scope="col" width="13%" class="border-bottom">Price</th>
+                                    <th scope="col" width="13%" class="border-bottom">Quantity</th>
+                                    <th scope="col" width="13%" class="border-bottom">SubTotal</th>
+                                    <th scope="col" width="8%" class="border-bottom"></th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="cart-view-contenido">
+
+                                {% for key, value in carrito.items %}
+                                    {% if forloop.last %}
+                                    <tr class="cart-item-view">
+                                    {% else %}
+                                    <tr class="cart-item-view border-bottom">
+                                    {% endif %}
+
+                                        <!-- Imagen Producto  { % url '#' value.id % } -->
+                                        <td>
+                                            <a href="#">
+                                                <img src="{{ value.imagen }}" class="img-sm">
+                                            </a>
+                                        </td>
+
+                                        <!-- Nombre Producto -->
+                                        <td>
+                                            <a href="#" class="product-title-cart"><strong>
+                                                {{ value.nombre }}
+                                            </strong></a>
+                                        </td>
+
+                                        <!-- Price col-->
+                                        <td>
+                                            <div><span>${{value.precio|floatformat:0|intcomma}}</span> </div>
+                                            <div><span class="text-muted">      </span> </div>
+                                        </td>
+
+                                        <!-- Increment Decrement col-->
+                                        <td>
+                                            <div class="quantity-container">
+                                                <button class="btn-quantity" onclick="decrement(this)"
+                                                id="btn-cart-less-{{value.id}}">
+                                                    -
+                                                </button>
+
+                                                <input type="text" class="form-control quantity-input"
+                                                    id="quant-cart-{{value.id}}" value="{{value.cantidad}}" min="1" readonly>
+
+                                                <button class="btn-quantity" onclick="increment(this)"
+                                                id="btn-cart-plus-{{value.id}}">
+                                                    +
+                                                </button>
+                                            </div>
+                                        </td>
+
+                                        <!-- Subtotal col-->
+                                        <td>
+                                            <h5 id="item-price-{{value.id}}" data-precio="{{value.precio}}"
+                                                data-cantidad="{{value.cantidad}}"></h5>
+                                        </td>
+
+                                        <!-- Buttons col-->
+                                        <td class="text-right">
+                                            <button class="btn-cart-view" id="btn-like-cart-{{value.id}}">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                            <button class="btn-cart-view" id="btn-delete-cart-{{value.id}}">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+
+
+                        </table>
+                    </div>
+
+                    <!-- Container cupon stuff -->
+                    <div class="container-coupon mt-4">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name=""
+                                    placeholder="Have a coupon?">
+
+                                <button class="input-group-append btn-coupon-apply" type="submit">
+                                    Apply
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="col-lg-3">
+                <div class="card-total-cart-view">
+
+                    <div class="total-row">
+                        <h5 class="mt-2">Total:</h5>
+                        <h5 class="mt-2" id="total-cart-view">
+                            ${{ carrito_total|floatformat:0|intcomma }}
+                        </h5>
+                    </div>
+
+                    <div class="total-row">
+                        <h5 class="mt-2 text-muted">Discount:</h5>
+                        <h5 class="mt-2 text-muted">- $0.00</h5>
+                    </div>
+
+                    <hr class="total-divider"> <!-- Línea divisoria -->
+
+                    <div class="total-row">
+                        <h5 class="mt-2">Total:</h5>
+                        <h5 class="mt-2" id="total-cart-view2">
+                            ${{ carrito_total|floatformat:0|intcomma }}
+                        </h5>
+                    </div>
+
+                    <button class="btn-main mt-5">
+                        Make Purchase
+                    </button>
+
+                </div>
+            </div>
+
+            <div class="col-lg-1"> </div>
+        </div>
+    </div>
+
+
+    <!-- JavaScript for Product Page -->
+    {% block extra_scripts %}
+        <script src="{% static 'carrito/js/ver_carrito.js' %}"></script>
+    {% endblock %}
+
+
+{% endblock %}

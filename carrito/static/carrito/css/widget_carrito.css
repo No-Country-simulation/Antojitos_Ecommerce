@@ -1,0 +1,150 @@
+
+
+/* ======================================================================================
+            NECESARIO PARA CREAR LA VISTA SOMBREADA DEL WIDGET DEL CARRITO todo
+====================================================================================== */
+.cart-container {
+    position: fixed;  /* def fixed; */
+    right: 0;
+    top: 0;
+    width: 35%; /* Ajusta el ancho según sea necesario */
+    height: 100%;
+    background-color: white; /* Fondo blanco para el carrito */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1050; /* Más alto que el overlay */
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden; /* Asegura que los elementos no se salgan del contenedor */
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.cart-container.show {
+    transform: translateX(0);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1040; /* Justo debajo del carrito */
+    pointer-events: none; /* Evita que interfiera cuando no está visible */
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: all; /* Permite la interacción cuando está visible */
+}
+
+.img-fluid {
+    width: 42%; /* 150px; auto;  */
+    height: 135px;
+    margin-right: 15px;
+    object-fit: contain; /* contain Usa cover para cubrir el contenedor, ajusta según sea necesario */
+}
+
+.cart-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.cart-item img {
+    border-radius: 8px;
+}
+
+.cart-content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    max-height: 100%;  /* Ajusta según el tamaño deseado del contenedor */
+    flex: 1; /* Permite que este contenedor crezca y se reduzca según el tamaño disponible */
+    overflow-y: auto;  /* Permite el desplazamiento vertical */
+}
+
+.cart-header {
+    background-color: #f8f9fa;
+    border-bottom: 5px solid #333333;
+    padding: 10px;
+    position: relative;
+}
+
+.cart-footer {
+    padding: 10px;
+    bottom: 0;
+    background-color: #f8f9fa;
+    border-top: 5px solid #333333;
+}
+
+#close-cart {
+    top: 28%; /* Espacio desde el borde superior del contenedor */
+    right: 4%; /* Espacio desde el borde derecho del contenedor */
+}
+
+.remove-btn {
+
+    position: absolute; /* Posiciona el botón en relación a su contenedor más cercano que tenga una posición distinta a 'static' */
+    top: 1px; /* Espacio desde el borde superior del contenedor */
+    right: 1px; /* Espacio desde el borde derecho del contenedor */
+    border: none; /* Elimina el borde del botón */
+
+    font-size: 1.2rem; /* Tamaño de la fuente del botón (1.5 veces el tamaño de la fuente raíz) */
+    width: 1.5rem; /* Ancho del botón */
+    height: 1.5rem; /* Altura del botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #333333; /* Gris oscuro para el color de la cruz */
+    background-color: transparent; /* Hace que el fondo del botón sea transparente */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón, indicando que es clickeable */
+
+    padding: 0; /* Elimina el padding para que el botón sea más pequeño */
+    box-shadow: 0 0 0 1px #333333;
+}
+
+.container-btn-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Espacio entre cada botón */
+}
+
+.btn-wdt-cart {
+    width: 45%; /* Ocupa el 45% del ancho */
+    padding: 5px; /* Espaciado interno */
+    font-size: 18px; /* Tamaño del texto */
+    color: #fff; /* Color del texto blanco */
+    border: none; /* Sin bordes */
+    cursor: pointer; /* Cambia el cursor a puntero en hover */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.btn-ver-carrito {
+    background-color: #a9a9a9; /* Fondo gris para "Ver Carrito" */
+}
+
+.btn-ver-carrito:hover {
+    background-color: #8a8a8a; /* Fondo gris oscuro al pasar el mouse */
+}
+
+.btn-finalizar {
+    background-color: #8e44ad; /* Fondo violeta para "Finalizar" */
+}
+
+.btn-finalizar:hover {
+    background-color: #27ae60; /* Fondo verde al pasar el mouse */
+}

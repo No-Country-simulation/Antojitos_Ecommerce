@@ -324,9 +324,13 @@
                                         </div>
                                     </div>
                                     <p style="margin: 0;">No Country 14576</p>
+                                    
+                                    
 
-                                    <button class="openboton" onclick="window.location.href='#';">
-                                        AGREGAR AL CARRITO
+                                    <button class="openboton" onclick="addToCart({{producto.id}});">
+                                        
+                                        <span>Agregar
+                                        <i class="fa-solid fa-cart-shopping"></i>
                                     </button>
 
                                 </figcaption>
@@ -387,26 +391,21 @@ aria-hidden="true">
     
     
 
-<!-- Contenido específico de la página -->
+<!-- FIN Contenido específico de la página -->
 {% endblock %}
 
 
 {% block extra_scripts %}
-<!-- 
-    Cargas archivos .js propios de cada template/vista
--->
-    <script src="{% static 'productos/ventanaEmergente.js' %}"></script>
+<!--  Cargas archivos .js propios de cada template/vista -->
 
-    <!-- Include slick-carousel JS library -->
+    <script src="{% static 'productos/js/ventanaEmergente.js' %}"></script>
+    <script src="{% static 'productos/js/add_btn.js' %}"></script>
+
     <!-- Include slick-carousel JS library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
-	<!-- Bootstrap JS 
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-	-->
-    
-    
+    <!-- Esto es del carousel de productos -->
     <script>
         $(document).ready(function(){
             $('.carousel').slick({
@@ -426,5 +425,6 @@ aria-hidden="true">
                 ]
             });
         });
-        </script>   
+    </script>   
+
 {% endblock %}

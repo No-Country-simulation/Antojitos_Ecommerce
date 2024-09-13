@@ -23,6 +23,9 @@
 
     <!-- Styles propios de cada template -->
     <link href="{% static 'ecommerce/css/base.css' %}" rel="stylesheet">
+
+    <!-- Styles para el carrito -->
+    <link href="{% static 'carrito/css/widget_carrito.css' %}" rel="stylesheet">
     
     <!-- For More CSS Modules -->
     {% block extra_head %}
@@ -103,13 +106,17 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <!-- <button class="nav-link btn">
-                                        <i class="fa-solid fa-user"></i>
-                                   </button> -->
+                                    <button class="btn-header nav-move-left" id="cart-button">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <!-- Badge para mostrar el número de productos -->
+                                        <span class="badge" id="badge-cart-button">{{ total_productos }}</span>
+                                    </button>
 
-                                   <button class="nav-link btn">
-                                        <i class="fa-solid fa-cart-shopping"></i>
-                                   </button>
+                                    {% include "carrito/widget_carrito.html" %}
+
+                                    <!-- <button class="nav-link btn">
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                    </button> -->
                                 </li>
                             </ul>
                         </div>
@@ -117,6 +124,7 @@
                 </div>
                 <!-- navbar -->
             </div>
+
 
             <!-- Tercera fila * -->
             <div class="row">
@@ -232,6 +240,9 @@
     <!-- ==================================================================
      #                  Mis Scripts personalizados
      ===================================================================== -->
+
+    <!-- JavaScript for Carrito Widget -->
+    <script src="{% static 'carrito/js/widget_carrito.js' %}"></script>
 
      <!-- JavaScript for Widget de registro button -->
     <script src="{% static 'registros/js/widget_registro.js' %}"></script>

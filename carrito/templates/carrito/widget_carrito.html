@@ -1,0 +1,58 @@
+
+
+{% load humanize %}
+
+<div class="cart-container" id="cart-container">
+
+    <!-- Encabezado del carrito -->
+    <div class="cart-header">
+        <button class="btn btn-danger btn-sm remove-btn" id="close-cart">✖</button>
+        <h4 class="text-left"><strong>&nbsp;Mi Carrito</strong></h4>
+    </div>
+
+    <!-- Contenido del carrito -->
+    <div class="cart-content" id="carrito-contenido">
+
+            {% for key, value in carrito.items %}
+                <div class="cart-item position-relative mb-3 d-flex align-items-center">
+                    <img src="{{value.imagen}}" class="img-fluid" alt="Product Image">
+                    <div>
+                        <h6>{{ value.nombre }}</h6>
+                        <p>{{ value.cantidad }} × ${{ value.precio|floatformat:0|intcomma }}</p>
+                        <!-- Contador y botón de eliminar -->
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-secondary btn-sm" id="decrement-quantity-{{value.id}}">-</button>
+
+                            <input type="number" class="form-control form-control-sm mx-2"
+                                    id="quantity-{{value.id}}" value="{{value.cantidad}}" min="1" readonly>
+
+                            <button class="btn btn-secondary btn-sm" id="increment-quantity-{{value.id}}">+</button>
+                        </div>
+                    </div>
+                    <!-- Botón de eliminar en la esquina superior derecha -->
+                    <button class="btn btn-danger btn-sm remove-btn" id="remove-item-{{value.id}}">✖</button>
+                </div>
+            {% endfor %}
+
+    </div>
+
+    <!-- Pie del carrito w-50 -->
+    <div class="cart-footer text-center">
+
+        <div class="total-row mt-1">
+            <h4>Total:</h4>
+            <h4 id="carrito-total">${{ carrito_total|floatformat:0|intcomma }}</h4>
+        </div>
+
+        <div class="d-flex mt-3 container-btn-cart">
+            <button class="btn-wdt-cart btn-ver-carrito" onclick="window.location.href={% url 'Ver_Carrito' %};">
+                Ver Carrito
+            </button>
+            <button class="btn-wdt-cart btn-finalizar" onclick="window.location.href='#';">
+                Finalizar
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>

@@ -45,7 +45,11 @@ INSTALLED_APPS = [
     # MY_APPS
     'ecommerce',    # Ecommerce APP
     'productos',    # Productos APP
-    'registros',  # Proveedores APP
+    'registros',    # Proveedores APP
+    
+    # esta es solo para aplicar 1,000 en los precios de widget_carrito
+    'django.contrib.humanize',
+    'carrito',      # Carrito APP
 ]
 
 MIDDLEWARE = [
@@ -75,6 +79,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 
                 # Context Processors desde las apps
+                'carrito.context_processors.carrito_total',
                 'productos.context_processors.get_categories_dropmenu',
             ],
         },
