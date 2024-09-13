@@ -1,10 +1,10 @@
-
 /*
                 CAROUSEL STUFFF     min-height: 350px; todo
 */
 /* Establece que el contenedor padre ocupe el 100% de la altura disponible */
 .carousel-inner {
-    height: calc(100vh - 170px); /* Resta la altura de otros elementos del header */
+    height: calc(100vh - 170px);
+    /* Resta la altura de otros elementos del header */
     width: 100%;
     background-color: #a9a9a926;
 }
@@ -14,8 +14,10 @@
     height: 100%;
     width: 100%;
     background-size: cover;
-    background-position: left center !important; /* Asegura que esté alineado a la derecha */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: left center !important;
+    /* Asegura que esté alineado a la derecha */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -29,58 +31,71 @@
 .carousel-caption {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra el texto verticalmente */
-    align-items: flex-start; /* Alinea el texto a la izquierda */
-    width: 20%; /* Ocupa el 50% del ancho del contenedor */
-    padding: 0; /* Agrega un poco de relleno para separación */
+    justify-content: center;
+    /* Centra el texto verticalmente */
+    align-items: flex-start;
+    /* Alinea el texto a la izquierda */
+    width: 20%;
+    /* Ocupa el 50% del ancho del contenedor */
+    padding: 0;
+    /* Agrega un poco de relleno para separación */
 
-    top: 10%; /* Mantiene el ajuste de la posición vertical */
-    left: 10%; /* Ajusta la distancia desde el lado derecho */
+    top: 10%;
+    /* Mantiene el ajuste de la posición vertical */
+    left: 10%;
+    /* Ajusta la distancia desde el lado derecho */
     /* right: auto; /* Asegura que la posición izquierda no interfiera */
     /* transform: none; /* Elimina cualquier transformación previa */
     /* text-align: left; /* Opcional: Alinea el texto hacia la derecha */
-    
-   /* width: 50%; /* Ocupa el 50% del ancho del contenedor */
+
+    /* width: 50%; /* Ocupa el 50% del ancho del contenedor */
 }
 
 .carousel-caption h3 {
     font-size: 2.5rem;
     font-weight: bold;
-    text-align: center; /* Opcional: Alinea el texto hacia la derecha */
+    text-align: center;
+    /* Opcional: Alinea el texto hacia la derecha */
     color: black;
-    white-space: normal; /* Permite que el texto se envuelva en líneas múltiples */
+    white-space: normal;
+    /* Permite que el texto se envuelva en líneas múltiples */
 }
 
 .carousel-caption p {
     font-size: 1.4rem;
     text-align: center;
     color: black;
-    white-space: normal; /* Permite que el texto se envuelva en líneas múltiples */
+    white-space: normal;
+    /* Permite que el texto se envuelva en líneas múltiples */
 }
 
 
 /* banner */
-.banner{
+.banner {
     width: 100%;
     height: 50vh;
     margin-top: 50px;
-    
+
 }
-.banner .content{
+
+.banner .content {
     text-align: center;
     padding-top: 100px;
 }
-.banner .content h1{
+
+.banner .content h1 {
     color: white;
     text-shadow: 1px 1px 1px black;
     letter-spacing: 3px;
 }
-.banner .content p{
+
+.banner .content p {
     color: white;
     text-shadow: 1px 1px 1px black;
     letter-spacing: 3px;
 }
-#bannerbtn button{
+
+#bannerbtn button {
     width: 150px;
     height: 38px;
     background: transparent;
@@ -89,24 +104,28 @@
     transition: 0.5s ease;
     cursor: pointer;
 }
-#bannerbtn button:hover{
+
+#bannerbtn button:hover {
     background-color: #1c1c50;
     border: none;
 }
 
 /*  ESTILOS DE SECTION RESTAURANTES Y COMIDAS */
 
-  main {
+main {
     width: 100%;
     height: 100%;
-  }
-  .section-resto {
+}
+
+.section-resto {
     margin: 20px;
-  }
-  .section-resto h2 {
-text-align: center;
-  }
-  .card {
+}
+
+.section-resto h2 {
+    text-align: center;
+}
+
+.card {
     width: 350px;
     border-radius: 15px;
     overflow: hidden;
@@ -114,194 +133,215 @@ text-align: center;
     background-color: #fff;
     position: relative;
     margin: 20px;
-  }
-  .card img {
+}
+
+.card img {
     width: 350px;
     height: 150px;
-  }
-  .card .content {
+}
+
+.card .content {
     padding: 20px;
-  }
-  .card .content h2 {
+}
+
+.card .content h2 {
     margin: 0;
     font-size: 20px;
     font-weight: bold;
-  }
-  .card .content p {
+}
+
+.card .content p {
     margin: 10px 0 0;
     color: #555;
-  }
-  /*== CONTENEDOR DE ICONO FAVORITOS ==*/
-  .heart-container {
+}
+
+/*== CONTENEDOR DE ICONO FAVORITOS ==*/
+.heart-container {
     position: absolute;
     bottom: 15px;
     right: 15px;
-  }
-  
-  /* Oculta el checkbox */
-  .heart-checkbox {
+}
+
+/* Oculta el checkbox */
+.heart-checkbox {
     display: none;
-  }
-  
-  /* Estilo del corazón (sin marcar) */
-  .heart-label {
+}
+
+/* Estilo del corazón (sin marcar) */
+.heart-label {
     font-size: 25px;
     color: black;
     cursor: pointer;
     transition: color 0.3s ease;
-  }
-  
-  /* Estilo del corazón cuando el checkbox está marcado */
-  .heart-checkbox:checked + .heart-label {
-    color: #ff4c4c;
-  }
-  
-  /*======CONTENEDOR COMIDA =====*/
-  .section-comida{
-      display: flex;
-      height: 400px;
-      background-color: #e0e0e0;
-      width: 100%;
-  }
+}
 
-  /*Contenedor texto*/
-  .content-left-animation{
-      flex: 1;
-      align-items: center;
-      padding: 50px;
-      text-align: center;
-    }
-  
-    /*===ANIMACIÓN TARJETAS==*/
-  .animacion-tarjetas{
-      flex: 1;
-     }
-  .tarjetas {
+/* Estilo del corazón cuando el checkbox está marcado */
+.heart-checkbox:checked+.heart-label {
+    color: #ff4c4c;
+}
+
+/*======CONTENEDOR COMIDA =====*/
+.section-comida {
+    display: flex;
+    height: 400px;
+    background-color: #e0e0e0;
+    width: 100%;
+}
+
+/*Contenedor texto*/
+.content-left-animation {
+    flex: 1;
+    align-items: center;
+    padding: 50px;
+    text-align: center;
+}
+
+/*===ANIMACIÓN TARJETAS==*/
+.animacion-tarjetas {
+    flex: 1;
+}
+
+.tarjetas {
     width: 190px;
     margin-left: 50%;
     margin-top: 20px;
     perspective: 800px;
     transform: translate(-50%, -50%);
-  }
-  .tarjetas__contenido {
+}
+
+.tarjetas__contenido {
     position: absolute;
     width: 100%;
-    height: 100%;
     transform-style: preserve-3d;
     transform: translateZ(-182px) rotateY(0);
     animation: ruleta 10s infinite cubic-bezier(1, 0.015, 0.295, 1.225) forwards;
-  }
-   
-  .tarjetas__elemento {
+}
+
+.tarjetas__elemento {
     position: absolute;
     top: 0;
     left: 0;
     width: 190px;
-    height: 210px;
-  }
-  .tarjetas__elemento:nth-child(1) {
-        transform: rotateY(0) translateZ(182px);
-    }
-  .tarjetas__elemento:nth-child(2) {
-        transform: rotateY(120deg) translateZ(182px);
-  }
-  .tarjetas__elemento:nth-child(3) {
-        transform: rotateY(240deg) translateZ(182px);
-  }
-   
-  @keyframes ruleta {
-    0%,  17.5% {
+    height: 200px;
+}
+
+.tarjetas__elemento:nth-child(1) {
+    transform: rotateY(0) translateZ(182px);
+}
+
+.tarjetas__elemento:nth-child(2) {
+    transform: rotateY(120deg) translateZ(182px);
+}
+
+.tarjetas__elemento:nth-child(3) {
+    transform: rotateY(240deg) translateZ(182px);
+}
+
+@keyframes ruleta {
+
+    0%,
+    17.5% {
         transform: translateZ(-182px) rotateY(0);
     }
-    27.5%, 45% {
+
+    27.5%,
+    45% {
         transform: translateZ(-182px) rotateY(-120deg);
     }
-    55%, 72.5% {
+
+    55%,
+    72.5% {
         transform: translateZ(-182px) rotateY(-240deg);
     }
-    82.5%, 100% {
+
+    82.5%,
+    100% {
         transform: translateZ(-182px) rotateY(-360deg);
     }
-  }
-  
-  
-  /* Estilos para la ventana de empanadas */
-  .product-card {
-      position: fixed; /* Mantener en posición fija */
-      left: 0;
-      top: 0;
-      width: 100%; /* Ancho completo */
-      height: 100%; /* Alto completo */
-      justify-content: center;
-      align-items: center;
-  }
-  
-  /* Contenido de la tarjeta producto*/
-  .product-content {
-      background-color: #fff;
-      padding: 25px;
-      border-radius: 8px;
-      text-align: center;
-      position: relative;
-  }
-  
-  /* Estilos de la imagen de la tarjeta */
-  .product-image {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-  }
-  /* PARTE SUPERIOR OFERTA DE LA CARTA */
-  .badge {
-      position: absolute;
-      left: 0px;
-      top: 10px;
-      text-transform: uppercase;
-      font-size: 13px;
-      font-weight: 700;
-      background: red;
-      color: #fff;
-      padding: 3px 10px;
-  }
-  .precio-real {
-      text-decoration:line-through;
-      margin-left: 5px;
-      font-size: 15px;
-  }
-  
-  /* Duracion de animacion de texto*/
-  
-  .animated {
+}
+
+
+/* Estilos para la ventana de empanadas */
+.product-card {
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%;    /* Alto completo */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenido de la tarjeta producto*/
+.product-content {
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    padding: 25px;
+}
+.product-content h2{
+    font-size: 25px;
+}
+/* Estilos de la imagen de la tarjeta */
+.product-image {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* PARTE SUPERIOR OFERTA DE LA CARTA */
+.badge {
+    width: 70px;
+    border-radius: 0;
+    left: 0px;
+    top: 15px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    background: red;
+    color: #fff;
+
+}
+
+.precio-real {
+    text-decoration: line-through;
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+/* Duracion de animacion de texto*/
+
+.animated {
     animation-duration: 1.5s;
-  }
-  
-  @keyframes fadeInRight {
+}
+
+@keyframes fadeInRight {
     from {
-      opacity: 0;
-      transform: translate3d(100px, 0, 0);
+        opacity: 0;
+        transform: translate3d(100px, 0, 0);
     }
-  
+
     to {
-      opacity: 1;
-      transform: none;
+        opacity: 1;
+        transform: none;
     }
-  }
-  
-  @keyframes fadeInUp {
+}
+
+@keyframes fadeInUp {
     from {
-      opacity: 0;
-      transform: translate3d(0px, 100px, 0);
+        opacity: 0;
+        transform: translate3d(0px, 100px, 0);
     }
-  
+
     to {
-      opacity: 1;
-      transform: none;
+        opacity: 1;
+        transform: none;
     }
-  }
-  
-  .fadeInRight {
+}
+
+.fadeInRight {
     animation-name: fadeInRight;
-  }
-  .fadeInUp {
+}
+
+.fadeInUp {
     animation-name: fadeInUp;
-  }
+}
