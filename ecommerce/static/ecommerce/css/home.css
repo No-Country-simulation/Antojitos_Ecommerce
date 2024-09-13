@@ -53,7 +53,7 @@
 
 .carousel-caption p {
     font-size: 1.4rem;
-    text-align: center; /* Opcional: Alinea el texto hacia la derecha */
+    text-align: center;
     color: black;
     white-space: normal; /* Permite que el texto se envuelva en líneas múltiples */
 }
@@ -93,284 +93,215 @@
     background-color: #1c1c50;
     border: none;
 }
-/* banner */
 
+/*  ESTILOS DE SECTION RESTAURANTES Y COMIDAS */
 
-/* banner *
-.banner{
+  main {
     width: 100%;
-    height: 50vh;
-    margin-top: 50px;
-    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(./image/banner.jpg);
-}
-.banner .content{
-    text-align: center;
-    padding-top: 100px;
-}
-.banner .content h1{
-    color: white;
-    text-shadow: 1px 1px 1px black;
-    letter-spacing: 3px;
-}
-.banner .content p{
-    color: white;
-    text-shadow: 1px 1px 1px black;
-    letter-spacing: 3px;
-}
-#bannerbtn button{
-    width: 150px;
-    height: 38px;
-    background: transparent;
-    color: white;
-    border: 2px solid white;
-    transition: 0.5s ease;
-    cursor: pointer;
-}
-#bannerbtn button:hover{
-    background-color: #1c1c50;
-    border: none;
-}
-/* banner */
-/* banner2 *
-.banner2{
-    width: 100%;
-    height: 50vh;
-    margin-top: 50px;
-    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3));
-}
-.banner2 .content2{
-    text-align: center;
-    padding-top: 100px;
-}
-.banner2 .content2 h1{
-    color: white;
-    text-shadow: 1px 1px 1px black;
-    letter-spacing: 3px;
-}
-.banner2 .content2 p{
-    color: white;
-    text-shadow: 1px 1px 1px black;
-    letter-spacing: 3px;
-}
-#bannerbtn2 button{
-    width: 150px;
-    height: 38px;
-    background: transparent;
-    color: white;
-    border: 2px solid white;
-    transition: 0.5s ease;
-    cursor: pointer;
-}
-#bannerbtn2 button:hover{
-    background-color: #1c1c50;
-    border: none;
-}
-/* banner2 */
-
-/* product cards *
-#product-cards{
-    font-family: "Poppins", system-ui;
-    margin-top: 100px;
-}
-#product-cards .card{
-    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
-    height: 28rem;
-}
-#product-cards h1{
-    margin-top: 30px;
-    color: #1c1c50;
-    text-shadow: 1px 1px 1px black;
-}
-#product-cards h3{
-    letter-spacing: 3px;
-    color: #1c1c50;
-    text-shadow: 0px 1px 1px black;
-    font-weight: bold;
-}
-#product-cards h5 span{
-    float: right;
-    color: #1c1c50;
-    cursor: pointer;
-}
-.checked{
-    color: rgb(255, 187, 0);
-}
-#viewmorebtn{
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    text-decoration: none;
-    margin-top: 30px;
-    width: 200px;
-    height: 32px;
-    color: #1c1c50;
-    letter-spacing: 5px;
-    font-weight: bold;
-    background: transparent;
-    border: 2px solid #1c1c50;
-    transition: 0.5s ease;
-}
-#viewmorebtn:hover{
-    background-color: #1c1c50;
-    color: white;
-}
-/* product cards *
-
-
-html{
-    scroll-behavior: smooth;
-}
-.arrow{
-    position: fixed;
-    background-color: transparent;
-    border-radius: 50px;
-    height: 50px;
-    bottom: 40px;
-    right: 50px;
-    text-decoration: none;
-    align-items: center;
-    line-height: 50px;
-}
-
-/* login *
-.login{
-    width: 50%;
+    height: 100%;
+  }
+  .section-resto {
     margin: 20px;
-    font-family: "Poppins", system-ui;
-}
-#side1{
-    background-color: #b9b9b9;
-    height: 76vh;
-    border-radius: 5px;
-    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
-}
-#side1 h3{
-    color: #1c1c50;
+  }
+  .section-resto h2 {
+text-align: center;
+  }
+  .card {
+    width: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    position: relative;
+    margin: 20px;
+  }
+  .card img {
+    width: 350px;
+    height: 150px;
+  }
+  .card .content {
+    padding: 20px;
+  }
+  .card .content h2 {
+    margin: 0;
+    font-size: 20px;
     font-weight: bold;
-    text-shadow: 1px 1px 1px #1c1c50c5;
-    margin-top: 200px;
-    align-items: center;
-    text-align: center;
-}
-#side1 p{
-    color: #1c1c50;    
-    font-weight: bold;
-    align-items: center;
-    text-align: center;
-}
-#btn{
-    align-items: center;
-    text-align: center;
-    border: 2px solid #1c1c50;
-    border-radius: 10px;
-}
-#btn a{
-    text-decoration: none;
-    color: #1c1c50;
-}
-#side2{
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
-    align-items: center;
-    text-align: center;
-}
-#side2 h3{
-    margin-top: 50px;
-    color: #1c1c50;
-    font-weight: bold;
-}
-#side2 .inp{
-    margin-top: 32px;
-}
-#side2 input{
-    width: 500px;
-    margin-top: 20px;
-    height: 36px;
-    align-items: center;
-}
-#side2 p{
-    margin-top: 20px;
+  }
+  .card .content p {
+    margin: 10px 0 0;
+    color: #555;
+  }
+  /*== CONTENEDOR DE ICONO FAVORITOS ==*/
+  .heart-container {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  /* Oculta el checkbox */
+  .heart-checkbox {
+    display: none;
+  }
+  
+  /* Estilo del corazón (sin marcar) */
+  .heart-label {
+    font-size: 25px;
+    color: black;
     cursor: pointer;
-}
-#side2 .icons i{
-    margin-left: 10px;
-    cursor: pointer;
-}
-#login{
-    margin-top: 10px;
-}
-#login button{
-    width: 200px;
-    height: 32px;
-    color: white;
-    background-color: #1c1c50;
-    border: none;
-    font-weight: bold;
-}
-@media screen and (max-width:992px){
-    #side2 input{
-        width: 300px;
-    }
-}
-@media screen and (max-width:330x){
-    #side2 input{
-        width: 200px;
-    }
-}
-/* login */
+    transition: color 0.3s ease;
+  }
+  
+  /* Estilo del corazón cuando el checkbox está marcado */
+  .heart-checkbox:checked + .heart-label {
+    color: #ff4c4c;
+  }
+  
+  /*======CONTENEDOR COMIDA =====*/
+  .section-comida{
+      display: flex;
+      height: 400px;
+      background-color: #e0e0e0;
+      width: 100%;
+  }
 
-/* about *
-#about{
-    margin-top: 50px;
-}
-#about h1{
-    text-align: center;    
-    font-weight: bold;
-    color: #1c1c50;
-}
-/* about */
-
-/* contact *
-#contact{
-    margin-top: 50px;
-}
-#contact h1{
-    color: #1c1c50;
-    text-shadow: 0px 0px 1px black;
-}
-#contact .card{
-    height: 80px;
+  /*Contenedor texto*/
+  .content-left-animation{
+      flex: 1;
+      align-items: center;
+      padding: 50px;
+      text-align: center;
+    }
+  
+    /*===ANIMACIÓN TARJETAS==*/
+  .animacion-tarjetas{
+      flex: 1;
+     }
+  .tarjetas {
+    width: 190px;
+    margin-left: 50%;
     margin-top: 20px;
-    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
-}
-#contact .card i{
-    margin-top: 10px;
-    margin-left: 10px;
-    font-size: 15px;
-    color: #1c1c50;
-    font-weight: bold;
-    letter-spacing: 3px;
-}
-#contact .card h6{
-    margin-left: 10px;
-    margin-top: 10px;
-    letter-spacing: 3px;
-    font-weight: bold;
-    color: #1c1c50;
-}#messagebtn button{
-    margin-top: 30px;
-    width: 200px;
-    height: 33px;
-    background: transparent;
-    border: 2px solid #1c1c50;
-    color: #1c1c50;
-    font-weight: bold;
-    letter-spacing: 3px;
-    transition: 0.5s ease;
-}
-#messagebtn button:hover{
-    background-color: #1c1c50;
-    color: white;
-}
-/* contact */
+    perspective: 800px;
+    transform: translate(-50%, -50%);
+  }
+  .tarjetas__contenido {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: translateZ(-182px) rotateY(0);
+    animation: ruleta 10s infinite cubic-bezier(1, 0.015, 0.295, 1.225) forwards;
+  }
+   
+  .tarjetas__elemento {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 190px;
+    height: 210px;
+  }
+  .tarjetas__elemento:nth-child(1) {
+        transform: rotateY(0) translateZ(182px);
+    }
+  .tarjetas__elemento:nth-child(2) {
+        transform: rotateY(120deg) translateZ(182px);
+  }
+  .tarjetas__elemento:nth-child(3) {
+        transform: rotateY(240deg) translateZ(182px);
+  }
+   
+  @keyframes ruleta {
+    0%,  17.5% {
+        transform: translateZ(-182px) rotateY(0);
+    }
+    27.5%, 45% {
+        transform: translateZ(-182px) rotateY(-120deg);
+    }
+    55%, 72.5% {
+        transform: translateZ(-182px) rotateY(-240deg);
+    }
+    82.5%, 100% {
+        transform: translateZ(-182px) rotateY(-360deg);
+    }
+  }
+  
+  
+  /* Estilos para la ventana de empanadas */
+  .product-card {
+      position: fixed; /* Mantener en posición fija */
+      left: 0;
+      top: 0;
+      width: 100%; /* Ancho completo */
+      height: 100%; /* Alto completo */
+      justify-content: center;
+      align-items: center;
+  }
+  
+  /* Contenido de la tarjeta producto*/
+  .product-content {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      text-align: center;
+      position: relative;
+  }
+  
+  /* Estilos de la imagen de la tarjeta */
+  .product-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+  }
+  /* PARTE SUPERIOR OFERTA DE LA CARTA */
+  .badge {
+      position: absolute;
+      left: 0px;
+      top: 10px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      background: red;
+      color: #fff;
+      padding: 3px 10px;
+  }
+  .precio-real {
+      text-decoration:line-through;
+      margin-left: 5px;
+      font-size: 15px;
+  }
+  
+  /* Duracion de animacion de texto*/
+  
+  .animated {
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translate3d(100px, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0px, 100px, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  
+  .fadeInRight {
+    animation-name: fadeInRight;
+  }
+  .fadeInUp {
+    animation-name: fadeInUp;
+  }

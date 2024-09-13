@@ -24,57 +24,79 @@
 {% block content %}
     <!-- Contenido específico de la página -->
 
-    <!-- top cards -->
-    <div class="container" id="top-cards">
-        <div class="row">
-            <div class="col-md-4 py-3 py-md-0">
-                <div class="card" style="width: 18rem; background-color: #a9a9a926; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
-                    <div class="d-flex justify-content-center">
-                        <img src="./image/topcard1.png" class="card-img-top" alt="..." style="max-width: 100%; height: auto;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">1lb de Carne de Res</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <p><strong><strike>$14.000</strike> ➡︎ $10.000</strong></p>
-                        <button>Comprar</button>
-                    </div>
+    <!-- SECTOR RESTAURANTES -->
+    <section class="restaurants">
+        <div class="section-resto">
+            <h2 class="animated fadeInRight">Podes encontrar tus restaurantes favoritos al mejor precio</h2>
+            <div class="card">
+                <img src="https://via.placeholder.com/350x150" alt="Imagen de comida">
+                <div class="content">
+                    <h2>RESTAURANTE EJEMPLO</h2>
+                    <p>Descripción</p>
+                </div>
+                <div class="heart-container">
+                    <input type="checkbox" id="heartCheckbox" class="heart-checkbox">
+                    <label for="heartCheckbox" class="heart-label">♡</label>
                 </div>
             </div>
-            
-            <div class="col-md-4 py-3 py-md-0">
-                <div class="card" style="width: 18rem; background-color: #a9a9a926; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
-                    <div class="d-flex justify-content-center">
-                        <img src="./image/topcard2.png" class="card-img-top" alt="..." style="max-width: 100%; height: auto;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">1lb de Papas</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <p><strong><strike>$4.000</strike> ➡︎ $2.000</strong></p>
-                        <button>Comprar</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-4 py-3 py-md-0">
-                <div class="card" style="width: 18rem; background-color: #a9a9a926; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
-                    <div class="d-flex justify-content-center">
-                        <img src="./image/topcard3.png" class="card-img-top" alt="..." style="max-width: 100%; height: auto;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Buñuelos u/d</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <p><strong><strike>$2.000</strike> ➡︎ $1.000</strong></p>
-                        <button>Comprar</button>
-                    </div>
-                </div>
-            </div>
-            
         </div>
-    </div>
-    <!-- top cards -->
+    </section>
+    
+    <!-- SECTOR COMIDA TEXTO Y ANIMACION -->
+        <section class="section-comida">
+            <div class="content-left-animation">
+                <h1 class="animated fadeInRight">Esto es ANTOJITOS</h1>
+                <h2 class="animated fadeInUp"> Descripción Descripción DescripciónDescripciónDescripciónDescripción</h2>
+            </div>
+            <div class="animacion-tarjetas">
+                <!-- Animacion de tarjetas -->
+                <figure class="tarjetas">
+                    <div class="tarjetas__contenido">
+                        <div class="tarjetas__elemento">
+                            <div id="product-card" class="product-card">
+                                <!-- Contenido de la tarjeta -->
+                                <div class="product-content">
+                                    <div class="badge">Oferta</div>
+                                    <img src="https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg" alt="Empanadas" class="product-image">
+                                    <h2>Empanadas</h2>
+                                    <p>Empanadas fritas de carne con huevo y aceitunas</p>
+                                    <p><strong>10.00 $</strong><span class="precio-real">10.00 $</span></p>          
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tarjetas__elemento">
+                            <div id="product-card" class="product-card">
+                                
+                                <!-- Contenido de la tarjeta -->
+                                <div class="product-content">
+                                    <div class="badge">Oferta</div>
+                                    <img src="https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg" alt="Empanadas" class="product-image">
+                                    <h2>Empanadas</h2>
+                                    <p>Empanadas fritas de carne con huevo y aceitunas</p>
+                                    <p><strong>10.00 $</strong><span class="precio-real">10.00 $</span></p>           
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tarjetas__elemento">
+                            <!-- Empieza el product card -->
+                            <div id="product-card" class="product-card">
+                                <!-- Contenido de la tarjeta -->
+                                <div class="product-content">
+                                    <div class="badge">Oferta</div>
+                                    <img src="https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg" alt="Empanadas" class="product-image">
+                                    <h2>Empanadas</h2>
+                                    <p>Empanadas fritas de carne con huevo y aceitunas</p>
+                                    <p><strong>10.00 $</strong><span class="precio-real">10.00 $</span></p>         
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </div>
+        </section>
 
 
-    <!-- banner -->
+    <!-- banner
     <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), 
     url({% static 'ecommerce/img/banner.jpg' %});">
         <div class="content">
@@ -83,7 +105,7 @@
             <div id="bannerbtn"><button>¡COMPRA YA!</button></div>
         </div>
     </div>
-    <!-- banner -->
+     banner -->
 
     <div class="mt-2 mb-2"></div>
 
