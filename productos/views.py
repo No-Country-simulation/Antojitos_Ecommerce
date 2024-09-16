@@ -30,7 +30,7 @@ def producto(request):
     
     return render(request, "productos/producto.html", contexto)
 
-
+   
 
 
 
