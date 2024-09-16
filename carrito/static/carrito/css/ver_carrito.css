@@ -8,7 +8,10 @@
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    padding: 5px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .border-bottom {
@@ -30,7 +33,7 @@
     justify-content: flex-end; /* Alinea los botones a la derecha */
     gap: 4px; /* Espacio opcional entre los botones */
 }
-
+/* Btn Favoritos y cruz*/
 .btn-cart-view {
     color: #ffffff;
     background-color: #C4C4C4;
@@ -50,7 +53,7 @@
     background-color: #DC0000;
     transform: scale(1.2); /* Aumenta el tamaño del botón en un 10% al pasar el mouse por encima */
 }
-
+/*Coupon styles*/
 .container-coupon {
     width: 70%; /* Ancho del contenedor del formulario */
     display: flex;
@@ -59,7 +62,7 @@
 
 .btn-coupon-apply {
     color: #ffffff;
-    background-color: #780178;
+    background-color: #DB3B3B;
     border: none; /* Elimina el borde */
     border-radius: 5px; /* Bordes redondeados */
     width: 25%;
@@ -71,7 +74,7 @@
 }
 
 .btn-coupon-apply:hover {
-    background-color: green; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+    background-color: #FA4D3A; /* Cambia el color de fondo al pasar el ratón sobre el botón */
 }
 
 .quantity-container {
@@ -126,7 +129,9 @@
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    padding: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .total-row {
@@ -141,22 +146,23 @@
     background-color: #ddd;
     margin: 5px 0; /* Espacio alrededor de la línea */
 }
-
-.btn-main {
-    border-radius: 2px;
-    text-transform: capitalize;
-    font-size: 15px;
-    padding: 10px 19px;
-    cursor: pointer;
-    color: #fff;
-    width: 100%;
-    background-color: #780178;
+/* Boton de realizar compra*/
+.btn-pay {
+    background-color: #DB3B3B;
+    color: black;
+    padding: 15px;
     border: none;
-}
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}  
 
-.btn-main:hover {
-    background-color: green;
-}
+    .btn-pay:hover {
+        background-color: #FA4D3A;
+    }
 
 .product-title-cart {
     color: black; /* Establece el color inicial como negro */

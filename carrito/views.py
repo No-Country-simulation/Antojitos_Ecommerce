@@ -86,3 +86,7 @@ def ver_carrito(request):
         "carrito" se actualiza de por si en  cada accion y es un context_processors.
     """
     return render(request, "carrito/ver_carrito.html")
+
+
+def realizar_compra(request):
+    return render(request, "carrito/realizar_compra.html")
