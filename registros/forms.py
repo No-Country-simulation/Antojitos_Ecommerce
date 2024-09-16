@@ -127,11 +127,12 @@ class BuyerRegistrationForm(UserCreationForm):
             # se lanza una excepción de validación para indicar que el correo electrónico ya está en uso.
             raise forms.ValidationError("Este correo electrónico ya está en uso.")
         return email
+    
 
 class SellerRegistrationForm(UserCreationForm):
     """
         Esto es parte del formulario para registrarse con una nueva cuenta en la hoja "Registro"
-        
+    
         Para el caso de los Vendedores
     """
     # le damos algunos formatos posibles

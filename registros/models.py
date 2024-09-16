@@ -13,7 +13,11 @@ from productos.models import Producto
 # Define una categoría para los proveedores
 class Categoria_Proveedor(models.Model):
     nombre = models.CharField(max_length=100)
+    # Para asignarles imagenes a cada categoria 
     image = models.ImageField(upload_to='registro/categoria/', null=True, blank=True)
+    image_url = models.TextField(default='https://i.pinimg.com/564x/84/d1/6a/84d16ac42039ed93bcd5e10a6fdc7dc8.jpg',
+                                 null=True, blank=True)
+    
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

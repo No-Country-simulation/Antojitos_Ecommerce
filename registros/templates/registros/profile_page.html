@@ -9,26 +9,24 @@
 <!-- For More CSS Modules -->
 {% block extra_head %}
     <!-- Cargar CSS o meta tags específicos de la página aquí -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
+
     <style>
 
-      /* ========================================================================
-        * PROFILE
-        * ======================================================================== */
-.profile-cover {
-    width: 100%;
-}
+/* ========================================================================
+* PROFILE
+* ======================================================================== */
+
 
 .cover {
     position: relative;
     border: 10px solid #FFF;
-    padding-bottom: 60px; /* Asegura espacio para el menú en la parte inferior */
+    padding-bottom: 5%; /* Asegura espacio para el menú en la parte inferior */
 }
 
-.inner-cover {
+.banner-profile-cover {
     overflow: hidden;
     height: auto;
+    width: 100%;
 }
 
 .inner-cover img {
@@ -75,6 +73,16 @@
     margin-right: 5px; /* Espacio entre el icono y el texto */
 }
 
+.content-text {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+
+/* TARJETA PERFIL Y CONTACTO */
 .img-profile {
     width: 70%;
     border-radius: 50%; 
@@ -91,144 +99,146 @@
     border-radius: 10px;
 }
 
-.content-text {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    box-sizing: border-box;
-}
-
 </style>
 {% endblock %}
 
 {% block content %}
 
-<div class="container mt-4">
-  <div class="row">
-      <!-- tarjeta del usuario -->
-      <div class="col-lg-3 col-md-4 col-sm-12">
+<div class="container mt-4 mb-4">
+    <div class="row">
+        <!-- tarjeta del usuario e INFO CONTACTO
+        <div class="col-lg-3 col-md-4 col-sm-12"> -->
+        <div class="col-3">
 
-          <!-- Columna perfil + botones edit y logout -->
-          <div class="card shadow profile-panel">
-            <div class="card-body">
-                <ul class="list-unstyled text-center">
-                    <li>
-                        <img class="img-fluid img-profile" 
-                        src="http://bootdey.com/img/Content/avatar/avatar1.png" 
-                        alt="John Doe">
-                    </li>
-                    <!-- nombre de usuario -->
-                    <li>
-                        <h4 class="mt-2">
-                            {{ user.first_name }} {{user.last_name}}
-                        </h4>
-                        <p class="text-muted">
-                            {{ user.email }}
-                        </p>
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-success w-100">
-                            Premium Account
-                        </a>
-                    </li>
-                    <li><br></li>
+            <!-- Columna perfil + botones edit y logout -->
+            <div class="card shadow profile-panel">
+                <div class="card-body">
+                    <ul class="list-unstyled text-center">
+                        <li>
+                            <img class="img-fluid img-profile" 
+                            src="{{ user.image_url }}" 
+                            alt="User Image Profile">
+                        </li>
+                        <!-- nombre de usuario -->
+                        <li>
+                            <h4 class="mt-2">
+                                {{ user.first_name }} {{user.last_name}}
+                            </h4>
+                            <p class="text-muted">
+                                {{ user.email }}
+                            </p>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-success w-100">
+                                Premium Account
+                            </a>
+                        </li>
+                        <li><br></li>
 
-                    <li>
-                        <!-- BOTONES EDITAR Y LOGEARSE -->
-                        <div class="btn-group-vertical w-100">
-                            <button class="btn btn-outline-secondary d-flex justify-content-between align-items-center"
-                                    onclick="window.location.href='Home'">
-                                <span>Edit Account</span>
-                                <i class="fas fa-cog"></i>
-                            </button>
-                        
-                            <button class="btn btn-outline-secondary d-flex justify-content-between align-items-center"
-                                    onclick="window.location.href='{% url 'Home' %}'">
-                                <span>Logout</span>
-                                <i class="fas fa-sign-out-alt"></i>
-                            </button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-          </div><!-- /.card -->
+                        <li>
+                            <!-- BOTONES EDITAR Y LOGEARSE -->
+                            <div class="btn-group-vertical w-100">
+                                <button class="btn btn-outline-secondary d-flex justify-content-between align-items-center"
+                                        onclick="window.location.href='Home'">
+                                    <span>Edit Account</span>
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                            
+                                <button class="btn btn-outline-secondary d-flex justify-content-between align-items-center"
+                                        onclick="window.location.href='{% url 'Close_Session' %}'">
+                                    <span>Logout</span>
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- /.card -->
+            
+            <!-- Tarjeta Info Contacto -->
+            <div class="card shadow mt-3">
+                <div class="card-header">
+                    <h3 class="card-title">Contact</h3>
+                    <div class="float-end">
+                        <a href="#" class="btn btn-sm btn-success"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="btn btn-sm btn-success"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-sm btn-success"><i class="fab fa-google-plus-g"></i></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><i class="fas fa-envelope me-2"></i> {{ user.email }}</li>
+                        <!-- <li class="list-group-item"><i class="fas fa-globe me-2"></i> www.bootdey.com</li> -->
+                        <li class="list-group-item"><i class="fas fa-phone me-2"></i> +54 9 {{ user.cellphone }}</li>
+                    </ul>
+                </div>
+            </div><!-- /.card -->
+        </div>
 
-          <div class="card shadow mt-3">
-              <div class="card-header">
-                  <h3 class="card-title">Contact</h3>
-                  <div class="float-end">
-                      <a href="#" class="btn btn-sm btn-success"><i class="fab fa-facebook"></i></a>
-                      <a href="#" class="btn btn-sm btn-success"><i class="fab fa-twitter"></i></a>
-                      <a href="#" class="btn btn-sm btn-success"><i class="fab fa-google-plus-g"></i></a>
-                  </div>
-              </div>
-              <div class="card-body">
-                  <ul class="list-group">
-                      <li class="list-group-item"><i class="fas fa-envelope me-2"></i> support@bootdey.com</li>
-                      <li class="list-group-item"><i class="fas fa-globe me-2"></i> www.bootdey.com</li>
-                      <li class="list-group-item"><i class="fas fa-phone me-2"></i> +6281 903 xxx xxx</li>
-                  </ul>
-              </div>
-          </div><!-- /.card -->
-      </div>
-
-      <!-- contenido del perfil -->
-      <div class="col-lg-9 col-md-8 col-sm-12">
-        <div class="profile-cover">
+        <!-- CONTENIDO del perfil 
+        <div class="col-lg-9 col-md-8 col-sm-12"> -->
+        <div class="col-9">
             <div class="cover rounded shadow">
                 <!-- BANNER -->
-                <div class="inner-cover">
-                    <img src="http://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg" 
-                         class="img-fluid" alt="cover" style="max-height:200px;">
+                <div class="banner-profile-cover">
+                    <img src="{{user.banner_image_url}}" 
+                        class="img-fluid" alt="cover">
                 </div>
+
+                <!-- ITEMS BANNER -->
                 <ul class="list-unstyled cover-menu">
-                    <li class="active"><a href="#" data-content="Aquí están tus favoritos."><i class="fas fa-clock"></i>Mis Compras</a></li>
-                    <li><a href="#" data-content="Aquí se muestran tus compras."><i class="fas fa-user"></i> Favoritos</a></li>
-                    <li><a href="#" data-content="Contenido extra aquí."><i class="fas fa-camera"></i> Extra</a></li>
+                    <li class="active">
+                        <a href="#" data-content="Aquí están tus favoritos.">
+                            <i class="fas fa-clock"></i>Mis Compras
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-content="Aquí se muestran tus compras.">
+                            <i class="fa fa-heart"></i> Productos Favoritos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-content="Contenido extra aquí.">
+                            <i class="fa-solid fa-store"></i> Tienda Favoritas
+                        </a>
+                    </li>
                 </ul>
-                 <!-- Texto que cambia -->
-              <div id="content-text" class="content-text">
-                Aquí está el texto inicial.
-              </div>
+
+                <!-- Texto que cambia -->
+                <div id="content-text" class="content-text">
+                    Aquí está el texto inicial.
+                </div>
                 
             </div>
         </div>
     </div>
-  </div>
 </div>
 
 {% endblock %}
 
 
 {% block extra_scripts %}
-    <!-- Cargas archivos .js propios de cada template/vista
-    - Por ahora solo se usa en producto_base.html
-
-    
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-
--->
+    <!-- Cargas archivos .js propios de cada template/vista -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-    // Selecciona todos los enlaces dentro de .cover-menu
-    const menuItems = document.querySelectorAll('.cover-menu li a');
-    // Selecciona el div donde se mostrará el texto
-    const contentText = document.getElementById('content-text');
+        document.addEventListener('DOMContentLoaded', function() {
+        // Selecciona todos los enlaces dentro de .cover-menu
+        const menuItems = document.querySelectorAll('.cover-menu li a');
+        // Selecciona el div donde se mostrará el texto
+        const contentText = document.getElementById('content-text');
 
-    // Añade un listener de evento a cada enlace
-    menuItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault(); // Evita que el enlace realice su acción predeterminada
-            // Quita la clase 'active' de todos los elementos de lista
-            menuItems.forEach(i => i.parentElement.classList.remove('active'));
-            // Añade la clase 'active' al elemento clicado
-            this.parentElement.classList.add('active');
-            // Cambia el texto del contenido
-            contentText.textContent = this.getAttribute('data-content');
+        // Añade un listener de evento a cada enlace
+        menuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault(); // Evita que el enlace realice su acción predeterminada
+                // Quita la clase 'active' de todos los elementos de lista
+                menuItems.forEach(i => i.parentElement.classList.remove('active'));
+                // Añade la clase 'active' al elemento clicado
+                this.parentElement.classList.add('active');
+                // Cambia el texto del contenido
+                contentText.textContent = this.getAttribute('data-content');
+            });
         });
     });
-});
     </script>
 
 {% endblock %}
