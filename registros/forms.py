@@ -14,7 +14,9 @@ ROLE_CHOICES = [
 
 # Definir las 24 provincias como opciones
 PROVINCIAS_CHOICES = [
+    ('SELECCIONAR', 'Seleccionar Provincia'),
     ('BUENOS_AIRES', 'Buenos Aires'),
+    ('CABA', 'CABA'),
     ('CATAMARCA', 'Catamarca'),
     ('CHACO', 'Chaco'),
     ('CHUBUT', 'Chubut'),
@@ -37,7 +39,6 @@ PROVINCIAS_CHOICES = [
     ('SANTIAGO_DEL_ESTERO', 'Santiago del Estero'),
     ('TIERRA_DEL_FUEGO', 'Tierra del Fuego'),
     ('TUCUMAN', 'Tucumán'),
-    ('CIUDAD_DE_BUENOS_AIRES', 'Ciudad Autónoma de Buenos Aires'),
 ]
 
 
@@ -68,17 +69,16 @@ class BuyerRegistrationForm(UserCreationForm):
     email = forms.CharField(max_length=50, error_messages={
         'invalid': 'Ingrese una dirección de correo electrónico válida.'
     })
+    password1 = forms.CharField(widget=forms.PasswordInput)
+    password2 = forms.CharField(widget=forms.PasswordInput)
+    
+    # Campo opcionales
     first_name = forms.CharField(max_length=50, required=False)
     last_name = forms.CharField(max_length=50, required=False)
     cellphone = forms.CharField(max_length=25, required=False)
-    province = forms.ChoiceField(choices=PROVINCIAS_CHOICES, required=False)  # Campo opcional
-    address = forms.CharField(max_length=250, required=False)  # Campo opcional
+    province = forms.ChoiceField(choices=PROVINCIAS_CHOICES, required=False)  
+    address = forms.CharField(max_length=250, required=False)  
     
-    # se realiza esto para "eliminar" la doble validacion de password
-    password1 = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(widget=forms.PasswordInput)
-    # password2 = None
-
     class Meta:
         # declaramos nuestro .models CustomUser y le pasamos los campos a completar que recuperamos
         model = BuyerUser
@@ -86,13 +86,9 @@ class BuyerRegistrationForm(UserCreationForm):
         fields = ('email', 'password1', 'password2', 'first_name', 'last_name', 'cellphone', 
                   'province', 'address')
 
-    def __init__(self, *args, **kwargs):
 
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        
-        # Elimina el campo password2
-        # if 'password2' in self.fields:
-        # del self.fields['password2']
 
         # les asignamos un tipo de clase a todos nuestros widgets p/ trabajar con css
         for field in self.fields.values():
@@ -120,10 +116,17 @@ class BuyerRegistrationForm(UserCreationForm):
     def clean_email(self):
         # metodo necesario para poder autenticar el email
         email = self.cleaned_data.get('email')
-        if CustomUser.objects.filter(email=email).exists():
+        # if CustomUser.objects.filter(email=email).exists():
+        
+        # Verificar si ya existe un usuario con el mismo correo electrónico en la base de datos,
+        # excluyendo el usuario actual si se está editando (es decir, si 'self.instance.id' no es None).
+        # La función 'exclude(id=self.instance.id)' asegura que si estamos editando un usuario existente,
+        # no se considere el usuario que estamos editando en la búsqueda de correos electrónicos duplicados.
+        if CustomUser.objects.filter(email=email).exclude(id=self.instance.id).exists():
+            # Si se encuentra un usuario con el mismo correo electrónico (y no es el mismo usuario que se está editando),
+            # se lanza una excepción de validación para indicar que el correo electrónico ya está en uso.
             raise forms.ValidationError("Este correo electrónico ya está en uso.")
         return email
-    
 
 class SellerRegistrationForm(UserCreationForm):
     """
@@ -135,9 +138,10 @@ class SellerRegistrationForm(UserCreationForm):
     email = forms.CharField(max_length=50, error_messages={
         'invalid': 'Ingrese una dirección de correo electrónico válida.'
     })
+    password1 = forms.CharField(widget=forms.PasswordInput)
+    password2 = forms.CharField(widget=forms.PasswordInput)
     
-    name_store = forms.CharField(max_length=250, required=False)
-
+    name_store = forms.CharField(max_length=250, required=True)
     cellphone = forms.CharField(max_length=25, required=False)
     province = forms.ChoiceField(choices=PROVINCIAS_CHOICES, required=False)  # Campo opcional
     address = forms.CharField(max_length=250, required=False)  # Campo opcional
@@ -150,20 +154,14 @@ class SellerRegistrationForm(UserCreationForm):
         empty_label="Seleccione una categoría"
     )
     
-    # se realiza esto para "eliminar" la doble validacion de password
-    password1 = forms.CharField(widget=forms.PasswordInput)
-    password2 = None
-
     class Meta:
         # declaramos nuestro .models CustomUser y le pasamos los campos a completar que recuperamos
         model = SellerUser
-        fields = ('email', 'password1', 'name_store', 'cellphone', 
+        fields = ('email', 'password1', 'password2', 'name_store', 'cellphone', 
                   'province', 'address', 'category')
 
     def __init__(self, *args, **kwargs):
-
         super().__init__(*args, **kwargs)
-
         # les asignamos un tipo de clase a todos nuestros widgets p/ trabajar con css
         for field in self.fields.values():
             field.widget.attrs.update({'class': 'form-control'})
@@ -184,18 +182,17 @@ class SellerRegistrationForm(UserCreationForm):
     def clean_password1(self):
         # Metodo necesario para poder eliminar la validacion doble del password2
         password1 = self.cleaned_data.get('password1')
-        try:
-            password_validation.validate_password(password1, self.instance)
-        except forms.ValidationError as error:
-
-            # Method inherited from BaseForm
-            self.add_error('password1', error)
+        if password1:
+            try:
+                password_validation.validate_password(password1, self.instance)
+            except forms.ValidationError as error:
+                self.add_error('password1', error)
         return password1
 
     def clean_email(self):
         # metodo necesario para poder autenticar el email
         email = self.cleaned_data.get('email')
-        if SellerUser.objects.filter(email=email).exists():
+        if CustomUser.objects.filter(email=email).exists():
             raise forms.ValidationError("Este correo electrónico ya está en uso.")
         return email
     

@@ -81,12 +81,18 @@ class CustomUser(AbstractUser):
     province = models.CharField(max_length=50, blank=True, null=True)
 
     # Imagen perfil del proveedor/comprador
-    image = models.ImageField(upload_to=custom_upload_to_registro, null=True, blank=True,
-                              default="registro/profile_def.jpg")
+    image = models.ImageField(upload_to=custom_upload_to_registro, null=True, blank=True, 
+        default="registro/profile_def.jpg")
+    
+    image_url = models.TextField(null=True, blank=True, 
+        default="https://i.pinimg.com/564x/20/05/e2/2005e27a39fa5f6d97b2e0a95233b2be.jpg")
     
     # Imagen banner del proveedor/comprador si necesitara
-    banner_image = models.ImageField(upload_to=custom_upload_to_registro, null=True, blank=True,
-                                     default="registro/banner_def.jpg")
+    banner_image = models.ImageField(upload_to=custom_upload_to_registro, null=True, blank=True, 
+        default="registro/banner_def.jpg")
+    
+    banner_image_url = models.TextField(null=True, blank=True, 
+        default="https://i.pinimg.com/564x/cb/be/53/cbbe53813cb8c0c85ddeda0d23de874d.jpg")
     
     # Define el campo email como el nombre de usuario para la autenticación
     USERNAME_FIELD = "email"
@@ -161,6 +167,12 @@ class BuyerUser(CustomUser):
     # Representación del objeto como una cadena, devuelve el correo electrónico
     def __str__(self):
         return self.email
+    
+    # Esto es para asegurarse de que se guarde correctamente el rol que estamos utilizando
+    # Aunque realmente ya por defecto es buyer
+    def save(self, *args, **kwargs):
+        self.role = 'buyer'
+        super().save(*args, **kwargs)
     
     class Meta:
         verbose_name = "Comprador"

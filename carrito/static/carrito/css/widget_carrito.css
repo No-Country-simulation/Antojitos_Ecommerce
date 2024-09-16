@@ -90,7 +90,7 @@
 }
 
 #close-cart {
-    top: 28%; /* Espacio desde el borde superior del contenedor */
+    top: 5%; /* Espacio desde el borde superior del contenedor */
     right: 4%; /* Espacio desde el borde derecho del contenedor */
 }
 
@@ -142,7 +142,7 @@
 }
 
 .btn-finalizar {
-    background-color: #8e44ad; /* Fondo violeta para "Finalizar" */
+    background-color: hsla(12, 75%, 52%, 0.904); /* Fondo violeta para "Finalizar" */
 }
 
 .btn-finalizar:hover {

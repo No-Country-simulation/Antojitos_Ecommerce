@@ -1,65 +1,184 @@
-
-
 {% extends "ecommerce/base.html" %}
+{% load static %}
 
+<!-- En caso de usar algún extra css -->
+{% block extra_head %}
+    <!-- Cargar CSS o meta tags específicos de la página aquí -->
+    <link href="{% static 'registros/css/registro.css' %}" rel="stylesheet">
+    
+{% endblock %}
 
 {% block content %}
-
-    <div class="form-container2 my-5">
-        <form method="POST" action="{% url 'Register' %}">
-            {% csrf_token %}
-
-            <div class="form-group">
-                <label for="email">&nbsp;E-mail</label>
-                {{ form.email }}
-            </div>
-
-            <!-- Fila para Password -->
-            <div class="form-group">
-                <label for="password1">&nbsp;Password</label>
-                {{ form.password1 }}
-            </div>
-
-            <!-- Fila para Password 2-->
-            <div class="form-group">
-                <label for="password2">&nbsp;Password 2</label>
-                {{ form.password2 }}
-            </div>
-
-            <!-- Fila para Nombre y Apellido -->
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="first_name">&nbsp;Nombre</label>
-                    {{ form.first_name }}
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="last_name">&nbsp;Apellido</label>
-                    {{ form.last_name }}
+    <main>
+        <div class="container-fluid p-0 mt-5 mb-5">
+            <!-- Titulo Cambiante -->
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <!-- Contenedor para alinear el botón y el título -->
+                    <div class="titulo-container">
+                        <button id="back-button" class="back-button" onclick="goBack()">
+                            <i class="fas fa-arrow-circle-left"></i>
+                        </button>
+                        <h2 id="titulo-registro">Registro de Usuarios</h2>
+                    </div>
                 </div>
             </div>
 
-            <!-- Fila para Teléfono y Provincia -->
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="cellphone">&nbsp;Celular</label>
-                    {{ form.cellphone }}
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="province">&nbsp;Provincia</label>
-                    {{ form.province }}
+            <!-- Contenedor para los botones -->
+            <div class="button-container" id="button-container">
+                <button onclick="showForm('comprador')">Registrarse como cliente</button>
+                <button onclick="showForm('vendedor')">Registrarse como empresa</button>
+            </div>
+
+            <!-- Formulario de Comprador -->
+            <div class="row">
+                <div class="col-md-1"></div>
+
+                <div id="form-comprador" class="form-container col-12 col-md-5">
+                    <form method="POST" action="{% url 'Register' %}">
+                        {% csrf_token %}
+                        <!-- Esto sirve para hacer una condicion para identificar en el views.py -->
+                        <input type="hidden" name="tipo_usuario" value="comprador">
+
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            {{ form_c.email }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password1">Password</label>
+                            {{ form_c.password1 }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password2">Confirmar Password</label>
+                            {{ form_c.password2 }}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="first_name">Nombre</label>
+                                {{ form_c.first_name }}
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="last_name">Apellido</label>
+                                {{ form_c.last_name }}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="cellphone">Celular</label>
+                                {{ form_c.cellphone }}
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label for="province">
+                                    Provincia
+                                    <i class="fas fa-chevron-down"></i>
+                                </label>
+                                {{ form_c.province }}
+                            </div>
+                        </div>
+                        <!-- Boton Registrarse -->
+                        <input type="submit" value="Registrarse" 
+                        class="btn btn-primary btn-form-vendedor">
+                    </form>
                 </div>
             </div>
 
-            <!-- Fila para Dirección -->
-            <div class="form-group">
-                <label for="address">&nbsp;Dirección</label>
-                {{ form.address }}
+            <div class="row">
+                <div class="col-md-6"></div>
+
+                <!-- Formulario de Vendedor -->
+                <div id="form-vendedor" class="form-container col-12 col-md-5">
+                    <form method="POST" action="{% url 'Register' %}">
+                        {% csrf_token %}
+                        <!-- Esto sirve para hacer una condicion para identificar en el views.py -->
+                        <input type="hidden" name="tipo_usuario" value="vendedor">
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            {{ form_v.email }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password1">Password</label>
+                            {{ form_v.password1 }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password2">Confirmar Password</label>
+                            {{ form_v.password2 }}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="address">Dirección</label>
+                                {{ form_v.address }}
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label for="province">
+                                    Provincias
+                                    <i class="fas fa-chevron-down"></i>
+                                </label>
+                                {{ form_v.province }}
+                            </div>
+                        </div>
+
+                        <!-- CELULAR Y CATEGORIA VENDEDOR -->
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="cellphone">Celular</label>
+                                {{ form_v.cellphone }}
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label for="category">
+                                    Categorías
+                                    <i class="fas fa-chevron-down"></i>
+                                </label>
+                                {{ form_v.category }}
+                            </div>
+                        </div>
+
+                        <input type="submit" value="Registrarse como empresa" 
+                        class="btn btn-primary btn-form-vendedor">
+                    </form>
+                </div>
             </div>
+        </div>
 
-            <input type="submit" value="Registrarse" class="btn btn-secondary">
+
+        <!-- Alertas en caso de ser necesario -->
+        {% if form_not_valid %}
+            <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+                <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </symbol>
+            </svg>
+            
+            <div class="alert alert-warning d-flex align-items-center alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2 icon-small" role="img" aria-label="Warning:">
+                    <use xlink:href="#exclamation-triangle-fill"/>
+                </svg>
+            
+                <strong>{{ form_error }}</strong>
+            
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+
+        <!-- Esto es solo para pasar INFO al JS - preguntar por otros metodos -->
+        <div id="user-type" data-form-user-type="{{ form_user_type }}" style="display: none;"></div>
+    </main>
+{% endblock %}
 
 
-        </form>
-    </div>
 
+<!-- JavaScript for Product Page -->
+{% block extra_scripts %}
+    <script src="{% static 'registros/js/registro.js' %}"></script>
 {% endblock %}

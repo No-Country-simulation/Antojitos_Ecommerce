@@ -1,6 +1,6 @@
 
 body {
-    padding-top: 4%; /* Ajusta este valor según la altura de tu navbar */
+    padding-top: 5%; /* Ajusta este valor según la altura de tu navbar */
 }
 
 
@@ -19,7 +19,9 @@ body {
 
 /* Asegura que la barra de navegación esté fija en la parte superior */
 .navbar {
-    padding: 0;
+    padding: 0.5%;
+    padding-right: 1%;
+    padding-left: 1%;
     margin: 0;
     position: fixed; /* Cambia a 'fixed' para que esté realmente fija */
     top: 0; /* Asegura que esté en la parte superior de la pantalla */
@@ -108,10 +110,6 @@ body {
                 Estilo del WIDGET_REGISTRO de usuario todo
 /* ================================================================================== */
 /* Estilo del botón de usuario */
-.nav-move-left {
-    /* esto se pone para mover el icono por ahora fue la mejor forma que encontre */
-    margin-left: 180px;
-}
 
 .btn-header {
     position: relative; /* Añade posicionamiento relativo al contenedor */
@@ -124,7 +122,7 @@ body {
 }
 
 .btn-header i {
-    font-size: 24px; /* Tamaño de los íconos */
+    font-size: 26px; /* Tamaño de los íconos */
     color: white; /* Color del ícono */
     pointer-events: none; /* Asegura que el icono no bloquee los clics */
     transition: color 0.3s ease; /* Añade una transición suave para el cambio de color */
@@ -132,11 +130,11 @@ body {
     outline: none; /* Elimina el contorno al hacer clic */
 }
 
-.badge {
+.badge-cart {
     position: absolute; /* Posicionamiento absoluto para el badge */
     top: -10px; /* Ajusta el valor según sea necesario */
     right: -6px; /* Ajusta el valor según sea necesario */
-    background-color: #780178; /* Color de fondo del badge */
+    background-color: #eccc14; /* Color de fondo del badge */
     color: white; /* Color del texto del badge */
     border-radius: 50%; /* Hace que el badge sea circular */
     padding: 5px 10px; /* Ajusta el padding según sea necesario */
@@ -245,66 +243,6 @@ body {
     transform: scale(0.95);
 }
 
-.toast-container {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 16px;
-    z-index: 1000;
-    width: 25%
-}
-
-.toast {
-    display: none;
-    color: white;
-    border: none;
-    padding: 3px 3px;
-    border-radius: 0.375rem; /* Bootstrap rounded-pill */
-    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
-    margin-bottom: 8px; /* Space between toasts */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.toast .toast-icon {
-    width: 32px; /* Tamaño del icono */
-    height: 32px;
-    background-color: rgba(255, 1, 1, 0.3); /* Fondo semi-transparente para advertencia */
-    border-radius: 50%; /* Hacer el fondo circular */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem; /* Tamaño del icono */
-    color: #fff; /* Color del icono de advertencia */
-    margin-right: 1rem; /* Espaciado a la derecha del icono */
-    margin-left: 1rem; /* Espaciado a la derecha del icono */
-    border: 1px solid #000; /* Borde negro con grosor de 2px */
-}
-
-.toast.show {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.toast.hide {
-    opacity: 0;
-    transform: translateY(-20px); /* Moves the toast up as it hides */
-}
-
-.toast-success {
-    background-color: #28a745; /* Bootstrap success color */
-}
-
-.toast-error {
-    background-color: #FC2424; /* Bootstrap danger color */
-}
-
-
 
 
 /* Estilo para el contenido del dropdown */
@@ -329,7 +267,9 @@ body {
 }
 
 
-/* FOOTER */
+/* =====================================================================
+FOOTER 
+===================================================================== */
 footer {
     background-color: #DB3B3B;
     padding-bottom:2%;

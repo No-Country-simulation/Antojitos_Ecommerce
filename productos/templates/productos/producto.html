@@ -250,7 +250,10 @@
 {% endblock %}
 
 
+
 {% block content %}
+
+
 
     <div class="container-banner-producto">
         
@@ -304,7 +307,7 @@
                             
                             <!-- Botón para abrir la ventana modal -->
                             <figure class="container-product-card"
-                            onclick="openModal({{ producto.id }})">
+                            onclick="openModal( {{producto.id}} )">
                                 <!-- Imagen del producto -->
                                 <img src="{{ producto.image_url }}" alt="">
                             
@@ -325,9 +328,9 @@
                                     </div>
                                     <p style="margin: 0;">No Country 14576</p>
                                     
+                                   
                                     
-
-                                    <button class="openboton" onclick="addToCart({{producto.id}});">
+                                    <button class="openboton" onclick="addToCart({{ producto.id}} );">
                                         
                                         <span>Agregar
                                         <i class="fa-solid fa-cart-shopping"></i>

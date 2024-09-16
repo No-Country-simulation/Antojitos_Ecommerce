@@ -42,8 +42,7 @@
     <!-- Cuando el usuario NO ESTA logeado visualiza esto -->
     {% else %}
         <div id="user-dropdown" class="dropdown-content" aria-labelledby="user-button">
-            <!-- action="{ % url 'Registro_widget' % }" -->
-            <form id="login-form" method="POST">
+            <form id="login-form" method="POST" action="{% url 'Widget_Register' %}">
                 {% csrf_token %}
 
                 <!-- Peticion E-mail -->
@@ -56,9 +55,10 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password"
                        required aria-required="true" placeholder="Contraseña">
-
-                <button type="submit" onclick="window.location.href='{% url 'Profile_Page' %}';">
-                    Ingresar 
+                
+                <!-- Boton Ingresar -->
+                <button type="submit">
+                    Ingresar
                 </button>
 
                 <!--  -->
@@ -67,83 +67,7 @@
                 <!-- Boton de Registrarse -->
                 <a href="{% url 'Register' %}">Registrarme</a>
             </form>
-
         </div>
 
-
-        <div id="toast-container" class="toast-container">
-        <!-- <div id="toast-container" class="toast-container"></div>
-
-        <div id="snackbar-container" class="snackbar-container"></div>
-         <div id="snackbar" class="snackbar"></div> -->
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    var form = document.getElementById('login-form');
-                    var toastContainer = document.getElementById('toast-container');
-
-                    form.addEventListener('submit', function(event) {
-                        event.preventDefault(); // Prevent the default form submission
-
-                        var formData = new FormData(form);
-
-                        fetch("{% url 'Widget_Register' %}", {
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest' // Indicate this is an AJAX request
-                            }
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            var toast = document.createElement('div');
-                            toast.className = 'toast'; // Base class for the toast.
-
-                            // Add success or error class based on the result
-                            if (data.success) {
-                                toast.classList.add('toast-success');
-                                toast.innerHTML = `
-                                    <div class="d-flex align-items-center">
-                                        <div class="toast-body">
-                                            Login successful!
-                                        </div>
-                                    </div>
-                                `;
-                            } else {
-                                toast.classList.add('toast-error');
-                                toast.innerHTML = `
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-times toast-icon"></i>
-                                        <div class="toast-body">
-                                            ${data.error}
-                                        </div>
-                                    </div>
-                                `;
-                            }
-
-                            toastContainer.appendChild(toast);
-                            toast.classList.add('show');
-
-                            setTimeout(function() {
-                                toast.classList.remove('show');
-                                toast.classList.add('hide');
-                                setTimeout(function() {
-                                    toastContainer.removeChild(toast);
-                                }, 500); // Delay to match the transition time
-                            }, data.success ? 500 : 3000); // Show for 1 second for success, 3 seconds for error
-
-                            if (data.success) {
-                                setTimeout(function() {
-                                    window.location.href = "{% url 'Home' %}";
-                                }, 1000); // Redirect after toast hides
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-                    });
-                });
-            </script>
-
-        </div>
     {% endif %}
 </div>

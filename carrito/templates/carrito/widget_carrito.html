@@ -6,7 +6,7 @@
 
     <!-- Encabezado del carrito -->
     <div class="cart-header">
-        <button class="btn btn-danger btn-sm remove-btn" id="close-cart">✖</button>
+        <button class="btn btn-sm btn-danger remove-btn" id="close-cart">✖</button>
         <h4 class="text-left"><strong>&nbsp;Mi Carrito</strong></h4>
     </div>
 
@@ -15,7 +15,7 @@
 
             {% for key, value in carrito.items %}
                 <div class="cart-item position-relative mb-3 d-flex align-items-center">
-                    <img src="{{value.imagen}}" class="img-fluid" alt="Product Image">
+                    <img src="{{ value.imagen }}" class="img-fluid" alt="Product Image">
                     <div>
                         <h6>{{ value.nombre }}</h6>
                         <p>{{ value.cantidad }} × ${{ value.precio|floatformat:0|intcomma }}</p>
@@ -53,6 +53,7 @@
             </button>
         </div>
     </div>
+
 </div>
 
 <div class="overlay" id="overlay"></div>

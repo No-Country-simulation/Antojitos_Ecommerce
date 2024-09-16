@@ -27,37 +27,56 @@ def registro(request):
     """
 
     if request.method == 'POST':
-        form = BuyerRegistrationForm(request.POST)
-        if form.is_valid():
-            # Guardar el usuario y encriptar la contraseña usando el método `save` del formulario.
-            form.save()
+        
+        tipo_usuario = request.POST.get('tipo_usuario')
+        
+        if tipo_usuario == 'comprador':
+            # Procesar formulario de comprador
+            form_c = BuyerRegistrationForm(request.POST)
+            form_v = SellerRegistrationForm()
+        
+            if form_c.is_valid():
+                # Guardar el usuario y encriptar la contraseña usando el método `save` del formulario.
+                form_c.save()
 
-            # Autenticar al usuario usando el email
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password1']
-            user = authenticate(email=email, password=password)
+                # Autenticar al usuario usando el email
+                email = form_c.cleaned_data['email']
+                password = form_c.cleaned_data['password1']
+                user = authenticate(email=email, password=password)
 
-            # Iniciar sesión del usuario
-            if user is not None:
-                login(request, user)
+                # Iniciar sesión del usuario
+                if user is not None:
+                    login(request, user)
 
-            # Redirigir a la página principal.
-            return redirect('Home')
+                # Redirigir a la página principal.
+                return redirect('Home')
 
-        else:
-            print(request.POST)  # Esto imprimirá los datos enviados en la solicitud POST.
-            print("\n\n")
-            print(form.errors)  # Imprime los errores del formulario en la consola para depurar.
+            else:
+                print(request.POST)  # Esto imprimirá los datos enviados en la solicitud POST.
+                print("\n\n")
+                print(form_c.errors)  # Imprime los errores del formulario en la consola para depurar.
 
-        form_submitted = True
+                # Renderizar la misma página con errores del formulario
+                context = {
+                    'form_c': form_c,
+                    'form_v': form_v,
+                    'form_not_valid': True,
+                    'form_user_type': 'comprador',
+                    'form_error': form_c.errors
+                }
+                
+                return render(request, 'registros/registro.html', context)
 
+
+    # Esto es el contexto cuando devolvemos con un GET, u otro que no sea POST
     else:
-        form = BuyerRegistrationForm()
-        form_submitted = False
+        form_c = BuyerRegistrationForm()
+        form_v = SellerRegistrationForm()
 
-    context = {'form': form, 'form_submitted': form_submitted}
+        context = {'form_c': form_c,
+                   'form_v': form_v}
 
-    return render(request, 'registros/registro.html', context)
+        return render(request, 'registros/registro.html', context)
 
 
 @login_required
