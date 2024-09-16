@@ -31,19 +31,19 @@
     {% block extra_head %}
         <!-- Cargar CSS o meta tags específicos de la página aquí -->
     {% endblock %}
-<style>
+    <style>
         .voice-btn {
-    background-color: transparent;
-    border: none;
-    color: #fff; /* Color del ícono */
-    font-size: 20px; /* Tamaño del ícono */
-    cursor: pointer;
-    }
-
-    .voice-btn:hover {
-        color: #ccc; /* Color cuando pasas el mouse por encima */
+            background-color: transparent;
+            border: none;
+            color: #fff; /* Color del ícono */
+            font-size: 20px; /* Tamaño del ícono */
+            cursor: pointer;
         }
-</style>
+
+        .voice-btn:hover {
+            color: #ccc; /* Color cuando pasas el mouse por encima */
+        }
+    </style>
 </head>
 
 <body>
@@ -104,15 +104,11 @@
                                         {% endfor %}
                                     </ul>
                                 </li>
-                                
-                                <!-- SEARCH INPUT -->
+
                                 <li class="nav-item search-container">
-                                    <form class="d-flex" action="{% url 'Producto_Search_Top' %}" method="GET">
-                                        <input class="form-control me-2 search-input" type="search" 
-                                        placeholder="Buscar" aria-label="Search" name="top_search">
-                                        <!-- Botón de búsqueda -->
+                                    <form class="d-flex">
+                                        <input class="form-control me-2 search-input" type="search" placeholder="Buscar" aria-label="Search">
                                         <button class="search-btn" type="submit" id="search-btn"><i class="fa fa-search"></i></button>
-                                        <!-- Botón de voz -->
                                         <button class="voice-btn" type="button" id="voice-btn" style="margin-left: 10px;">
                                             <i class="fa fa-microphone"></i>
                                         </button>
@@ -247,73 +243,77 @@
     <!-- Bootstrap Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="{% static 'ecommerce/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <script>    
-// Verificar que el navegador soporte SpeechRecognition
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    <script>
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-if ('SpeechRecognition' in window) {
-    console.log('SpeechRecognition está soportado en este navegador.');
+        if ('SpeechRecognition' in window) {
+            console.log('SpeechRecognition está soportado en este navegador.');
 
-    document.addEventListener("DOMContentLoaded", function() {
-        let isVoiceActive = false; // Estado inicial (desactivado)
-        
-        // Inicializar el reconocimiento de voz
-        const recognition = new SpeechRecognition();
-        recognition.lang = 'es-ES'; // Idioma (cambiar si es necesario)
-        recognition.continuous = false; // Detener después de una frase
+            document.addEventListener("DOMContentLoaded", function() {
+                let isVoiceActive = false; // Estado inicial (desactivado)
 
-        // Seleccionar elementos del DOM
-        const voiceButton = document.getElementById("voice-btn");
-        const voiceIcon = voiceButton.querySelector("i");
-        const searchInput = document.querySelector(".search-input");  // Asegúrate que coincida con tu HTML
+                // Inicializar el reconocimiento de voz
+                const recognition = new SpeechRecognition();
+                recognition.lang = 'es-ES'; // Idioma (cambiar si es necesario)
+                recognition.continuous = false; // Detener después de una frase
 
-        // Evento para activar/desactivar el micrófono
-        voiceButton.addEventListener("click", function() {
-            isVoiceActive = !isVoiceActive;
+                // Seleccionar elementos del DOM
+                const voiceButton = document.getElementById("voice-btn");
+                const voiceIcon = voiceButton.querySelector("i");
+                const searchInput = document.querySelector(".search-input");  // Asegúrate que coincida con tu HTML
+                const searchForm = document.querySelector(".d-flex"); // Seleccionar el formulario de búsqueda
 
-            if (isVoiceActive) {
-                // Cambiar el ícono a "microphone-slash" y comenzar el reconocimiento de voz
-                voiceIcon.classList.remove("fa-microphone");
-                voiceIcon.classList.add("fa-microphone-slash");
-                voiceButton.style.color = "red"; // Cambiar color cuando está activado
+                // Evento para activar/desactivar el micrófono
+                voiceButton.addEventListener("click", function() {
+                    isVoiceActive = !isVoiceActive;
 
-                // Iniciar reconocimiento de voz
-                recognition.start();
-            } else {
-                // Detener el reconocimiento de voz
-                recognition.stop();
-                voiceIcon.classList.remove("fa-microphone-slash");
-                voiceIcon.classList.add("fa-microphone");
-                voiceButton.style.color = ""; // Volver al color original
-            }
-        });
+                    if (isVoiceActive) {
+                        // Cambiar el ícono a "microphone-slash" y comenzar el reconocimiento de voz
+                        voiceIcon.classList.remove("fa-microphone");
+                        voiceIcon.classList.add("fa-microphone-slash");
+                        voiceButton.style.color = "red"; // Cambiar color cuando está activado
 
-        // Evento cuando el reconocimiento de voz obtiene un resultado
-        recognition.onresult = function(event) {
-            const transcript = event.results[0][0].transcript;
-            console.log('Texto reconocido:', transcript);
-            
-            // Escribir lo reconocido en el campo de búsqueda
-            searchInput.value = transcript;
-        };
+                        // Iniciar reconocimiento de voz
+                        recognition.start();
+                    } else {
+                        // Detener el reconocimiento de voz
+                        recognition.stop();
+                        voiceIcon.classList.remove("fa-microphone-slash");
+                        voiceIcon.classList.add("fa-microphone");
+                        voiceButton.style.color = ""; // Volver al color original
+                    }
+                });
 
-        // Evento cuando el reconocimiento de voz termina
-        recognition.onend = function() {
-            if (isVoiceActive) {
-                // Reiniciar reconocimiento si aún está activado
-                recognition.start();
-            }
-        };
+                // Evento cuando el reconocimiento de voz obtiene un resultado
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    console.log('Texto reconocido:', transcript);
 
-        // Manejo de errores
-        recognition.onerror = function(event) {
-            console.error('Error en el reconocimiento de voz:', event.error);
-        };
-    });
-} else {
-    console.error('SpeechRecognition no está soportado en este navegador.');
-}
-</script>
+                    // Escribir lo reconocido en el campo de búsqueda
+                    searchInput.value = transcript;
+
+                    // Enviar el formulario de búsqueda automáticamente
+                    searchForm.submit();
+                };
+
+                // Evento cuando el reconocimiento de voz termina
+                recognition.onend = function() {
+                    if (isVoiceActive) {
+                        // Reiniciar reconocimiento si aún está activado
+                        recognition.start();
+                    }
+                };
+
+                // Manejo de errores
+                recognition.onerror = function(event) {
+                    console.error('Error en el reconocimiento de voz:', event.error);
+                    alert('Error en el reconocimiento de voz: ' + event.error);
+                };
+            });
+        } else {
+            console.error('SpeechRecognition no está soportado en este navegador.');
+        }
+    </script>
 
 
 
