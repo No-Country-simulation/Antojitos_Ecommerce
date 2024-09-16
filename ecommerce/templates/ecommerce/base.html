@@ -105,10 +105,14 @@
                                     </ul>
                                 </li>
 
+                                <!-- SEARCH INPUT -->
                                 <li class="nav-item search-container">
-                                    <form class="d-flex">
-                                        <input class="form-control me-2 search-input" type="search" placeholder="Buscar" aria-label="Search">
+                                    <form class="d-flex" action="{% url 'Producto_Search_Top' %}" method="GET">
+                                        <input class="form-control me-2 search-input" type="search" 
+                                        placeholder="Buscar" aria-label="Search" name="top_search">
+                                        <!-- Botón de búsqueda -->
                                         <button class="search-btn" type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+                                        <!-- Botón de voz -->
                                         <button class="voice-btn" type="button" id="voice-btn" style="margin-left: 10px;">
                                             <i class="fa fa-microphone"></i>
                                         </button>
