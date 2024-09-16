@@ -23,60 +23,52 @@ from django.contrib.auth import update_session_auth_hash
 
 def registro(request):
     """ 
-        Este formulario es el registro de usuarios nuevos dentro del proyecto 
+        Notes: Este formulario es el registro de usuarios nuevos dentro del proyecto.
     """
+    # Inicializar los formularios
+    form_c = BuyerRegistrationForm()
+    form_v = SellerRegistrationForm()
+    form = None
 
     if request.method == 'POST':
-        
         tipo_usuario = request.POST.get('tipo_usuario')
-        
+
+        # Determinar qué formulario procesar según el tipo de usuario
         if tipo_usuario == 'comprador':
-            # Procesar formulario de comprador
-            form_c = BuyerRegistrationForm(request.POST)
-            form_v = SellerRegistrationForm()
+            form = BuyerRegistrationForm(request.POST)
+        elif tipo_usuario == 'vendedor':
+            form = SellerRegistrationForm(request.POST)
         
-            if form_c.is_valid():
-                # Guardar el usuario y encriptar la contraseña usando el método `save` del formulario.
-                form_c.save()
+        # Procesar el formulario si es válido
+        if form and form.is_valid():
+            # Guardar el usuario y encriptar la contraseña
+            form.save()
 
-                # Autenticar al usuario usando el email
-                email = form_c.cleaned_data['email']
-                password = form_c.cleaned_data['password1']
-                user = authenticate(email=email, password=password)
+            # Autenticar al usuario y hacer login
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password1']
+            user = authenticate(email=email, password=password)
+            
+            if user is not None:
+                login(request, user)
 
-                # Iniciar sesión del usuario
-                if user is not None:
-                    login(request, user)
+            # Redirigir al Home
+            return redirect('Home')
 
-                # Redirigir a la página principal.
-                return redirect('Home')
+        else:
+            # Mostrar errores si el formulario no es válido
+            context = {
+                'form_c': form_c if tipo_usuario == 'vendedor' else form,  # Mostrar el formulario original o corregido
+                'form_v': form_v if tipo_usuario == 'comprador' else form, # Mostrar el formulario original o corregido
+                'form_not_valid': True,
+                'form_user_type': tipo_usuario,
+                'form_error': form.errors if form else None
+            }
+            return render(request, 'registros/registro.html', context)
 
-            else:
-                print(request.POST)  # Esto imprimirá los datos enviados en la solicitud POST.
-                print("\n\n")
-                print(form_c.errors)  # Imprime los errores del formulario en la consola para depurar.
-
-                # Renderizar la misma página con errores del formulario
-                context = {
-                    'form_c': form_c,
-                    'form_v': form_v,
-                    'form_not_valid': True,
-                    'form_user_type': 'comprador',
-                    'form_error': form_c.errors
-                }
-                
-                return render(request, 'registros/registro.html', context)
-
-
-    # Esto es el contexto cuando devolvemos con un GET, u otro que no sea POST
-    else:
-        form_c = BuyerRegistrationForm()
-        form_v = SellerRegistrationForm()
-
-        context = {'form_c': form_c,
-                   'form_v': form_v}
-
-        return render(request, 'registros/registro.html', context)
+    # GET request
+    context = {'form_c': form_c, 'form_v': form_v}
+    return render(request, 'registros/registro.html', context)
 
 
 @login_required

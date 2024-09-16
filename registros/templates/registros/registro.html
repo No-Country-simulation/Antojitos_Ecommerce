@@ -87,17 +87,22 @@
                     </form>
                 </div>
             </div>
-
+            
+            <!-- Formulario de Vendedor -->
             <div class="row">
                 <div class="col-md-6"></div>
 
-                <!-- Formulario de Vendedor -->
                 <div id="form-vendedor" class="form-container col-12 col-md-5">
                     <form method="POST" action="{% url 'Register' %}">
                         {% csrf_token %}
                         <!-- Esto sirve para hacer una condicion para identificar en el views.py -->
                         <input type="hidden" name="tipo_usuario" value="vendedor">
                         
+                        <div class="form-group">
+                            <label for="name_store">Nombre Empresa</label>
+                            {{ form_v.name_store }}
+                        </div>
+
                         <div class="form-group">
                             <label for="email">E-mail</label>
                             {{ form_v.email }}

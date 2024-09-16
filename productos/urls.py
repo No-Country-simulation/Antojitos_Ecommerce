@@ -9,7 +9,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # If you want dont pass any parameters in the url you can use this "name"
-    path('productos/', views.producto, name="Producto"),  
+    path('productos/', views.producto, name="Producto"),
+    path('productos/search/', views.producto_search, name="Producto_Search_Top"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

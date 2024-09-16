@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 import os
 import uuid
+import random
 from productos.models import Producto
 
 
@@ -119,7 +120,8 @@ class SellerUser(CustomUser):
     name_store = models.CharField(max_length=255, blank=True, null=True, default="Nombre Empresa")
     
     # Cantida de estrellas para el local
-    stars = models.IntegerField(default=3)
+    num = round(random.uniform(2, 5), 1)
+    stars = models.IntegerField(default=num)
     
     # Relación con una categoría de proveedor
     category = models.ForeignKey(

@@ -104,10 +104,12 @@
                                         {% endfor %}
                                     </ul>
                                 </li>
-
+                                
+                                <!-- SEARCH INPUT -->
                                 <li class="nav-item search-container">
-                                    <form class="d-flex">
-                                        <input class="form-control me-2 search-input" type="search" placeholder="Buscar" aria-label="Search">
+                                    <form class="d-flex" action="{% url 'Producto_Search_Top' %}" method="GET">
+                                        <input class="form-control me-2 search-input" type="search" 
+                                        placeholder="Buscar" aria-label="Search" name="top_search">
                                         <!-- Botón de búsqueda -->
                                         <button class="search-btn" type="submit" id="search-btn"><i class="fa fa-search"></i></button>
                                         <!-- Botón de voz -->
@@ -245,10 +247,11 @@
     <!-- Bootstrap Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="{% static 'ecommerce/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <script>    // Verificar que el navegador soporte SpeechRecognition
-        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    <script>    
+// Verificar que el navegador soporte SpeechRecognition
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-    if ('SpeechRecognition' in window) {
+if ('SpeechRecognition' in window) {
     console.log('SpeechRecognition está soportado en este navegador.');
 
     document.addEventListener("DOMContentLoaded", function() {
