@@ -1,227 +1,288 @@
+/* Elimina el contorno del foco en todos los elementos */
 *:focus {
     outline: none;
 }
+
+/* Estilos para el contenedor del carrusel de productos */
 .carousel-producto-contenedor {
-    max-width: 1200px;
-    width: 90%;
-    margin: 0 auto;
-    position: relative;
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    width: 90%; /* Ancho del contenedor como porcentaje del contenedor padre */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    position: relative; /* Posición relativa para posicionar elementos hijos */
 }
+
+/* Estilos para el título del carrusel de productos */
 .carousel-producto-titulo {
-    border-bottom: 3px solid #9751ff;
+    border-bottom: 3px solid #9751ff; /* Línea inferior de color con un grosor de 3px */
 }
+
+/* Estilos para el fondo del título del carrusel de productos */
 .carousel-producto-titulo .carousel-producto-shape {
-    background: #9751ff;
-    padding: 10px 20px;
-    /* max-width: 400px; */
-    max-width: 300px;
-    position: relative;
+    background: #9751ff; /* Color de fondo del título */
+    padding: 10px 20px; /* Espaciado interno */
+    max-width: 300px; /* Ancho máximo del contenedor del título */
+    position: relative; /* Posición relativa para posicionar el pseudo-elemento */
 }
+
+/* Pseudo-elemento para el efecto de forma con inclinación */
 .carousel-producto-shape.right-skew:before {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: -20px;
-    display: block;
-    width: 50px;
-    background: #9751ff;
-    /* change background color to same as box */
-    -webkit-transform: skew(-10deg);
-    -ms-transform: skew(-10deg);
-    transform: skew(20deg);
+    content: ''; /* No muestra contenido, solo sirve para el diseño */
+    position: absolute; /* Posición absoluta dentro del contenedor relativo */
+    top: 0; /* Posición desde el borde superior */
+    bottom: 0; /* Posición desde el borde inferior */
+    right: -20px; /* Desplaza el pseudo-elemento hacia la derecha */
+    width: 50px; /* Ancho del pseudo-elemento */
+    background: #9751ff; /* Color de fondo del pseudo-elemento */
+    transform: skew(20deg); /* Inclinación del pseudo-elemento */
+    z-index: -1; /* Envía el pseudo-elemento detrás del contenido principal */
 }
 
-.carousel-producto-titulo .carousel-producto-shape h2, .carousel-producto-titulo .carousel-producto-shape i {
-    display: inline-block;
-    margin: 0;
-    color: #fff;
-}
+/* Estilos para el texto y el ícono dentro del título del carrusel */
+.carousel-producto-titulo .carousel-producto-shape h2, 
 .carousel-producto-titulo .carousel-producto-shape i {
-    margin-right: 10px;
-    font-size: 20px;
+    display: inline-block; /* Muestra los elementos en línea, pero permite el ajuste de altura y ancho */
+    margin: 0; /* Elimina el margen */
+    color: #fff; /* Color del texto */
 }
+
+.carousel-producto-titulo .carousel-producto-shape i {
+    margin-right: 10px; /* Espacio a la derecha del ícono */
+    font-size: 20px; /* Tamaño de la fuente del ícono */
+}
+
+/* Estilo para el texto adicional en el título del carrusel */
 .carousel-producto-txt-titulo {
-    position: absolute;
-    right: 110px;
-    top: 15px;
-    font-size: 13px;
-    color: #605f5f;
-    font-weight: 600;
+    position: absolute; /* Posición absoluta respecto al contenedor */
+    right: 110px; /* Desplaza el texto hacia la derecha */
+    top: 15px; /* Desplaza el texto hacia abajo */
+    font-size: 13px; /* Tamaño de la fuente */
+    color: #605f5f; /* Color del texto */
+    font-weight: 600; /* Grosor de la fuente */
 }
+
+/* Estilos para los ítems individuales del carrusel de productos */
 .carousel-producto-item {
-    max-width: 280px;
-    vertical-align: top;
-    background: #fff;
-    padding: 10px 0 20px 0;
-    margin-right: 20px;
-    border-radius: 10px;
+    max-width: 280px; /* Ancho máximo del ítem */
+    background: #fff; /* Color de fondo */
+    padding: 10px 0 20px; /* Espaciado interno (top-right-bottom-left) */
+    margin-right: 20px; /* Espacio a la derecha de cada ítem */
+    border-radius: 10px; /* Bordes redondeados */
+    vertical-align: top; /* Alinea verticalmente los ítems en el contenedor */
 }
+
+/* Estilos para el contenedor de la imagen dentro del ítem del carrusel */
 .carousel-producto-item .carousel-producto-contenedor-imagen {
-    min-height: 220px;
-    position: relative;
+    min-height: 200px; /* Ajusta la altura mínima del contenedor de la imagen según sea necesario */
+    position: relative; /* Mantén la posición relativa para los elementos hijos */
 }
+
 .carousel-producto-item .carousel-producto-contenedor-imagen img {
-    width: 100%;
+    width:100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: 340px; /* Mantén la proporción original de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionar */
 }
+
 .carousel-producto-item .carousel-producto-contenedor-imagen .carousel-producto-link {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 9;
-    width: 100%;
-    height: 100%;
+    position: absolute; /* Posiciona el enlace en la parte superior del contenedor de la imagen */
+    left: 0; /* Posición desde el borde izquierdo */
+    top: 0; /* Posición desde el borde superior */
+    width: 100%; /* Ancho del enlace para cubrir el contenedor de la imagen */
+    height: 100%; /* Altura del enlace para cubrir el contenedor de la imagen */
+    z-index: 9; /* Asegura que el enlace esté sobre otros elementos */
 }
+
+/* Estilos para el efecto hover de la imagen */
 .carousel-producto-item .carousel-producto-contenedor-imagen .carousel-producto-img-hover {
-    opacity: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transition: all ease-in-out 0.2s;
+    opacity: 0; /* Inicialmente oculto */
+    position: absolute; /* Posición absoluta para superponer el efecto sobre la imagen */
+    left: 0; /* Posición desde el borde izquierdo */
+    top: 0; /* Posición desde el borde superior */
+    transition: opacity 0.2s ease-in-out; /* Transición suave del efecto */
 }
+
+/* Muestra el efecto hover cuando se pasa el cursor sobre el ítem */
 .carousel-producto-item:hover .carousel-producto-img-hover {
-    opacity: 1;
+    opacity: 1; /* Muestra el efecto hover */
 }
+
+/* Estilos para la sección de datos dentro del ítem del carrusel */
 .carousel-producto-item .carousel-producto-datos {
-    border-top: 2px solid #e2e2e2;
-    border-bottom: 2px solid #e2e2e2;
-    padding: 20px;
+    border-top: 2px solid #e2e2e2; /* Línea superior de separación */
+    border-bottom: 2px solid #e2e2e2; /* Línea inferior de separación */
+    padding: 20px; /* Espaciado interno */
 }
+
+/* Estilos para el título dentro de los datos del ítem */
 .carousel-producto-item .carousel-producto-datos h3 {
-    margin: 10px 0;
+    margin: 10px 0; /* Espacio superior e inferior */
 }
+
+/* Estilos para el enlace en el título de los datos del ítem */
 .carousel-producto-item .carousel-producto-datos h3 a {
-    text-decoration: none;
-    color: #2b2b2b;
-    font-size: 14px;
-    display: block;
-    text-transform: uppercase;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: #2b2b2b; /* Color del texto del enlace */
+    font-size: 14px; /* Tamaño de la fuente */
+    display: block; /* Hace que el enlace ocupe toda la línea */
+    text-transform: uppercase; /* Transforma el texto a mayúsculas */
 }
+
+/* Estilos para el enlace en el título de los datos del ítem cuando se pasa el cursor */
 .carousel-producto-item .carousel-producto-datos h3 a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Agrega un subrayado cuando se pasa el cursor */
 }
+
+/* Estilos para los enlaces pequeños dentro de los datos del ítem */
 .carousel-producto-item .carousel-producto-datos small a {
-    text-transform: uppercase;
-    font-weight: 600;
-    text-decoration: none;
-    display: block;
-    margin-top: 10px;
-    color: #5a5a5a;
-    font-size: 11px;
+    text-transform: uppercase; /* Transforma el texto a mayúsculas */
+    font-weight: 600; /* Grosor de la fuente */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    display: block; /* Hace que el enlace ocupe toda la línea */
+    margin-top: 10px; /* Espacio superior */
+    color: #5a5a5a; /* Color del texto */
+    font-size: 11px; /* Tamaño de la fuente */
 }
+
+/* Estilos para el texto pequeño dentro de los datos del ítem */
 .carousel-producto-item .carousel-producto-datos small {
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #5a5a5a;
+    font-size: 14px; /* Tamaño de la fuente */
+    text-transform: uppercase; /* Transforma el texto a mayúsculas */
+    color: #5a5a5a; /* Color del texto */
 }
+
+/* Estilos para la sección de precios dentro del ítem del carrusel */
 .carousel-producto-item .carousel-producto-precios {
-    padding: 20px;
-    display: flex;
+    padding: 20px; /* Espaciado interno */
+    display: flex; /* Usa flexbox para alinear elementos */
 }
+
+/* Estilos para los divs dentro de la sección de precios */
 .carousel-producto-item .carousel-producto-precios div {
-    flex-grow: 1;
+    flex-grow: 1; /* Permite que el div crezca para llenar el espacio disponible */
 }
+
+/* Estilos para los pequeños elementos dentro de la sección de precios */
 .carousel-producto-item .carousel-producto-precios div small {
-    display: block;
-    font-size: 15px;
-    margin-bottom: 5px;
-    color: #828282;
-    font-weight: 600;
+    display: block; /* Muestra cada elemento pequeño en una nueva línea */
+    font-size: 15px; /* Tamaño de la fuente */
+    margin-bottom: 5px; /* Espacio inferior */
+    color: #828282; /* Color del texto */
+    font-weight: 600; /* Grosor de la fuente */
 }
+
+/* Estilos para el precio en internet dentro de la sección de precios */
 .carousel-producto-item .carousel-producto-precios div.carousel-producto-internet span {
-    font-weight: bold;
-    font-size: 23px;
-    color: #ff0808;
+    font-weight: bold; /* Fuente en negrita */
+    font-size: 23px; /* Tamaño de la fuente */
+    color: #ff0808; /* Color del texto */
 }
+
+/* Estilos para los precios generales dentro de la sección de precios */
 .carousel-producto-item .carousel-producto-precios div span {
-    font-size: 17px;
-    font-weight: 600;
+    font-size: 17px; /* Tamaño de la fuente */
+    font-weight: 600; /* Grosor de la fuente */
 }
+
+/* Estilos para el botón de carrito dentro del ítem del carrusel */
 .carousel-producto-item .carousel-producto-btn-carrito {
-    display: block;
-    text-align: center;
-    padding: 15px;
-    background: #9751ff;
-    width: 80%;
-    margin: 0 auto;
-    border-radius: 100px;
-    color: #fff;
-    text-decoration: none;
-    display: none;
-    transition: all ease-in-out 0.3s;
+    display: none; /* Oculta el botón por defecto */
+    text-align: center; /* Centra el texto dentro del botón */
+    padding: 15px; /* Espaciado interno */
+    background: #9751ff; /* Color de fondo */
+    width: 80%; /* Ancho del botón */
+    margin: 0 auto; /* Centra el botón horizontalmente */
+    border-radius: 100px; /* Bordes completamente redondeados */
+    color: #fff; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    transition: transform 0.3s ease-in-out; /* Transición suave para el efecto hover */
 }
-.carousel-producto-item .carousel-producto-btn-carrito:hover {
-    transform: scale(1.05);
-}
+
+/* Muestra el botón de carrito cuando se pasa el cursor sobre el ítem */
 .carousel-producto-item:hover .carousel-producto-btn-carrito {
-    display: block;
+    display: block; /* Muestra el botón */
 }
+
+/* Estilos para el botón de carrito cuando se pasa el cursor */
+.carousel-producto-item .carousel-producto-btn-carrito:hover {
+    transform: scale(1.05); /* Agranda ligeramente el botón */
+}
+
+/* Estilos para las estrellas de calificación dentro del ítem del carrusel */
 .carousel-producto-starrr {
-    display: block;
+    display: block; /* Muestra las estrellas como bloques */
 }
+
+/* Estilos para los enlaces de estrellas de calificación */
 .carousel-producto-starrr a {
-    font-size: 16px;
-    padding: 0 1px;
-    cursor: pointer;
-    color: #FFD119;
-    text-decoration: none;
+    font-size: 16px; /* Tamaño de la fuente */
+    padding: 0 1px; /* Espacio a los lados de las estrellas */
+    cursor: pointer; /* Cambia el cursor cuando se pasa sobre las estrellas */
+    color: #FFD119; /* Color de las estrellas */
+    text-decoration: none; /* Elimina el subrayado */
 }
+
+/* Estilos para el slider del carrusel de productos */
 .carousel-producto-slider {
-    margin-top: 20px;
+    margin-top: 20px; /* Espacio superior */
 }
 
+/* Estilos para los controles de Slick Carousel */
+.slick-prev, .slick-next {
+    font-size: 0; /* Elimina el tamaño de la fuente para los controles */
+    position: absolute; /* Posición absoluta dentro del contenedor del carrusel */
+    width: 30px; /* Ancho del control */
+    height: 30px; /* Altura del control */
+    border: 1px solid #e2e2e2; /* Borde del control */
+    border-radius: 6px; /* Bordes redondeados */
+    background-color: #fff; /* Color de fondo */
+    cursor: pointer; /* Cambia el cursor a puntero */
+}
+
+/* Estilos para el botón de navegación anterior */
 .slick-prev {
-    font-size: 0;
-    position: absolute;
-    right: 55px;
-    top: -64px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #e2e2e2;
-    border-radius: 6px;
-    background-image: url(https://dummyimage.com/20x20/ffffff/474747&text=%3C);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #fff;
-    cursor: pointer;
-}
-.slick-next {
-    font-size: 0;
-    position: absolute;
-    right: 18px;
-    top: -64px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #e2e2e2;
-    border-radius: 6px;
-    background: url(https://dummyimage.com/20x20/ffffff/474747&text=%3E);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #fff;
-    cursor: pointer;
-}
-.slick-next:hover, .slick-prev:hover{
-    opacity: 0.8;
+    right: 55px; /* Desplaza el botón hacia la derecha */
+    top: -64px; /* Desplaza el botón hacia arriba */
+    background-image: url(https://dummyimage.com/20x20/ffffff/474747&text=%3C); /* Imagen de fondo para el botón de navegación */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* No repite la imagen */
 }
 
-@media screen and (max-width: 650px){
-    .txt-titulo{
-        display: none;
+/* Estilos para el botón de navegación siguiente */
+.slick-next {
+    right: 18px; /* Desplaza el botón hacia la derecha */
+    top: -64px; /* Desplaza el botón hacia arriba */
+    background-image: url(https://dummyimage.com/20x20/ffffff/474747&text=%3E); /* Imagen de fondo para el botón de navegación */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* No repite la imagen */
+}
+
+/* Estilos para los controles de Slick Carousel cuando se pasa el cursor */
+.slick-prev:hover, .slick-next:hover {
+    opacity: 0.8; /* Reduce la opacidad para un efecto de hover */
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 650px) {
+    .txt-titulo {
+        display: none; /* Oculta el texto del título en pantallas pequeñas */
     }
-    .titulo .shape h2{
-        font-size: 20px;
+
+    .titulo .shape h2 {
+        font-size: 20px; /* Reduce el tamaño de la fuente del título */
     }
 }
-@media screen and (max-width: 600px){
-    .slick-next, .slick-prev{
-        display: none !important;
+
+/* Estilos para pantallas muy pequeñas */
+@media screen and (max-width: 600px) {
+    .slick-next, .slick-prev {
+        display: none !important; /* Oculta los controles de navegación del carrusel en pantallas muy pequeñas */
     }
-    .titulo .shape{
-        padding: 10px 10px;
-        max-width: 160px;
+
+    .titulo .shape {
+        padding: 10px; /* Reduce el espaciado interno del título */
+        max-width: 160px; /* Ancho máximo del título */
     }
-    .producto{
-    max-width: 100%;
+
+    .producto {
+        max-width: 100%; /* Ajusta el ancho máximo del producto al 100% del contenedor */
     }
 }
