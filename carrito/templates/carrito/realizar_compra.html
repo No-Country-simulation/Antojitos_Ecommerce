@@ -1,0 +1,237 @@
+{% extends "ecommerce/base.html" %}
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- For More CSS Modules -->
+{% block extra_head %}
+<!-- Cargar CSS o meta tags específicos de la página aquí -->
+<link href="{% static 'carrito/css/realizar_compra.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-0 mb-5">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div class="row mb-2">
+                <h1 class="text-muted">Mi Carrito</h1>
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+
+    <!-- VISTAS CARRITO ITEMS -->
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-7">
+            <div class="card-cart-view">
+                <h1>Pago</h1>
+
+                <div class="checkout-form">
+                    <form>
+                        <!-- Datos personales -->
+                        <h3>Datos personales</h3>
+                        <div class="input-group">
+                            <label for="nombre">Nombre y apellidos</label>
+                            <input type="text" id="nombre" placeholder="Por ejemplo: Maria Sanchez">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="telefono">Número de teléfono</label>
+                            <input type="text" id="telefono" placeholder="11xxxxxxxx">
+                        </div>
+                    </form>
+
+
+                    <!-- Hora de entrega -->
+                    <div class="contenedor-boton-modal">
+                        <button type="button" class="btn btn-primary modal-button" data-bs-toggle="modal"
+                            data-bs-target="#modalHora">
+                            <div class="modal-button-content">
+                                <div class="left-icon">
+                                    <i class="fas fa-clock"></i> <!-- Usa un icono de reloj -->
+                                </div>
+                                <div class="modal-button-text">
+                                    <h4>Hora de retiro de pedido</h4>
+                                </div>
+                                <div class="modal-button-flecha">
+                                    <i class="fas fa-chevron-right"></i> <!-- Flecha hacia la derecha -->
+                                </div>
+                            </div>
+                        </button>
+
+
+                        <!-- Modal de hora de retiro del pedido -->
+                        <div class="modal fade" id="modalHora" tabindex="-1" aria-labelledby="modalHoraLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="modalHoraLabel">Horario del retiro del pedido
+                                        </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label for="horarrio">Elegí en que horario querés retirar tu pedido</label>
+                                        <select id="horario">
+                                            <option>16h</option>
+                                            <option>17h</option>
+                                            <option>18h</option>
+                                            <option>19h</option>
+                                            <option>20h</option>
+                                            <option>21h</option>
+                                            <option>22h</option>
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NOTA DEL PEDIDO -->
+                    <div>
+
+                        <button type="button" class="btn btn-primary modal-button" data-bs-toggle="modal"
+                            data-bs-target="#modalNota">
+                            <div class="modal-button-content">
+                                <div class="left-icon">
+                                    <i class="fas fa-box"></i> <!-- Usa un icono de reloj -->
+                                </div>
+                                <div class="modal-button-text">
+                                    <h4>Nota del pedido</h4>
+                                </div>
+                                <div class="modal-button-flecha">
+                                    <i class="fas fa-chevron-right"></i> <!-- Flecha hacia la derecha -->
+                                </div>
+                            </div>
+                        </button>
+
+                        <!-- Modal de nota del pedido -->
+                        <div class="modal fade" id="modalNota" tabindex="-1" aria-labelledby="modalNotaLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="modalNotaLabel">Nota del pedido</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Deja una nota para el local:
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Por ejemplo: A nombre de...">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-primary">Guardar cambios</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Método de pago -->
+                    <div>
+                        <button type="button" class="btn btn-primary modal-button" data-bs-toggle="modal"
+                            data-bs-target="#modalPago">
+                            <div class="modal-button-content">
+                                <div class="left-icon">
+                                    <i class="far fa-credit-card"></i>
+                                </div>
+                                <div class="modal-button-text">
+                                    <h4>Seleccione el método de pago</h4>
+                                </div>
+                                <div class="modal-button-flecha">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </button>
+
+                        <!-- Modal de método de pago -->
+                        <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="modalPagoLabel">Método de pago</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-primary">Guardar cambios</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Container cupon -->
+                <div class="container-coupon mt-4">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="" placeholder="¿Tenés un cupon?">
+                            <button class="input-group-append btn-coupon-apply" type="submit">
+                                Aplicar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card-total-cart-view">
+                <div class="total-row">
+                    <h5 class="mt-2">Total:</h5>
+                    <h5 class="mt-2" id="total-cart-view">
+                        ${{ carrito_total|floatformat:0|intcomma }}
+                    </h5>
+                </div>
+
+                <div class="total-row">
+                    <h5 class="mt-2 text-muted">Descuento:</h5>
+                    <h5 class="mt-2 text-muted">- $0.00</h5>
+                </div>
+
+                <hr class="total-divider"> <!-- Línea divisoria -->
+
+                <div class="total-row">
+                    <h5 class="mt-2">Total:</h5>
+                    <h5 class="mt-2" id="total-cart-view2">
+                        ${{ carrito_total|floatformat:0|intcomma }}
+                    </h5>
+                </div>
+
+                <button class="btn-pay">
+                    Confirmar
+                </button>
+            </div>
+        </div>
+
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+
+<!-- JavaScript for Product Page -->
+{% block extra_scripts %}
+<script src="{% static 'carrito/js/ver_carrito.js' %}"></script>
+
+{% endblock %}
+{% endblock %}

@@ -27,14 +27,14 @@
                 
 
                 <div class="row mb-2">
-                    <h1 class="text-muted">Mi Carrito</h1>
+                    <h1 class="text-muted titulo-carrito">Mi Carrito</h1>
                 </div>
             </div>
 
             <div class="col-lg-1"></div>
         </div>
 
-        <!-- VISTAS CARRITO ITEMSS -->
+        <!-- VISTAS CARRITO ITEMS -->
         <div class="row">
             <div class="col-lg-1"></div>
 
@@ -46,10 +46,10 @@
                             <thead class="text-muted">
                                 <tr class="small text-uppercase">
                                     <th scope="col" width="15%" class="border-bottom"></th>
-                                    <th scope="col" class="border-bottom">Product</th>
-                                    <th scope="col" width="13%" class="border-bottom">Price</th>
-                                    <th scope="col" width="13%" class="border-bottom">Quantity</th>
-                                    <th scope="col" width="13%" class="border-bottom">SubTotal</th>
+                                    <th scope="col" class="border-bottom">Producto</th>
+                                    <th scope="col" width="13%" class="border-bottom">Precio</th>
+                                    <th scope="col" width="13%" class="border-bottom">Cantidad</th>
+                                    <th scope="col" width="13%" class="border-bottom">Subtotal</th>
                                     <th scope="col" width="8%" class="border-bottom"></th>
                                 </tr>
                             </thead>
@@ -129,10 +129,10 @@
                         <form>
                             <div class="input-group">
                                 <input type="text" class="form-control" name=""
-                                    placeholder="Have a coupon?">
+                                    placeholder="¿Tenés un cupon?">
 
                                 <button class="input-group-append btn-coupon-apply" type="submit">
-                                    Apply
+                                    Aplicar
                                 </button>
                             </div>
                         </form>
@@ -155,7 +155,7 @@
                     </div>
 
                     <div class="total-row">
-                        <h5 class="mt-2 text-muted">Discount:</h5>
+                        <h5 class="mt-2 text-muted">Descuento:</h5>
                         <h5 class="mt-2 text-muted">- $0.00</h5>
                     </div>
 
@@ -168,8 +168,8 @@
                         </h5>
                     </div>
 
-                    <button class="btn-main mt-5">
-                        Make Purchase
+                    <button class="btn-pay" onclick="window.location.href={% url 'realizar_compra' %};">
+                        Realizar compra
                     </button>
 
                 </div>

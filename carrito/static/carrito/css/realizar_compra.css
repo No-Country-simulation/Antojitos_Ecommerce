@@ -1,0 +1,205 @@
+.card-cart-view {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+}
+.card-total-cart-view {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.total-divider {
+    border: none;
+    height: 2px;
+    background-color: #ddd;
+    margin: 5px 0; /* Espacio alrededor de la línea */
+}
+.btn-pay {
+    background-color: #DB3B3B;
+    color: black;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}  
+
+    .btn-pay:hover {
+        background-color: #FA4D3A;
+    }
+
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+
+h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 16px;
+    color: #444;
+    margin-top: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Sección derecha */
+
+.order-summary {
+    text-align: left;
+}
+
+.order-summary h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+
+
+.order-details p {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.order-details h4 {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.pay-button {
+    background-color: #DB3B3B;
+    color: #333;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pay-button:hover {
+    background-color: #FA4D3A;
+}
+
+.payment-info {
+    font-size: 12px;
+    color: #777;
+    margin-top: 10px;
+}
+
+/*Coupon styles*/
+.container-coupon {
+    width: 70%; /* Ancho del contenedor del formulario */
+    display: flex;
+    align-items: center;
+}
+
+.btn-coupon-apply {
+    color: #ffffff;
+    background-color: #DB3B3B;
+    border: none; /* Elimina el borde */
+    border-radius: 5px; /* Bordes redondeados */
+    width: 25%;
+    font-size: 14px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-coupon-apply:hover {
+    background-color: #FA4D3A; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+}
+
+/*Estilos barras de horario, metodo de pago y notas*/
+
+.modal-button {
+    padding: 10px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:20px ;
+}
+
+/* Aplica display flex directamente al contenedor de los elementos del botón */
+.modal-button-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.modal-button:hover {
+    background-color: #F5F5F5;
+    border-color: black;
+}
+
+.left-icon {
+    color: #DB3B3B; /* Color rojo para el icono */
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.modal-button-text h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.modal-button-flecha {
+    color: #333;
+    font-size: 18px;
+}
+
+
+/* Asegúrate de incluir Font Awesome para los iconos */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
