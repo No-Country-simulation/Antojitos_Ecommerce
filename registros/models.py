@@ -7,7 +7,6 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 import os
 import uuid
 import random
-from productos.models import Producto
 
 
 # Define una categoría para los proveedores
@@ -124,12 +123,11 @@ class SellerUser(CustomUser):
     name_store = models.CharField(max_length=255, blank=True, null=True, default="Nombre Empresa")
     
     # Cantida de estrellas para el local
-    num = round(random.uniform(2, 5), 1)
-    stars = models.IntegerField(default=num)
+    stars = models.FloatField(default=round(random.uniform(2, 5), 1))
     
     # Relación con una categoría de proveedor
     category = models.ForeignKey(
-        Categoria_Proveedor, 
+        'Categoria_Proveedor', 
         on_delete=models.SET_DEFAULT,
         default=1,
         blank=True, 
@@ -137,7 +135,7 @@ class SellerUser(CustomUser):
     )
     
     # Relación Many-to-Many con el modelo Producto
-    products = models.ManyToManyField(Producto, related_name='sellers', blank=True)
+    # products = models.ManyToManyField(Producto, related_name='sellers', blank=True)
     
     # Representación del objeto como una cadena, devuelve el correo electrónico
     def __str__(self):
@@ -165,7 +163,10 @@ class BuyerUser(CustomUser):
     # ya que son opcionales por defecto
     
     # para productos que el usuario guarda como favoritos
-    saved_products = models.ManyToManyField(Producto, related_name='buyers', blank=True)
+    saved_products = models.ManyToManyField('productos.Producto', related_name='buyers', blank=True)
+    
+    # Para tiendas que el usuario guarda como favoritas (relacionadas con SellerUser)
+    favorite_stores = models.ManyToManyField('SellerUser', related_name='favorited_by_buyers', blank=True)
     
     # Eventualmente se hara un apartado de pedidos/facturas cuando se cree la clase
     # pedidos
@@ -186,6 +187,17 @@ class BuyerUser(CustomUser):
         
         
 """
+class Comentario(models.Model):
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='comentarios')
+    autor = models.ForeignKey(BuyerUser, on_delete=models.CASCADE, related_name='comentarios')
+    contenido = models.TextField()
+    fecha = models.DateTimeField(auto_now_add=True)
+    puntuacion = models.PositiveSmallIntegerField(choices=[(i, str(i)) for i in range(1, 6)])
+
+    def __str__(self):
+        return f"Comentario de {self.autor} sobre {self.producto}"
+
+
     El siguiente bloque de código se utiliza para definir las relaciones Many-to-Many 
     del modelo SellerUser con los modelos Group y Permission de Django. Estas relaciones 
     son esenciales para manejar el sistema de permisos y grupos de usuarios, especialmente 

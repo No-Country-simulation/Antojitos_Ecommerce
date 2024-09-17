@@ -110,77 +110,98 @@
     border: none;
 }
 
-/*  ESTILOS DE SECTION RESTAURANTES Y COMIDAS */
-
-main {
-    width: 100%;
-    height: 100%;
-}
-
-.section-resto {
-    margin: 20px;
-}
-
-.section-resto h2 {
-    text-align: center;
-}
-
-.card {
-    width: 350px;
+/*  ==============================================================================
+    ESTILOS DE SECTION RESTAURANTES Y COMIDAS 
+================================================================================== */
+/* Estilos de la tarjeta */
+.resto-card {
+    width: 90%;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    position: relative;
-    margin: 20px;
+    margin: 20px auto;
+
+    position: relative; /* Para que el botón de corazón pueda posicionarse dentro de la tarjeta */
+    cursor: pointer; /* Para indicar que la tarjeta es clickeable */
 }
 
-.card img {
-    width: 350px;
+.resto-card img {
+    width: 100%;
     height: 150px;
+    object-fit: cover;
 }
 
-.card .content {
+/* Contenido de la tarjeta */
+.resto-card-content {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.card .content h2 {
-    margin: 0;
-    font-size: 20px;
+.resto-card-header,
+.resto-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Nombre del vendedor */
+.resto-card-header h3 {
+    font-size: 18px;
     font-weight: bold;
+    margin: 0;
 }
 
-.card .content p {
-    margin: 10px 0 0;
+/* Estilo de los íconos */
+.icon-yellow {
+    color: #FFD700;
+    font-size: 16px;
+}
+
+/* Estilos del botón del corazón */
+.resto-card-heart-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    position: absolute; /* Posiciona el botón de corazón dentro de la tarjeta */
+    bottom: 10px; /* Ajusta la posición vertical */
+    right: 10px; /* Ajusta la posición horizontal */
+    z-index: 10; /* Asegura que el botón esté por encima del contenido */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Estilo del ícono de corazón dentro del botón */
+.resto-card-heart-button .icon-heart {
+    font-size: 20px;
+    color: #ccc; /* Gris inicialmente */
+}
+
+/* Cambia el color del corazón al ser clickeado */
+.resto-card-heart-button.active .icon-heart {
+    color: #ff4c4c; /* Rojo */
+    transform: scale(1.5);
+}
+
+/* Al soltarlo vuelve a su tamaño normal */
+.resto-card-heart-button.active .icon-heart {
+    transform: scale(1.1);
+}
+
+/* Dirección del vendedor */
+.resto-card-footer p {
+    margin: 0;
     color: #555;
 }
 
-/*== CONTENEDOR DE ICONO FAVORITOS ==*/
-.heart-container {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-}
 
-/* Oculta el checkbox */
-.heart-checkbox {
-    display: none;
-}
-
-/* Estilo del corazón (sin marcar) */
-.heart-label {
-    font-size: 25px;
-    color: black;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-/* Estilo del corazón cuando el checkbox está marcado */
-.heart-checkbox:checked+.heart-label {
-    color: #ff4c4c;
-}
-
-/*======CONTENEDOR COMIDA =====*/
+/* ==============================================================================
+                    CONTENEDOR COMIDA 
+============================================================================== */
 .section-comida {
     display: flex;
     height: 400px;

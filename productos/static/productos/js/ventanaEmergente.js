@@ -7,6 +7,9 @@ function openModal(productId) {
 
 // Cerrar la modal con Bootstrap se gestiona automáticamente al hacer clic fuera o con el botón de cerrar
 
+
+
+
 // Lógica de agregar al carrito
 document.querySelectorAll('.openboton').forEach(button => {
     button.addEventListener('click', function(event) {

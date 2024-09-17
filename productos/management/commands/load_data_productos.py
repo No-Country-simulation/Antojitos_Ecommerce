@@ -3,7 +3,8 @@
 # load_producto_data.py
 import pandas as pd
 from django.core.management.base import BaseCommand
-from productos.models import Producto, Categoria
+from productos.models import Producto, Categoria, Subcategoria
+from registros.models import SellerUser
 
 
 """
@@ -25,47 +26,58 @@ class Command(BaseCommand):
         # itera por las filas a razon de una linea por vuelta de ciclo
         for index, row in df.iterrows():
             
-            print(f"Valor de image_url en el Excel: {row['image_url']}")
-
-            
             # Obtener o crear la categoría
-            categoria, _ = Categoria.objects.get_or_create(nombre=row['category'])
+            categoria, _ = Categoria.objects.get_or_create(name=row['category'])
 
-            # Verificar si el producto ya existe
-            producto_existente = Producto.objects.filter(name=row['name']).first()
+            # Obtener o crear la subcategoría (si existe en el Excel)
+            subcategoria = None
+            if pd.notna(row['sub_category']):
+                subcategoria, _ = Subcategoria.objects.get_or_create(
+                    name=row['sub_category'],
+                    category=categoria  # Relacionar la subcategoría con la categoría correspondiente
+                )
+            
+            # Verificar si el producto ya existe para el vendedor
+            seller = SellerUser.objects.filter(id=row['seller_id']).first()
 
-            if producto_existente:
-                # Actualizar el precio
-                producto_existente.price = row['price'] if pd.notna(row['price']
-                                                                    ) else producto_existente.price
-                # Actualizar el stock si hiciera falta
-                producto_existente.stock = row['stock'] if pd.notna(row['stock']
-                                                                    ) else producto_existente.stock
-
-                # Actualizar el image si hiciera falta
-                producto_existente.image = row['image'] if pd.notna(row['image']
-                                                                    ) else producto_existente.image
+            if seller:
+                # Filtrar por nombre del producto y vendedor
+                prod_exist = Producto.objects.filter(name=row['name'], seller=seller).first()
                 
-                # Actualizar el image si hiciera falta
-                producto_existente.image_url = row['image_url'] if pd.notna(row['image_url']
-                                                                    ) else producto_existente.image_url
+            else:
+                self.stdout.write(self.style.ERROR(f'No se encontró el vendedor con ID {row["seller_id"]}'))
+                continue
 
+            if prod_exist:
+                # Actualizar campos si el producto ya existiera
+                prod_exist.price = row['price'] if pd.notna(row['price']) else prod_exist.price
+                prod_exist.stock = row['stock'] if pd.notna(row['stock']) else prod_exist.stock
+                prod_exist.image = row['image'] if pd.notna(row['image']) else prod_exist.image
+                prod_exist.image_url = row['image_url'] if pd.notna(row['image_url']) else prod_exist.image_url
+                
+                prod_exist.category = categoria
+                prod_exist.seller = seller
+                
+                # Si hay una subcategoría en el archivo, actualizarla
+                if subcategoria:
+                    prod_exist.sub_category = subcategoria
+                      
                 # Guardar los cambios en la base de datos
-                producto_existente.save()
+                prod_exist.save()
 
-                self.stdout.write(self.style.SUCCESS(f'Producto "{producto_existente.name}" actualizado.'))
+                self.stdout.write(self.style.SUCCESS(f'Producto "{prod_exist.name}" actualizado.'))
 
             else:
                 # Crear el nuevo producto
                 producto = Producto.objects.create(
                     name=row['name'],
                     category=categoria,
+                    seller=seller,
+                    sub_category=subcategoria,
                     price=row['price'] if pd.notna(row['price']) else None,
                     discount=row['discount'] if pd.notna(row['discount']) else 0,
                     stock=row['stock'] if pd.notna(row['stock']) else 1,
-                    
-                    # con None usa el valor por defecto
-                    image_url=row['image_url'] if pd.notna(row['image_url']) else None,
+                    image_url=row['image_url'] if pd.notna(row['image_url']) else None, # con None usa el valor por defecto
                 ) 
 
                 # mensaje para saber si se creo por consola

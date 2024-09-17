@@ -7,24 +7,8 @@ from datetime import timedelta
 # Para generar Archivos Unicos como imagenes
 import os
 import uuid
-
-
-
-
+from registros.models import SellerUser
 # Create your models here.
-class Categoria(models.Model):
-    nombre = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='producto/categoria/', null=True, blank=True)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-
-    # Esto se visualiza en el panel de admin
-    class Meta:
-        verbose_name = "Categoría de Producto"
-        verbose_name_plural = "Categorías de Productos"
-
-    def __str__(self):
-        return self.nombre
 
 
 def custom_upload_to_producto(instance, filename):
@@ -36,20 +20,52 @@ def custom_upload_to_producto(instance, filename):
     return f"producto/{unique_id}{extension.lower()}"
 
 
+# Modelo de la Categoría
+class Categoria(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='producto/categoria/', null=True, blank=True)
+    image_url = models.TextField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    # Esto se visualiza en el panel de admin
+    class Meta:
+        verbose_name = "Categoría de Producto"
+        verbose_name_plural = "Categorías de Productos"
+
+    def __str__(self):
+        return self.name
+    
+    
+# Modelo de Subcategoria, con relación a la Categoría
+class Subcategoria(models.Model):
+    name = models.CharField(max_length=100)
+    category = models.ForeignKey(Categoria, on_delete=models.CASCADE, related_name="subcategorias")
+    image_url = models.TextField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Subcategoría de Producto"
+        verbose_name_plural = "Subcategorías de Productos"
+
+    def __str__(self):
+        return f"{self.name} (Categoría: {self.category.name})"
+
+
 class Producto(models.Model):
     name = models.CharField(max_length=200)
 
-    # Si se eliminase la categoría setea por defecto el valor de categoria 1
+    # Relación con la categoría
     category = models.ForeignKey(Categoria, on_delete=models.SET_DEFAULT, default=1)
     
-    # Sub-Category del producto ? ver si es necesario
-    # sub_category = models.ManyToManyField(Subcategoria, blank=True, related_name='productos')
+    # Relación con la subcategoría (opcional)
+    sub_category = models.ForeignKey(Subcategoria, on_delete=models.SET_NULL, null=True, blank=True, related_name='productos')
     
     # Descripcion del producto como campo de texto, ya que no sabemos su extension
     description = models.TextField(null=True, blank=True)
     
     # Imagen principal del producto, por ahora será unica
-    # imagen = models.ImageField(upload_to='productos/', blank=True, null=True)
     image = models.ImageField(upload_to=custom_upload_to_producto, null=True, blank=True)
     
     # Por ahora solucion viable carga por pinterest
@@ -64,6 +80,10 @@ class Producto(models.Model):
     stock = models.IntegerField(default=1)
     available = models.BooleanField(default=True)
     
+    # Relación con el vendedor
+    seller = models.ForeignKey(SellerUser, on_delete=models.CASCADE, 
+                               related_name='products', null=True, blank=True)
+
     # Para crear las fechas en general de cuando se crea y/o actualiza
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -72,10 +92,9 @@ class Producto(models.Model):
         # Esto se visualiza en el panel de admin
         return self.name
 
-
     class Meta:
         # Esto se visualiza en el panel de admin
         verbose_name = "Producto"
         verbose_name_plural = "Productos"
         
-
+        

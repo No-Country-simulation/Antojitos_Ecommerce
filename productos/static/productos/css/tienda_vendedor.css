@@ -1,45 +1,45 @@
-.producto-container {
-    display: flex;
-    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en la siguiente fila si no hay suficiente espacio */
-    gap: 1rem; /* Espacio entre las tarjetas */
+/* =====================================================================
+            Estilos propios de las secciones 
+===================================================================== */
+/* Ajusta el valor de margen según sea necesario */
+section {
+    scroll-margin-top: 120px;  /* Espacio adicional encima de la sección */
 }
 
-.container-product-card {
+.sub-card-prod-container h2 {
+    font-size: 1.5rem;
+    border-bottom: 2px solid #eeeeee;
+    color: #d32f2f;
+}
+
+.sub-card-prod-card {
     display: flex;
     flex-direction: row;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 100%; /* Ajusta el ancho al contenedor */
-    /* max-width: 300px;  Ajusta el tamaño máximo para que las cartas no sean demasiado grandes */
-    /* margin-bottom: 20px;  Espacio entre las tarjetas */
+    width: 100%;
 }
 
-.container-product-card img {
+.sub-card-prod-card img {
     width: 40%;
-    height: auto; /* Ajusta la altura automáticamente según el contenido */
-    object-fit: cover; 
+    height: 180px;
+    object-fit: cover;
 }
 
-.product-img-section {
-    width: 40%;
-    height: auto; /* Ajusta la altura automáticamente según el contenido */
-    object-fit: cover; 
-}
-
-.container-product-card figcaption {
-    padding: 10px;
+.sub-card-prod-card figcaption {
+    padding: 3%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 60%;
-    align-items: stretch; /* Asegura que todo el contenido ocupe la altura disponible */
+    align-items: stretch;
 }
 
-.openboton {
-    padding: 10px 18px;
-    font-size: 15px;
+.sub-card-prod-addboton {
+    padding: 10px 12px;
+    font-size: 14px;
     color: white;
     background-color: #333;
     border-radius: 20px;
@@ -52,49 +52,47 @@
     margin-top: 10px;
 }
 
-.boton:hover {
+.sub-card-prod-addboton:hover {
     background-color: #555;
 }
 
-.price {
+.sub-card-prod-price {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 5px;
 }
 
-.price #preciotachado {
+.sub-card-prod-price #preciotachado {
     font-size: 16px;
     text-decoration: line-through;
     color: #da1313;
 }
 
-.price .precio-general {
+.sub-card-prod-price .precio-general {
     font-size: 18px;
     color: black;
 }
 
-.rating {
+.sub-card-prod-rating {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     font-size: 14px;
 }
 
-.rating span {
+.sub-card-prod-rating span {
     color: #ffcc00;
     margin-left: 5px;
 }
 
-
-
 @media (max-width: 768px) {
-    .producto-container {
-        flex-direction: column; /* Cambia a columna en pantallas más pequeñas */
+    .sub-card-prod-container {
+        flex-direction: column;
     }
 
-    .container-product-card {
-        max-width: 100%; /* Asegura que las cartas ocupen todo el ancho disponible */
+    .sub-card-prod-card {
+        max-width: 100%;
     }
 }
 
@@ -172,37 +170,13 @@
 }
 
 
-.menu {
-    padding: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 
-.menu-categoria {
-    margin-bottom: 2.5rem;
-}
 
-.menu-categoria h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #eeeeee;
-    color: #d32f2f;
-}
-
-/* Ajusta el valor de margen según sea necesario */
-section {
-    scroll-margin-top: 120px;  /* Espacio adicional encima de la sección */
-}
 
 /* ============================================================================
                     CSS PERSONALIZADO PARA EL CONTENIDO DEL MODAL
 ============================================================================ */
-
 /* Contenido de la ventana modal */
 .modal-content {
     background-color: #fff;

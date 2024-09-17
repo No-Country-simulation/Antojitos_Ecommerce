@@ -24,14 +24,15 @@
 }
 
 .banner-profile-cover {
-    overflow: hidden;
-    height: auto;
     width: 100%;
+    height: 150px; /* Para que el contenedor ajuste su altura según el contenido */
+    overflow: hidden; /* Evita que el contenido sobresalga */
 }
 
-.inner-cover img {
-    text-align: center;
-    width: 100%;
+.banner-profile-cover img {
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Asegura que la imagen se ajuste y recorte si es necesario */
 }
 
 .cover-menu {

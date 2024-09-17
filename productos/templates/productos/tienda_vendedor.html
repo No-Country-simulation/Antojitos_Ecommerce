@@ -1,0 +1,105 @@
+
+
+{% extends "ecommerce/base.html" %}
+
+{% load static %}
+
+{% block extra_head %}
+    <!-- Cargar CSS o meta tags específicos de la página aquí -->
+    <link href="{% static 'productos/css/tienda_vendedor.css' %}" rel="stylesheet">
+
+    <link href="{% static 'productos/css/carousel_productos.css' %}" rel="stylesheet">
+    
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+    <link  rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+	
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container-banner-producto" style="background-image: url('{{ store.banner_image_url }}');">
+        
+        <h1>{{ store.name_store }}</h1> <!--nombre del restaurante-->
+        <p>Dirección: {{ store.address }}</p>
+        <div class="product-search-container">
+            <input type="text" placeholder="Buscar..." class="product-search-input">
+            <button class="product-search-button">Buscar</button>
+        </div>
+    </div>
+
+    <!-- Categorias de alimentos -->
+    <nav class="menu-categorias"> 
+        <ul>
+            {% for subcategoria, productos in products_for_subcats.items %}
+                <li>
+                    <a href="#{{subcategoria.name|slugify}}">
+                        {{subcategoria.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    
+    <!-- Todas las tarjetas en Carousel productos -->
+    <div class="container p-0">
+        <div class="row p-0">
+            <div class="col-2 p-0"></div>
+
+            <div class="col-10 p-0">
+                {% include 'productos/carousel_productos.html' %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Secciones con productos por SubCategoría -->
+    <div class="container p-0">
+        <div class="row p-0">
+            <div class="col-2 p-0"></div>
+
+            <div class="col-10 p-0">
+                {% include 'productos/section_prod_subcat.html' %}
+            </div>
+        </div>
+    </div>
+
+<!-- FIN Contenido específico de la página -->
+{% endblock %}
+
+
+{% block extra_scripts %}
+<!--  Cargas archivos .js propios de cada template/vista -->
+
+    <script src="{% static 'productos/js/ventanaEmergente.js' %}"></script>
+    <script src="{% static 'productos/js/add_btn.js' %}"></script>
+
+    <!-- Include slick-carousel JS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+    <!-- Esto es del carousel de productos -->
+    <script>
+        $(document).ready(function(){
+            $('.carousel').slick({
+                infinite: true,
+                slidesToShow: 4,  // Show 3 products at once
+                slidesToScroll: 1,
+                arrows: true,  // Show next/prev buttons
+                autoplay: true,  // Auto-slide
+                autoplaySpeed: 3000,  // Slide every 3 seconds
+                responsive: [
+                    {
+                        breakpoint: 768,  // For mobile devices
+                        settings: {
+                            slidesToShow: 1  // Show 1 product at once on smaller screens
+                        }
+                    }
+                ]
+            });
+        });
+    </script>   
+
+{% endblock %}

@@ -22,78 +22,97 @@
                             Contenido Cambianteee 
 ================================================================= -->
 {% block content %}
-    <!-- Contenido específico de la página -->
 
     <!-- SECTOR RESTAURANTES -->
-    <section class="restaurants">
-        <div class="section-resto">
-            <h2 class="animated fadeInRight">Podes encontrar tus restaurantes favoritos al mejor precio</h2>
-            <div class="card">
-                <img src="https://via.placeholder.com/350x150" alt="Imagen de comida">
-                <div class="content">
-                    <h2>RESTAURANTE EJEMPLO</h2>
-                    <p>Descripción</p>
+    <section class="restaurants container mt-3">
+
+        <h2 class="animated fadeInRight">Podes encontrar tus restaurantes favoritos al mejor precio</h2>
+        
+        <!-- Ciclo For Para Crear a todos los vendedores -->
+        <div class="row">
+            {% for vendedor in vendedores %}
+                <div class="col-4">
+                    <!-- URL FIGURE REDIRECT -->
+                    <figure class="resto-card" 
+                    onclick="window.location.href='{% url 'Tienda_Profile' vendedor.id %}';">
+                        <!-- IMAGEN VENDEDOR -->
+                        <img src="{{vendedor.banner_image_url}}" alt="Imagen de comida">
+                        <figcaption class="resto-card-content">
+                            <!-- Nombre del vendedor y estrella -->
+                            <div class="resto-card-header">
+                                <h3>{{vendedor.name_store}}</h3>
+                                <span> 
+                                    <strong>{{vendedor.stars}}</strong>
+                                    <i class="fa-regular fa-star icon-yellow"></i>
+                                </span>
+                            </div>
+                            <!-- Dirección del vendedor y corazón -->
+                            <div class="resto-card-footer mt-2">
+                                <p>{{vendedor.address}}</p>
+                                <button class="resto-card-heart-button" 
+                                onclick="window.location.href='#';">
+                                    <i class="far fa-heart icon-heart"></i>
+                                </button>
+                            </div>
+                        </figcaption>
+                    </figure>
                 </div>
-                <div class="heart-container">
-                    <input type="checkbox" id="heartCheckbox" class="heart-checkbox">
-                    <label for="heartCheckbox" class="heart-label">♡</label>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
     
     <!-- SECTOR COMIDA TEXTO Y ANIMACION -->
-        <section class="section-comida">
-            <div class="content-left-animation">
-                <h1 class="animated fadeInRight">Esto es ANTOJITOS</h1>
-                <h2 class="animated fadeInUp"> Descripción Descripción DescripciónDescripciónDescripciónDescripción</h2>
-            </div>
-            <div class="animacion-tarjetas">
-                <!-- Animacion de tarjetas -->
-                <figure class="tarjetas">
-                    <div class="tarjetas__contenido">
-                        <div class="tarjetas__elemento">
-                            <div id="product-card" class="product-card">
-                                <!-- Contenido de la tarjeta -->
-                                <div class="product-content">
-                                    <div class="badge">Oferta</div>
-                                    <img src="https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg" alt="Empanadas" class="product-image">
-                                    <h2>Empanadas</h2>
-                                    <p>Empanadas fritas de carne con huevo y aceitunas</p>
-                                    <p><strong>10.00 $</strong><span class="precio-real">10.00 $</span></p>          
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tarjetas__elemento">
-                            <div id="product-card" class="product-card">
-                                
-                                <!-- Contenido de la tarjeta -->
-                                <div class="product-content">
-                                    <div class="badge">Oferta</div>
-                                    <img src="https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg" alt="Empanadas" class="product-image">
-                                    <h2>Empanadas</h2>
-                                    <p>Empanadas fritas de carne con huevo y aceitunas</p>
-                                    <p><strong>10.00 $</strong><span class="precio-real">10.00 $</span></p>           
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tarjetas__elemento">
-                            <!-- Empieza el product card -->
-                            <div id="product-card" class="product-card">
-                                <!-- Contenido de la tarjeta -->
-                                <div class="product-content">
-                                    <div class="badge">Oferta</div>
-                                    <img src="https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg" alt="Empanadas" class="product-image">
-                                    <h2>Empanadas</h2>
-                                    <p>Empanadas fritas de carne con huevo y aceitunas</p>
-                                    <p><strong>10.00 $</strong><span class="precio-real">10.00 $</span></p>         
-                                </div>
+    <section class="section-comida">
+        <div class="content-left-animation">
+            <h1 class="animated fadeInRight">Esto es ANTOJITOS</h1>
+            <h2 class="animated fadeInUp"> Descripción Descripción DescripciónDescripciónDescripciónDescripción</h2>
+        </div>
+        <div class="animacion-tarjetas">
+            <!-- Animacion de tarjetas -->
+            <figure class="tarjetas">
+                <div class="tarjetas__contenido">
+                    <div class="tarjetas__elemento">
+                        <div id="product-card" class="product-card">
+                            <!-- Contenido de la tarjeta -->
+                            <div class="product-content">
+                                <div class="badge">Oferta</div>
+                                <img src="https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg" alt="Empanadas" class="product-image">
+                                <h2>Empanadas</h2>
+                                <p>Empanadas fritas de carne con huevo y aceitunas</p>
+                                <p><strong>10.00 $</strong><span class="precio-real">10.00 $</span></p>          
                             </div>
                         </div>
                     </div>
-                </figure>
-            </div>
-        </section>
+                    <div class="tarjetas__elemento">
+                        <div id="product-card" class="product-card">
+                            
+                            <!-- Contenido de la tarjeta -->
+                            <div class="product-content">
+                                <div class="badge">Oferta</div>
+                                <img src="https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg" alt="Empanadas" class="product-image">
+                                <h2>Empanadas</h2>
+                                <p>Empanadas fritas de carne con huevo y aceitunas</p>
+                                <p><strong>10.00 $</strong><span class="precio-real">10.00 $</span></p>           
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarjetas__elemento">
+                        <!-- Empieza el product card -->
+                        <div id="product-card" class="product-card">
+                            <!-- Contenido de la tarjeta -->
+                            <div class="product-content">
+                                <div class="badge">Oferta</div>
+                                <img src="https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg" alt="Empanadas" class="product-image">
+                                <h2>Empanadas</h2>
+                                <p>Empanadas fritas de carne con huevo y aceitunas</p>
+                                <p><strong>10.00 $</strong><span class="precio-real">10.00 $</span></p>         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </figure>
+        </div>
+    </section>
 
 
     <!-- banner
@@ -116,7 +135,13 @@
 #                  Mis Scripts personalizados
 ===================================================================== -->
 {% block extra_scripts %}
-<!-- 
-    Cargas archivos .js propios de cada template/vista
--->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.resto-card-heart-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    button.classList.toggle('active');
+                });
+            });
+        });
+    </script>
 {% endblock %}
