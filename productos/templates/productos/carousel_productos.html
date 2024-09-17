@@ -2,7 +2,7 @@
 
 
 <!-- CAROUSEL -->
-<div class="container-fluid p-0 mb-2">
+<div class="container-fluid p-0 mb-5">
     <div class="carousel-producto-titulo">
         <!-- Texto del span que muestra El Titulo de productos -->
         <div class="carousel-producto-shape right-skew">
@@ -12,7 +12,11 @@
     
         <!-- Texto del span que muestra la cantidad de productos -->
         <span class="carousel-producto-txt-titulo">
-            Mostrando 4 de {{ productos|length }} elementos
+            {% if productos|length < 4 %}
+                Mostrando {{ productos|length }} de {{ productos|length }} elementos
+            {% else %}
+                Mostrando 4 de {{ productos|length }} elementos
+            {% endif %}
         </span>
     </div>
 
@@ -20,33 +24,42 @@
 
         {% for producto in productos %}
             <!-- Producto Item -->
-            <figure class="carousel-producto-item p-2">
+            <figure class="carousel-producto-item p-2" onclick="openModal({{producto.id}})">
 
                 <img src="{{ producto.image_url }}" alt="{{ producto.name }}">
                 <!-- <img src="{{ producto.image_url }}" alt="{{ producto.name }} (hover)"> -->
                 
                 <figcaption class="carousel-producto-datos">
-                    <div class="carousel-producto-starrr">
-                        <small><a href="#">{{ producto.category }}</a></small>
-                        <h3><a href="#">{{ producto.name }}</a></h3>
-                        <small>{{ producto.description }}</small>
+                    <!-- Nombre del producto -->
+                    <h3>{{ producto.name }}</h3>
+    
+                    <!-- Categoría y Subcategory -->
+                    <div class="carousel-producto-info">
+                        <a href="#"> {{ producto.category }} </a>
+                        <a href="#"> {{ producto.sub_category.name }}</a>
                     </div>
 
-                    <div class="carousel-producto-precios">
-                        <div class="carousel-producto-internet">
-                            <small>Oferta</small>
-                            <span>$200.00</span>
-                        </div>
-                        <div>
-                            <small>Normal</small>
-                            <span>${{producto.price}}</span>
-                        </div>
+                    <!-- Categoría y descuento -->
+                    <div class="carousel-producto-info">
+                        <strong>Descuento: </strong>
+                        <strong>%{{ producto.discount }} OFF</strong>
                     </div>
-                    <a href="#" class="carousel-producto-btn-carrito"><i class="fas fa-shopping-basket"></i> Agregar al carrito</a>
-                
+    
+                    <!-- Descripción del producto 
+                    <p>{{ producto.description }}</p> -->
+    
+                    <!-- Precios: Normal y Oferta -->
+                    <div class="carousel-producto-precios">
+                        <span class="precio-normal">Normal: ${{ producto.price }}</span>
+                        <strong class="precio-oferta">Oferta: $200.00</strong>
+                    </div>
                 </figcaption>
 
-                
+                <!-- Botón de agregar al carrito -->
+                <button onclick="event.stopPropagation(); addToCart({{ producto.id}} );" class="carousel-producto-btn-carrito">
+                    <span>Agregar&nbsp;&nbsp; </span> 
+                    <i class="fas fa-shopping-basket"></i> 
+                </button>
             </figure>
         {% endfor %}
     </div>

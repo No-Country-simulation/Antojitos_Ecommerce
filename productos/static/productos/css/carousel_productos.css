@@ -10,7 +10,7 @@
 
 /* Contenedor principal del título */
 .carousel-producto-titulo {
-    border-bottom: 4px solid #9751ff;
+    border-bottom: 4px solid #DB3B3B;
     display: flex; /* Usamos flexbox para alinear el contenido en línea */
     justify-content: space-between; /* Espaciamos los elementos a ambos lados */
     align-items: center; /* Alineamos verticalmente al centro */
@@ -18,7 +18,7 @@
 
 /* Estilos del título con el ícono */
 .carousel-producto-shape {
-    background: #9751ff;
+    background: #DB3B3B;
     padding: 10px 15px;
     max-width: 25%;
     position: relative;
@@ -34,7 +34,7 @@
     bottom: 0;
     right: -20px;
     width: 50px;
-    background: #9751ff;
+    background: #DB3B3B;
     transform: skew(20deg);
     z-index: -1;
 }
@@ -79,136 +79,80 @@
 }
 
 
-
-
-
-/* Estilos para el efecto hover de la imagen */
-.carousel-producto-item .carousel-producto-contenedor-imagen .carousel-producto-img-hover {
-    opacity: 0; /* Inicialmente oculto */
-    position: absolute; /* Posición absoluta para superponer el efecto sobre la imagen */
-    left: 0; /* Posición desde el borde izquierdo */
-    top: 0; /* Posición desde el borde superior */
-    transition: opacity 0.2s ease-in-out; /* Transición suave del efecto */
+/* Estilos para el figcaption */
+.carousel-producto-datos {
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #e2e2e2;
 }
 
-/* Muestra el efecto hover cuando se pasa el cursor sobre el ítem */
-.carousel-producto-item:hover .carousel-producto-img-hover {
-    opacity: 1; /* Muestra el efecto hover */
+.carousel-producto-datos h3 {
+    font-size: 19px;
+    margin: 10px 0;
+    color: #2b2b2b;
+    text-transform: uppercase;
 }
 
-/* Estilos para la sección de datos dentro del ítem del carrusel */
-.carousel-producto-item .carousel-producto-datos {
-    border-top: 2px solid #e2e2e2; /* Línea superior de separación */
-    border-bottom: 2px solid #e2e2e2; /* Línea inferior de separación */
-    padding: 20px; /* Espaciado interno */
+.carousel-producto-info a {
+    cursor: pointer;
 }
 
-/* Estilos para el título dentro de los datos del ítem */
-.carousel-producto-item .carousel-producto-datos h3 {
-    margin: 10px 0; /* Espacio superior e inferior */
+.carousel-producto-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    font-size: 14px;
 }
 
-/* Estilos para el enlace en el título de los datos del ítem */
-.carousel-producto-item .carousel-producto-datos h3 a {
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    color: #2b2b2b; /* Color del texto del enlace */
-    font-size: 14px; /* Tamaño de la fuente */
-    display: block; /* Hace que el enlace ocupe toda la línea */
-    text-transform: uppercase; /* Transforma el texto a mayúsculas */
+
+/* Estilos para la sección de precios */
+.carousel-producto-precios {
+    display: flex;
+    justify-content: space-between; /* Espaciado entre los precios */
+    align-items: center; /* Alineación vertical centrada */
+    padding: 10px 0; /* Espaciado interno */
+    border-top: 1px solid #e2e2e2; /* Línea superior */
+    font-weight: bold;
 }
 
-/* Estilos para el enlace en el título de los datos del ítem cuando se pasa el cursor */
-.carousel-producto-item .carousel-producto-datos h3 a:hover {
-    text-decoration: underline; /* Agrega un subrayado cuando se pasa el cursor */
+/* Estilos para el precio normal */
+.precio-normal {
+    font-size: 16px;
+    color: #828282;
+    text-decoration: line-through; /* Tachado para mostrar que es el precio normal */
+    margin-right: 10px; /* Margen a la derecha para separar del otro precio */
 }
 
-/* Estilos para los enlaces pequeños dentro de los datos del ítem */
-.carousel-producto-item .carousel-producto-datos small a {
-    text-transform: uppercase; /* Transforma el texto a mayúsculas */
-    font-weight: 600; /* Grosor de la fuente */
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    display: block; /* Hace que el enlace ocupe toda la línea */
-    margin-top: 10px; /* Espacio superior */
-    color: #5a5a5a; /* Color del texto */
-    font-size: 11px; /* Tamaño de la fuente */
+/* Estilos para el precio con oferta */
+.precio-oferta {
+    font-size: 18px;
+    color: #ff0808; /* Color rojo para resaltar la oferta */
+    font-weight: bold;
+    margin-left: 30%;
 }
 
-/* Estilos para el texto pequeño dentro de los datos del ítem */
-.carousel-producto-item .carousel-producto-datos small {
-    font-size: 14px; /* Tamaño de la fuente */
-    text-transform: uppercase; /* Transforma el texto a mayúsculas */
-    color: #5a5a5a; /* Color del texto */
+/* Estilos para el botón de carrito */
+.carousel-producto-btn-carrito {
+    display: none;
+    background: #ff8851;
+    color: white;
+    padding: 3%;
+    border-radius: 50px;
+
+    align-items: center; /* Alineación vertical centrada */
+    width: 75%;
+    margin: 15px auto;
+
+    transition: transform 0.4s ease-in-out;
 }
 
-/* Estilos para la sección de precios dentro del ítem del carrusel */
-.carousel-producto-item .carousel-producto-precios {
-    padding: 20px; /* Espaciado interno */
-    display: flex; /* Usa flexbox para alinear elementos */
-}
-
-/* Estilos para los divs dentro de la sección de precios */
-.carousel-producto-item .carousel-producto-precios div {
-    flex-grow: 1; /* Permite que el div crezca para llenar el espacio disponible */
-}
-
-/* Estilos para los pequeños elementos dentro de la sección de precios */
-.carousel-producto-item .carousel-producto-precios div small {
-    display: block; /* Muestra cada elemento pequeño en una nueva línea */
-    font-size: 15px; /* Tamaño de la fuente */
-    margin-bottom: 5px; /* Espacio inferior */
-    color: #828282; /* Color del texto */
-    font-weight: 600; /* Grosor de la fuente */
-}
-
-/* Estilos para el precio en internet dentro de la sección de precios */
-.carousel-producto-item .carousel-producto-precios div.carousel-producto-internet span {
-    font-weight: bold; /* Fuente en negrita */
-    font-size: 23px; /* Tamaño de la fuente */
-    color: #ff0808; /* Color del texto */
-}
-
-/* Estilos para los precios generales dentro de la sección de precios */
-.carousel-producto-item .carousel-producto-precios div span {
-    font-size: 17px; /* Tamaño de la fuente */
-    font-weight: 600; /* Grosor de la fuente */
-}
-
-/* Estilos para el botón de carrito dentro del ítem del carrusel */
-.carousel-producto-item .carousel-producto-btn-carrito {
-    display: none; /* Oculta el botón por defecto */
-    text-align: center; /* Centra el texto dentro del botón */
-    padding: 15px; /* Espaciado interno */
-    background: #9751ff; /* Color de fondo */
-    width: 80%; /* Ancho del botón */
-    margin: 0 auto; /* Centra el botón horizontalmente */
-    border-radius: 100px; /* Bordes completamente redondeados */
-    color: #fff; /* Color del texto */
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    transition: transform 0.3s ease-in-out; /* Transición suave para el efecto hover */
-}
-
-/* Muestra el botón de carrito cuando se pasa el cursor sobre el ítem */
 .carousel-producto-item:hover .carousel-producto-btn-carrito {
-    display: block; /* Muestra el botón */
+    display: block;
 }
 
-/* Estilos para el botón de carrito cuando se pasa el cursor */
-.carousel-producto-item .carousel-producto-btn-carrito:hover {
-    transform: scale(1.05); /* Agranda ligeramente el botón */
-}
-
-/* Estilos para las estrellas de calificación dentro del ítem del carrusel */
-.carousel-producto-starrr {
-    display: block; /* Muestra las estrellas como bloques */
-}
-
-/* Estilos para los enlaces de estrellas de calificación */
-.carousel-producto-starrr a {
-    font-size: 16px; /* Tamaño de la fuente */
-    padding: 0 1px; /* Espacio a los lados de las estrellas */
-    cursor: pointer; /* Cambia el cursor cuando se pasa sobre las estrellas */
-    color: #FFD119; /* Color de las estrellas */
-    text-decoration: none; /* Elimina el subrayado */
+.carousel-producto-btn-carrito:hover {
+    transform: scale(1.1);
+    background: #fa4d3a;
 }
 
 
