@@ -54,6 +54,7 @@ class Command(BaseCommand):
                 prod_exist.stock = row['stock'] if pd.notna(row['stock']) else prod_exist.stock
                 prod_exist.image = row['image'] if pd.notna(row['image']) else prod_exist.image
                 prod_exist.image_url = row['image_url'] if pd.notna(row['image_url']) else prod_exist.image_url
+                prod_exist.description = row['description'] if pd.notna(row['description']) else prod_exist.description
                 
                 prod_exist.category = categoria
                 prod_exist.seller = seller
@@ -78,7 +79,8 @@ class Command(BaseCommand):
                     discount=row['discount'] if pd.notna(row['discount']) else 0,
                     stock=row['stock'] if pd.notna(row['stock']) else 1,
                     image_url=row['image_url'] if pd.notna(row['image_url']) else None, # con None usa el valor por defecto
-                ) 
+                    description=row['description'],
+                )
 
                 # mensaje para saber si se creo por consola
                 self.stdout.write(self.style.SUCCESS(f'Producto "{producto.name}" creado.'))

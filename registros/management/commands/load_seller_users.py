@@ -32,6 +32,8 @@ class Command(BaseCommand):
             province = row['province']
             address = row['address']
             role = row['role']
+            image = row['imagen']
+            banner = row['banner']
             
             # Verificar si el usuario ya existe
             user_existente = self.get_user_by_email(email)
@@ -49,6 +51,9 @@ class Command(BaseCommand):
                 user_existente.province = province if pd.notna(province) else user_existente.province
                 user_existente.address = address if pd.notna(address) else user_existente.address
                 user_existente.role = role if pd.notna(role) else user_existente.role
+                
+                user_existente.image_url = image if pd.notna(image) else user_existente.image
+                user_existente.banner_image_url = banner if pd.notna(banner) else user_existente.banner_image_url
 
                 # Guardar los cambios en la base de datos
                 user_existente.save()
@@ -75,6 +80,8 @@ class Command(BaseCommand):
                     province=province,
                     address=address,
                     role=role,
+                    image_url=image,
+                    banner_image_url=banner,
                 )
 
                 self.stdout.write(self.style.SUCCESS(f'Usuario "{user.email}" creado.'))
