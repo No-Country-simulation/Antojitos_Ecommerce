@@ -2,48 +2,52 @@
 
 
 <!-- CAROUSEL -->
-<div class="carousel-producto-contenedor">
+<div class="container-fluid p-0 mb-2">
     <div class="carousel-producto-titulo">
-        
+        <!-- Texto del span que muestra El Titulo de productos -->
         <div class="carousel-producto-shape right-skew">
-            <i class="fas fa-laptop"></i>
-            <h2>Proudctos</h2>
+            <i class="fa-solid fa-store"></i>
+            <h2>Productos</h2>
         </div>
-
-        <span class="carousel-producto-txt-titulo">Mostrando 4 de 6 elementos</span>
+    
+        <!-- Texto del span que muestra la cantidad de productos -->
+        <span class="carousel-producto-txt-titulo">
+            Mostrando 4 de {{ productos|length }} elementos
+        </span>
     </div>
 
-    <div class="carousel-producto-slider carousel">
+    <div class="carousel p-0 mt-4">
 
         {% for producto in productos %}
             <!-- Producto Item -->
-            <div class="carousel-producto-item">
-                <!-- Contenedor imagenes -->
-                <div class="carousel-producto-contenedor-imagen">
-                    <a href="#" class="carousel-producto-link"></a>
-                    <img src="{{producto.image_url}}">
-                    <img src="{{producto.image_url}}" class="carousel-producto-img-hover">
-                </div>
+            <figure class="carousel-producto-item p-2">
 
-                <div class="carousel-producto-datos">
-                    <div class="carousel-producto-starrr"></div>
-                    <small><a href="#">{{producto.category}}</a></small>
-                    <h3><a href="#">{{producto.name}}</a></h3>
-                    <small>{{producto.description}}</small>
-                </div>
+                <img src="{{ producto.image_url }}" alt="{{ producto.name }}">
+                <!-- <img src="{{ producto.image_url }}" alt="{{ producto.name }} (hover)"> -->
+                
+                <figcaption class="carousel-producto-datos">
+                    <div class="carousel-producto-starrr">
+                        <small><a href="#">{{ producto.category }}</a></small>
+                        <h3><a href="#">{{ producto.name }}</a></h3>
+                        <small>{{ producto.description }}</small>
+                    </div>
 
-                <div class="carousel-producto-precios">
-                    <div class="carousel-producto-internet">
-                        <small>Oferta</small>
-                        <span>$200.00</span>
+                    <div class="carousel-producto-precios">
+                        <div class="carousel-producto-internet">
+                            <small>Oferta</small>
+                            <span>$200.00</span>
+                        </div>
+                        <div>
+                            <small>Normal</small>
+                            <span>${{producto.price}}</span>
+                        </div>
                     </div>
-                    <div>
-                        <small>Normal</small>
-                        <span>${{producto.price}}</span>
-                    </div>
-                </div>
-                <a href="#" class="carousel-producto-btn-carrito"><i class="fas fa-shopping-basket"></i> Agregar al carrito</a>
-            </div>
+                    <a href="#" class="carousel-producto-btn-carrito"><i class="fas fa-shopping-basket"></i> Agregar al carrito</a>
+                
+                </figcaption>
+
+                
+            </figure>
         {% endfor %}
     </div>
 </div>

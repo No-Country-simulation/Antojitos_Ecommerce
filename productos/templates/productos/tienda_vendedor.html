@@ -44,27 +44,63 @@
         </ul>
     </nav>
     
-    <!-- Todas las tarjetas en Carousel productos -->
-    <div class="container p-0">
-        <div class="row p-0">
-            <div class="col-2 p-0"></div>
-
-            <div class="col-10 p-0">
-                {% include 'productos/carousel_productos.html' %}
-            </div>
-        </div>
-    </div>
     
-    <!-- Secciones con productos por SubCategoría -->
-    <div class="container p-0">
+    <div class="container-fluid">
         <div class="row p-0">
-            <div class="col-2 p-0"></div>
+            <!-- Sidebar -->
+            <div class="col-2 sidebar">
+                <!-- Titulo Side Bar -->
+                <h2> Filtros </h2>
+                <hr>
+                <!-- Search Form Categories -->
+                <div class="sidebar-search">
+                    <form id="search-form" class="form-group">
+                        <!-- Datos de las categorias para pasar y filtrar -->
+                        <input type="text" id="search-input" class="form-control"
+                            placeholder="Search..." onfocus="this.value=''"
+                            data-cat-id="{{category.id}}"
+                            data-sub-cat-id="{{sub_category.id}}"
+                            data-query-top="{{query}}">
+                    </form>
+                </div>
+                <hr>
+                <!-- Categories will be inserted here -->
+                <div class="sidebar-category">
+                    <!-- Top button on side bar -->
+                    <a href="{% url 'Home' %}"><strong>Todas las Categorias</strong></a>
 
-            <div class="col-10 p-0">
+                    <!-- Cat = Category, sub_cats = Sub Category ; Se pasa del context Processor-->
+                    {% for cat, sub_cats in cat_n_subcats.items %}
+                        <a href="{% url 'Home' %}"><strong>{{ cat }}</strong></a>
+
+                        {% if sub_cats %}
+                        <!-- Submenú with SubCategories -->
+                            <ul class="category-list">
+                                {% for sub_cat in sub_cats %}
+                                    <li>
+                                        <a href="#{{sub_cat.name|slugify}}">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;{{ sub_cat.name }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-10 p-4">
+                <!-- Todas las tarjetas en Carousel productos -->
+                {% include 'productos/carousel_productos.html' %}
+                
+                <!-- Secciones con productos por SubCategoría -->
                 {% include 'productos/section_prod_subcat.html' %}
             </div>
         </div>
     </div>
+    
+    
+   
 
 <!-- FIN Contenido específico de la página -->
 {% endblock %}
