@@ -13,5 +13,7 @@ __pycache__/
 # Ignorar mi carpeta de steps
 z_steps/
 
+# Ignorar la base de datos como subida # db.sqlite3
+
 
 

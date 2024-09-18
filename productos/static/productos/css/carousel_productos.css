@@ -40,7 +40,7 @@
 }
 
 /* Estilo para el título y el ícono */
-.carousel-producto-shape h2, 
+.carousel-producto-shape h3, 
 .carousel-producto-shape i {
     display: inline-block;
     margin: 0;

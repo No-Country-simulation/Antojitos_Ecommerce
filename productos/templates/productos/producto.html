@@ -7,13 +7,11 @@
 {% block extra_head %}
     <!-- Cargar CSS o meta tags específicos de la página aquí -->
     <link href="{% static 'productos/css/producto.css' %}" rel="stylesheet">
-
     <link href="{% static 'productos/css/carousel_productos.css' %}" rel="stylesheet">
     
     <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
-    <link  rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
 	
 {% endblock %}
 
@@ -21,147 +19,109 @@
 
 {% block content %}
 
-    <div class="container-banner-producto">
+    <div class="container-fluid">
         
-        <h1>Restaurante Comida Cruda</h1> <!--nombre del restaurante-->
-        <p>Dirección</p>
-        <div class="product-search-container">
-            <input type="text" placeholder="Buscar..." class="product-search-input">
-            <button class="product-search-button">Buscar</button>
-        </div>
-    </div>
+        <!-- Filtros Aplicados -->
+        <div class="row mt-2 mb-2">
 
-    <!-- Categorias de alimentos -->
-    <nav class="menu-categorias"> 
-        <ul>
-            {% for categoria in categorias %}
-                <li>
-                    <a href="#{{categoria.nombre|slugify}}">
-                        {{categoria.nombre}}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </nav>
-
-    <!-- Todas las tarjetas en Carousel productos -->
-    {% include 'productos/carousel_productos.html' %}
-
-
-   <!-- Secciones -->
-   <main class="row">
-
-    <!-- Recorremos por cada Categoria: "Bebida", "Panificados" etc -->
-    {% for categoria, productos in productos_por_categoria.items %}
-
-        <!-- Separador interno -->
-        <div class="col-1"></div>
-
-        <!-- Si existe esa Categoria creamos la section -->
-        <div class="col-10">
-            {% if categoria %} 
-            <section id="{{ categoria|slugify }}" class="menu-categoria">
-                
-                <!-- Titulo Categoria -->
-                <h2>{{ categoria }}</h2> 
-
-                <!-- Tarjetas de la categoria -->
-                <div class="producto-container">
-                <!---->
-                    {% for producto in productos %}       
-                        <div class="col-md-4">
-                            
-                            <!-- Botón para abrir la ventana modal -->
-                            <figure class="container-product-card"
-                            onclick="openModal( {{producto.id}} )">
-                                <!-- Imagen del producto -->
-                                <img src="{{ producto.image_url }}" alt="">
-                            
-                                <!-- Contenido de la tarjeta -->
-                                <figcaption>
-                                    <h3>{{ producto.name }}</h3>
-                                    <div class="price">
-                                        <span id="preciotachado">${{ producto.price }}</span>
-                                        <span class="precio-general">{{ producto.price }}</span>
-                                    </div>
-
-                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                                        <p style="margin: 0;"><strong>Retirar en local</strong></p>
-                                        <div class="rating">
-                                            <span>4.2</span>
-                                            <span class="stars">★</span>
-                                        </div>
-                                    </div>
-                                    <p style="margin: 0;">No Country 14576</p>
-                                    
-                                   
-                                    
-                                    <button class="openboton" onclick="addToCart({{ producto.id}} );">
-                                        
-                                        <span>Agregar
-                                        <i class="fa-solid fa-cart-shopping"></i>
-                                    </button>
-
-                                </figcaption>
-                            </figure>
-
-                            <!-- Modal asociado a cada producto -->
-<div class="modal fade" id="modal-{{ producto.id }}" 
-tabindex="-1" aria-labelledby="modalLabel-{{ producto.id }}" 
-aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-        <!-- Botón para cerrar el modal -->
-        <div class="modal-header">
-            <h5 class="modal-title" id="modalLabel-{{ producto.id }}">{{ producto.name }}</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <!-- Contenido del modal -->
-        <div class="modal-body">
-            <img src="{{ producto.image_url }}" alt="{{ producto.name }}" class="img-fluid mb-3">
-            <p>{{ producto.description }}</p>
-            <p><strong>{{ producto.price }} $</strong> <span class="precio-real">{{ producto.price }} $</span></p>
-        </div>
-
-        <!-- Footer del modal -->
-        <div class="modal-footer">
-            <div class="d-flex align-items-center">
-                <!-- Botones de cantidad -->
-                <button class="btn btn-outline-secondary quantity-btn" id="decreaseBtn-{{ producto.id }}">-</button>
-                <span class="mx-2" id="quantityDisplay-{{ producto.id }}">1</span>
-                <button class="btn btn-outline-secondary quantity-btn" id="increaseBtn-{{ producto.id }}">+</button>
-
-                <!-- Botón para añadir al carrito -->
-                <button class="btn btn-primary ms-3 add-to-cart-btn">
-                    <img src="carrito.png" alt="" class="me-2"> 
-                    <span id="priceDisplay-{{ producto.id }}">{{ producto.price }} $</span>
+            <div class="btn-container-side-bar-top">
+                <!-- Se utiliza para agregar mas botones en este container -->
+                <button class="btn-sidebar-top px-lg-3"
+                onclick="window.location.href='{% url 'Producto' %}'">
+                    <span> Todos Nuestros Productos </span>
                 </button>
+
+                {% if query %}
+                    <button class="btn-sidebar-top px-lg-3">
+                        <span> Resultado de busqueda '{{query}}' </span>
+                    </button>
+                {% endif %}
+
+                <!-- Se utiliza para agregar mas botones en este container -->
+                {% if category %}
+                    <button class="btn-sidebar-top px-lg-3"
+                    onclick="window.location.href='{% url 'Prod_Cat' category.id %}'">
+                        <span> {{ category.name }} </span>
+                    </button>
+                {% endif %}
+
+                {% if sub_category %}
+                    <button class="btn-sidebar-top px-lg-3"
+                    onclick="window.location.href='{% url 'Prod_Sub_Cat' category.id sub_category.id %}'">
+                        <span> {{ sub_category.name }} </span>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+
+        
+        <div class="row p-0">
+            <!-- Sidebar -->
+            <div class="col-2 sidebar">
+                <!-- Titulo Side Bar -->
+                <h2 class="mt-2"> Filtros </h2>
+
+                <hr>
+                <!-- TOP 10 BUTTON SIDE -->
+                <button class="btn-sidebar-top-10">
+                    <span>Top 10</span>
+                    <i class="fa fa-star"></i>
+                </button>
+
+                <hr>
+                <!-- Search Form Categories -->
+                <div class="sidebar-search">
+                    <form id="search-form-prod" class="form-group">
+                        <!-- Datos de las categorias para pasar y filtrar -->
+                        <input type="text" id="search-input-prod" class="form-control"
+                            placeholder="Buscar..." onfocus="this.value=''"
+                            data-cat-id="{{category.id}}"
+                            data-sub-cat-id="{{sub_category.id}}"
+                            data-query-top="{{query}}">
+                    </form>
+                </div>
+
+                <hr>
+                <!-- Categories will be inserted here -->
+                <div class="sidebar-category">
+                    <!-- Top button on side bar -->
+                    <a href="{% url 'Producto' %}"><strong>Todas las Categorias</strong></a>
+
+                    <!-- Cat = Category, sub_cats = Sub Category ; Se pasa del context Processor-->
+                    {% for cat, sub_cats in categories_all.items %}
+                        <a href="{% url 'Prod_Cat' cat.id %}"><strong>{{ cat }}</strong></a>
+
+                        {% if sub_cats %}
+                        <!-- Submenú with SubCategories -->
+                            <ul class="category-list">
+                                {% for sub_cat in sub_cats %}
+                                    <li>
+                                        <a href="{% url 'Prod_Sub_Cat' cat.id sub_cat.id %}">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;{{ sub_cat.name }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-10">
+
+                <!-- Todas las tarjetas en Carousel productos -->
+                {% include 'productos/carousel_productos.html' %}
+
+                <!-- Secciones con productos por SubCategoría -->
+                {% include 'productos/section_prod_subcat.html' %}
             </div>
         </div>
     </div>
-</div>
-</div>
-
-                            
-                            
-                        </div>
-                    {% endfor %}
-                </div>
-
-            </section>
-            {% endif %}
-        </div>
-        
-        <!-- Separador interno -->
-        <div class="col-1"></div>
-    {% endfor %}
-</main>
     
-    
-
 <!-- FIN Contenido específico de la página -->
 {% endblock %}
+
 
 
 {% block extra_scripts %}
@@ -193,6 +153,19 @@ aria-hidden="true">
                     }
                 ]
             });
+        });
+
+        // Seleccionar todos los elementos que tienen la clase 'precio-oferta'
+        document.querySelectorAll('.precio-oferta').forEach(function(element) {
+            // Obtener el precio y el descuento desde los atributos de datos
+            var price = parseFloat(element.getAttribute('data-price'));
+            var discount = parseFloat(element.getAttribute('data-discount'));
+
+            // Calcular el precio con descuento
+            var discountedPrice = price - (price * (discount / 100));
+
+            // Mostrar el precio calculado en el elemento correspondiente
+            element.innerText = 'Oferta: $' + discountedPrice.toFixed(2);
         });
     </script>   
 

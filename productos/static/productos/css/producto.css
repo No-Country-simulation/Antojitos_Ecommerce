@@ -1,45 +1,157 @@
-.producto-container {
-    display: flex;
-    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en la siguiente fila si no hay suficiente espacio */
-    gap: 1rem; /* Espacio entre las tarjetas */
+
+/* =====================================================================
+            STYLE SIDE BAR LATERAL
+/* ===================================================================== */
+/* Estilo general de la barra lateral */
+.sidebar {
+    
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    /* height: 100vh;  100vh; Asegura que la barra lateral ocupe toda la altura del contenedor */
+    /* overflow-y: auto;  Permite desplazarse si el contenido es largo */
 }
 
-.container-product-card {
+/* Espaciado entre ítems de la barra lateral */
+.sidebar-item {
+    margin-bottom: 15px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: #212529; /* Color del texto */
+    padding: 10px; /* Añade relleno dentro de cada enlace */
+    border-radius: 0.375rem; /* Bordes redondeados */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transiciones suaves */
+}
+
+/* Estilo al pasar el mouse por encima de los enlaces */
+.sidebar-link:hover {
+    background-color: #e9ecef; /* Fondo gris claro al pasar el mouse */
+    color: #212529; /* Mantiene el color negro del texto */
+    text-decoration: none; /* Elimina el subrayado */
+}
+
+/* Estilo de los iconos en la barra lateral */
+.sidebar-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #780178; /* Color del icono */
+}
+
+/* Estilo del texto en la barra lateral */
+.sidebar-text {
+    font-size: 1rem;
+}
+
+/* Categorías de la barra lateral */
+.sidebar-category {
+    margin-top: 20px;
+}
+
+/* Estilo del título de la categoría */
+.sidebar-category a {
+    display: block; /* Hace clickeable tod0 el área del enlace */
+    padding: 5px 10px; /* Añade relleno dentro del enlace de la categoría */
+    text-decoration: none; /* Elimina el subrayado */
+    color: #212529; /* Color del texto */
+    border-radius: 0.375rem; /* Bordes redondeados */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transiciones suaves */
+}
+
+/* Estilo al pasar el mouse por encima de las categorías */
+.sidebar-category a:hover {
+    background-color: #e9ecef; /* Fondo gris claro al pasar el mouse */
+    text-decoration: none; /* Elimina el subrayado */
+    color: #212529; /* Mantiene el color negro del texto */
+}
+
+/* Lista de categorías */
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0.375rem; /* Bordes redondeados del ul */
+    transition: background-color 0.3s ease-in-out; /* Transición suave */
+}
+
+/* Elementos de la lista de categorías */
+.category-list li {
+    margin-bottom: 5px;
+    padding: 5px 10px; /* Añade relleno para hacer el contenedor completo clickeable */
+    border-radius: 0.375rem; /* Bordes redondeados */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transiciones suaves */
+}
+
+/* Enlaces de la lista de categorías */
+.category-list li a {
+    text-decoration: none;
+    color: #212529; /* Color del texto de las categorías */
+    display: block; /* Hace que tod0 el área de padding del li sea clickeable */
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilo al pasar el mouse por encima de los elementos de la lista de categorías */
+.category-list li:hover {
+    background-color: #e9ecef; /* Fondo gris claro al pasar el mouse */
+    text-decoration: none; /* Elimina el subrayado */
+    color: #212529; /* Mantiene el color negro del texto */
+}
+
+/* Estilo del separador (hr) */
+.sidebar hr {
+    border-top: 3px solid #dee2e6; /* Hace el hr más grueso */
+    margin: 20px 0; /* Espaciado superior e inferior */
+    width: 100%; /* Asegura que el hr ocupe tod0 el ancho */
+}
+
+
+/* =====================================================================
+            Estilos propios de las secciones 
+===================================================================== */
+/* Ajusta el valor de margen según sea necesario */
+section {
+    scroll-margin-top: 120px;  /* Espacio adicional encima de la sección */
+}
+
+.sub-card-prod-container h2 {
+    font-size: 1.5rem;
+    padding-bottom: 1.0rem;
+    border-bottom: 2px solid #eeeeee;
+    color: #d32f2f;
+}
+
+.sub-card-prod-card {
     display: flex;
     flex-direction: row;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 100%; /* Ajusta el ancho al contenedor */
-    /* max-width: 300px;  Ajusta el tamaño máximo para que las cartas no sean demasiado grandes */
-    /* margin-bottom: 20px;  Espacio entre las tarjetas */
+    width: 100%;
 }
 
-.container-product-card img {
+.sub-card-prod-card img {
     width: 40%;
-    height: auto; /* Ajusta la altura automáticamente según el contenido */
-    object-fit: cover; 
+    height: 180px;
+    object-fit: cover;
 }
 
-.product-img-section {
-    width: 40%;
-    height: auto; /* Ajusta la altura automáticamente según el contenido */
-    object-fit: cover; 
-}
-
-.container-product-card figcaption {
-    padding: 10px;
+.sub-card-prod-card figcaption {
+    padding: 3%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 60%;
-    align-items: stretch; /* Asegura que todo el contenido ocupe la altura disponible */
+    align-items: stretch;
 }
 
-.openboton {
-    padding: 10px 18px;
-    font-size: 15px;
+.sub-card-prod-addboton {
+    padding: 10px 12px;
+    font-size: 14px;
     color: white;
     background-color: #333;
     border-radius: 20px;
@@ -52,102 +164,108 @@
     margin-top: 10px;
 }
 
-.boton:hover {
+.sub-card-prod-addboton:hover {
     background-color: #555;
 }
 
-.price {
+.sub-card-prod-price {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 5px;
 }
 
-.price #preciotachado {
+.sub-card-prod-price #preciotachado {
     font-size: 16px;
     text-decoration: line-through;
     color: #da1313;
 }
 
-.price .precio-general {
+.sub-card-prod-price .precio-general {
     font-size: 18px;
     color: black;
 }
 
-.rating {
+.sub-card-prod-rating {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     font-size: 14px;
 }
 
-.rating span {
+.sub-card-prod-rating span {
     color: #ffcc00;
     margin-left: 5px;
 }
 
-
-
 @media (max-width: 768px) {
-    .producto-container {
-        flex-direction: column; /* Cambia a columna en pantallas más pequeñas */
+    .sub-card-prod-container {
+        flex-direction: column;
     }
 
-    .container-product-card {
-        max-width: 100%; /* Asegura que las cartas ocupen todo el ancho disponible */
+    .sub-card-prod-card {
+        max-width: 100%;
     }
 }
+
+
+/* =============================================================================
+              PRODUCTOS STUFF   todo
+# ============================================================================= */
+/* SIDE BAR Top PRODUCTOS */
+.btn-container-side-bar-top {
+    padding: 15px 15px;
+    display: flex;
+    gap: 20px;
+
+    position: relative;
+    left: 20px;
+}
+
+.btn-sidebar-top {
+    color: white;   /* color fuente de lo que esta adentro */
+    font-size: 15px;
+    background-color: #dd5800;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transform: skew(-30deg);
+}
+
+.btn-sidebar-top span {
+    display: inline-block;
+    transform: skew(30deg);
+}
+
+.btn-sidebar-top-10 {
+    color: white;   /* color fuente de lo que esta adentro */
+    font-size: 18px;
+    background-color: #dd5800;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    position: relative;
+
+    width: 100%;
+    height: 50px; /* Adjusted height to include initial title */
+}
+
+.btn-sidebar-top-10:hover {
+    background-color: #000;
+}
+
 
 /* ============================================================================
-                    CSS DE BANNER PRODUCTO
+                    CSS PERSONALIZADO PARA EL LISTADO DE SECCIONES
 ============================================================================ */
-.container-banner-producto {
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    color: white;
-    text-align: center;
-    padding: 4rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-    
-/*estilos barra de búsqueda*/
-.product-search-container {
-    display: flex; /* Utiliza Flexbox para alinear el input y el botón */
-    justify-content: center; /* Centra horizontalmente el contenedor */
-    margin-top: 50px; /* Espacio superior para separar del borde de la página */
-}
-
-.product-search-input {
-    width: 300px; /* Ancho del campo de entrada */
-    padding: 10px; /* Relleno interior para hacer el campo más alto */
-    border: 2px solid #d32f2f; /* Borde de color rojo oscuro */
-    border-radius: 4px 0 0 4px; /* Bordes redondeados en la izquierda */
-    font-size: 16px; /* Tamaño de fuente del texto */
-}
-
-.product-search-button {
-    padding: 10px 20px; /* Relleno interior para el botón */
-    background-color: #d32f2f; /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
-    border: 2px solid #d32f2f; /* Borde del mismo color que el fondo */
-    border-radius: 0 4px 4px 0; /* Bordes redondeados en la derecha */
-    font-size: 16px; /* Tamaño de fuente del texto */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: background-color 0.3s; /* Transición suave al pasar el ratón sobre el botón */
-}
-
-.product-search-button:hover {
-    background-color: #b71c1c; /* Cambia el color de fondo al pasar el ratón */
-}
-
 /* Lista item menu */ 
 .menu-categorias {
     background-color: #ffffff;
-    padding: 1rem 0;
-    border-bottom: 1px solid #e0e0e0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    /* border-bottom: 1px solid #e0e0e0; Para poner un borde abajo */
 }
 
 .menu-categorias ul {
@@ -172,37 +290,9 @@
 }
 
 
-.menu {
-    padding: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-.menu-categoria {
-    margin-bottom: 2.5rem;
-}
-
-.menu-categoria h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #eeeeee;
-    color: #d32f2f;
-}
-
-/* Ajusta el valor de margen según sea necesario */
-section {
-    scroll-margin-top: 120px;  /* Espacio adicional encima de la sección */
-}
-
 /* ============================================================================
                     CSS PERSONALIZADO PARA EL CONTENIDO DEL MODAL
 ============================================================================ */
-
 /* Contenido de la ventana modal */
 .modal-content {
     background-color: #fff;

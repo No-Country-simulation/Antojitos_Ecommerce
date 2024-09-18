@@ -2,13 +2,34 @@
 
 
 <!-- CAROUSEL -->
-<div class="container-fluid p-0 mb-5">
+<div class="container-fluid px-3 mb-5">
     <div class="carousel-producto-titulo">
+
         <!-- Texto del span que muestra El Titulo de productos -->
         <div class="carousel-producto-shape right-skew">
             <i class="fa-solid fa-store"></i>
-            <h2>Productos</h2>
+
+            {% if category %}
+                <h3>{{category.name}}</h3>
+            {% else %}
+                <h3>Productos</h3>
+            {% endif %}
         </div>
+
+        <!-- Categorias de alimentos -->
+        {% if category %}
+            <nav class="menu-categorias">
+                <ul>
+                    {% for subcategoria, productos in products_for_subcats.items %}
+                        <li>
+                            <a href="#{{subcategoria.name|slugify}}">
+                                {{subcategoria.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
     
         <!-- Texto del span que muestra la cantidad de productos -->
         <span class="carousel-producto-txt-titulo">
@@ -20,7 +41,8 @@
         </span>
     </div>
 
-    <div class="carousel p-0 mt-4">
+
+    <div class="carousel p-0 mt-3">
 
         {% for producto in productos %}
             <!-- Producto Item -->
@@ -51,7 +73,10 @@
                     <!-- Precios: Normal y Oferta -->
                     <div class="carousel-producto-precios">
                         <span class="precio-normal">Normal: ${{ producto.price }}</span>
-                        <strong class="precio-oferta">Oferta: $200.00</strong>
+                        <!-- Precio con descuento (calculado por JavaScript) -->
+                        <strong class="precio-oferta" id="precio-oferta-{{ producto.id }}" data-price="{{ producto.price }}" data-discount="{{ producto.discount }}">
+                            Oferta: Calculando...
+                        </strong>
                     </div>
                 </figcaption>
 
