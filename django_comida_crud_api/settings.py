@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-rl_%0_ri@)+6-!4jw+c50u*sb9@xi04x2+gz_rtt3b4i3oed8q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','antojitos.up.railway.app']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -163,10 +163,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Generar token CSRF
-CSRF_TRUSTED_ORIGINS = ['antojitos.up.railway.app']
-
-
-
+CSRF_TRUSTED_ORIGINS = ['http://antojitos.up.railway.app']
 
 
 
