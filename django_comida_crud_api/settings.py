@@ -163,7 +163,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Generar token CSRF
-CSRF_TRUSTED_ORIGINS = ['http://antojitos.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://antojitos.up.railway.app']
 
 
 
