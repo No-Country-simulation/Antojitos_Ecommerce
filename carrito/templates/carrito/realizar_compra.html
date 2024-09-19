@@ -16,7 +16,7 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
             <div class="row mb-2">
-                <h1 class="text-muted">Mi Carrito</h1>
+                <h1 class="titulo-carrito">Mi Carrito</h1>
             </div>
         </div>
         <div class="col-lg-1"></div>
@@ -26,6 +26,7 @@
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-7">
+
             <div class="card-cart-view">
                 <h1>Pago</h1>
 
@@ -35,22 +36,22 @@
                         <h3>Datos personales</h3>
                         <div class="input-group">
                             <label for="nombre">Nombre y apellidos</label>
-                            <input type="text" id="nombre" placeholder="Por ejemplo: Maria Sanchez">
+                            <input class="input-checkout"  type="text" id="nombre" placeholder="Por ejemplo: Maria Sanchez">
                         </div>
 
                         <div class="input-group">
                             <label for="telefono">Número de teléfono</label>
-                            <input type="text" id="telefono" placeholder="11xxxxxxxx">
+                            <input class="input-checkout"  type="tel" id="telefono" placeholder="11xxxxxxxx">
                         </div>
                     </form>
 
 
                     <!-- Hora de entrega -->
                     <div class="contenedor-boton-modal">
-                        <button type="button" class="btn btn-primary modal-button" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-primary modal-button-checkout" data-bs-toggle="modal"
                             data-bs-target="#modalHora">
                             <div class="modal-button-content">
-                                <div class="left-icon">
+                                <div class="left-icon-form-checkout">
                                     <i class="fas fa-clock"></i> <!-- Usa un icono de reloj -->
                                 </div>
                                 <div class="modal-button-text">
@@ -75,7 +76,7 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <label for="horarrio">Elegí en que horario querés retirar tu pedido</label>
+                                        <h4>Elegí en que horario querés retirar tu pedido</h4>
                                         <select id="horario">
                                             <option>16h</option>
                                             <option>17h</option>
@@ -89,7 +90,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn btn-primary">Guardar</button>
+                                        <button type="button" class="btn btn-primary btn-modal-guardar" data-bs-dismiss="modal">Guardar</button>
                                     </div>
                                 </div>
                             </div>
@@ -99,10 +100,10 @@
                     <!-- NOTA DEL PEDIDO -->
                     <div>
 
-                        <button type="button" class="btn btn-primary modal-button" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-primary modal-button-checkout" data-bs-toggle="modal"
                             data-bs-target="#modalNota">
                             <div class="modal-button-content">
-                                <div class="left-icon">
+                                <div class="left-icon-form-checkout">
                                     <i class="fas fa-box"></i> <!-- Usa un icono de reloj -->
                                 </div>
                                 <div class="modal-button-text">
@@ -127,13 +128,13 @@
                                     <div class="modal-body">
                                         Deja una nota para el local:
                                         <div class="input-group">
-                                            <input type="text" placeholder="Por ejemplo: A nombre de...">
+                                            <textarea id="comentario" name="comentario" rows="2" cols="40"></textarea>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn btn-primary">Guardar cambios</button>
+                                        <button type="button" class="btn btn-primary btn-modal-guardar" data-bs-dismiss="modal">Guardar cambios</button>
                                     </div>
                                 </div>
                             </div>
@@ -142,10 +143,10 @@
 
                     <!-- Método de pago -->
                     <div>
-                        <button type="button" class="btn btn-primary modal-button" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-primary modal-button-checkout" data-bs-toggle="modal"
                             data-bs-target="#modalPago">
                             <div class="modal-button-content">
-                                <div class="left-icon">
+                                <div class="left-icon-form-checkout">
                                     <i class="far fa-credit-card"></i>
                                 </div>
                                 <div class="modal-button-text">
@@ -163,17 +164,34 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="modalPagoLabel">Método de pago</h1>
+                                        <h1 class="modal-title fs-5" id="modalPagoLabel">Seleccione el método de pago: </h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body">
-                                        ...
+                                    <div class="modal-body wrapper">
+                                       <div class="box-payments">
+                                             <input type="radio" name="select" id="value-1">
+                                             <input type="radio" name="select" id="value-2">
+                                             <input type="radio" name="select" id="value-3">
+                                             <input type="radio" name="select" id="value-4">
+                                             <label for="value-1" class="value-1">
+                                             <div class="select-dots"></div>
+                                             <div class="text">Tarjeta de débito</div>
+                                             </label>
+                                             <label for="value-2" class="value-2">
+                                             <div class="select-dots"></div>
+                                             <div class="text">Mercado pago</div>
+                                             </label>
+                                             <label for="value-3" class="value-3">
+                                             <div class="select-dots"></div>
+                                             <div class="text">Efectivo al recoger el pedido</div>
+                                             </label>
+                                       </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn btn-primary">Guardar cambios</button>
+                                        <button type="submit" class="btn btn-primary btn-modal-guardar" data-bs-dismiss="modal">Guardar cambios</button>
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +213,7 @@
                 </div>
             </div>
         </div>
-
+        <!-- contenedor derecho-->
         <div class="col-lg-3">
             <div class="card-total-cart-view">
                 <div class="total-row">
@@ -219,7 +237,7 @@
                     </h5>
                 </div>
 
-                <button class="btn-pay">
+                <button class="btn-pay-confirmar" onclick="window.location.href={% url 'compra_confirmada' %};">
                     Confirmar
                 </button>
             </div>
@@ -231,7 +249,8 @@
 
 <!-- JavaScript for Product Page -->
 {% block extra_scripts %}
-<script src="{% static 'carrito/js/ver_carrito.js' %}"></script>
+<script src="{% static 'carrito/js/realizar_compra.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 {% endblock %}
 {% endblock %}

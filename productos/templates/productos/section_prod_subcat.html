@@ -68,14 +68,17 @@
                                             <button class="btn btn-outline-secondary quantity-btn" id="decreaseBtn-{{ producto.id }}">-</button>
                                             <span class="mx-2" id="quantityDisplay-{{ producto.id }}">1</span>
                                             <button class="btn btn-outline-secondary quantity-btn" id="increaseBtn-{{ producto.id }}">+</button>
-
+                                    
                                             <!-- Botón para añadir al carrito -->
                                             <button class="btn btn-primary ms-3 add-to-cart-btn">
                                                 <img src="carrito.png" alt="" class="me-2"> 
-                                                <span id="priceDisplay-{{ producto.id }}">{{ producto.price }} $</span>
+                                                <span id="priceDisplay-{{ producto.id }}" data-base-price="{{ producto.price }}">{{ producto.price }} $</span>
                                             </button>
                                         </div>
                                     </div>
+                                    
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

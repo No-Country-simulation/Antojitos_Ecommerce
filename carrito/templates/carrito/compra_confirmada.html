@@ -1,0 +1,144 @@
+{% extends "ecommerce/base.html" %}
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- For More CSS Modules -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+{% block extra_head %}
+<!-- Cargar CSS o meta tags específicos de la página aquí -->
+<link href="{% static 'carrito/css/compra_confirmada.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container-fluid p-0 mb-5">
+
+
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-1"></div>
+
+
+
+            <div class="col-lg-8">
+
+                <div class="row">
+                    <div class="card card-cart-view">
+                        <div class="row g-0">
+                            <div class="col-md-6 border-right p-5">
+                                <div class="text-center order-details">
+                                    <div class="d-flex justify-content-center mb-5 flex-column align-items-center"> <span
+                                            class="check1"><i class="fa-solid fa-check"></i></span>
+                                        <span class="font-weight-bold">Pedido confirmado</span>
+                                    </div>
+                                    <button class="btn btn-danger btn-block order-button">Ir a tu pedido</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 background-muted">
+                                <div class="p-3 border-bottom">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span><i class="fa-solid fa-clock"></i> Podes ir por tu pedido a las 16:00h</span>
+                                    </div>
+                                    <div class="mt-3">
+                                        <h6 class="mb-0"><i class="fa-solid fa-utensils"></i> Retiralo en: Restaurante</h6>
+                                        <span class="d-block mb-0"><i class="fa-solid fa-location-dot"></i> Ubicación:
+                                            Dirección 1234 </span>
+                                    </div>
+                                </div>
+                                
+                                <table class="table table-borderless table-shopping-cart">
+                                    <thead class="text-muted">
+                                        <tr class="small text-uppercase">
+                                            <th scope="col" width="15%" class="border-bottom"></th>
+                                            <th scope="col" class="border-bottom">Producto</th>
+                                            <th scope="col" width="13%" class="border-bottom">Precio</th>
+                                            <th scope="col" width="13%" class="border-bottom">Cantidad</th>
+                                            <th scope="col" width="13%" class="border-bottom">Subtotal</th>
+                                        </tr>
+                                    </thead>
+        
+                                    <tbody id="cart-view-contenido">
+        
+                                        {% for key, value in carrito.items %}
+                                            {% if forloop.last %}
+                                            <tr class="cart-item-view">
+                                            {% else %}
+                                            <tr class="cart-item-view border-bottom">
+                                            {% endif %}
+        
+                                                <!-- Imagen Producto  { % url '#' value.id % } -->
+                                                <td>
+                                                    <a href="#">
+                                                        <img src="{{ value.imagen }}" class="img-sm">
+                                                    </a>
+                                                </td>
+        
+                                                <!-- Nombre Producto -->
+                                                <td>
+                                                    <a href="#" class="product-title-cart"><strong>
+                                                        {{ value.nombre }}
+                                                    </strong></a>
+                                                </td>
+        
+                                                <!-- Price col-->
+                                                <td>
+                                                    <div><span>${{value.precio|floatformat:0|intcomma}}</span> </div>
+                                                    <div><span class="text-muted">      </span> </div>
+                                                </td>
+        
+                                                <!-- Increment Decrement col-->
+                                                <td>
+                                                    <div class="quantity-container">
+                                                        <span>{{value.cantidad}}</span>
+                                                    </div>
+                                                </td>
+                                                 <!-- Subtotal col-->
+                                                <td>
+                                                    <h5 id="item-price-{{value.id}}" data-precio="{{value.precio}}"
+                                                        data-cantidad="{{value.cantidad}}"></h5>
+                                                        
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+        
+        
+                                </table>
+
+                                <div class="row g-0 border-bottom">
+                                    <div class="col-md-6">
+                                        <div class="p-3 d-flex justify-content-center align-items-center"> <span>Descuento</span> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="p-3 d-flex justify-content-center align-items-center">
+                                            <span>$0.00</span> </div>
+                                    </div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-md-6">
+                                        <div class="p-3 d-flex justify-content-center align-items-center"> <span
+                                                class="font-weight-bold">Total</span> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="p-3 d-flex justify-content-center align-items-center"> <span
+                                                class="font-weight-bold"> ${{ carrito_total|floatformat:0|intcomma }}</span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'carrito/js/ver_carrito.js' %}"></script>
+{% endblock %}
