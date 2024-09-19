@@ -28,13 +28,14 @@ def obtener_categorias_y_subcategorias(categorias_unicas) -> dict:
         </ul>
     {% endfor %}
     """
-    categorias_y_subcategorias = {}
-    
-    for categoria in categorias_unicas:
 
-        # Accedemos a las subcategorías de cada categoría (ajuste de `related_name`)
-        subcategorias = categoria.subcategorias.all()  
-        categorias_y_subcategorias[categoria.name] = subcategorias
+    categorias_y_subcategorias = {}
+ 
+    for categoria in categorias_unicas:
+        # Accedemos a las subcategorías de cada categoría
+        subcategorias = categoria.subcategorias.all()
+        # Usar el objeto `categoria` como clave, no solo su nombre
+        categorias_y_subcategorias[categoria] = subcategorias
     
     return categorias_y_subcategorias
 
@@ -119,10 +120,22 @@ def producto(request, category_id=None, sub_category_id=None):
 
 
 
-def tienda_vendedor(request, seller_id=None):
+def tienda_vendedor(request, seller_id=None, category_id=None, sub_category_id=None):
     seller = get_object_or_404(SellerUser, id=seller_id)
     productos = Producto.objects.filter(seller=seller)
+    category_actual = category_id
+    sub_category_actual = sub_category_id
+    
+    # Filtrado por categoría
+    if category_id:
+        category_actual = Categoria.objects.get(id=category_id)
+        productos = productos.filter(category=category_actual)
 
+    # Filtrado por subcategoría (si se pasa un sub_category_id)
+    if sub_category_id:
+        sub_category_actual = Subcategoria.objects.get(id=sub_category_id)
+        productos = productos.filter(sub_category=sub_category_actual)
+    
     # Obtener las categorías únicas desde los productos (si aún las necesitas)
     categorias_unicas = Categoria.objects.filter(producto__in=productos).distinct()
     
@@ -136,6 +149,8 @@ def tienda_vendedor(request, seller_id=None):
         'store': seller,
         'productos': productos,
         'cat_n_subcats': cat_n_subcats,
+        "category": category_actual,           # None or ID
+        "sub_category": sub_category_actual,           # None or ID
         'products_for_subcats': products_for_subcats,
     }
 

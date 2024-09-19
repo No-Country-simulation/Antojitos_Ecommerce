@@ -89,7 +89,10 @@
 
                     <!-- Cat = Category, sub_cats = Sub Category ; Se pasa del context Processor-->
                     {% for cat, sub_cats in categories_all.items %}
-                        <a href="{% url 'Prod_Cat' cat.id %}"><strong>{{ cat }}</strong></a>
+                        
+                        <a href="{% url 'Prod_Cat' cat.id %}">
+                            <strong>{{ cat }}</strong>
+                        </a>
 
                         {% if sub_cats %}
                         <!-- Submenú with SubCategories -->

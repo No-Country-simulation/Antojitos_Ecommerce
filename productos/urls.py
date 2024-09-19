@@ -25,6 +25,10 @@ urlpatterns = [
 
     # Para la Vista de Tiendas
     path('tienda/<int:seller_id>/', views.tienda_vendedor, name='Tienda_Profile'),
+    
+    path('tienda/<int:seller_id>/<int:category_id>/', views.tienda_vendedor, name='Tienda_Cat'),
+    
+    path('tienda/<int:seller_id>/<int:category_id>/<int:sub_category_id>/', views.tienda_vendedor, name='Tienda_Sub_Cat'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

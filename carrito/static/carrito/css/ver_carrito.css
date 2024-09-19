@@ -3,6 +3,10 @@
 /* ======================================================================================
             Ver carrito stuff  todo
 ====================================================================================== */
+.titulo-carrito {
+    color: black;
+    margin: 10px;
+}
 .card-cart-view {
     position: relative;
     display: flex;
@@ -11,7 +15,6 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
 }
 
 .border-bottom {

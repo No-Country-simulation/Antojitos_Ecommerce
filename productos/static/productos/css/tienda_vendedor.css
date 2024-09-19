@@ -208,6 +208,88 @@ section {
     }
 }
 
+
+/* =============================================================================
+              PRODUCTOS STUFF   todo
+# ============================================================================= */
+/* SIDE BAR Top PRODUCTOS */
+.btn-container-side-bar-top {
+    padding: 15px 15px;
+    display: flex;
+    gap: 20px;
+
+    position: relative;
+    left: 20px;
+}
+
+.btn-sidebar-top {
+    color: white;   /* color fuente de lo que esta adentro */
+    font-size: 15px;
+    background-color: #dd5800;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transform: skew(-30deg);
+}
+
+.btn-sidebar-top span {
+    display: inline-block;
+    transform: skew(30deg);
+}
+
+.btn-sidebar-top-10 {
+    color: white;   /* color fuente de lo que esta adentro */
+    font-size: 18px;
+    background-color: #dd5800;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    position: relative;
+
+    width: 100%;
+    height: 50px; /* Adjusted height to include initial title */
+}
+
+.btn-sidebar-top-10:hover {
+    background-color: #000;
+}
+
+
+/* ============================================================================
+                    CSS PERSONALIZADO PARA EL LISTADO DE SECCIONES
+============================================================================ */
+/* Lista item menu */ 
+.menu-categorias {
+    background-color: #ffffff;
+    /* border-bottom: 1px solid #e0e0e0; Para poner un borde abajo */
+}
+
+.menu-categorias ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-categorias a {
+    text-decoration: none;
+    color: #d32f2f;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.menu-categorias a:hover {
+    color: #b71c1c;
+}
+
+
 /* ============================================================================
                     CSS DE BANNER PRODUCTO
 ============================================================================ */
@@ -248,37 +330,6 @@ section {
 
 .product-search-button:hover {
     background-color: #b71c1c; /* Cambia el color de fondo al pasar el ratón */
-}
-
-/* Lista item menu */ 
-.menu-categorias {
-    background-color: #ffffff;
-    padding: 1rem 0;
-    border-bottom: 1px solid #e0e0e0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.menu-categorias ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-}
-
-.menu-categorias a {
-    text-decoration: none;
-    color: #d32f2f;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-
-.menu-categorias a:hover {
-    color: #b71c1c;
 }
 
 

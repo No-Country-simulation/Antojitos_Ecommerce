@@ -20,10 +20,56 @@ from django.contrib.auth import update_session_auth_hash
 # Para la Profile Page
 from django.shortcuts import get_object_or_404
 from productos.models import Producto
-from productos.models import SellerUser
+from registros.models import BuyerUser, SellerUser
 
 
 # Create your views here.
+
+
+@login_required
+def profile_page(request):
+    """ 
+    if request.method == 'POST':
+        form = EditUserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()  # Guarda los cambios en el usuario
+
+            # Actualizar la sesión del usuario para reflejar los cambios
+            update_session_auth_hash(request, request.user) # Proteccion de la contraseña
+            messages.success(request, '¡Perfil actualizado con éxito!')
+            return redirect('Profile_Page')  # Redirige a la página de perfil o a donde prefieras
+    else:
+        form = EditUserForm(instance=request.user)
+        
+    context= , {'form': form}
+    """
+    user = request.user
+    if user.role == 'seller':
+    
+        seller = get_object_or_404(SellerUser, id=user.id)
+        productos = Producto.objects.filter(seller=seller)
+        
+        context = {
+            'productos': productos,
+            'tienda': seller,
+        }
+    
+        return render(request, 'registros/profile_page.html', context)
+    
+    # Para cuando el role es Buyer
+    else:
+        # Obtener el BuyerUser relacionado con el usuario
+        buyer = get_object_or_404(BuyerUser, id=user.id)
+        
+        # Obtener los productos guardados por el comprador
+        favoritos = Producto.objects.filter(id__in=buyer.saved_products.values_list('id', flat=True))
+        
+        context = {
+            'productos': favoritos,
+        }
+        return render(request, 'registros/profile_page.html', context)
+    
+
 def dashboard(request):
     return render(request, 'registros/dashboard_proofs.html')
 
@@ -78,35 +124,6 @@ def registro(request):
     return render(request, 'registros/registro.html', context)
 
 
-@login_required
-def profile_page(request):
-    """ 
-    if request.method == 'POST':
-        form = EditUserForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()  # Guarda los cambios en el usuario
-
-            # Actualizar la sesión del usuario para reflejar los cambios
-            update_session_auth_hash(request, request.user) # Proteccion de la contraseña
-            messages.success(request, '¡Perfil actualizado con éxito!')
-            return redirect('Profile_Page')  # Redirige a la página de perfil o a donde prefieras
-    else:
-        form = EditUserForm(instance=request.user)
-        
-    context= , {'form': form}
-    """
-    seller = get_object_or_404(SellerUser, id=request.user.id)
-    productos = Producto.objects.filter(seller=seller)
-    
-    context = {
-        'productos': productos,
-        'tienda': seller,
-    }
-    
-    return render(request, 'registros/profile_page.html', context)
-
-
-
 def registro_widget(request):
     """
         Esta funcion se llama en widget_registro para confirmar que el usuario se logee
@@ -141,13 +158,9 @@ def registro_widget(request):
             # If authentication is NOT successful
             else:
                 form.add_error(None, 'Correo electrónico o contraseña incorrectos')
-
-    # Para otros metodos que no sean Post, generalmente GET
-    else:
-        form = LoginForm()
-
-    # For non-AJAX requests or GET requests, render the login form template
-    return render(request, 'Home', {'form': LoginForm()})
+                
+                # Si el formulario no es válido o la autenticación falla, redirige a la misma página
+                return redirect(request.META.get('HTTP_REFERER', 'Home'))
 
 
 def close_session(request):

@@ -154,6 +154,12 @@ class SellerUser(CustomUser):
 # Para definir nuestro usuario comprador
 class BuyerUser(CustomUser):
     
+    # para productos que el usuario guarda como favoritos
+    saved_products = models.ManyToManyField('productos.Producto', related_name='buyers', blank=True)
+    
+    # Para tiendas que el usuario guarda como favoritas (relacionadas con SellerUser)
+    favorite_stores = models.ManyToManyField('SellerUser', related_name='favorited_by_buyers', blank=True)
+
     # Los campos first_name y last_name están disponibles por defecto y son opcionales
     # =================================================================================
     # first_name = Nombre del comprador
@@ -161,12 +167,6 @@ class BuyerUser(CustomUser):
     # =================================================================================
     # Estos campos son heredados por defecto como blank=True y null=True a los campos heredados
     # ya que son opcionales por defecto
-    
-    # para productos que el usuario guarda como favoritos
-    saved_products = models.ManyToManyField('productos.Producto', related_name='buyers', blank=True)
-    
-    # Para tiendas que el usuario guarda como favoritas (relacionadas con SellerUser)
-    favorite_stores = models.ManyToManyField('SellerUser', related_name='favorited_by_buyers', blank=True)
     
     # Eventualmente se hara un apartado de pedidos/facturas cuando se cree la clase
     # pedidos

@@ -30,22 +30,44 @@
             <button class="product-search-button">Buscar</button>
         </div>
     </div>
-
-    <!-- Categorias de alimentos -->
-    <nav class="menu-categorias"> 
-        <ul>
-            {% for subcategoria, productos in products_for_subcats.items %}
-                <li>
-                    <a href="#{{subcategoria.name|slugify}}">
-                        {{subcategoria.name }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </nav>
-    
     
     <div class="container-fluid">
+
+
+        <!-- Filtros Aplicados -->
+        <div class="row mt-2 mb-2">
+
+            <div class="btn-container-side-bar-top">
+                <!-- Se utiliza para agregar mas botones en este container -->
+                <button class="btn-sidebar-top px-lg-3"
+                onclick="window.location.href='{% url 'Tienda_Profile' store.id %}'">
+                    <span> Todos Los Productos </span>
+                </button>
+
+                {% if query %}
+                    <button class="btn-sidebar-top px-lg-3">
+                        <span> Resultado de busqueda '{{query}}' </span>
+                    </button>
+                {% endif %}
+
+                <!-- Se utiliza para agregar mas botones en este container -->
+                {% if category %}
+                    <button class="btn-sidebar-top px-lg-3"
+                    onclick="window.location.href='{% url 'Tienda_Cat' store.id category.id %}'">
+                        <span> {{ category.name }} </span>
+                    </button>
+                {% endif %}
+
+                {% if sub_category %}
+                    <button class="btn-sidebar-top px-lg-3"
+                    onclick="window.location.href='{% url 'Tienda_Cat' store.id category.id sub_category.id %}'">
+                        <span> {{ sub_category.name }} </span>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+
+
         <div class="row p-0">
             <!-- Sidebar -->
             <div class="col-2 sidebar">
@@ -67,18 +89,21 @@
                 <!-- Categories will be inserted here -->
                 <div class="sidebar-category">
                     <!-- Top button on side bar -->
-                    <a href="{% url 'Home' %}"><strong>Todas las Categorias</strong></a>
+                    <a href="{% url 'Tienda_Profile' store.id %}"><strong>Todas las Categorias</strong></a>
 
                     <!-- Cat = Category, sub_cats = Sub Category ; Se pasa del context Processor-->
                     {% for cat, sub_cats in cat_n_subcats.items %}
-                        <a href="{% url 'Home' %}"><strong>{{ cat }}</strong></a>
-
+                        
+                        <a href="{% url 'Tienda_Cat' store.id cat.id %}">
+                            <strong>{{ cat.name }}</strong>
+                        </a>
+                        
                         {% if sub_cats %}
                         <!-- Submenú with SubCategories -->
                             <ul class="category-list">
                                 {% for sub_cat in sub_cats %}
                                     <li>
-                                        <a href="#{{sub_cat.name|slugify}}">
+                                        <a href="{% url 'Tienda_Sub_Cat' store.id cat.id sub_cat.id %}">
                                             &nbsp;&nbsp;&nbsp;&nbsp;{{ sub_cat.name }}
                                         </a>
                                     </li>
@@ -135,6 +160,20 @@
                     }
                 ]
             });
+        });
+
+
+        // Seleccionar todos los elementos que tienen la clase 'precio-oferta'
+        document.querySelectorAll('.precio-oferta').forEach(function(element) {
+            // Obtener el precio y el descuento desde los atributos de datos
+            var price = parseFloat(element.getAttribute('data-price'));
+            var discount = parseFloat(element.getAttribute('data-discount'));
+
+            // Calcular el precio con descuento
+            var discountedPrice = price - (price * (discount / 100));
+
+            // Mostrar el precio calculado en el elemento correspondiente
+            element.innerText = 'Oferta: $' + discountedPrice.toFixed(2);
         });
     </script>   
 
