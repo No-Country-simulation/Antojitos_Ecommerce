@@ -147,11 +147,15 @@ select {
   transition: background-color 0.3s ease;
   cursor: pointer;
   width: 100%;
-  margin-bottom:20px ;
+  margin-bottom:20px;
+ 
 }
 .modal-button-checkout:hover {
   background-color: #F5F5F5;
   border-color: black;
+}
+.modal-button-checkout:active{
+  background-color:#DB3B3B;
 }
 
 /* BOTONES MODALS */
@@ -165,7 +169,7 @@ select {
 
 /*ICONOS DEL FORMULARIO DE LA IZQ*/
 .left-icon-form-checkout {
-  color: #DB3B3B; /* Color rojo para el icono */
+  color: black;
   font-size: 24px;
   margin-right: 10px;
 }
