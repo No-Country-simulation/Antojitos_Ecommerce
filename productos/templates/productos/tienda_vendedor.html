@@ -22,18 +22,18 @@
 {% block content %}
 
     <div class="container-banner-producto" style="background-image: url('{{ store.banner_image_url }}');">
-        
-        <h1>{{ store.name_store }}</h1> <!--nombre del restaurante-->
-        <p>Dirección: {{ store.address }}</p>
-        <div class="product-search-container">
-            <input type="text" placeholder="Buscar..." class="product-search-input">
-            <button class="product-search-button">Buscar</button>
+        <div class="store-data">
+            <h1>{{ store.name_store }}</h1> <!--nombre del restaurante-->
+            <p>Dirección: {{ store.address }}</p>
         </div>
+        
     </div>
     
     <div class="container-fluid">
-
-
+        <div class="product-search-container"></div>
+            <input type="text" placeholder="Buscar..." class="product-search-input">
+            <button class="product-search-button">Buscar</button>
+        </div>
         <!-- Filtros Aplicados -->
         <div class="row mt-2 mb-2">
 
