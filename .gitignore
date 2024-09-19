@@ -16,5 +16,6 @@ z_steps/
 # Ignorar la base de datos como subida # 
 db.sqlite3
 
-
+# Ignorar archivos estaticos que se generan solos
+static
 
