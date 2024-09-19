@@ -188,7 +188,7 @@ select {
 
 
 .wrapper {
-  width: 400px;
+  width: 450px;
   background: #fff;
 }
 
@@ -199,10 +199,13 @@ select {
   align-items: center;
   border: 1px solid lightgrey;
   border-radius: 5px;
+  padding: 10px;
   margin: 10px 0;
-  padding-left: 11px;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+.wrapper .box-payments label:hover{
+  background-color: #fa4d3a;
 }
 #value-1:checked ~ .value-1,
 #value-2:checked ~ .value-2,
@@ -228,16 +231,16 @@ border-radius: 50%;
 transition: all 0.3s ease;
 }
 
-.wrapper .box-payments label .text{
+.wrapper .box-payments label .text-metodo-pago{
 color: #333;
-font-size: 18px;
+font-size: 20px;
 font-weight: 400;
 padding-left: 10px;
 transition: color 0.3s ease;
 }
-#value-1:checked ~ .value-1 .text,
-#value-2:checked ~ .value-2 .text,
-#value-3:checked ~ .value-3 .text{
+#value-1:checked ~ .value-1 .text-metodo-pago,
+#value-2:checked ~ .value-2 .text-metodo-pago,
+#value-3:checked ~ .value-3 .text-metodo-pago{
 color: #fff;
 }
 .wrapper .box-payments input[type="radio"]{
@@ -287,41 +290,47 @@ display: none;
 }
 
 .add-card span {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
 }
 
-.input-group {
+.input-group-tarjeta {
   margin-bottom: 15px;
 }
 
-.input-group label {
+.input-group-tarjeta label {
   display: block;
-  font-size: 12px;
+  font-size: 18px;
   margin-bottom: 5px;
 }
 
-.input-group input,
-.input-group select {
+.input-group-tarjeta input,
+.input-group-tarjeta select {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 18px;
 }
-
-
+/* ESTILOS FECHA DE EXPIRACION DE LA TARJETA*/
 .expiry-group {
   display: flex;
-  justify-content: space-between;
+  width: 25%;
+}
+#expiry-month {
+  margin-right: 10px;
 }
 
-.expiry-group select {
-  width: 48%;
+/*CHECK para guardar tarjeta*/
+#save-card {
+  width: 18px;
+  margin-right: 10px;
+}
+.save-card{
+  display: flex;
 }
 
-
-.modal-footer {
+.modal-footer-tarjeta {
   display: flex;
   justify-content: center;
   padding-top: 20px;
@@ -333,18 +342,32 @@ display: none;
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: 18px;
   cursor: pointer;
   width: 100%;
   --bs-btn-active-bg: #DB3B3B;
   --bs-btn-active-border-color: #DB3B3B;
   
 }
-
 .submit-btn-tarjeta:hover {
   background-color: #e53935;
 }
 /*Contenedor del boton de la opcion de la tarjeta*/
-.opcion-tarjeta{
+.label-opcion-tarjeta {
   display: flex;
+}
+.btn-opcion-tarjeta{
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+  vertical-align: middle;  
+  background-color: #f6e8e8;
+
+}
+
+.opcion-tarjeta:hover{
+  background-color: #fa4d3a;
+}
+.opcion-tarjeta label:hover{
+  border-color: #fa4d3a;
 }

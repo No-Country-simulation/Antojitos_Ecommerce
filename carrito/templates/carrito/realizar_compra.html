@@ -8,6 +8,7 @@
 {% block extra_head %}
 <!-- Cargar CSS o meta tags específicos de la página aquí -->
 <link href="{% static 'carrito/css/realizar_compra.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.com/libraries/font-awesome">
 {% endblock %}
 
 {% block content %}
@@ -106,7 +107,7 @@
                             data-bs-target="#modalNota">
                             <div class="modal-button-content">
                                 <div class="left-icon-form-checkout">
-                                    <i class="fas fa-box"></i> <!-- Usa un icono de reloj -->
+                                    <i class="fas fa-box"></i> <!-- icono -->
                                 </div>
                                 <div class="modal-button-text">
                                     <h4>Nota del pedido</h4>
@@ -179,20 +180,21 @@
                                             <input type="radio" name="select" id="value-3">
                                             <input type="radio" name="select" id="value-4">
 
-                                            <label for="value-1" class="value-1 opcion-tarjeta">
-                                                <button type="button" class="opcion-tarjeta" id="openPagoTarjeta">
-                                                    <i class="far fa-credit-card"></i>
-                                                    <h4>Tarjeta de débito</h4>
-                                                    <i class="fas fa-chevron-right"></i>
+                                            <label for="value-1" class="value-1 label-opcion-tarjeta">
+                                                <i class="far fa-credit-card"></i>
+                                                <div class="text-metodo-pago">Tarjeta de débito</div>
+                                                <button type="button" class="btn-opcion-tarjeta" id="openPagoTarjeta">
+                                                    Agregar
                                                 </button>
                                             </label>
-
                                             <label for="value-2" class="value-2">
-                                                <div class="text">Mercado pago</div>
+                                                <i class="fa-regular fa-handshake"></i>
+                                                <div class="text-metodo-pago">Mercado pago</div>
                                             </label>
 
                                             <label for="value-3" class="value-3">
-                                                <div class="text">Efectivo al recoger el pedido</div>
+                                                <i class="fa-solid fa-money-bill-wave"></i>
+                                                <div class="text-metodo-pago">Efectivo al recoger el pedido</div>
                                             </label>
                                         </div>
                                     </div>
@@ -225,65 +227,41 @@
                                             </div>
 
                                             <!-- Tarjeta Input -->
-                                            <div class="input-group">
+                                            <div class="input-group-tarjeta">
                                                 <label for="card-number">Número de la tarjeta</label>
                                                 <input type="text" id="card-number" placeholder="Número de la tarjeta">
                                             </div>
 
                                             <!-- Nombre Titular -->
-                                            <div class="input-group">
+                                            <div class="input-group-tarjeta">
                                                 <label for="card-name">Nombre del titular de la tarjeta</label>
                                                 <input type="text" id="card-name"
                                                     placeholder="Nombre del titular de la tarjeta">
                                             </div>
 
                                             <!-- Fecha Expiración -->
-                                            <div class="input-group">
-                                                <label for="expiry-date">Fecha de expiración</label>
+                                            <div class="input-group-tarjeta">
+                                                <label for="expiry-date">Fecha de expiración: </label>
                                                 <div class="expiry-group">
-                                                    <select id="expiry-month">
-                                                        <option>MM</option>
-                                                        <option>01</option>
-                                                        <option>02</option>
-                                                        <option>03</option>
-                                                        <option>04</option>
-                                                        <option>05</option>
-                                                        <option>06</option>
-                                                        <option>07</option>
-                                                        <option>08</option>
-                                                        <option>09</option>
-                                                        <option>09</option>
-                                                        <option>09</option>  
-                                                        <option>09</option>
-                                                    </select>
-                                                    <select id="expiry-year">
-                                                        <option>YY</option>
-                                                        <option>23</option>
-                                                        <option>24</option>
-                                                        <option>25</option>
-                                                        <option>26</option>
-                                                        <option>27</option>
-                                                        <option>28</option>
-                                                        <option>29</option>
-                                                        <option>30</option>
-                                                    </select>
+                                                   <input type="text" id="expiry-month" placeholder="Mes">
+                                                   <input type="text" id="expiry-year" placeholder="Año">
                                                 </div>
                                             </div>
 
                                             <!-- CVV -->
-                                            <div class="input-group">
+                                            <div class="input-group-tarjeta">
                                                 <label for="cvv">CVV</label>
                                                 <input type="text" id="cvv" placeholder="CVV">
                                             </div>
 
                                             <!-- Guardar datos de tarjeta -->
-                                            <div class="input-group save-card">
+                                            <div class="input-group-tarjeta save-card">
                                                 <input type="checkbox" id="save-card">
                                                 <label for="save-card">Guardar datos de la tarjeta</label>
                                             </div>
                                         </div>
 
-                                        <div class="modal-footer">
+                                        <div class="modal-footer-tarjeta">
                                             <button type="submit" class="btn btn-primary submit-btn-tarjeta"
                                                 data-bs-dismiss="modal">Guardar</button>
                                         </div>

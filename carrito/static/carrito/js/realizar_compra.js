@@ -17,7 +17,6 @@ document.getElementById('openPagoTarjeta').addEventListener('click', function ()
         if (isSwitchingModal) {
             modalPago.show(); // Solo mostrar la primera modal si estamos en el proceso de cambio
         }
-        isSwitchingModal = false; // Resetear la variable de control
     });
 });
 
