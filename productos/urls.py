@@ -21,7 +21,7 @@ urlpatterns = [
     path('productos/search/', views.producto, name="Producto_Search_Top"),
     
     # este trabaja para las solicitudes JSON con js AJAX. para la busqueda en el input lateral del sidebar
-    path('search_producto/', views.search_view, name='Search_view'),
+    path('search_productos/', views.search_view, name='Search_view'),
 
     # Para la Vista de Tiendas
     path('tienda/<int:seller_id>/', views.tienda_vendedor, name='Tienda_Profile'),

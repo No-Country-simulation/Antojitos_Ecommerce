@@ -1,0 +1,184 @@
+
+<div class="app-content">
+	<!-- APP CONTENT HEADER -->
+	<div class="app-content-header">
+		<h1 class="app-content-headerText">Editar Productos</h1>
+		<button class="mode-switch" title="Switch Theme">
+			<i class="fa-solid fa-moon"></i>
+		</button>
+		<button class="app-content-headerButton">Add Product</button>
+	</div>
+
+	<!-- APP SEARCH STUFF -->
+	<div class="app-content-actions">
+		<input class="search-bar" placeholder="Search..." type="text">
+
+		<div class="app-content-actions-wrapper">
+			<div class="filter-button-wrapper">
+
+				<button class="action-button filter jsFilter">
+					<span>Filter</span>
+					<i class="fa-solid fa-filter"></i>
+				</button>
+
+				<div class="filter-menu">
+					<label>Category</label>
+					<select>
+							<option>All Categories</option>
+							<option>Furniture</option>
+							<option>Decoration</option>
+							<option>Kitchen</option>
+							<option>Bathroom</option>
+					</select>
+					<label>Status</label>
+					<select>
+							<option>All Status</option>
+							<option>Active</option>
+							<option>Disabled</option>
+					</select>
+					<div class="filter-menu-buttons">
+							<button class="filter-button reset">
+								Reset
+							</button>
+							<button class="filter-button apply">
+								Apply
+							</button>
+					</div>
+				</div>
+				
+			</div>
+
+			<button class="action-button list active" title="List View">
+				<i class="fa-solid fa-table-list"></i>
+			</button>
+
+			<button class="action-button grid" title="Grid View">
+				<i class="fa-solid fa-border-all"></i>
+			</button>
+		</div>
+	</div>
+
+
+	<!-- DASHBOARD -->
+	<div class="products-area-wrapper tableView">
+
+		<!-- TOP HEADER TABLE -->
+		<div class="products-header">
+			<div class="product-cell">Productos
+				<button class="sort-button">
+					<i class="fa-solid fa-arrow-up"></i>
+					<i class="fa-solid fa-arrow-down"></i>
+				</button>
+			</div>
+			
+			<!-- Comentado solo porque capaz no vaya
+			<div class="product-cell"> Categoría
+				<button class="sort-button">
+					<i class="fa-solid fa-arrow-up"></i>
+					<i class="fa-solid fa-arrow-down"></i>
+				</button>
+			</div>
+
+			<div class="product-cell"> Sub-Categoría
+				<button class="sort-button">
+					<i class="fa-solid fa-arrow-up"></i>
+					<i class="fa-solid fa-arrow-down"></i>
+				</button>
+			</div> -->
+
+			<div class="product-cell">Status
+				<button class="sort-button">
+					<i class="fa-solid fa-arrow-up"></i>
+					<i class="fa-solid fa-arrow-down"></i>
+				</button>
+			</div>
+
+			<div class="product-cell">Ventas
+				<button class="sort-button">
+					<i class="fa-solid fa-arrow-up"></i>
+					<i class="fa-solid fa-arrow-down"></i>
+				</button>
+			</div>
+
+			<div class="product-cell">Stock
+				<button class="sort-button">
+					<i class="fa-solid fa-arrow-up"></i>
+					<i class="fa-solid fa-arrow-down"></i>
+				</button>
+			</div>
+
+			<div class="product-cell">Precio
+				<button class="sort-button">
+					<i class="fa-solid fa-arrow-up"></i>
+					<i class="fa-solid fa-arrow-down"></i>
+				</button>
+			</div>
+
+			<div class="product-cell">Descuento
+				<button class="sort-button">
+					<i class="fa-solid fa-arrow-up"></i>
+					<i class="fa-solid fa-arrow-down"></i>
+				</button>
+			</div>
+			
+			<div class="product-cell">
+				Editar
+			</div>
+		</div>
+
+		<!-- CONTENT TABLE -->
+		{% for producto in productos %}
+			<div class="products-row">
+				<div class="product-cell prod-image">
+					<img src="{{producto.image_url}}" alt="product">
+					<span>{{producto.name}}</span>
+				</div>
+				
+				<!-- Comentado solo porque capaz no vaya
+				<div class="product-cell">
+					<span class="cell-label">Categoría</span> Furniture
+				</div>
+
+				<div class="product-cell">
+					<span class="cell-label">Sub-Categoría</span> Furniture
+				</div>
+				-->
+
+				<div class="product-cell">
+					<span class="cell-label">Status:</span>
+					<span class="status active">{{producto.available}}</span>
+				</div>
+
+				<div class="product-cell"><span class="cell-label">
+					Ventas:</span> 7
+				</div>
+
+				<div class="product-cell"><span class="cell-label">
+					Stock:</span>{{producto.stock}}
+				</div>
+
+				<div class="product-cell">
+					<span class="cell-label">Price:</span>
+					<strong>${{producto.price}}</strong>
+				</div>
+				
+				<div class="product-cell">
+					<span class="cell-label">Descuento:</span>
+					<strong>% {{producto.discount}}</strong>
+				</div>
+				<!-- EDITAR BOTON -->
+				<div class="product-cell">
+					<span class="cell-label">Editar:</span>
+					{% if user.role == 'seller' %}
+						<i class="fa-solid fa-pen-to-square"></i>
+					{% else %}
+						<i class="fa-solid fa-heart"></i>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+
+	</div>
+</div>
+
+

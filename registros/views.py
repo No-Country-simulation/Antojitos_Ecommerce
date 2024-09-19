@@ -17,8 +17,15 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 
 
+# Para la Profile Page
+from django.shortcuts import get_object_or_404
+from productos.models import Producto
+from productos.models import SellerUser
+
 
 # Create your views here.
+def dashboard(request):
+    return render(request, 'registros/dashboard_proofs.html')
 
 
 def registro(request):
@@ -88,8 +95,15 @@ def profile_page(request):
         
     context= , {'form': form}
     """
-
-    return render(request, 'registros/profile_page.html')
+    seller = get_object_or_404(SellerUser, id=request.user.id)
+    productos = Producto.objects.filter(seller=seller)
+    
+    context = {
+        'productos': productos,
+        'tienda': seller,
+    }
+    
+    return render(request, 'registros/profile_page.html', context)
 
 
 

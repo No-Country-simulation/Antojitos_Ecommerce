@@ -90,6 +90,3 @@ def ver_carrito(request):
 
 def realizar_compra(request):
     return render(request, "carrito/realizar_compra.html")
-
-def compra_confirmada(request):
-    return render(request, "carrito/compra_confirmada.html")

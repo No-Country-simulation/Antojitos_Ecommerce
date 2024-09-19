@@ -3,104 +3,14 @@
 
 {% extends "ecommerce/base.html" %}
 
-
+{% load static %}
 
 
 <!-- For More CSS Modules -->
 {% block extra_head %}
     <!-- Cargar CSS o meta tags específicos de la página aquí -->
+    <link href="{% static 'registros/css/profile_page.css' %}" rel="stylesheet">
 
-    <style>
-
-/* ========================================================================
-* PROFILE
-* ======================================================================== */
-
-
-.cover {
-    position: relative;
-    border: 10px solid #FFF;
-    padding-bottom: 5%; /* Asegura espacio para el menú en la parte inferior */
-}
-
-.banner-profile-cover {
-    width: 100%;
-    height: 150px; /* Para que el contenedor ajuste su altura según el contenido */
-    overflow: hidden; /* Evita que el contenido sobresalga */
-}
-
-.banner-profile-cover img {
-    width: 100%; /* Ocupa el 100% del ancho del contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
-    object-fit: cover; /* Asegura que la imagen se ajuste y recorte si es necesario */
-}
-
-.cover-menu {
-    position: relative; /* Cambiado a relative para situarlo en el flujo del documento */
-    width: 100%;
-    background: rgba(0, 0, 0, 0.24);
-    display: flex; /* Flexbox para alinear horizontalmente */
-    box-sizing: border-box;
-    z-index: 1; /* Asegura que el menú esté encima del contenido de texto */
-    margin-bottom: 20px; /* Espacio entre el menú y el contenido de texto */
-}
-
-.cover-menu li {
-    flex: 1; /* Asegura que los elementos del menú se distribuyan uniformemente */
-    text-align: center; /* Centra el contenido del menú */
-    line-height: 40px;
-    transition: all 0.3s;
-}
-
-.cover-menu li:hover {
-    background-color: rgba(0, 0, 0, 0.44);
-}
-
-.cover-menu li.active {
-    background-color: rgba(0, 0, 0, 0.64);
-}
-
-.cover-menu li a {
-    color: #FFF;
-    font-weight: bold;
-    text-decoration: none;
-    display: flex; /* Alinea el icono y el texto */
-    align-items: center; /* Centra verticalmente el contenido del enlace */
-    justify-content: center; /* Centra horizontalmente el contenido del enlace */
-}
-
-.cover-menu li a i {
-    font-size: 18px;
-    margin-right: 5px; /* Espacio entre el icono y el texto */
-}
-
-.content-text {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    box-sizing: border-box;
-}
-
-
-/* TARJETA PERFIL Y CONTACTO */
-.img-profile {
-    width: 70%;
-    border-radius: 50%; 
-    margin-top: 1%;
-}
-
-.profile-panel {
-    margin-top: 0px;
-}
-
-.card {
-    padding: 0px;
-    background-color: #fff;
-    border-radius: 10px;
-}
-
-</style>
 {% endblock %}
 
 {% block content %}
@@ -122,9 +32,12 @@
                         </li>
                         <!-- nombre de usuario -->
                         <li>
-                            <h4 class="mt-2">
-                                {{ user.first_name }} {{user.last_name}}
-                            </h4>
+                            {% if tienda %}
+                                <h4 class="mt-2"> {{ tienda.name_store }} </h4>
+                            {% else %}
+                                <h4 class="mt-2"> {{ user.first_name }} {{user.last_name}} </h4>
+                            {% endif %}
+                            
                             <p class="text-muted">
                                 {{ user.email }}
                             </p>
@@ -139,8 +52,16 @@
                         <li>
                             <!-- BOTONES EDITAR Y LOGEARSE -->
                             <div class="btn-group-vertical w-100">
+                                {% if user.role == 'seller' %}
+                                    <button class="btn btn-outline-secondary d-flex justify-content-between align-items-center"
+                                    onclick="window.location.href='{% url 'Tienda_Profile' user.id %}';">
+                                        <span>Tu Tienda</span>
+                                        <i class="fa-solid fa-store"></i> 
+                                    </button>
+                                {% endif %}
+
                                 <button class="btn btn-outline-secondary d-flex justify-content-between align-items-center"
-                                        onclick="window.location.href='Home'">
+                                        onclick="window.location.href='#'">
                                     <span>Edit Account</span>
                                     <i class="fas fa-cog"></i>
                                 </button>
@@ -168,15 +89,21 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item"><i class="fas fa-envelope me-2"></i> {{ user.email }}</li>
-                        <!-- <li class="list-group-item"><i class="fas fa-globe me-2"></i> www.bootdey.com</li> -->
-                        <li class="list-group-item"><i class="fas fa-phone me-2"></i> +54 9 {{ user.cellphone }}</li>
+                        <li class="list-group-item">
+                            <i class="fas fa-envelope me-2"></i> {{ user.email }}
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-phone me-2"></i> +54 9 {{ user.cellphone }}
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-house me-2"></i> {{user.address}}
+                        </li>
                     </ul>
                 </div>
             </div><!-- /.card -->
         </div>
 
-        <!-- CONTENIDO del perfil 
+        <!-- CONTENIDO del perfil    { % include 'registros/dashboard_vendedor.html' % }
         <div class="col-lg-9 col-md-8 col-sm-12"> -->
         <div class="col-9">
             <div class="cover rounded shadow">
@@ -188,26 +115,49 @@
 
                 <!-- ITEMS BANNER -->
                 <ul class="list-unstyled cover-menu">
+
                     <li class="active">
-                        <a href="#" data-content="Aquí están tus favoritos.">
-                            <i class="fas fa-clock"></i>Mis Compras
+                        <a href="#" data-content="First Tab">
+                            {% if user.role == 'buyer' %}
+                                <i class="fas fa-store"></i>Mis Compras
+                            {% else %}
+                                <i class="fas fa-store"></i>Mis Productos
+                            {% endif %}
                         </a>
                     </li>
+
                     <li>
-                        <a href="#" data-content="Aquí se muestran tus compras.">
-                            <i class="fa fa-heart"></i> Productos Favoritos
+                        <a href="#" data-content="Second Tab">
+                            {% if user.role == 'buyer' %}
+                                <i class="fa fa-heart"></i> Productos Favoritos
+                            {% else %}
+                                <i class="fas fa-clock"></i> Pedidos Pendientes
+                            {% endif %}                          
                         </a>
                     </li>
+
                     <li>
-                        <a href="#" data-content="Contenido extra aquí.">
-                            <i class="fa-solid fa-store"></i> Tienda Favoritas
+                        <a href="#" data-content="Third Tab">
+                            {% if user.role == 'buyer' %}
+                                <i class="fa-solid fa-store"></i> Tienda Favoritas
+                            {% else %}
+                                <i class="fa-solid fa-money-check-dollar"></i> Ventas
+                            {% endif %}
                         </a>
                     </li>
                 </ul>
 
-                <!-- Texto que cambia -->
-                <div id="content-text" class="content-text">
-                    Aquí está el texto inicial.
+                <!-- DASHBOARD PRODUCTOS -->
+                <div id="first-tab" class="content-text">
+                    {% include 'registros/dashboard_vendedor.html' %}
+                </div>
+                
+                <div id="second-tab" class="content-text" style="display: none;">
+                    Futuro Segundo Tab
+                </div>
+
+                <div id="third-tab" class="content-text" style="display: none;">
+                    Futuro Tercer Tab
                 </div>
                 
             </div>
@@ -222,24 +172,80 @@
     <!-- Cargas archivos .js propios de cada template/vista -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-        // Selecciona todos los enlaces dentro de .cover-menu
-        const menuItems = document.querySelectorAll('.cover-menu li a');
-        // Selecciona el div donde se mostrará el texto
-        const contentText = document.getElementById('content-text');
+            const menuItems = document.querySelectorAll('.cover-menu li a');
+            // aca pongo los demas elementos que quiero mostrar y/o ocultar segun corresponda
+            const firstTab = document.getElementById('first-tab');
+            const secondTab = document.getElementById('second-tab');
+            const thirdTab = document.getElementById('third-tab');
+    
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+    
+                    // Quita la clase 'active' de todos los elementos de lista
+                    menuItems.forEach(i => i.parentElement.classList.remove('active'));
+                    this.parentElement.classList.add('active');
+    
+                    const dataContent = this.getAttribute('data-content');
+    
+                    // Verifica si el data-content es 'Mis Productos' y muestra el dashboard
+                    if (dataContent === 'First Tab') {
+                        firstTab.style.display = 'block';
+                        secondTab.style.display = 'none';
+                        thirdTab.style.display = 'none';
 
-        // Añade un listener de evento a cada enlace
-        menuItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault(); // Evita que el enlace realice su acción predeterminada
-                // Quita la clase 'active' de todos los elementos de lista
-                menuItems.forEach(i => i.parentElement.classList.remove('active'));
-                // Añade la clase 'active' al elemento clicado
-                this.parentElement.classList.add('active');
-                // Cambia el texto del contenido
-                contentText.textContent = this.getAttribute('data-content');
+                    } else if (dataContent == 'Second Tab') {
+                        firstTab.style.display = 'none';
+                        secondTab.style.display = 'block';
+                        thirdTab.style.display = 'none';
+                    }
+                    // Seleccion del third tab
+                    else {
+                        firstTab.style.display = 'none';
+                        secondTab.style.display = 'none';
+                        thirdTab.style.display = 'block';
+                    }
+                });
             });
         });
-    });
     </script>
+    
+    
+    <script>
+        // TODO ESTO ES REFEREIDO AL DASHBOARD
+		document.querySelector(".jsFilter").addEventListener("click", function () {
+				document.querySelector(".filter-menu").classList.toggle("active");
+		});
+		
+		document.querySelector(".grid").addEventListener("click", function () {
+				document.querySelector(".list").classList.remove("active");
+				document.querySelector(".grid").classList.add("active");
+				document.querySelector(".products-area-wrapper").classList.add("gridView");
+				document
+				.querySelector(".products-area-wrapper")
+				.classList.remove("tableView");
+		});
+		
+		document.querySelector(".list").addEventListener("click", function () {
+				document.querySelector(".list").classList.add("active");
+				document.querySelector(".grid").classList.remove("active");
+				document.querySelector(".products-area-wrapper").classList.remove("gridView");
+				document.querySelector(".products-area-wrapper").classList.add("tableView");
+		});
+		
+		var modeSwitch = document.querySelector('.mode-switch');
+
+		// Verificar el estado del tema al cargar la página para aplicar el modo adecuado
+		document.addEventListener('DOMContentLoaded', function() {
+			var isDarkMode = document.documentElement.classList.contains('dark-mode');
+			modeSwitch.classList.toggle('active', isDarkMode);
+		});
+
+		// Alternar el modo al hacer clic en el botón
+		modeSwitch.addEventListener('click', function() {
+			document.documentElement.classList.toggle('dark-mode');
+			modeSwitch.classList.toggle('active');
+		});
+	</script>
 
 {% endblock %}

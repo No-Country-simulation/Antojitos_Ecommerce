@@ -302,3 +302,22 @@ a {
     align-items: center;
     margin: 10px;
 }
+
+/*  PARA DARLE FORMATO AL BOTON */
+.btn-float-arrow {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff7b00e1; /* Color de fondo */
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.btn-float-arrow img {
+    vertical-align: middle;
+}
+

@@ -107,7 +107,7 @@
 
                                 <!-- SEARCH INPUT -->
                                 <li class="nav-item search-container">
-                                    <form class="d-flex" action="{% url 'Producto_Search_Top' %}" method="GET">
+                                    <form class="d-flex" action="{% url 'Producto' %}" method="GET">
                                         <input class="form-control me-2 search-input" type="search" 
                                         placeholder="Buscar" aria-label="Search" name="top_search">
                                         <!-- Botón de búsqueda -->
@@ -236,17 +236,44 @@
        </div>
     </footer>
     <!-- footer -->
-    <!-- BOTON PARA VOLVER ARRIBA
-    <a href="#" class="arrow"><i><img src="./image/up-arrow.png" alt="" width="50px"></i></a>
-    -->
-
-
-    <!-- JQuery dependencies 
-    <script src="{% static 'ecommerce/vendor/jquery/jquery-3.7.1.min.js' %}"></script> -->
-
+    <!-- BOTON PARA VOLVER ARRIBA -->
+    <a class="btn-float-arrow" id="scrollToTopBtn">
+        <i><img src="{% static 'ecommerce/img/up-arrow.png' %}" alt="Up Arrow" width="50px"></i>
+    </a>
+    
     <!-- Bootstrap Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="{% static 'ecommerce/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    
+
+    <script>
+        // SCRIPT DEL BOTON
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        
+            // Mostrar el botón cuando el usuario haga scroll hacia abajo
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 200) { // Muestra el botón si se desplaza más de 200px
+                    scrollToTopBtn.style.opacity = 1;
+                } else {
+                    scrollToTopBtn.style.opacity = 0;
+                }
+            });
+        
+            // Desplazarse hacia arriba cuando se hace clic en el botón
+            scrollToTopBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+
+
+    <!-- MICROFONO STUFF -->
     <script>
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
@@ -318,10 +345,6 @@
             console.error('SpeechRecognition no está soportado en este navegador.');
         }
     </script>
-
-
-
-
 
     <!--
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>

@@ -3,6 +3,10 @@ from productos.models import Producto, Categoria, Subcategoria
 from productos.models import SellerUser
 
 
+from django.http import JsonResponse
+from django.views.decorators.http import require_GET
+
+
 def obtener_categorias_y_subcategorias(categorias_unicas) -> dict:
     """
         Devuelve un diccionario con categorías como llaves y una lista de sus subcategorías 
@@ -85,7 +89,7 @@ def producto(request, category_id=None, sub_category_id=None):
     sub_category_actual = sub_category_id
 
     # Filtrado por búsqueda en la barra superior (si se proporciona una consulta)
-    query = request.GET.get('top_q', '')
+    query = request.GET.get('top_search', '')
     if query:
         productos = productos.filter(name__icontains=query)
 
@@ -141,13 +145,10 @@ def tienda_vendedor(request, seller_id=None):
 # ==========================================================================
 #                            FOR REAL TIME SEARCH
 # ==========================================================================
-from django.http import JsonResponse
-from django.views.decorators.http import require_GET
 
 
 @require_GET
 def search_view(request):
-    
     
     query = request.GET.get('q', '')
     category_id = request.GET.get('category_id', '0')
@@ -160,20 +161,20 @@ def search_view(request):
     # Filtrar por categoría si category_id no es '0'
     if category_id != '0':
         category_id = int(category_id)
-        productos = productos.filter(categoria_principal=category_id)
+        productos = productos.filter(category=category_id)
 
     # Filtrar por subcategoría si subcategory_id no es '0'
     if subcategory_id != '0':
         subcategory_id = int(subcategory_id)
-        productos = productos.filter(subcategorias=subcategory_id)
+        productos = productos.filter(sub_category=subcategory_id)
         
     # Filtrar por q_top_search si es diferente de '0'
     if q_name_search_top != '0':
-        productos = productos.filter(nombre__icontains=q_name_search_top)
+        productos = productos.filter(name__icontains=q_name_search_top)
         
     # Filtrar por nombre si la consulta tiene 3 o más caracteres
     if len(query) >= 3:
-        productos = productos.filter(nombre__icontains=query)
+        productos = productos.filter(name__icontains=query)
 
     # Agrupar productos por subcategoría
     products_for_subcats = get_sub_cat_n_prod_ajax(productos)

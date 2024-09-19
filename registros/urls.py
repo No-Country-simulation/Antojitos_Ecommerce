@@ -13,4 +13,8 @@ urlpatterns = [
 
     # Profile Page User
     path('profile/', views.profile_page, name="Profile_Page"),
+    
+    
+    # Proof DashBoard
+    path('dashboard/', views.dashboard, name="DashBoard"),
 ]
