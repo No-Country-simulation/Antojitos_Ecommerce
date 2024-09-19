@@ -1,0 +1,350 @@
+
+.titulo-carrito {
+  color: black;
+  margin: 10px;
+}
+/*estilos del contenedor de pagos izquierdo*/
+.card-cart-view {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+}
+/*estilos del contenedor derecho*/
+.card-total-cart-view {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+/*columnas del subtotal y total*/
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*Estilos de las lineas hr*/
+.total-divider {
+  border: none;
+  height: 2px;
+  background-color: #ddd;
+  margin: 5px 0; /* Espacio alrededor de la línea */
+}
+/* Boton confirmar*/
+.btn-pay-confirmar {
+  background-color: #DB3B3B;
+  color: black;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}  
+
+  .btn-pay-confirmar:hover {
+      background-color: #FA4D3A;
+  }
+
+
+
+checkout-form h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 16px;
+  color: #444;
+
+}
+
+/*input del formulario y de la barra de cupones*/
+.input-group {
+  margin-bottom: 15px;
+}
+/*Estilos del input solo formulario*/
+.input-checkout {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/*====== Sección derecha========= */
+
+.order-summary {
+  text-align: left;
+}
+
+.order-summary h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+
+.order-details p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.order-details h4 {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/*=====Coupon styles=====*/
+.container-coupon {
+  width: 70%; /* Ancho del contenedor del formulario */
+  display: flex;
+  align-items: center;
+}
+
+.btn-coupon-apply {
+  color: #ffffff;
+  background-color: #DB3B3B;
+  border: none; /* Elimina el borde */
+  border-radius: 5px; /* Bordes redondeados */
+  width: 25%;
+  font-size: 14px; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-coupon-apply:hover {
+  background-color: #FA4D3A; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+}
+
+/*=== Estilos barras de horario, metodo de pago y notas==*/
+
+.modal-button-checkout{
+  padding: 10px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:20px ;
+}
+.modal-button-checkout:hover {
+  background-color: #F5F5F5;
+  border-color: black;
+}
+
+/* BOTONES MODALS */
+.modal-button-content {
+  display: flex; /*Hace que los elementos esten uno al lado del otro*/
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+/*ICONOS DEL FORMULARIO DE LA IZQ*/
+.left-icon-form-checkout {
+  color: #DB3B3B; /* Color rojo para el icono */
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+/*Estilos texto de los botones modals*/
+.modal-button-text h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+/* FLECHA DE LOS BOTONES DEL MODAL*/
+.modal-button-flecha {
+  color: #333;
+  font-size: 18px;
+}
+
+/* ESTILOS VENTANA MODAL FORMA DE PAGO*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+
+.wrapper {
+  width: 400px;
+  background: #fff;
+}
+
+.wrapper .box-payments label{
+  display: flex;
+  height: 53px;
+  width: 100%;
+  align-items: center;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding-left: 11px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#value-1:checked ~ .value-1,
+#value-2:checked ~ .value-2,
+#value-3:checked ~ .value-3,
+#value-4:checked ~ .value-4{
+background: #FA4D3A;
+border-color:#FA4D3A;
+}
+
+#value-1:checked ~ .value-1
+#value-2:checked ~ .value-2
+#value-3:checked ~ .value-3 {
+background: #fff;
+}
+.box-payments label::before{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) scale(2);
+width: 9px;
+height: 9px;
+border-radius: 50%;
+transition: all 0.3s ease;
+}
+
+.wrapper .box-payments label .text{
+color: #333;
+font-size: 18px;
+font-weight: 400;
+padding-left: 10px;
+transition: color 0.3s ease;
+}
+#value-1:checked ~ .value-1 .text,
+#value-2:checked ~ .value-2 .text,
+#value-3:checked ~ .value-3 .text{
+color: #fff;
+}
+.wrapper .box-payments input[type="radio"]{
+display: none;
+}
+/* Font Awesome para los iconos */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+/*botones de las ventanas modals*/
+.btn-modal-guardar{
+  background-color: #FA4D3A;
+  border-color: #FA4D3A;
+  --bs-btn-active-bg: #DB3B3B;
+  --bs-btn-active-border-color: #DB3B3B;
+}
+.btn-modal-guardar:hover{
+  background-color: #DB3B3B;
+  border-color: #DB3B3B;
+}
+
+
+/* estilos de modal pago con tarjeta*/
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.modal-header h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.card-info {
+  margin-bottom: 10px;
+}
+
+.add-card {
+  background-color: #f6e8e8;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.add-card span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+
+.expiry-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.expiry-group select {
+  width: 48%;
+}
+
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.submit-btn-tarjeta {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  --bs-btn-active-bg: #DB3B3B;
+  --bs-btn-active-border-color: #DB3B3B;
+  
+}
+
+.submit-btn-tarjeta:hover {
+  background-color: #e53935;
+}
+/*Contenedor del boton de la opcion de la tarjeta*/
+.opcion-tarjeta{
+  display: flex;
+}

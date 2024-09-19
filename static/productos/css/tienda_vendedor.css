@@ -1,0 +1,393 @@
+
+/* =====================================================================
+            STYLE SIDE BAR LATERAL
+/* ===================================================================== */
+/* Estilo general de la barra lateral */
+.sidebar {
+    
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    /* height: 100vh;  100vh; Asegura que la barra lateral ocupe toda la altura del contenedor */
+    /* overflow-y: auto;  Permite desplazarse si el contenido es largo */
+}
+
+/* Espaciado entre ítems de la barra lateral */
+.sidebar-item {
+    margin-bottom: 15px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: #212529; /* Color del texto */
+    padding: 10px; /* Añade relleno dentro de cada enlace */
+    border-radius: 0.375rem; /* Bordes redondeados */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transiciones suaves */
+}
+
+/* Estilo al pasar el mouse por encima de los enlaces */
+.sidebar-link:hover {
+    background-color: #e9ecef; /* Fondo gris claro al pasar el mouse */
+    color: #212529; /* Mantiene el color negro del texto */
+    text-decoration: none; /* Elimina el subrayado */
+}
+
+/* Estilo de los iconos en la barra lateral */
+.sidebar-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #780178; /* Color del icono */
+}
+
+/* Estilo del texto en la barra lateral */
+.sidebar-text {
+    font-size: 1rem;
+}
+
+/* Categorías de la barra lateral */
+.sidebar-category {
+    margin-top: 20px;
+}
+
+/* Estilo del título de la categoría */
+.sidebar-category a {
+    display: block; /* Hace clickeable tod0 el área del enlace */
+    padding: 5px 10px; /* Añade relleno dentro del enlace de la categoría */
+    text-decoration: none; /* Elimina el subrayado */
+    color: #212529; /* Color del texto */
+    border-radius: 0.375rem; /* Bordes redondeados */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transiciones suaves */
+}
+
+/* Estilo al pasar el mouse por encima de las categorías */
+.sidebar-category a:hover {
+    background-color: #e9ecef; /* Fondo gris claro al pasar el mouse */
+    text-decoration: none; /* Elimina el subrayado */
+    color: #212529; /* Mantiene el color negro del texto */
+}
+
+/* Lista de categorías */
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0.375rem; /* Bordes redondeados del ul */
+    transition: background-color 0.3s ease-in-out; /* Transición suave */
+}
+
+/* Elementos de la lista de categorías */
+.category-list li {
+    margin-bottom: 5px;
+    padding: 5px 10px; /* Añade relleno para hacer el contenedor completo clickeable */
+    border-radius: 0.375rem; /* Bordes redondeados */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transiciones suaves */
+}
+
+/* Enlaces de la lista de categorías */
+.category-list li a {
+    text-decoration: none;
+    color: #212529; /* Color del texto de las categorías */
+    display: block; /* Hace que tod0 el área de padding del li sea clickeable */
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilo al pasar el mouse por encima de los elementos de la lista de categorías */
+.category-list li:hover {
+    background-color: #e9ecef; /* Fondo gris claro al pasar el mouse */
+    text-decoration: none; /* Elimina el subrayado */
+    color: #212529; /* Mantiene el color negro del texto */
+}
+
+/* Estilo del separador (hr) */
+.sidebar hr {
+    border-top: 3px solid #dee2e6; /* Hace el hr más grueso */
+    margin: 20px 0; /* Espaciado superior e inferior */
+    width: 100%; /* Asegura que el hr ocupe tod0 el ancho */
+}
+
+
+/* =====================================================================
+            Estilos propios de las secciones 
+===================================================================== */
+/* Ajusta el valor de margen según sea necesario */
+section {
+    scroll-margin-top: 120px;  /* Espacio adicional encima de la sección */
+}
+
+.sub-card-prod-container h2 {
+    font-size: 1.5rem;
+    padding-bottom: 1.0rem;
+    border-bottom: 2px solid #eeeeee;
+    color: #d32f2f;
+}
+
+.sub-card-prod-card {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+}
+
+.sub-card-prod-card img {
+    width: 40%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.sub-card-prod-card figcaption {
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+    align-items: stretch;
+}
+
+.sub-card-prod-addboton {
+    padding: 10px 12px;
+    font-size: 14px;
+    color: white;
+    background-color: #333;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    user-select: none;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+.sub-card-prod-addboton:hover {
+    background-color: #555;
+}
+
+.sub-card-prod-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.sub-card-prod-price #preciotachado {
+    font-size: 16px;
+    text-decoration: line-through;
+    color: #da1313;
+}
+
+.sub-card-prod-price .precio-general {
+    font-size: 18px;
+    color: black;
+}
+
+.sub-card-prod-rating {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+}
+
+.sub-card-prod-rating span {
+    color: #ffcc00;
+    margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .sub-card-prod-container {
+        flex-direction: column;
+    }
+
+    .sub-card-prod-card {
+        max-width: 100%;
+    }
+}
+
+
+/* =============================================================================
+              PRODUCTOS STUFF   todo
+# ============================================================================= */
+/* SIDE BAR Top PRODUCTOS */
+.btn-container-side-bar-top {
+    padding: 15px 15px;
+    display: flex;
+    gap: 20px;
+
+    position: relative;
+    left: 20px;
+}
+
+.btn-sidebar-top {
+    color: white;   /* color fuente de lo que esta adentro */
+    font-size: 15px;
+    background-color: #dd5800;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transform: skew(-30deg);
+}
+
+.btn-sidebar-top span {
+    display: inline-block;
+    transform: skew(30deg);
+}
+
+.btn-sidebar-top-10 {
+    color: white;   /* color fuente de lo que esta adentro */
+    font-size: 18px;
+    background-color: #dd5800;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    position: relative;
+
+    width: 100%;
+    height: 50px; /* Adjusted height to include initial title */
+}
+
+.btn-sidebar-top-10:hover {
+    background-color: #000;
+}
+
+
+/* ============================================================================
+                    CSS PERSONALIZADO PARA EL LISTADO DE SECCIONES
+============================================================================ */
+/* Lista item menu */ 
+.menu-categorias {
+    background-color: #ffffff;
+    /* border-bottom: 1px solid #e0e0e0; Para poner un borde abajo */
+}
+
+.menu-categorias ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-categorias a {
+    text-decoration: none;
+    color: #d32f2f;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.menu-categorias a:hover {
+    color: #b71c1c;
+}
+
+
+/* ============================================================================
+                    CSS DE BANNER PRODUCTO
+============================================================================ */
+.container-banner-producto {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    text-align: center;
+    padding: 4rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+    
+/*estilos barra de búsqueda*/
+.product-search-container {
+    display: flex; /* Utiliza Flexbox para alinear el input y el botón */
+    justify-content: center; /* Centra horizontalmente el contenedor */
+    margin-top: 50px; /* Espacio superior para separar del borde de la página */
+}
+
+.product-search-input {
+    width: 300px; /* Ancho del campo de entrada */
+    padding: 10px; /* Relleno interior para hacer el campo más alto */
+    border: 2px solid #d32f2f; /* Borde de color rojo oscuro */
+    border-radius: 4px 0 0 4px; /* Bordes redondeados en la izquierda */
+    font-size: 16px; /* Tamaño de fuente del texto */
+}
+
+.product-search-button {
+    padding: 10px 20px; /* Relleno interior para el botón */
+    background-color: #d32f2f; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: 2px solid #d32f2f; /* Borde del mismo color que el fondo */
+    border-radius: 0 4px 4px 0; /* Bordes redondeados en la derecha */
+    font-size: 16px; /* Tamaño de fuente del texto */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición suave al pasar el ratón sobre el botón */
+}
+
+.product-search-button:hover {
+    background-color: #b71c1c; /* Cambia el color de fondo al pasar el ratón */
+}
+
+
+/* ============================================================================
+                    CSS PERSONALIZADO PARA EL CONTENIDO DEL MODAL
+============================================================================ */
+/* Contenido de la ventana modal */
+.modal-content {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+}
+
+/* Botón de cerrar (Bootstrap ya lo maneja, no es necesario el estilo personalizado) */
+
+/* Estilos de la imagen en la modal */
+.modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Estilos para el pie de la modal */
+.modal-footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilos para los botones de cantidad */
+.quantity-btn, .add-to-cart-btn {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Estilos para el botón de añadir al carrito */
+.add-to-cart-btn {
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+.add-to-cart-btn img {
+    width: 25px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+.precio-real {
+    text-decoration:line-through;
+    margin-left: 5px;
+    font-size: 15px;
+}

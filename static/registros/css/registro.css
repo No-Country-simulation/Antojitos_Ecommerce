@@ -1,0 +1,130 @@
+/* Contenedor para alinear el botón y el título horizontalmente */
+.titulo-container {
+    display: flex;
+    align-items: center; /* Alinea verticalmente al centro */
+    gap: 10px; /* Espacio entre el botón y el título */
+}
+
+/* Estilo del botón de flecha hacia atrás */
+.back-button {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    margin-right: 10px;
+    display: none;
+}
+
+.back-button i {
+    color: #949494; /* Color de la flecha */
+}
+
+/* Estilos para los botones */
+.button-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+.button-container button:hover {
+    opacity: 0.9; /* Efecto hover para los botones */
+}
+
+.form-container {
+    display: none; /* Inicialmente oculto */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+/* Mostrar formulario activo */
+.form-container.active {
+    display: block;
+}
+
+/* Estilos para los formularios */
+.form-container h2 {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    text-align: left;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.btn-form-vendedor,
+.btn-form-comprador {
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+
+
+.icon-small {
+    width: 4em; /* Ajusta el tamaño del icono */
+    height: 4em; /* Ajusta el tamaño del icono */
+}
+
+.alert-warning {
+    width: 60%;
+    padding: 2%; /* Ajusta el espaciado interno para que el contenido no esté pegado al borde */
+    margin-left: auto; /* Centra el elemento horizontalmente */
+    margin-right: auto; /* Centra el elemento horizontalmente */
+}
+
+
+/* botones a agregar 
+para cuando se hagan las autenticaciones necesarias */ 
+.button-google, .button-facebook {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+}
+
+.button-google:hover, .button-facebook:hover {
+    background-color: #bbb;
+}

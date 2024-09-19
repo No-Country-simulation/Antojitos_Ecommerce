@@ -1,0 +1,323 @@
+
+body {
+    padding-top: 5%; /* Ajusta este valor según la altura de tu navbar */
+}
+
+
+.my-container-center {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+}
+
+/* navbar */
+
+/* Ajusta el contenido para que no se oculte detrás de la barra fija */
+.content-with-navbar {
+    padding-top: 56px; /* Ajusta según la altura de tu navbar (56px es común para una navbar de Bootstrap) */
+}
+
+/* Asegura que la barra de navegación esté fija en la parte superior */
+.navbar {
+    padding: 0.5%;
+    padding-right: 1%;
+    padding-left: 1%;
+    margin: 0;
+    position: fixed; /* Cambia a 'fixed' para que esté realmente fija */
+    top: 0; /* Asegura que esté en la parte superior de la pantalla */
+    left: 0;
+    right: 0;
+    z-index: 1030; /* Asegura que esté por encima de otros elementos */
+    
+    width: 100%; /* Asegura que la barra ocupe todo el ancho */
+    font-size: 16px;
+    font-family: "Montserrat", system-ui;
+    background-color: #DB3B3B; /* Asegura el color de fondo */
+}
+
+.navbar-nav {
+    padding-left: 0;
+    margin: 0; /* Elimina margen negativo */
+    width: 100%; /* Asegura que la lista ocupe todo el ancho del contenedor */
+}
+
+.navbar-nav .nav-item {
+    display: flex;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* Estilos para los botones */
+.navbar .nav-link {
+    color: white;
+    height: 100%;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 10px; /* Bordes de los botones de header */
+    transition: all .5s ease-in-out;
+}
+
+.navbar .nav-link:hover {
+    background: white;
+    color: #fa4d3a;
+}
+
+
+/* BARRA DE BUSQUEDA */
+.search-container {
+    justify-content: right;
+    border-radius: 10px;
+    width: 100%;
+    padding: 5px;
+
+}
+.search-input {
+    color: #FFFFFF;
+    border: 2px #FFFFFF;
+    width:300px;
+}
+/* BOTON DE BUSQUEDA*/
+#search-btn{
+    margin-left: -15px; /* hace que el boton esté al lado de la barra*/
+    margin-right: 5px; /* separa la barra de busqueda de los iconos */
+    padding: 0px 20px; /* Relleno interior para el botón */
+    background-color:#DB3B3B; /* Color de fondo del botón */
+    color: #FFFFFF; /* Color del texto del botón */
+    border: 3px solid #FFFFFF; /* Borde del mismo color que el fondo */
+    border-radius: 0 10px 10px 0; /* Bordes redondeados en la derecha */
+    font-size: 12px; /* Tamaño de fuente del texto */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición suave al pasar el ratón sobre el botón */
+}
+#search-btn:hover{
+    background-color: #FFFFFF;
+    color: #fa4d3a;
+}
+/* CONTAINER UBICACION */
+.container-ubicacion {
+    width: 200px; /* TAMAÑO A LO ANCHO DEL BOTON UBICACION*/
+    height: 100%; /* */
+    line-height: 50%; /*SEPARACION ENTRE UBICACION Y DIRECCION*/
+}
+.container-ubicacion p{
+    margin: 0; 
+    padding: 0; 
+}
+
+
+/* ==================================================================================
+                Estilo del WIDGET_REGISTRO de usuario todo
+/* ================================================================================== */
+/* Estilo del botón de usuario */
+
+.btn-header {
+    position: relative; /* Añade posicionamiento relativo al contenedor */
+    background-color: transparent; /* Fondo transparente por defecto */
+    height: 35px; /* Ajusta la altura del botón */
+    width: 60px;  /* Ajusta el ancho del botón para mantener la forma circular */
+
+    border: none; /* Elimina cualquier borde que pueda crear relieve */
+    outline: none; /* Elimina el contorno al hacer clic */
+}
+
+.btn-header i {
+    font-size: 26px; /* Tamaño de los íconos */
+    color: white; /* Color del ícono */
+    pointer-events: none; /* Asegura que el icono no bloquee los clics */
+    transition: color 0.3s ease; /* Añade una transición suave para el cambio de color */
+    border: none; /* Elimina cualquier borde que pueda crear relieve */
+    outline: none; /* Elimina el contorno al hacer clic */
+}
+
+.badge-cart {
+    position: absolute; /* Posicionamiento absoluto para el badge */
+    top: -10px; /* Ajusta el valor según sea necesario */
+    right: -6px; /* Ajusta el valor según sea necesario */
+    background-color: #eccc14; /* Color de fondo del badge */
+    color: white; /* Color del texto del badge */
+    border-radius: 50%; /* Hace que el badge sea circular */
+    padding: 5px 10px; /* Ajusta el padding según sea necesario */
+    font-size: 15px; /* Tamaño de la fuente del badge */
+}
+
+.btn-header:hover {
+    background-color: #fff; /* Fondo transparente al pasar el ratón */
+}
+
+.btn-header:hover i {
+    color: black; /* Cambia el color del ícono a blanco al pasar el ratón */
+}
+
+.btn-header:focus {
+    outline: none; /* Elimina el contorno predeterminado */
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco semitransparente cuando está enfocado */
+}
+
+.btn-header:focus i {
+    color: white; /* Mantiene el ícono en blanco cuando está enfocado */
+}
+
+/* Estilo del contenedor del usuario */
+.user-container {
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+#user-dropdown {
+    right: 0; /* Alinea el dropdown a la derecha del botón */
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5); /* Efecto de sombra */
+}
+
+/* Estilo de los inputs y el botón dentro del dropdown */
+#user-dropdown input[type="email"],
+#user-dropdown input[type="password"],
+#user-dropdown button {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#user-dropdown button {
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#user-dropdown button:hover {
+    background-color: #444;
+}
+
+/* Clase para el contenedor de los botones cuando la sesión está iniciada */
+#user-dropdown-auth {
+    right: 0;
+    width: 300px;
+    padding: 15px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5); /* Efecto de sombra */
+}
+
+/* Estilos para los botones */
+#user-dropdown-auth .register-auth-btn {
+    background-color: #fff;
+    color: black;
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 16px; /* Ajusta el tamaño de la fuente */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center; /* Alinea verticalmente íconos y texto */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
+}
+
+/* Ajustar tamaño del ícono dentro del botón */
+#user-dropdown-auth .register-auth-btn i {
+    font-size: 1.5em; /* Ajusta el tamaño del ícono */
+    margin-right: 8px; /* Espacio entre ícono y texto */
+}
+
+/* Efecto al pasar el mouse */
+#user-dropdown-auth .register-auth-btn:hover {
+    background-color: #8200F5;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hover */
+}
+
+/* Efecto de enfoque */
+#user-dropdown-auth .register-auth-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto al hacer clic */
+#user-dropdown-auth .register-auth-btn:active {
+    background-color: #3e8e41;
+    transform: scale(0.95);
+}
+
+
+
+/* Estilo para el contenido del dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    opacity: 0;
+    transform: translateY(0px);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+/* Mostrar el cuadro con una transición suave */
+.dropdown-content.show {
+    display: block;
+    opacity: 1;
+    border-left: 2px solid #780178; /* Borde izquierdo */
+    border-right: 2px solid #780178; /* Borde derecho */
+    border-top: 2px solid #780178; /* Borde Superior */
+    border-bottom: 2px solid #780178; /* Borde inferior */
+}
+
+
+/* =====================================================================
+FOOTER 
+===================================================================== */
+footer {
+    background-color: #DB3B3B;
+    padding-bottom:2%;
+    padding-top: 2%;
+}
+
+a {
+    color: inherit; /* Esto hace que el color del enlace herede el color del texto del elemento contenedor */
+    text-decoration: none; /* Elimina el subrayado */
+}
+
+/* FOOOTER: ICONOS DE REDES SOCIALES*/
+.footer-redes{
+    background-color: #fa4d3a;
+    padding: 20px;
+    display: flex;
+    justify-content: right;
+}
+.footer-redes a{
+    color:black;
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    cursor: pointer;
+    margin:3px;
+}
+.footer-redes div a:hover {
+    color:#FFFFFF;
+    margin: 6px;
+}
+.author {
+    align-items: center;
+    margin: 10px;
+}
+
+/*  PARA DARLE FORMATO AL BOTON */
+.btn-float-arrow {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff7b00e1; /* Color de fondo */
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.btn-float-arrow img {
+    vertical-align: middle;
+}
+

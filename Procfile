@@ -1,0 +1,1 @@
+web: python manage.py collectstatic --no-input && gunicorn django_comida_crud_api.wsgi
