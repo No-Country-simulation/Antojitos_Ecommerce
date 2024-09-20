@@ -1,6 +1,9 @@
-
 <h1 align="center"><!--COLOCAR TITULO DEL SITIO--> c20-12-m-python-react</h1>
+<div align="center">
+  <img src="https://antojitos.up.railway.app/static/ecommerce/img/logo.png" alt="Logo" width="510" height="80">
+</div><!--añadir imagen logo-->
 
+<hr/>
 
 ## ✔ Descripción
 
