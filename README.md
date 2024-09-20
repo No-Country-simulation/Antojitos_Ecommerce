@@ -37,7 +37,7 @@ Desarrollamos una plataforma **ecommerce** para venta y compra de productos de a
 
 <hr/>
 
-## ✔ Frontend
+## ✔ Frontend - Devops
 
 
 ### 👉🏻 Herramientas 🛠️
