@@ -137,16 +137,16 @@ def producto_fav_filter(request, user_id=None, store_id=None):
         # Obtener el producto
         productos = buyer.saved_products.all()
     
-    # Crear un diccionario de productos agrupados por subcategoría
-    products_for_subcats = obtener_productos_por_subcategoria(productos)
-    
-    # Contexto para el template
-    contexto = {
-        "productos": productos,
-        "products_for_subcats": products_for_subcats,
-    }
+        # Crear un diccionario de productos agrupados por subcategoría
+        products_for_subcats = obtener_productos_por_subcategoria(productos)
+        
+        # Contexto para el template
+        contexto = {
+            "productos": productos,
+            "products_for_subcats": products_for_subcats,
+        }
 
-    return render(request, "productos/producto.html", contexto)
+        return render(request, "productos/producto.html", contexto)
     
 
 def tienda_vendedor(request, seller_id=None, category_id=None, sub_category_id=None, prod_id=None):

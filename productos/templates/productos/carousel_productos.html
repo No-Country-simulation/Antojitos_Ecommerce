@@ -73,13 +73,23 @@
                         {% else %}
                             <div class="stock-verde">Disponible: {{ producto.stock }}</div>
                         {% endif %}
-
-                        <button class="heart-button" 
-                            onclick="event.stopPropagation(); 
-                            toggleHeart(this); 
-                            window.location.href='{% url 'Fav_Prod_R' producto.id %}';">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
+                        
+                        <!-- TOP 10 BUTTON SIDE -->
+                        {% if user.is_authenticated %}
+                            <button class="heart-button" 
+                                onclick="event.stopPropagation(); 
+                                toggleHeart(this); 
+                                window.location.href='{% url 'Fav_Prod_R' producto.id %}';">
+                                <i class="fa-solid fa-heart"></i>
+                            </button>
+                        {% else %}
+                            <button class="heart-button" 
+                                onclick="event.stopPropagation(); 
+                                toggleHeart(this); 
+                                window.location.href='#';">
+                                <i class="fa-solid fa-heart"></i>
+                            </button>
+                        {% endif %}
                     </div>
 
                     <!-- Categoría y descuento -->

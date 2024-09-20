@@ -70,10 +70,6 @@ def profile_page(request):
         return render(request, 'registros/profile_page.html', context)
     
 
-def dashboard(request):
-    return render(request, 'registros/dashboard_proofs.html')
-
-
 def registro(request):
     """ 
         Notes: Este formulario es el registro de usuarios nuevos dentro del proyecto.
