@@ -17,3 +17,5 @@ z_steps/
 # Ignorar archivos estaticos que se generan solos
 static
 
+# Archivos de caché de Pythonn.
+README.md
