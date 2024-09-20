@@ -63,10 +63,13 @@
 
                 <hr>
                 <!-- TOP 10 BUTTON SIDE -->
-                <button class="btn-sidebar-top-10 mb-2"
-                onclick="window.location.href='{% url 'Prod_Favs_Filter' user.id %}'">   <span>Favoritos</span>
-                    <i class="fa-solid fa-heart"></i>
-                </button>
+                {% if user.is_authenticated %}
+                    <button class="btn-sidebar-top-10 mb-2"
+                            onclick="window.location.href='{% url 'Prod_Favs_Filter' user.id %}'">
+                        <span>Favoritos</span>
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
+                {% endif %}
 
                 <button class="btn-sidebar-top-10">
                     <span>Top 10</span>

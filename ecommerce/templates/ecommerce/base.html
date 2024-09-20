@@ -97,8 +97,8 @@
                                         style="background-color: #db3b3bc4;">
                                         {% for category in categories_all %}
                                         <li>
-                                            <a class="dropdown-item" href="#">
-                                                {{ category }} 
+                                            <a class="dropdown-item" href="{% url 'Prod_Cat' category.id %}">
+                                                {{ category.name }} 
                                             </a>
                                         </li>
                                         {% endfor %}
