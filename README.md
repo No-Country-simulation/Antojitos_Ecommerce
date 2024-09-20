@@ -28,7 +28,7 @@ Desarrollamos una plataforma **ecommerce** para venta y compra de productos de a
 
 
 ### 👉🏻 Developers
-| <img src="https://media.licdn.com/dms/image/v2/C4D03AQGpdRZhfOFJbw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1598037671414?e=1730332800&v=beta&t=jE0LTqLNrvhUGnWoUorSdQJKk2ZTm3AO3CNuf4KcUcI" width=90> |<img src="https://media.licdn.com/dms/image/v2/D4D35AQFLHyT56ZZ8Ww/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1720735844862?e=1725634800&v=beta&t=RIg7P6XY9ZnTvvkngpVN8l8yvPGdQQaaJvfjlxOcu8Y" width=90> |
+| <img src="https://media.licdn.com/dms/image/v2/C4D03AQGpdRZhfOFJbw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1598037671414?e=1730332800&v=beta&t=jE0LTqLNrvhUGnWoUorSdQJKk2ZTm3AO3CNuf4KcUcI" width=90> |<img src="https://media.licdn.com/dms/image/v2/D4D03AQFcgFyUFwCGdw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1726833556432?e=1732147200&v=beta&t=pTA4KBbUeL3-r9cBDSA9tFWKABZ8SPaMgZcB4LCFZfI" width=90> |
 |:-:|:-:|
 | **Lucas Callamullo** | **Felipe Garcia** |
 | <a href="https://github.com/LucasCallamullo"> <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> | <a href="https://github.com/FeltonG"> <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> |
@@ -47,7 +47,7 @@ Desarrollamos una plataforma **ecommerce** para venta y compra de productos de a
 
 ### 👉🏻 Developers
 
-| <img src="https://media.licdn.com/dms/image/v2/D4E03AQGxvkYP2spMbQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718325017133?e=1730332800&v=beta&t=Yv_v7L46GJ8J3NNoJUQ6CHS4BXzrVTAbfkuClgImgOk" width=90> | <img src="https://media.licdn.com/dms/image/v2/D4D35AQFeSAfMtCl4AQ/profile-framedphoto-shrink_400_400/profile-framedphoto-shrink_400_400/0/1724149588870?e=1725638400&v=beta&t=u39kFXp-DflKQQ_yfbSMqYDzM_XolaX0PD2-C98X3lY" width=90> |
+| <img src="https://media.licdn.com/dms/image/v2/D4E03AQGxvkYP2spMbQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718325017133?e=1730332800&v=beta&t=Yv_v7L46GJ8J3NNoJUQ6CHS4BXzrVTAbfkuClgImgOk" width=90> | <img src="https://media.licdn.com/dms/image/v2/D4D03AQE8zBfLw1N0WQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1721326492210?e=1732147200&v=beta&t=em1rAzc4-Yf2A1j-87YM3uNX24xRlBCAJajabKfOrQ0" width=90> |
 |:-:|:-:|
 | **Juan David Beca** | **Layla Gomez** |
 | <a href="https://github.com/juanbep"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> | <a href="https://github.com/LayGomez"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> |
