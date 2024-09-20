@@ -47,8 +47,8 @@ Desarrollamos una plataforma **ecommerce** para venta y compra de productos de a
 
 ### 👉🏻 Developers
 
-| <img src="https://media.licdn.com/dms/image/v2/D4E03AQGxvkYP2spMbQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718325017133?e=1730332800&v=beta&t=Yv_v7L46GJ8J3NNoJUQ6CHS4BXzrVTAbfkuClgImgOk" width=90> | <img src="https://media.licdn.com/dms/image/v2/D4D03AQE8zBfLw1N0WQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1721326492210?e=1732147200&v=beta&t=em1rAzc4-Yf2A1j-87YM3uNX24xRlBCAJajabKfOrQ0" width=90> |
-|:-:|:-:|
-| **Juan David Beca** | **Layla Gomez** |
+| <img src="https://media.licdn.com/dms/image/v2/D4D03AQE8zBfLw1N0WQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1721326492210?e=1732147200&v=beta&t=em1rAzc4-Yf2A1j-87YM3uNX24xRlBCAJajabKfOrQ0" width=90> |
+|:-:|
+| **Layla Gomez** |
 | <a href="https://github.com/juanbep"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> | <a href="https://github.com/LayGomez"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> |
-| <a href="https://www.linkedin.com/in/juan-david-beca-pillimue-aa3168207/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://www.linkedin.com/in/layla-gomez-vallejos/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+
