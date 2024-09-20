@@ -20,6 +20,10 @@ urlpatterns = [
     # Vista para la barra de busqueda del TOP method GET
     path('productos/search/', views.producto, name="Producto_Search_Top"),
     
+    # 
+    path('producto/favoritos/<int:user_id>/', views.producto_fav_filter, name='Prod_Favs_Filter'),
+
+    
     # este trabaja para las solicitudes JSON con js AJAX. para la busqueda en el input lateral del sidebar
     path('search_productos/', views.search_view, name='Search_view'),
 
@@ -29,6 +33,15 @@ urlpatterns = [
     path('tienda/<int:seller_id>/<int:category_id>/', views.tienda_vendedor, name='Tienda_Cat'),
     
     path('tienda/<int:seller_id>/<int:category_id>/<int:sub_category_id>/', views.tienda_vendedor, name='Tienda_Sub_Cat'),
+
+    # Esto es para marcar o desmarcar productos favoritos
+    path('favoritos/', views.fav_products2, name='Fav_Prod'),
+    
+    
+    
+    path('favoritos/<int:prod_id>/', views.fav_products, name='Fav_Prod_R'),
+
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

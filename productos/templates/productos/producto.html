@@ -63,6 +63,11 @@
 
                 <hr>
                 <!-- TOP 10 BUTTON SIDE -->
+                <button class="btn-sidebar-top-10 mb-2"
+                onclick="window.location.href='{% url 'Prod_Favs_Filter' user.id %}'">   <span>Favoritos</span>
+                    <i class="fa-solid fa-heart"></i>
+                </button>
+
                 <button class="btn-sidebar-top-10">
                     <span>Top 10</span>
                     <i class="fa fa-star"></i>
@@ -139,6 +144,7 @@
 
     <!-- Esto es del carousel de productos -->
     <script>
+        // Todo esto es para del carousel 
         $(document).ready(function(){
             $('.carousel').slick({
                 infinite: true,
@@ -170,6 +176,11 @@
             // Mostrar el precio calculado en el elemento correspondiente
             element.innerText = 'Oferta: $' + discountedPrice.toFixed(2);
         });
+
+        function toggleHeart(button) {
+            // Alterna la clase 'active' al hacer clic en el botón
+            button.classList.toggle('active');
+        }
     </script>   
 
 {% endblock %}

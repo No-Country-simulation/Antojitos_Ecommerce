@@ -149,11 +149,19 @@
 
                 <!-- DASHBOARD PRODUCTOS -->
                 <div id="first-tab" class="content-text">
-                    {% include 'registros/dashboard_vendedor.html' %}
+                    {% if user.role == 'buyer' %}
+                        Futuro Dashboard de Facturas de Compras
+                    {% else %}
+                        {% include 'registros/dashboard_vendedor.html' %}
+                    {% endif %}
                 </div>
                 
                 <div id="second-tab" class="content-text" style="display: none;">
-                    Futuro Segundo Tab
+                    {% if user.role == 'buyer' %}
+                        {% include 'registros/dashboard_vendedor.html' %}
+                    {% else %}
+                        Futuro Segundo Tab
+                    {% endif %}
                 </div>
 
                 <div id="third-tab" class="content-text" style="display: none;">

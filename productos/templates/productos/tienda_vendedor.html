@@ -26,11 +26,10 @@
             <h1>{{ store.name_store }}</h1> <!--nombre del restaurante-->
             <p>Dirección: {{ store.address }}</p>
         </div>
-        
     </div>
     
     <div class="container-fluid">
-        <div class="product-search-container"></div>
+        <div class="product-search-container">
             <input type="text" placeholder="Buscar..." class="product-search-input">
             <button class="product-search-button">Buscar</button>
         </div>
@@ -60,7 +59,7 @@
 
                 {% if sub_category %}
                     <button class="btn-sidebar-top px-lg-3"
-                    onclick="window.location.href='{% url 'Tienda_Cat' store.id category.id sub_category.id %}'">
+                    onclick="window.location.href='{% url 'Tienda_Sub_Cat' store.id category.id sub_category.id %}'">
                         <span> {{ sub_category.name }} </span>
                     </button>
                 {% endif %}
@@ -175,6 +174,11 @@
             // Mostrar el precio calculado en el elemento correspondiente
             element.innerText = 'Oferta: $' + discountedPrice.toFixed(2);
         });
+
+        function toggleHeart(button) {
+            // Alterna la clase 'active' al hacer clic en el botón
+            button.classList.toggle('active');
+        }
     </script>   
 
 {% endblock %}

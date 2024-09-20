@@ -1,10 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from productos.models import Producto, Categoria, Subcategoria
-from productos.models import SellerUser
+from registros.models import SellerUser, BuyerUser
 
 
+from django.contrib import messages
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
+from django.contrib.auth.decorators import login_required
 
 
 def obtener_categorias_y_subcategorias(categorias_unicas) -> dict:
@@ -79,11 +81,11 @@ def obtener_productos_por_subcategoria(productos) -> dict:
 
 
 
-def producto(request, category_id=None, sub_category_id=None):
+def producto(request, category_id=None, sub_category_id=None, user_id=None):
     """
-    Vista que maneja la lista de productos. Filtra productos por búsqueda, categoría y subcategoría.
+        Vista que maneja la lista de productos. Filtra productos por búsqueda, 
+        categoría y subcategoría.
     """
-
     # Obtén todos los productos como punto de partida
     productos = Producto.objects.all()
     category_actual = category_id
@@ -93,6 +95,13 @@ def producto(request, category_id=None, sub_category_id=None):
     query = request.GET.get('top_search', '')
     if query:
         productos = productos.filter(name__icontains=query)
+        
+    if user_id:
+        # Obtener al comprador
+        buyer = get_object_or_404(BuyerUser, id=user_id)
+        
+        # Obtener el producto
+        productos = buyer.saved_products.all()
 
     # Filtrado por categoría
     if category_id:
@@ -119,13 +128,34 @@ def producto(request, category_id=None, sub_category_id=None):
     return render(request, "productos/producto.html", contexto)
 
 
+def producto_fav_filter(request, user_id=None, store_id=None):
+    
+    if user_id:
+        # Obtener al comprador
+        buyer = get_object_or_404(BuyerUser, id=user_id)
+        
+        # Obtener el producto
+        productos = buyer.saved_products.all()
+    
+    # Crear un diccionario de productos agrupados por subcategoría
+    products_for_subcats = obtener_productos_por_subcategoria(productos)
+    
+    # Contexto para el template
+    contexto = {
+        "productos": productos,
+        "products_for_subcats": products_for_subcats,
+    }
 
-def tienda_vendedor(request, seller_id=None, category_id=None, sub_category_id=None):
+    return render(request, "productos/producto.html", contexto)
+    
+
+def tienda_vendedor(request, seller_id=None, category_id=None, sub_category_id=None, prod_id=None):
     seller = get_object_or_404(SellerUser, id=seller_id)
     productos = Producto.objects.filter(seller=seller)
     category_actual = category_id
     sub_category_actual = sub_category_id
     
+
     # Filtrado por categoría
     if category_id:
         category_actual = Categoria.objects.get(id=category_id)
@@ -157,11 +187,88 @@ def tienda_vendedor(request, seller_id=None, category_id=None, sub_category_id=N
     return render(request, 'productos/tienda_vendedor.html', context)
 
 
+
+# ==========================================================================
+#                         NUEVOS AGREGADOS
+# ==========================================================================
+@login_required
+def fav_products(request, prod_id = None):
+    
+    user = request.user
+
+    # Verificar que el usuario no sea un vendedor
+    if user.role == 'seller':
+        messages.error(request, 'Los vendedores no pueden agregar productos a favoritos.')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+
+    # Validar si se recibió un producto_id
+    if prod_id is None:
+        messages.error(request, 'No se ha recibido un ID de producto.')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+
+    # Obtener al comprador
+    buyer = get_object_or_404(BuyerUser, id=user.id)
+    
+    # Obtener el producto
+    producto = get_object_or_404(Producto, id=prod_id)
+
+    # Comprobar si el producto ya está en los favoritos del usuario
+    if producto in buyer.saved_products.all():
+        buyer.saved_products.remove(producto)
+        message = 'Producto eliminado de favoritos.'
+    else:
+        buyer.saved_products.add(producto)
+        message = 'Producto añadido a favoritos.'
+
+    # Mostrar el mensaje correspondiente
+    messages.success(request, message)
+    
+    # Redirigir a la página anterior o a una página por defecto
+    return redirect(request.META.get('HTTP_REFERER', '/'))
+        
+
+
+
+
+def fav_products2(request):
+
+    if request.method == 'POST':
+
+        try:
+            # recupera valores del widget_carrito.js
+            producto_id = int(request.POST.get('producto_id'))
+    
+            user = request.user
+
+            # Verificar que el usuario no sea un vendedor
+            if user.role == 'seller':
+                return JsonResponse({'error': 'Vendedores no pueden agregar productos a favoritos.'}, status=403)
+            
+            # Validar si se recibió un producto_id
+            if producto_id is None:
+                return JsonResponse({'error': 'No se recibió ningún producto.'}, status=400)
+
+            producto = get_object_or_404(Producto, id=producto_id)
+
+            # Comprobar si el producto ya está en los favoritos del usuario
+            if producto in user.saved_products.all():
+                user.saved_products.remove(producto)
+                message = 'Producto eliminado de favoritos.'
+            else:
+                user.saved_products.add(producto)
+                message = 'Producto añadido a favoritos.'
+
+            return JsonResponse({'message': message})
+              
+        except ValueError:
+            return JsonResponse({'error': 'ID de producto inválido'}, status=400)
+
+    return JsonResponse({'error': 'Solicitud inválida'}, status=400)
+
+
 # ==========================================================================
 #                            FOR REAL TIME SEARCH
 # ==========================================================================
-
-
 @require_GET
 def search_view(request):
     

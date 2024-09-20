@@ -2,7 +2,13 @@
 <div class="app-content">
 	<!-- APP CONTENT HEADER -->
 	<div class="app-content-header">
-		<h1 class="app-content-headerText">Editar Productos</h1>
+		<h1 class="app-content-headerText">
+			{% if user.role == 'buyer' %}
+				Productos Favoritos
+			{% else %}
+				Edtiar Productos
+			{% endif %}
+		</h1>
 		<button class="mode-switch" title="Switch Theme">
 			<i class="fa-solid fa-moon"></i>
 		</button>

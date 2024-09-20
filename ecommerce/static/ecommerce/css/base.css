@@ -226,7 +226,7 @@ body {
 
 /* Efecto al pasar el mouse */
 #user-dropdown-auth .register-auth-btn:hover {
-    background-color: #8200F5;
+    background-color: #fab361;
     transform: scale(1.05);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hover */
 }
@@ -260,10 +260,10 @@ body {
 .dropdown-content.show {
     display: block;
     opacity: 1;
-    border-left: 2px solid #780178; /* Borde izquierdo */
-    border-right: 2px solid #780178; /* Borde derecho */
-    border-top: 2px solid #780178; /* Borde Superior */
-    border-bottom: 2px solid #780178; /* Borde inferior */
+    border-left: 2px solid #c94000; /* Borde izquierdo */
+    border-right: 2px solid #c94000; /* Borde derecho */
+    border-top: 2px solid #c94000; /* Borde Superior */
+    border-bottom: 2px solid #c94000; /* Borde inferior */
 }
 
 
